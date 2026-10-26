@@ -2174,12 +2174,13 @@ function drawAtlasInspector(){
  x.fillText('frames: '+frames.join(', '),32,536);
 
  if(body&&body.complete&&body.naturalWidth){
-   let pw=250, ph=Math.round(body.naturalHeight*(pw/body.naturalWidth));
-   x.fillStyle='#140f1a';x.fillRect(268,92,pw+20,ph+20);
-   x.drawImage(body,278,102,pw,ph);
+   let scale=Math.min(190/body.naturalWidth,224/body.naturalHeight);
+   let pw=Math.round(body.naturalWidth*scale),ph=Math.round(body.naturalHeight*scale),ax=278+(190-pw)/2;
+   x.fillStyle='#140f1a';x.fillRect(268,92,210,248);
+   x.drawImage(body,ax,102,pw,ph);
    let col = meta.remade ? current : ((meta.start+current)%meta.cols);
    let row = meta.remade ? meta.row : Math.floor((meta.start+current)/meta.cols);
-   let hx=278 + (col*meta.cellW)*(pw/body.naturalWidth);
+   let hx=ax + (col*meta.cellW)*(pw/body.naturalWidth);
    let hy=102 + (row*meta.cellH)*(ph/body.naturalHeight);
    let hw=meta.cellW*(pw/body.naturalWidth), hh=meta.cellH*(ph/body.naturalHeight);
    x.strokeStyle='#72ffd7';x.lineWidth=2;x.strokeRect(hx,hy,hw,hh);
@@ -2187,14 +2188,15 @@ function drawAtlasInspector(){
  }
 
  if(fx&&fx.complete&&fx.naturalWidth){
-   let pw=250, ph=Math.round(fx.naturalHeight*(pw/fx.naturalWidth));
-   x.fillStyle='#140f1a';x.fillRect(538,92,pw+20,ph+20);
-   x.drawImage(fx,548,102,pw,ph);
-   let hx=548 + (current*REMADE_CELL.w)*(pw/fx.naturalWidth);
+   let scale=Math.min(180/fx.naturalWidth,224/fx.naturalHeight);
+   let pw=Math.round(fx.naturalWidth*scale),ph=Math.round(fx.naturalHeight*scale),ax=500+(180-pw)/2;
+   x.fillStyle='#140f1a';x.fillRect(490,92,200,248);
+   x.drawImage(fx,ax,102,pw,ph);
+   let hx=ax + (current*REMADE_CELL.w)*(pw/fx.naturalWidth);
    let hy=102 + ((REMADE_ANIMS[action]||REMADE_ANIMS.idle).row*REMADE_CELL.h)*(ph/fx.naturalHeight);
    let hw=REMADE_CELL.w*(pw/fx.naturalWidth), hh=REMADE_CELL.h*(ph/fx.naturalHeight);
    x.strokeStyle='#ffa8ff';x.lineWidth=2;x.strokeRect(hx,hy,hw,hh);
-   x.fillStyle='#cdbde1';x.font='11px Consolas';x.fillText('fx atlas',548,96);
+   x.fillStyle='#cdbde1';x.font='11px Consolas';x.fillText('fx atlas',500,96);
  }
 
  roundRect(705,96,200,220,8,'rgba(15,12,22,.96)','#473957',1);
@@ -2204,7 +2206,7 @@ function drawAtlasInspector(){
    let srcCol = meta.remade ? current : ((meta.start+current)%meta.cols);
    let srcRow = meta.remade ? meta.row : Math.floor((meta.start+current)/meta.cols);
    let sx=srcCol*meta.cellW, sy=srcRow*meta.cellH;
-   drawInspectorFrameLayers(body,fx,meta,fighter,action,idx,current,sx,sy,723,148,164,205);
+   drawInspectorFrameLayers(body,fx,meta,fighter,action,idx,current,sx,sy,723,148,164,158);
  }
 
  x.fillStyle='#72ffd7';x.font='bold 13px Consolas';x.fillText('FRAME STRIP',586,346);
