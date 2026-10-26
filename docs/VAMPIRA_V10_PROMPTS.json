@@ -1,0 +1,168 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "Isolated Vampira idle frame 1, generated against original V9 atlas",
+  "actions": [
+    {
+      "action": "idle",
+      "poses": [
+        "relaxed combat-ready stance",
+        "inhale slightly, chest raised, knees soften, hands lift 2 cm",
+        "exhale, shoulders lower slightly, hair tips settle",
+        "return toward the initial relaxed stance, subtle cape motion"
+      ]
+    },
+    {
+      "action": "walk",
+      "poses": [
+        "step right with near boot forward and far boot back",
+        "weight passes over front boot, trailing heel lifts",
+        "far boot steps forward, near boot trails",
+        "weight passes onto far boot; prepare the first step"
+      ]
+    },
+    {
+      "action": "dash",
+      "poses": [
+        "lean forward to launch, knees bent",
+        "fast low forward sprint, leading knee forward, rear leg extended",
+        "low forward sprint with opposite leg leading",
+        "brake from sprint with both feet under body"
+      ]
+    },
+    {
+      "action": "crouch",
+      "poses": [
+        "lower into a half crouch",
+        "deep compact crouch, knees bent, torso upright",
+        "hold the deep crouch with slight weight shift",
+        "rise toward half crouch"
+      ]
+    },
+    {
+      "action": "jump",
+      "poses": [
+        "jump anticipation, knees bent, feet on baseline",
+        "ascending upright jump, both knees slightly bent, feet tucked",
+        "jump apex, one knee lifted, cape hanging compactly",
+        "descending jump, legs extend for landing"
+      ]
+    },
+    {
+      "action": "fall",
+      "poses": [
+        "descending airborne, both legs extending below torso",
+        "falling, one knee forward, hands balancing",
+        "almost landing, boots lower and knees soften",
+        "landing with knees bent to absorb impact"
+      ]
+    },
+    {
+      "action": "light",
+      "poses": [
+        "wind up a quick short right-hand claw jab",
+        "extend the forward arm in a quick rightward claw jab",
+        "retract the claw arm halfway",
+        "recover to ready stance"
+      ]
+    },
+    {
+      "action": "heavy",
+      "poses": [
+        "wind up a strong rightward sweeping claw strike, torso twisted",
+        "full strong rightward claw sweep, arm horizontal, no trail",
+        "follow through with torso rotated right",
+        "recover from sweep to ready stance"
+      ]
+    },
+    {
+      "action": "specialA",
+      "poses": [
+        "wind up casting with forward palm near chest",
+        "extend forward palm toward right as casting, body only",
+        "hold forward casting palm with fingers spread",
+        "retract casting palm toward ready stance"
+      ]
+    },
+    {
+      "action": "specialB",
+      "poses": [
+        "crouch slightly with both hands close to waist to gather power",
+        "lift both forearms forward to chest level",
+        "open both hands forward as releasing a spell, body only",
+        "lower hands and recover ready stance"
+      ]
+    },
+    {
+      "action": "super",
+      "poses": [
+        "brace with knees bent and hands crossed at chest",
+        "raise both arms outward and upward, commanding power",
+        "hold arms spread in a dramatic vampire queen pose",
+        "bring arms down and return toward ready stance"
+      ]
+    },
+    {
+      "action": "throw",
+      "poses": [
+        "reach both hands forward to grab an unseen opponent on right",
+        "pull both hands back toward chest, torso turned",
+        "twist torso and extend arms to throw unseen opponent right",
+        "recover after throw with open hands"
+      ]
+    },
+    {
+      "action": "hit",
+      "poses": [
+        "flinch backward from a hit at chest, eyes closed",
+        "recoil farther backward with arms raised defensively",
+        "stagger with one boot behind, head bowed",
+        "recover balance but still hurt"
+      ]
+    },
+    {
+      "action": "block",
+      "poses": [
+        "raise both forearms in front of face defensively",
+        "brace guarded forearms against unseen impact from right",
+        "hold compact defensive guard, knees bent",
+        "lower guard toward ready stance"
+      ]
+    },
+    {
+      "action": "down",
+      "poses": [
+        "collapse toward knees, torso bent, head low",
+        "fall sideways toward the ground, torso near horizontal",
+        "lie on side on ground, full body horizontal, feet and head visible",
+        "lie still on side in a defeated pose, full body horizontal"
+      ]
+    },
+    {
+      "action": "recover",
+      "poses": [
+        "lie on side preparing to rise",
+        "push torso off ground with one hand, knees drawn underneath",
+        "kneel upright on one knee",
+        "stand up into ready stance"
+      ]
+    },
+    {
+      "action": "intro",
+      "poses": [
+        "stand regal with cape close and one hand on hip",
+        "turn face toward right with chin raised slightly",
+        "lift one hand to chest with confident vampire smile",
+        "settle into combat-ready stance"
+      ]
+    },
+    {
+      "action": "victory",
+      "poses": [
+        "stand tall confidently, one hand on hip",
+        "raise one hand gracefully beside face",
+        "hold a triumphant vampire queen pose, chin raised",
+        "settle into confident victory stance"
+      ]
+    }
+  ]
+}
