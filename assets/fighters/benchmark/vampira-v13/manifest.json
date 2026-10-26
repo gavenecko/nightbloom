@@ -1,0 +1,1419 @@
+{
+  "version": 13,
+  "fighter": "VAMPIRA",
+  "layers": "body-only",
+  "cell": {
+    "width": 192,
+    "height": 192
+  },
+  "atlas": {
+    "width": 1536,
+    "height": 1728,
+    "cols": 8,
+    "rows": 9
+  },
+  "gutter": 8,
+  "baseline": 184,
+  "frames": [
+    {
+      "action": "idle",
+      "frame": 1,
+      "file": "idle-1.png",
+      "col": 0,
+      "row": 0,
+      "bounds": {
+        "x": 45,
+        "y": 46,
+        "width": 102,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 163,
+        "top": 169,
+        "right": 141,
+        "bottom": 127
+      }
+    },
+    {
+      "action": "idle",
+      "frame": 2,
+      "file": "idle-2.png",
+      "col": 1,
+      "row": 0,
+      "bounds": {
+        "x": 44,
+        "y": 46,
+        "width": 103,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 161,
+        "top": 162,
+        "right": 127,
+        "bottom": 127
+      }
+    },
+    {
+      "action": "idle",
+      "frame": 3,
+      "file": "idle-3.png",
+      "col": 2,
+      "row": 0,
+      "bounds": {
+        "x": 47,
+        "y": 46,
+        "width": 97,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 192,
+        "top": 171,
+        "right": 152,
+        "bottom": 128
+      }
+    },
+    {
+      "action": "idle",
+      "frame": 4,
+      "file": "idle-4.png",
+      "col": 3,
+      "row": 0,
+      "bounds": {
+        "x": 46,
+        "y": 46,
+        "width": 99,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 188,
+        "top": 168,
+        "right": 142,
+        "bottom": 128
+      }
+    },
+    {
+      "action": "walk",
+      "frame": 1,
+      "file": "walk-1.png",
+      "col": 4,
+      "row": 0,
+      "bounds": {
+        "x": 43,
+        "y": 46,
+        "width": 106,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 80,
+        "top": 103,
+        "right": 111,
+        "bottom": 87
+      },
+      "costumeCorrected": true,
+      "anatomyCorrected": true
+    },
+    {
+      "action": "walk",
+      "frame": 2,
+      "file": "walk-2.png",
+      "col": 5,
+      "row": 0,
+      "bounds": {
+        "x": 49,
+        "y": 46,
+        "width": 94,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 162,
+        "top": 103,
+        "right": 147,
+        "bottom": 106
+      }
+    },
+    {
+      "action": "walk",
+      "frame": 3,
+      "file": "walk-3.png",
+      "col": 6,
+      "row": 0,
+      "bounds": {
+        "x": 46,
+        "y": 46,
+        "width": 100,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 153,
+        "top": 160,
+        "right": 156,
+        "bottom": 120
+      }
+    },
+    {
+      "action": "walk",
+      "frame": 4,
+      "file": "walk-4.png",
+      "col": 7,
+      "row": 0,
+      "bounds": {
+        "x": 48,
+        "y": 46,
+        "width": 96,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 182,
+        "top": 159,
+        "right": 159,
+        "bottom": 127
+      }
+    },
+    {
+      "action": "dash",
+      "frame": 1,
+      "file": "dash-1.png",
+      "col": 0,
+      "row": 1,
+      "bounds": {
+        "x": 45,
+        "y": 72,
+        "width": 101,
+        "height": 112
+      },
+      "sourceMargin": {
+        "left": 108,
+        "top": 233,
+        "right": 115,
+        "bottom": 178
+      }
+    },
+    {
+      "action": "dash",
+      "frame": 2,
+      "file": "dash-2.png",
+      "col": 1,
+      "row": 1,
+      "bounds": {
+        "x": 29,
+        "y": 80,
+        "width": 134,
+        "height": 104
+      },
+      "sourceMargin": {
+        "left": 133,
+        "top": 133,
+        "right": 134,
+        "bottom": 113
+      }
+    },
+    {
+      "action": "dash",
+      "frame": 3,
+      "file": "dash-3.png",
+      "col": 2,
+      "row": 1,
+      "bounds": {
+        "x": 42,
+        "y": 80,
+        "width": 108,
+        "height": 104
+      },
+      "sourceMargin": {
+        "left": 119,
+        "top": 314,
+        "right": 66,
+        "bottom": 189
+      }
+    },
+    {
+      "action": "dash",
+      "frame": 4,
+      "file": "dash-4.png",
+      "col": 3,
+      "row": 1,
+      "bounds": {
+        "x": 45,
+        "y": 46,
+        "width": 102,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 148,
+        "top": 124,
+        "right": 121,
+        "bottom": 128
+      }
+    },
+    {
+      "action": "crouch",
+      "frame": 1,
+      "file": "crouch-1.png",
+      "col": 4,
+      "row": 1,
+      "bounds": {
+        "x": 37,
+        "y": 72,
+        "width": 118,
+        "height": 112
+      },
+      "sourceMargin": {
+        "left": 55,
+        "top": 244,
+        "right": 32,
+        "bottom": 177
+      }
+    },
+    {
+      "action": "crouch",
+      "frame": 2,
+      "file": "crouch-2.png",
+      "col": 5,
+      "row": 1,
+      "bounds": {
+        "x": 54,
+        "y": 92,
+        "width": 83,
+        "height": 92
+      },
+      "sourceMargin": {
+        "left": 150,
+        "top": 262,
+        "right": 99,
+        "bottom": 171
+      }
+    },
+    {
+      "action": "crouch",
+      "frame": 3,
+      "file": "crouch-3.png",
+      "col": 6,
+      "row": 1,
+      "bounds": {
+        "x": 41,
+        "y": 92,
+        "width": 109,
+        "height": 92
+      },
+      "sourceMargin": {
+        "left": 40,
+        "top": 301,
+        "right": 35,
+        "bottom": 220
+      }
+    },
+    {
+      "action": "crouch",
+      "frame": 4,
+      "file": "crouch-4.png",
+      "col": 7,
+      "row": 1,
+      "bounds": {
+        "x": 53,
+        "y": 72,
+        "width": 85,
+        "height": 112
+      },
+      "sourceMargin": {
+        "left": 157,
+        "top": 236,
+        "right": 193,
+        "bottom": 144
+      },
+      "costumeCorrected": true
+    },
+    {
+      "action": "jump",
+      "frame": 1,
+      "file": "jump-1.png",
+      "col": 0,
+      "row": 2,
+      "bounds": {
+        "x": 44,
+        "y": 72,
+        "width": 103,
+        "height": 112
+      },
+      "sourceMargin": {
+        "left": 104,
+        "top": 239,
+        "right": 79,
+        "bottom": 147
+      }
+    },
+    {
+      "action": "jump",
+      "frame": 2,
+      "file": "jump-2.png",
+      "col": 1,
+      "row": 2,
+      "bounds": {
+        "x": 42,
+        "y": 56,
+        "width": 108,
+        "height": 128
+      },
+      "sourceMargin": {
+        "left": 95,
+        "top": 109,
+        "right": 75,
+        "bottom": 166
+      }
+    },
+    {
+      "action": "jump",
+      "frame": 3,
+      "file": "jump-3.png",
+      "col": 2,
+      "row": 2,
+      "bounds": {
+        "x": 52,
+        "y": 64,
+        "width": 87,
+        "height": 120
+      },
+      "sourceMargin": {
+        "left": 159,
+        "top": 123,
+        "right": 145,
+        "bottom": 152
+      }
+    },
+    {
+      "action": "jump",
+      "frame": 4,
+      "file": "jump-4.png",
+      "col": 3,
+      "row": 2,
+      "bounds": {
+        "x": 43,
+        "y": 56,
+        "width": 106,
+        "height": 128
+      },
+      "sourceMargin": {
+        "left": 99,
+        "top": 147,
+        "right": 76,
+        "bottom": 114
+      }
+    },
+    {
+      "action": "fall",
+      "frame": 1,
+      "file": "fall-1.png",
+      "col": 4,
+      "row": 2,
+      "bounds": {
+        "x": 46,
+        "y": 56,
+        "width": 99,
+        "height": 128
+      },
+      "sourceMargin": {
+        "left": 150,
+        "top": 139,
+        "right": 89,
+        "bottom": 129
+      }
+    },
+    {
+      "action": "fall",
+      "frame": 2,
+      "file": "fall-2.png",
+      "col": 5,
+      "row": 2,
+      "bounds": {
+        "x": 33,
+        "y": 58,
+        "width": 125,
+        "height": 126
+      },
+      "sourceMargin": {
+        "left": 63,
+        "top": 254,
+        "right": 40,
+        "bottom": 123
+      }
+    },
+    {
+      "action": "fall",
+      "frame": 3,
+      "file": "fall-3.png",
+      "col": 6,
+      "row": 2,
+      "bounds": {
+        "x": 46,
+        "y": 64,
+        "width": 99,
+        "height": 120
+      },
+      "sourceMargin": {
+        "left": 129,
+        "top": 179,
+        "right": 86,
+        "bottom": 122
+      }
+    },
+    {
+      "action": "fall",
+      "frame": 4,
+      "file": "fall-4.png",
+      "col": 7,
+      "row": 2,
+      "bounds": {
+        "x": 34,
+        "y": 74,
+        "width": 123,
+        "height": 110
+      },
+      "sourceMargin": {
+        "left": 63,
+        "top": 308,
+        "right": 51,
+        "bottom": 195
+      }
+    },
+    {
+      "action": "light",
+      "frame": 1,
+      "file": "light-1.png",
+      "col": 0,
+      "row": 3,
+      "bounds": {
+        "x": 35,
+        "y": 46,
+        "width": 121,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 77,
+        "top": 147,
+        "right": 35,
+        "bottom": 108
+      }
+    },
+    {
+      "action": "light",
+      "frame": 2,
+      "file": "light-2.png",
+      "col": 1,
+      "row": 3,
+      "bounds": {
+        "x": 30,
+        "y": 46,
+        "width": 131,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 37,
+        "top": 165,
+        "right": 24,
+        "bottom": 120
+      }
+    },
+    {
+      "action": "light",
+      "frame": 3,
+      "file": "light-3.png",
+      "col": 2,
+      "row": 3,
+      "bounds": {
+        "x": 44,
+        "y": 46,
+        "width": 104,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 129,
+        "top": 102,
+        "right": 82,
+        "bottom": 98
+      }
+    },
+    {
+      "action": "light",
+      "frame": 4,
+      "file": "light-4.png",
+      "col": 3,
+      "row": 3,
+      "bounds": {
+        "x": 45,
+        "y": 46,
+        "width": 101,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 131,
+        "top": 108,
+        "right": 108,
+        "bottom": 94
+      }
+    },
+    {
+      "action": "heavy",
+      "frame": 1,
+      "file": "heavy-1.png",
+      "col": 4,
+      "row": 3,
+      "bounds": {
+        "x": 31,
+        "y": 46,
+        "width": 129,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 45,
+        "top": 155,
+        "right": 29,
+        "bottom": 123
+      }
+    },
+    {
+      "action": "heavy",
+      "frame": 2,
+      "file": "heavy-2.png",
+      "col": 5,
+      "row": 3,
+      "bounds": {
+        "x": 28,
+        "y": 46,
+        "width": 135,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 54,
+        "top": 186,
+        "right": 19,
+        "bottom": 143
+      }
+    },
+    {
+      "action": "heavy",
+      "frame": 3,
+      "file": "heavy-3.png",
+      "col": 6,
+      "row": 3,
+      "bounds": {
+        "x": 35,
+        "y": 46,
+        "width": 122,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 47,
+        "top": 121,
+        "right": 27,
+        "bottom": 99
+      }
+    },
+    {
+      "action": "heavy",
+      "frame": 4,
+      "file": "heavy-4.png",
+      "col": 7,
+      "row": 3,
+      "bounds": {
+        "x": 40,
+        "y": 46,
+        "width": 111,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 98,
+        "top": 137,
+        "right": 81,
+        "bottom": 98
+      }
+    },
+    {
+      "action": "specialA",
+      "frame": 1,
+      "file": "specialA-1.png",
+      "col": 0,
+      "row": 4,
+      "bounds": {
+        "x": 43,
+        "y": 46,
+        "width": 106,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 134,
+        "top": 135,
+        "right": 95,
+        "bottom": 111
+      },
+      "costumeCorrected": true
+    },
+    {
+      "action": "specialA",
+      "frame": 2,
+      "file": "specialA-2.png",
+      "col": 1,
+      "row": 4,
+      "bounds": {
+        "x": 32,
+        "y": 46,
+        "width": 128,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 54,
+        "top": 159,
+        "right": 33,
+        "bottom": 128
+      }
+    },
+    {
+      "action": "specialA",
+      "frame": 3,
+      "file": "specialA-3.png",
+      "col": 2,
+      "row": 4,
+      "bounds": {
+        "x": 32,
+        "y": 46,
+        "width": 128,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 62,
+        "top": 160,
+        "right": 14,
+        "bottom": 113
+      }
+    },
+    {
+      "action": "specialA",
+      "frame": 4,
+      "file": "specialA-4.png",
+      "col": 3,
+      "row": 4,
+      "bounds": {
+        "x": 42,
+        "y": 46,
+        "width": 107,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 125,
+        "top": 120,
+        "right": 81,
+        "bottom": 105
+      }
+    },
+    {
+      "action": "specialB",
+      "frame": 1,
+      "file": "specialB-1.png",
+      "col": 4,
+      "row": 4,
+      "bounds": {
+        "x": 36,
+        "y": 46,
+        "width": 119,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 95,
+        "top": 182,
+        "right": 67,
+        "bottom": 109
+      }
+    },
+    {
+      "action": "specialB",
+      "frame": 2,
+      "file": "specialB-2.png",
+      "col": 5,
+      "row": 4,
+      "bounds": {
+        "x": 43,
+        "y": 46,
+        "width": 106,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 110,
+        "top": 109,
+        "right": 82,
+        "bottom": 85
+      }
+    },
+    {
+      "action": "specialB",
+      "frame": 3,
+      "file": "specialB-3.png",
+      "col": 6,
+      "row": 4,
+      "bounds": {
+        "x": 31,
+        "y": 46,
+        "width": 130,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 54,
+        "top": 165,
+        "right": 19,
+        "bottom": 121
+      }
+    },
+    {
+      "action": "specialB",
+      "frame": 4,
+      "file": "specialB-4.png",
+      "col": 7,
+      "row": 4,
+      "bounds": {
+        "x": 44,
+        "y": 46,
+        "width": 103,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 150,
+        "top": 153,
+        "right": 131,
+        "bottom": 120
+      }
+    },
+    {
+      "action": "super",
+      "frame": 1,
+      "file": "super-1.png",
+      "col": 0,
+      "row": 5,
+      "bounds": {
+        "x": 37,
+        "y": 46,
+        "width": 117,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 98,
+        "top": 149,
+        "right": 58,
+        "bottom": 114
+      },
+      "costumeCorrected": true
+    },
+    {
+      "action": "super",
+      "frame": 2,
+      "file": "super-2.png",
+      "col": 1,
+      "row": 5,
+      "bounds": {
+        "x": 42,
+        "y": 46,
+        "width": 108,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 122,
+        "top": 130,
+        "right": 82,
+        "bottom": 105
+      }
+    },
+    {
+      "action": "super",
+      "frame": 3,
+      "file": "super-3.png",
+      "col": 2,
+      "row": 5,
+      "bounds": {
+        "x": 38,
+        "y": 46,
+        "width": 115,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 44,
+        "top": 63,
+        "right": 20,
+        "bottom": 77
+      }
+    },
+    {
+      "action": "super",
+      "frame": 4,
+      "file": "super-4.png",
+      "col": 3,
+      "row": 5,
+      "bounds": {
+        "x": 44,
+        "y": 46,
+        "width": 103,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 160,
+        "top": 165,
+        "right": 128,
+        "bottom": 125
+      }
+    },
+    {
+      "action": "throw",
+      "frame": 1,
+      "file": "throw-1.png",
+      "col": 4,
+      "row": 5,
+      "bounds": {
+        "x": 30,
+        "y": 46,
+        "width": 131,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 47,
+        "top": 187,
+        "right": 45,
+        "bottom": 132
+      }
+    },
+    {
+      "action": "throw",
+      "frame": 2,
+      "file": "throw-2.png",
+      "col": 5,
+      "row": 5,
+      "bounds": {
+        "x": 36,
+        "y": 46,
+        "width": 120,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 94,
+        "top": 158,
+        "right": 40,
+        "bottom": 109
+      }
+    },
+    {
+      "action": "throw",
+      "frame": 3,
+      "file": "throw-3.png",
+      "col": 6,
+      "row": 5,
+      "bounds": {
+        "x": 30,
+        "y": 46,
+        "width": 132,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 54,
+        "top": 186,
+        "right": 14,
+        "bottom": 112
+      }
+    },
+    {
+      "action": "throw",
+      "frame": 4,
+      "file": "throw-4.png",
+      "col": 7,
+      "row": 5,
+      "bounds": {
+        "x": 41,
+        "y": 46,
+        "width": 109,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 99,
+        "top": 103,
+        "right": 68,
+        "bottom": 97
+      }
+    },
+    {
+      "action": "hit",
+      "frame": 1,
+      "file": "hit-1.png",
+      "col": 0,
+      "row": 6,
+      "bounds": {
+        "x": 34,
+        "y": 46,
+        "width": 124,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 90,
+        "top": 162,
+        "right": 34,
+        "bottom": 131
+      }
+    },
+    {
+      "action": "hit",
+      "frame": 2,
+      "file": "hit-2.png",
+      "col": 1,
+      "row": 6,
+      "bounds": {
+        "x": 38,
+        "y": 46,
+        "width": 115,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 113,
+        "top": 135,
+        "right": 42,
+        "bottom": 113
+      }
+    },
+    {
+      "action": "hit",
+      "frame": 3,
+      "file": "hit-3.png",
+      "col": 2,
+      "row": 6,
+      "bounds": {
+        "x": 42,
+        "y": 46,
+        "width": 107,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 118,
+        "top": 172,
+        "right": 143,
+        "bottom": 116
+      }
+    },
+    {
+      "action": "hit",
+      "frame": 4,
+      "file": "hit-4.png",
+      "col": 3,
+      "row": 6,
+      "bounds": {
+        "x": 41,
+        "y": 46,
+        "width": 110,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 116,
+        "top": 160,
+        "right": 83,
+        "bottom": 93
+      }
+    },
+    {
+      "action": "block",
+      "frame": 1,
+      "file": "block-1.png",
+      "col": 4,
+      "row": 6,
+      "bounds": {
+        "x": 41,
+        "y": 46,
+        "width": 109,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 147,
+        "top": 170,
+        "right": 94,
+        "bottom": 117
+      }
+    },
+    {
+      "action": "block",
+      "frame": 2,
+      "file": "block-2.png",
+      "col": 5,
+      "row": 6,
+      "bounds": {
+        "x": 34,
+        "y": 46,
+        "width": 124,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 76,
+        "top": 175,
+        "right": 42,
+        "bottom": 108
+      }
+    },
+    {
+      "action": "block",
+      "frame": 3,
+      "file": "block-3.png",
+      "col": 6,
+      "row": 6,
+      "bounds": {
+        "x": 40,
+        "y": 46,
+        "width": 111,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 122,
+        "top": 159,
+        "right": 88,
+        "bottom": 110
+      }
+    },
+    {
+      "action": "block",
+      "frame": 4,
+      "file": "block-4.png",
+      "col": 7,
+      "row": 6,
+      "bounds": {
+        "x": 43,
+        "y": 46,
+        "width": 106,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 145,
+        "top": 160,
+        "right": 112,
+        "bottom": 117
+      }
+    },
+    {
+      "action": "down",
+      "frame": 1,
+      "file": "down-1.png",
+      "col": 0,
+      "row": 7,
+      "bounds": {
+        "x": 45,
+        "y": 92,
+        "width": 102,
+        "height": 92
+      },
+      "sourceMargin": {
+        "left": 106,
+        "top": 315,
+        "right": 78,
+        "bottom": 240
+      },
+      "costumeCorrected": true
+    },
+    {
+      "action": "down",
+      "frame": 2,
+      "file": "down-2.png",
+      "col": 1,
+      "row": 7,
+      "bounds": {
+        "x": 45,
+        "y": 92,
+        "width": 102,
+        "height": 92
+      },
+      "sourceMargin": {
+        "left": 106,
+        "top": 315,
+        "right": 78,
+        "bottom": 240
+      },
+      "costumeCorrected": true,
+      "anatomyFallback": "Hold the verified two-leg down-1 pose; no newly generated replacement was accepted"
+    },
+    {
+      "action": "down",
+      "frame": 3,
+      "file": "down-3.png",
+      "col": 2,
+      "row": 7,
+      "bounds": {
+        "x": 35,
+        "y": 144,
+        "width": 122,
+        "height": 40
+      },
+      "sourceMargin": {
+        "left": 81,
+        "top": 241,
+        "right": 34,
+        "bottom": 103
+      }
+    },
+    {
+      "action": "down",
+      "frame": 4,
+      "file": "down-4.png",
+      "col": 3,
+      "row": 7,
+      "bounds": {
+        "x": 26,
+        "y": 144,
+        "width": 139,
+        "height": 40
+      },
+      "sourceMargin": {
+        "left": 37,
+        "top": 268,
+        "right": 32,
+        "bottom": 129
+      },
+      "costumeCorrected": true
+    },
+    {
+      "action": "recover",
+      "frame": 1,
+      "file": "recover-1.png",
+      "col": 4,
+      "row": 7,
+      "bounds": {
+        "x": 51,
+        "y": 144,
+        "width": 90,
+        "height": 40
+      },
+      "sourceMargin": {
+        "left": 81,
+        "top": 207,
+        "right": 39,
+        "bottom": 187
+      }
+    },
+    {
+      "action": "recover",
+      "frame": 2,
+      "file": "recover-2.png",
+      "col": 5,
+      "row": 7,
+      "bounds": {
+        "x": 49,
+        "y": 112,
+        "width": 94,
+        "height": 72
+      },
+      "sourceMargin": {
+        "left": 41,
+        "top": 318,
+        "right": 24,
+        "bottom": 278
+      }
+    },
+    {
+      "action": "recover",
+      "frame": 3,
+      "file": "recover-3.png",
+      "col": 6,
+      "row": 7,
+      "bounds": {
+        "x": 43,
+        "y": 80,
+        "width": 106,
+        "height": 104
+      },
+      "sourceMargin": {
+        "left": 64,
+        "top": 245,
+        "right": 61,
+        "bottom": 177
+      },
+      "costumeCorrected": true
+    },
+    {
+      "action": "recover",
+      "frame": 4,
+      "file": "recover-4.png",
+      "col": 7,
+      "row": 7,
+      "bounds": {
+        "x": 41,
+        "y": 46,
+        "width": 109,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 128,
+        "top": 129,
+        "right": 69,
+        "bottom": 102
+      }
+    },
+    {
+      "action": "intro",
+      "frame": 1,
+      "file": "intro-1.png",
+      "col": 0,
+      "row": 8,
+      "bounds": {
+        "x": 49,
+        "y": 46,
+        "width": 93,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 171,
+        "top": 118,
+        "right": 155,
+        "bottom": 109
+      }
+    },
+    {
+      "action": "intro",
+      "frame": 2,
+      "file": "intro-2.png",
+      "col": 1,
+      "row": 8,
+      "bounds": {
+        "x": 54,
+        "y": 46,
+        "width": 84,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 239,
+        "top": 165,
+        "right": 195,
+        "bottom": 112
+      },
+      "costumeCorrected": true
+    },
+    {
+      "action": "intro",
+      "frame": 3,
+      "file": "intro-3.png",
+      "col": 2,
+      "row": 8,
+      "bounds": {
+        "x": 43,
+        "y": 46,
+        "width": 105,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 152,
+        "top": 162,
+        "right": 106,
+        "bottom": 101
+      },
+      "costumeCorrected": true
+    },
+    {
+      "action": "intro",
+      "frame": 4,
+      "file": "intro-4.png",
+      "col": 3,
+      "row": 8,
+      "bounds": {
+        "x": 38,
+        "y": 46,
+        "width": 116,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 100,
+        "top": 172,
+        "right": 83,
+        "bottom": 112
+      }
+    },
+    {
+      "action": "victory",
+      "frame": 1,
+      "file": "victory-1.png",
+      "col": 4,
+      "row": 8,
+      "bounds": {
+        "x": 45,
+        "y": 46,
+        "width": 102,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 132,
+        "top": 95,
+        "right": 97,
+        "bottom": 100
+      }
+    },
+    {
+      "action": "victory",
+      "frame": 2,
+      "file": "victory-2.png",
+      "col": 5,
+      "row": 8,
+      "bounds": {
+        "x": 43,
+        "y": 46,
+        "width": 106,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 117,
+        "top": 89,
+        "right": 67,
+        "bottom": 93
+      }
+    },
+    {
+      "action": "victory",
+      "frame": 3,
+      "file": "victory-3.png",
+      "col": 6,
+      "row": 8,
+      "bounds": {
+        "x": 41,
+        "y": 46,
+        "width": 110,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 101,
+        "top": 115,
+        "right": 73,
+        "bottom": 98
+      }
+    },
+    {
+      "action": "victory",
+      "frame": 4,
+      "file": "victory-4.png",
+      "col": 7,
+      "row": 8,
+      "bounds": {
+        "x": 44,
+        "y": 46,
+        "width": 103,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 126,
+        "top": 122,
+        "right": 99,
+        "bottom": 84
+      }
+    }
+  ],
+  "costumeReference": "Vampira V10 idle frame 1",
+  "replacedFrames": [
+    {
+      "action": "walk",
+      "frame": 1
+    }
+  ],
+  "anatomyCorrections": [
+    {
+      "action": "down",
+      "frame": 2,
+      "method": "hold clean adjacent pose",
+      "source": "down-1.png"
+    },
+    {
+      "action": "walk",
+      "frame": 1,
+      "method": "generated anatomical edit"
+    }
+  ]
+}

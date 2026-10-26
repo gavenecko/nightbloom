@@ -1,0 +1,8 @@
+{
+  "tool": "Built-in Image Generation",
+  "action": "walk",
+  "frame": 1,
+  "inspectorAtlasColumn": 4,
+  "status": "accepted after visual anatomy/outfit review",
+  "prompt": "Use case: precise-object-edit. Edit the anatomy of this single existing adult fantasy fighting-game walking sprite. The marked problem is around x=75.4%, y=53.4% of the image: an EXTRA narrow thigh/leg comes from the far-right side of the pelvis behind the crossing foreground leg. Remove that duplicate limb and reconstruct a clear, natural two-leg walking pose. Exactly TWO legs attach to the pelvis, with one thigh, one knee, one calf and one boot per leg; exactly two boots total. Preserve the walking direction to the RIGHT, crossed walking stride, same face, lavender hair, rose ornament, existing outfit, bodice shape, sleeves, garter design, red-lined cape, boots, camera, pixel-art style, character size and overall placement. Do not change the costume or add garments. Keep two arms and two hands unchanged. One full-body character on genuine transparent background, complete silhouette with generous empty margins on all sides, no effects, text, glow or shadows."
+}
