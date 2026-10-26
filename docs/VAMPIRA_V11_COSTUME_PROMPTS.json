@@ -1,0 +1,57 @@
+{
+  "tool": "Built-in Image Generation",
+  "reference": "Vampira V10 idle frame 1 (original outfit)",
+  "editMethod": "Target frame plus separate authoritative costume reference; clothing-only edits; no alternate-outfit fallback",
+  "frames": [
+    {
+      "action": "walk",
+      "frame": 1,
+      "prompt": "Use case: identity-preserve. Image 1 is the EDIT TARGET (walking animation frame). Image 2 is the authoritative COSTUME AND CHARACTER reference. Correct only the clothing in image 1 to match image 2 exactly: same bodice shape and neckline, sleeve placement, legwear design, gold fastenings and boots. Preserve image 1's walking pose, anatomy, proportions, face, lavender hair, rose ornament, red-lined cape, camera and pixel-art rendering. Do not invent an alternate outfit or add extra garments. This is wardrobe continuity for an adult fantasy fighting-game character. Full body, single character, facing right, genuine transparent background, no effects, no text, no shadows, complete silhouette with empty margins on all sides."
+    },
+    {
+      "action": "crouch",
+      "frame": 4,
+      "prompt": "Use case: identity-preserve. Image 1 is the EDIT TARGET (crouch, frame 4). Image 2 is the authoritative COSTUME AND CHARACTER reference. Correct only the clothing in image 1 to match image 2 exactly: same bodice shape and neckline, sleeve placement, legwear design, gold fastenings and boots. Preserve image 1's existing pose (rise toward half crouch), anatomy, proportions, face, lavender hair, rose ornament, red-lined cape, camera and pixel-art rendering. Do not invent an alternate outfit or add extra garments. This is wardrobe continuity for an adult fantasy fighting-game character. Full body, single character, facing right, genuine transparent background, no effects, no glow, no text, no shadows; complete silhouette with empty margins on all sides."
+    },
+    {
+      "action": "specialA",
+      "frame": 1,
+      "prompt": "Use case: identity-preserve. Image 1 is the EDIT TARGET (specialA, frame 1). Image 2 is the authoritative COSTUME AND CHARACTER reference. Correct only the clothing in image 1 to match image 2 exactly: same bodice shape and neckline, sleeve placement, legwear design, gold fastenings and boots. Preserve image 1's existing pose (wind up casting with forward palm near chest), anatomy, proportions, face, lavender hair, rose ornament, red-lined cape, camera and pixel-art rendering. Do not invent an alternate outfit or add extra garments. This is wardrobe continuity for an adult fantasy fighting-game character. Full body, single character, facing right, genuine transparent background, no effects, no glow, no text, no shadows; complete silhouette with empty margins on all sides."
+    },
+    {
+      "action": "down",
+      "frame": 1,
+      "prompt": "Use case: identity-preserve. Image 1 is the EDIT TARGET (down, frame 1). Image 2 is the authoritative COSTUME AND CHARACTER reference. Correct only the clothing in image 1 to match image 2 exactly: same bodice shape and neckline, sleeve placement, legwear design, gold fastenings and boots. Preserve image 1's existing pose (collapse toward knees, torso bent, head low), anatomy, proportions, face, lavender hair, rose ornament, red-lined cape, camera and pixel-art rendering. Do not invent an alternate outfit or add extra garments. This is wardrobe continuity for an adult fantasy fighting-game character. Full body, single character, facing right, genuine transparent background, no effects, no glow, no text, no shadows; complete silhouette with empty margins on all sides."
+    },
+    {
+      "action": "down",
+      "frame": 2,
+      "prompt": "Use case: identity-preserve. Image 1 is the EDIT TARGET (down, frame 2). Image 2 is the authoritative COSTUME AND CHARACTER reference. Correct only the clothing in image 1 to match image 2 exactly: same bodice shape and neckline, sleeve placement, legwear design, gold fastenings and boots. Preserve image 1's existing pose (fall sideways toward the ground, torso near horizontal), anatomy, proportions, face, lavender hair, rose ornament, red-lined cape, camera and pixel-art rendering. Do not invent an alternate outfit or add extra garments. This is wardrobe continuity for an adult fantasy fighting-game character. Full body, single character, facing right, genuine transparent background, no effects, no glow, no text, no shadows; complete silhouette with empty margins on all sides."
+    },
+    {
+      "action": "super",
+      "frame": 1,
+      "prompt": "Use case: identity-preserve. Image 1 is the EDIT TARGET (super, frame 1). Image 2 is the authoritative COSTUME AND CHARACTER reference. Correct only the clothing in image 1 to match image 2 exactly: same bodice shape and neckline, sleeve placement, legwear design, gold fastenings and boots. Preserve image 1's existing pose (brace with knees bent and hands crossed at chest), anatomy, proportions, face, lavender hair, rose ornament, red-lined cape, camera and pixel-art rendering. Do not invent an alternate outfit or add extra garments. This is wardrobe continuity for an adult fantasy fighting-game character. Full body, single character, facing right, genuine transparent background, no effects, no glow, no text, no shadows; complete silhouette with empty margins on all sides."
+    },
+    {
+      "action": "down",
+      "frame": 4,
+      "prompt": "Use case: identity-preserve. Image 1 is the EDIT TARGET (down, frame 4). Image 2 is the authoritative COSTUME AND CHARACTER reference. Correct only the clothing in image 1 to match image 2 exactly: same bodice shape and neckline, sleeve placement, legwear design, gold fastenings and boots. Preserve image 1's existing pose (lie still on side in a defeated pose, full body horizontal), anatomy, proportions, face, lavender hair, rose ornament, red-lined cape, camera and pixel-art rendering. Do not invent an alternate outfit or add extra garments. This is wardrobe continuity for an adult fantasy fighting-game character. Full body, single character, facing right, genuine transparent background, no effects, no glow, no text, no shadows; complete silhouette with empty margins on all sides."
+    },
+    {
+      "action": "recover",
+      "frame": 3,
+      "prompt": "Use case: identity-preserve. Image 1 is the EDIT TARGET (recover, frame 3). Image 2 is the authoritative COSTUME AND CHARACTER reference. Correct only the clothing in image 1 to match image 2 exactly: same bodice shape and neckline, sleeve placement, legwear design, gold fastenings and boots. Preserve image 1's existing pose (kneel upright on one knee), anatomy, proportions, face, lavender hair, rose ornament, red-lined cape, camera and pixel-art rendering. Do not invent an alternate outfit or add extra garments. This is wardrobe continuity for an adult fantasy fighting-game character. Full body, single character, facing right, genuine transparent background, no effects, no glow, no text, no shadows; complete silhouette with empty margins on all sides."
+    },
+    {
+      "action": "intro",
+      "frame": 2,
+      "prompt": "Use case: identity-preserve. Image 1 is the EDIT TARGET (intro, frame 2). Image 2 is the authoritative COSTUME AND CHARACTER reference. Correct only the clothing in image 1 to match image 2 exactly: same bodice shape and neckline, sleeve placement, legwear design, gold fastenings and boots. Preserve image 1's existing pose (turn face toward right with chin raised slightly), anatomy, proportions, face, lavender hair, rose ornament, red-lined cape, camera and pixel-art rendering. Do not invent an alternate outfit or add extra garments. This is wardrobe continuity for an adult fantasy fighting-game character. Full body, single character, facing right, genuine transparent background, no effects, no glow, no text, no shadows; complete silhouette with empty margins on all sides."
+    },
+    {
+      "action": "intro",
+      "frame": 3,
+      "prompt": "Use case: identity-preserve. Image 1 is the EDIT TARGET (intro, frame 3). Image 2 is the authoritative COSTUME AND CHARACTER reference. Correct only the clothing in image 1 to match image 2 exactly: same bodice shape and neckline, sleeve placement, legwear design, gold fastenings and boots. Preserve image 1's existing pose (lift one hand to chest with confident vampire smile), anatomy, proportions, face, lavender hair, rose ornament, red-lined cape, camera and pixel-art rendering. Do not invent an alternate outfit or add extra garments. This is wardrobe continuity for an adult fantasy fighting-game character. Full body, single character, facing right, genuine transparent background, no effects, no glow, no text, no shadows; complete silhouette with empty margins on all sides."
+    }
+  ]
+}
