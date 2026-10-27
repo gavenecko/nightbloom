@@ -34,6 +34,7 @@ const CONTROL_PRESETS={
 function saveSystem(){try{localStorage.setItem('nightbloom_system',JSON.stringify(SYSTEM))}catch(e){}}
 function mapInputCode(code){return CONTROL_PRESETS[SYSTEM.controls]?.[code]||code}
 addEventListener('keydown',e=>{
+ if(e.target.closest?.('#help'))return;
  if(gameMode==='local'&&gameState==='fight'&&P2_KEYMAP[e.code]){
    let code=P2_KEYMAP[e.code];
    if(!p2Keys[code])p2Pressed[code]=1;
@@ -2862,6 +2863,7 @@ c.addEventListener('pointermove',ev=>{
 });
 c.addEventListener('pointerleave',()=>{pointerCanvasX=pointerCanvasY=-1;pointerOverMenu=false;c.style.cursor='default'});
 c.addEventListener('pointerdown',ev=>{
+ c.focus();
  if(gameState==='fight')return;
  ev.preventDefault();
  let p=pointerCoords(ev);pointerCanvasX=p.x;pointerCanvasY=p.y;
