@@ -1,0 +1,443 @@
+{
+  "fighter": "NEKOMATA",
+  "version": 10,
+  "method": "Built-in image_gen",
+  "reference": "nekomata-reference.png",
+  "frames": [
+    {
+      "action": "idle",
+      "frame": 1,
+      "prompt": "Create one production game sprite for NIGHTBLOOM: Nekomata in a neutral right-facing idle stance. Use the supplied existing game atlas as the exact character-and-costume reference, especially its first top-left idle sprite. Adult fighter. Match the original design and pixel-art rendering without redesigning clothing. Small 192-pixel-square game frame with a full-body sprite about 138 pixels tall, centered horizontally, feet aligned on one baseline and ample transparent padding. Preserve cat ears and two compact curled tails, with the tails clearly behind the body. A clean readable two-legged silhouette. No FX, scenery, text, frame border, glow or shadow. One pose only on real transparency.",
+      "retry": false
+    },
+    {
+      "action": "idle",
+      "frame": 2,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, idle frame 2/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: small inhale, chest rises slightly, knees flex, keep both feet in place. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "idle",
+      "frame": 3,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, idle frame 3/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: small exhale, shoulders lower, keep both feet in place. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "idle",
+      "frame": 4,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, idle frame 4/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: return toward first ready stance with subtle hair and tail motion. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "walk",
+      "frame": 1,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, walk frame 1/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: near leg steps forward to the right, far leg trails left, both boots clearly separated, legs do not cross. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "walk",
+      "frame": 2,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, walk frame 2/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: weight shifts onto the front boot, rear heel lifts, visible separation between the two legs. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "walk",
+      "frame": 3,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, walk frame 3/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: far leg steps forward right while near leg trails left, both boots clearly separated. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "walk",
+      "frame": 4,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, walk frame 4/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: weight passes onto the forward far boot, near boot trails, prepare the next step without crossing legs. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "dash",
+      "frame": 1,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, dash frame 1/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: low forward launch, front knee bent and rear leg extended, both legs clearly readable. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "dash",
+      "frame": 2,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, dash frame 2/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: fast low forward sprint to the right, one knee forward and the other leg stretched behind. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "dash",
+      "frame": 3,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, dash frame 3/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: opposite leg leads the low forward sprint, exactly two separated boots. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "dash",
+      "frame": 4,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, dash frame 4/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: brake from sprint and return toward a balanced ready stance. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "crouch",
+      "frame": 1,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, crouch frame 1/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: half crouch with both boots planted apart and hands up near chest. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "crouch",
+      "frame": 2,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, crouch frame 2/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: deep balanced squat, two knees bent, boots planted separately, hands guarding near chest, no crossed legs. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "crouch",
+      "frame": 3,
+      "prompt": "Edit the existing Nekomata game animation frame in image 1 to make a small in-between pose for crouch frame 3/4: hold the same squat with only a slight weight shift; both boots stay planted. Image 2 is the same character's outfit reference. Keep the original clothing, anatomy, face, hair, ears, cape, two boots and two curled tails exactly consistent. Two human legs only, with one knee and one boot each; tails stay behind the hips. Do not add clothes or redesign anything. Small 192px square body-only game sprite, standing-equivalent scale 138px, right-facing three-quarter side camera, matching pixel art. Full silhouette with generous clear margins, actual transparent background. No effects, glow, shadow, text or extra poses.",
+      "retry": true
+    },
+    {
+      "action": "crouch",
+      "frame": 4,
+      "prompt": "Edit the existing Nekomata game animation frame in image 1 to make a small in-between pose for crouch frame 4/4: rise slightly toward a half crouch. Image 2 is the same character's outfit reference. Keep the original clothing, anatomy, face, hair, ears, cape, two boots and two curled tails exactly consistent. Two human legs only, with one knee and one boot each; tails stay behind the hips. Do not add clothes or redesign anything. Small 192px square body-only game sprite, standing-equivalent scale 138px, right-facing three-quarter side camera, matching pixel art. Full silhouette with generous clear margins, actual transparent background. No effects, glow, shadow, text or extra poses.",
+      "retry": true
+    },
+    {
+      "action": "jump",
+      "frame": 1,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, jump frame 1/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: compress into a jump anticipation crouch, two feet on the baseline. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "jump",
+      "frame": 2,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, jump frame 2/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: ascending jump, one knee raised and the other leg slightly extended, both boots visible. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "jump",
+      "frame": 3,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, jump frame 3/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: jump apex with both knees slightly bent, exactly two legs and two boots. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "jump",
+      "frame": 4,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, jump frame 4/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: descending jump, both legs extend toward landing with boots separated. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "fall",
+      "frame": 1,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, fall frame 1/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: descending with both legs extended below torso, arms balance. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "fall",
+      "frame": 2,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, fall frame 2/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: falling with one knee slightly forward, two separated booted legs. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "fall",
+      "frame": 3,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, fall frame 3/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: almost landing with both knees soft and boots lowering. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "fall",
+      "frame": 4,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, fall frame 4/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: land in a balanced half crouch, both boots separately planted. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "light",
+      "frame": 1,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, light frame 1/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: wind up a quick rightward claw jab, forward hand near shoulder. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "light",
+      "frame": 2,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, light frame 2/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: extend the forward claw hand straight to the right, compact strike. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "light",
+      "frame": 3,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, light frame 3/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: retract the claw hand halfway toward the body. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "light",
+      "frame": 4,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, light frame 4/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: recover from the jab into the original ready stance. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "heavy",
+      "frame": 1,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, heavy frame 1/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: wind up a strong rightward claw sweep, torso twists and leading arm draws back. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "heavy",
+      "frame": 2,
+      "prompt": "Edit image 1 into Nekomata heavy attack frame 2/4: full strong rightward claw sweep, one arm extended horizontally, body only. Image 2 is her exact character/outfit reference. Preserve the same clothing, face, hair, cat ears, ribbons, cape, legwear and boots; no alternate costume or added garments. Maintain two naturally connected human legs and two boots, two arms and two hands; the two cat tails curl compactly behind her hips and stay clearly separate from legs. One body-only 192px-square game sprite, standing scale about 138px, right-facing three-quarter side camera and matching pixel art. Entire silhouette visible with generous transparent margins; real transparency; no attack trail, magic, particles, glow, shadow, text or extra poses.",
+      "retry": true
+    },
+    {
+      "action": "heavy",
+      "frame": 3,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, heavy frame 3/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: follow through with torso rotated right and striking arm lowering. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "heavy",
+      "frame": 4,
+      "prompt": "Edit image 1 into Nekomata heavy attack frame 4/4: recover to balanced ready stance after the sweep. Image 2 is her exact character/outfit reference. Preserve the same clothing, face, hair, cat ears, ribbons, cape, legwear and boots; no alternate costume or added garments. Maintain two naturally connected human legs and two boots, two arms and two hands; the two cat tails curl compactly behind her hips and stay clearly separate from legs. One body-only 192px-square game sprite, standing scale about 138px, right-facing three-quarter side camera and matching pixel art. Entire silhouette visible with generous transparent margins; real transparency; no attack trail, magic, particles, glow, shadow, text or extra poses.",
+      "retry": true
+    },
+    {
+      "action": "specialA",
+      "frame": 1,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, specialA frame 1/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: prepare a forward palm strike with hand near chest. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "specialA",
+      "frame": 2,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, specialA frame 2/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: extend forward palm to the right as a compact spirit-paw cast, no visible spell. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "specialA",
+      "frame": 3,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, specialA frame 3/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: hold the forward palm cast with fingers spread, body only. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "specialA",
+      "frame": 4,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, specialA frame 4/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: retract palm and return toward ready stance. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "specialB",
+      "frame": 1,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, specialB frame 1/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: gather power with both hands close to waist, slight knee bend. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "specialB",
+      "frame": 2,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, specialB frame 2/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: lift both forearms forward toward chest level. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "specialB",
+      "frame": 3,
+      "prompt": "Edit image 1 into Nekomata specialB animation frame 3/4: open both hands forward to release a spirit technique, body only. Image 2 is her exact character/outfit reference. Keep the same clothes, face, hair, cat ears, ribbons, cape, legwear and boots; no alternative outfit or extra garments. Change only the arm/stance positions needed for this next animation pose. Maintain two connected human legs and two boots, two arms and two hands; two compact cat tails behind the hips, clearly separate from the legs. One body-only small 192px-square game frame, standing-equivalent scale 138px, right-facing three-quarter side camera and matching pixel art. Full silhouette and generous transparent margins; true transparency. No spells, effects, particles, glow, shadows, text or extra poses.",
+      "retry": true
+    },
+    {
+      "action": "specialB",
+      "frame": 4,
+      "prompt": "Edit image 1 into Nekomata specialB animation frame 4/4: lower both hands and return toward ready stance. Image 2 is her exact character/outfit reference. Keep the same clothes, face, hair, cat ears, ribbons, cape, legwear and boots; no alternative outfit or extra garments. Change only the arm/stance positions needed for this next animation pose. Maintain two connected human legs and two boots, two arms and two hands; two compact cat tails behind the hips, clearly separate from the legs. One body-only small 192px-square game frame, standing-equivalent scale 138px, right-facing three-quarter side camera and matching pixel art. Full silhouette and generous transparent margins; true transparency. No spells, effects, particles, glow, shadows, text or extra poses.",
+      "retry": true
+    },
+    {
+      "action": "super",
+      "frame": 1,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, super frame 1/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: brace with knees slightly bent and forearms crossed at upper chest. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "super",
+      "frame": 2,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, super frame 2/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: raise both arms outward to prepare a powerful spirit technique. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "super",
+      "frame": 3,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, super frame 3/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: hold an assertive two-arm power pose, two compact tails clearly behind hips. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "super",
+      "frame": 4,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, super frame 4/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: lower both arms and recover toward ready stance. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "throw",
+      "frame": 1,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, throw frame 1/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: reach both hands to the right to grab an unseen opponent. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "throw",
+      "frame": 2,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, throw frame 2/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: pull hands back toward chest while turning torso. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "throw",
+      "frame": 3,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, throw frame 3/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: twist and extend both arms right to throw an unseen opponent, feet planted. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "throw",
+      "frame": 4,
+      "prompt": "Edit image 1 into Nekomata throw animation frame 4/4: recover balance after the throw with hands open. Image 2 is her exact character/outfit reference. Keep the same clothes, face, hair, cat ears, ribbons, cape, legwear and boots; no alternative outfit or extra garments. Change only the arm/stance positions needed for this next animation pose. Maintain two connected human legs and two boots, two arms and two hands; two compact cat tails behind the hips, clearly separate from the legs. One body-only small 192px-square game frame, standing-equivalent scale 138px, right-facing three-quarter side camera and matching pixel art. Full silhouette and generous transparent margins; true transparency. No spells, effects, particles, glow, shadows, text or extra poses.",
+      "retry": true
+    },
+    {
+      "action": "hit",
+      "frame": 1,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, hit frame 2/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: recoil farther backward, one boot braced behind the other. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. For lying poses curl both tails close along the upper back rather than underneath the legs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent/lying poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": true,
+      "hold": "Temporary hold of hit frame 2; distinct pose rejected twice by image generation."
+    },
+    {
+      "action": "hit",
+      "frame": 2,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, hit frame 2/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: recoil farther backward, one boot braced behind the other. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. For lying poses curl both tails close along the upper back rather than underneath the legs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent/lying poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "hit",
+      "frame": 3,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, hit frame 3/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: stagger with head lowered and both legs visibly connected to the hips. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. For lying poses curl both tails close along the upper back rather than underneath the legs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent/lying poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "hit",
+      "frame": 4,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, hit frame 4/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: recover balance while still hurt. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. For lying poses curl both tails close along the upper back rather than underneath the legs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent/lying poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "block",
+      "frame": 1,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, block frame 1/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: raise both forearms in front of face and chest to guard. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. For lying poses curl both tails close along the upper back rather than underneath the legs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent/lying poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "block",
+      "frame": 2,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, block frame 2/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: brace the compact two-arm guard against an unseen hit from right. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. For lying poses curl both tails close along the upper back rather than underneath the legs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent/lying poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "block",
+      "frame": 3,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, block frame 3/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: hold the guard with both boots firmly planted apart. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. For lying poses curl both tails close along the upper back rather than underneath the legs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent/lying poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "block",
+      "frame": 4,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, block frame 4/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: lower guard toward ready stance. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. For lying poses curl both tails close along the upper back rather than underneath the legs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent/lying poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "down",
+      "frame": 1,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, down frame 1/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: lower onto one knee, other boot planted, one hand supports balance, exactly two legs. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. For lying poses curl both tails close along the upper back rather than underneath the legs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent/lying poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "down",
+      "frame": 2,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, down frame 1/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: lower onto one knee, other boot planted, one hand supports balance, exactly two legs. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. For lying poses curl both tails close along the upper back rather than underneath the legs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent/lying poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": true,
+      "hold": "Temporary hold of down frame 1; distinct pose rejected twice by image generation."
+    },
+    {
+      "action": "down",
+      "frame": 3,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, down frame 4/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: hold the side-lying knockdown pose, two parallel legs and two boots, tails close behind upper back. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. For lying poses curl both tails close along the upper back rather than underneath the legs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent/lying poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": true,
+      "hold": "Temporary hold of down frame 4; distinct pose rejected twice by image generation."
+    },
+    {
+      "action": "down",
+      "frame": 4,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, down frame 4/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: hold the side-lying knockdown pose, two parallel legs and two boots, tails close behind upper back. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. For lying poses curl both tails close along the upper back rather than underneath the legs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent/lying poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "recover",
+      "frame": 1,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, recover frame 1/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: lie on side and prepare to rise, two legs together and tails close along upper back. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. For lying poses curl both tails close along the upper back rather than underneath the legs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent/lying poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "recover",
+      "frame": 2,
+      "prompt": "Edit image 1 into Nekomata recover animation frame 2/4: push torso up with one hand, both knees drawn underneath, exactly two human legs. Image 2 is her exact character/outfit reference. Keep the same clothes, face, hair, cat ears, ribbons, cape, legwear and boots; no alternative outfit or extra garments. Change only the arm/stance positions needed for this animation pose. Maintain two connected human legs and two boots, two arms and two hands; two compact cat tails behind the hips, clearly separate from the legs. For ground poses, keep the tails curled along her upper back. One body-only small 192px-square game frame, standing-equivalent scale 138px, right-facing three-quarter side camera and matching pixel art. Full silhouette and generous transparent margins; true transparency. No spells, effects, particles, glow, shadows, text or extra poses.",
+      "retry": true
+    },
+    {
+      "action": "recover",
+      "frame": 3,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, recover frame 3/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: kneel on one knee with the other boot planted, two-leg anatomy clearly readable. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. For lying poses curl both tails close along the upper back rather than underneath the legs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent/lying poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "recover",
+      "frame": 4,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, recover frame 4/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: stand up into the original balanced ready stance. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. For lying poses curl both tails close along the upper back rather than underneath the legs. Small 192px-square game frame, standing scale equivalent to about 138px tall; bent/lying poses naturally compress. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "intro",
+      "frame": 1,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, intro frame 1/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: stand confidently with one hand on hip, both boots planted. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "intro",
+      "frame": 2,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, intro frame 2/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: turn head slightly right with chin raised and a confident expression. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "intro",
+      "frame": 3,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, intro frame 3/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: raise one hand near collar in a brief greeting, other hand relaxed. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "intro",
+      "frame": 4,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, intro frame 4/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: settle into the original combat-ready stance. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "victory",
+      "frame": 1,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, victory frame 1/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: stand tall confidently with one hand on hip. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "victory",
+      "frame": 2,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, victory frame 2/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: raise one fist near the face in a small victory gesture. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    },
+    {
+      "action": "victory",
+      "frame": 3,
+      "prompt": "Edit image 1 into Nekomata victory animation frame 3/4: hold the confident victory pose, both boots planted and tails curled compactly. Image 2 is her exact character/outfit reference. Keep the same clothes, face, hair, cat ears, ribbons, cape, legwear and boots; no alternative outfit or extra garments. Change only the arm/stance positions needed for this animation pose. Maintain two connected human legs and two boots, two arms and two hands; two compact cat tails behind the hips, clearly separate from the legs. For ground poses, keep the tails curled along her upper back. One body-only small 192px-square game frame, standing-equivalent scale 138px, right-facing three-quarter side camera and matching pixel art. Full silhouette and generous transparent margins; true transparency. No spells, effects, particles, glow, shadows, text or extra poses.",
+      "retry": true
+    },
+    {
+      "action": "victory",
+      "frame": 4,
+      "prompt": "Create ONE production NIGHTBLOOM Nekomata animation sprite, victory frame 4/4. The supplied isolated Nekomata image is the authoritative character, costume and pixel-art reference. Match her exact outfit, face, hair, ears, red ribbons, cape, legwear, boots and palette; do not add garments or redesign clothing. Pose: settle into a relaxed victory stance. Right-facing orthographic three-quarter side view, same camera and body proportions as the reference. Exactly TWO connected human legs and TWO boots, TWO arms and TWO hands. Preserve TWO compact cat tails curled behind the hips, clearly distinct from the legs; tails never have boots and never emerge from the thighs. Small 192px-square game frame, standing scale equivalent to about 138px tall. Entire silhouette must fit with generous transparent margins on all sides, compact cape/hair/tails. Body only, genuine transparent background, no effects, particles, glow, text, shadow, grid, other poses or other characters.",
+      "retry": false
+    }
+  ]
+}
