@@ -845,7 +845,7 @@ function attackPoseFrame(a){
 }
 function animFrame(f){
  let name=animName(f),body=BODY_ACTIONS[name]||name;
- if(f.attack&&REMADE_SHEET_FIGHTERS.has(f.name))return attackPoseFrame(f.attack);
+ if(f.attack&&name===f.attack.type&&REMADE_SHEET_FIGHTERS.has(f.name))return attackPoseFrame(f.attack);
  let a=(REMADE_SHEET_FIGHTERS.has(f.name)?PADDED_VISUAL_ANIMS[body]:null)||ANIMS[name]||ANIMS.idle;
  let clock=fighterAnimationClocks.get(f)?.clock||0,fr=Math.floor(clock/(60/a.fps));
  return a.loop?fr%a.frames:Math.min(a.frames-1,fr);
@@ -1623,7 +1623,7 @@ function drawF(f){
  if(remade){
    let info=REMADE_ANIMS[state]||REMADE_ANIMS.idle;
    let frames=info.frames||[0,1,2,3];
-   if(f.attack){
+   if(f.attack&&raw===f.attack.type){
      fr=attackPoseFrame(f.attack);
    }else{
      fr=animFrame(f)%frames.length;
