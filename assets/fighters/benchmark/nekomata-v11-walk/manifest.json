@@ -1,0 +1,82 @@
+{
+  "fighter": "NEKOMATA",
+  "version": 11,
+  "cell": 192,
+  "gutter": 8,
+  "baseline": 184,
+  "unchangedCells": 68,
+  "frames": [
+    {
+      "fighter": "NEKOMATA",
+      "frame": 1,
+      "file": "nekomata-v11-walk/walk-1.png",
+      "bounds": {
+        "x": 34,
+        "y": 46,
+        "width": 124,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 285,
+        "top": 13,
+        "right": 288,
+        "bottom": 47
+      },
+      "prompt": "Use case: identity-preserve. Edit this existing adult NIGHTBLOOM NEKOMATA game sprite into walk-cycle frame 1 of 4. Preserve the reference's exact original outfit, face, hair, ornaments, sleeves, cape, legwear, boots, palette and pixel-art style. No new garments or costume changes. Change the legs to this SPECIFIC walking phase: CONTACT A: the camera-near leg extends clearly forward to the RIGHT, heel contacting the ground well ahead of the hips; the far leg extends backward LEFT, rear toe touching ground with heel raised. Wide unmistakable walking stride, about 50 game pixels between the two boots at 138px character height. Keep the torso upright, stable head height, pelvis centered, right-facing three-quarter side camera. Give the arms a small opposite swing. Exactly two connected human legs: two thighs, two knees, two calves, two boots total; no duplicate limbs. Preserve her two compact cat tails curled behind the upper body, clearly separate from her two legs. The four walk frames must show substantial leg articulation rather than four standing poses. Full body in one small game frame, standing-equivalent height 138px within 192px cell. Entire hair, cape, boots and hands fit with ample empty transparent margins. Body only, true transparent background, no shadows, effects, text, ground line or additional poses."
+    },
+    {
+      "fighter": "NEKOMATA",
+      "frame": 2,
+      "file": "nekomata-v11-walk/walk-2.png",
+      "bounds": {
+        "x": 42,
+        "y": 46,
+        "width": 107,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 80,
+        "top": 144,
+        "right": 83,
+        "bottom": 129
+      },
+      "prompt": "Use case: identity-preserve. Edit this existing adult NIGHTBLOOM NEKOMATA game sprite into walk-cycle frame 2 of 4. Preserve the reference's exact original outfit, face, hair, ornaments, sleeves, cape, legwear, boots, palette and pixel-art style. No new garments or costume changes. Change the legs to this SPECIFIC walking phase: PASSING A: far leg swings forward with a visibly BENT KNEE, its boot lifted clearly above the ground and tucked behind the supporting shin; camera-near leg is straight supporting the body near center. Narrow silhouette, ONE boot on the ground and ONE boot visibly airborne. Walking, not running or kicking. Keep the torso upright, stable head height, pelvis centered, right-facing three-quarter side camera. Give the arms a small opposite swing. Exactly two connected human legs: two thighs, two knees, two calves, two boots total; no duplicate limbs. Preserve her two compact cat tails curled behind the upper body, clearly separate from her two legs. The four walk frames must show substantial leg articulation rather than four standing poses. Full body in one small game frame, standing-equivalent height 138px within 192px cell. Entire hair, cape, boots and hands fit with ample empty transparent margins. Body only, true transparent background, no shadows, effects, text, ground line or additional poses."
+    },
+    {
+      "fighter": "NEKOMATA",
+      "frame": 3,
+      "file": "nekomata-v11-walk/walk-3.png",
+      "bounds": {
+        "x": 32,
+        "y": 46,
+        "width": 128,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 130,
+        "top": 99,
+        "right": 143,
+        "bottom": 101
+      },
+      "prompt": "Use case: identity-preserve. Edit this existing adult NIGHTBLOOM NEKOMATA game sprite into walk-cycle frame 3 of 4. Preserve the reference's exact original outfit, face, hair, ornaments, sleeves, cape, legwear, boots, palette and pixel-art style. No new garments or costume changes. Change the legs to this SPECIFIC walking phase: CONTACT B: the FAR leg extends clearly forward to the RIGHT, heel contacting ground well ahead of hips; camera-NEAR leg extends backward LEFT with toe touching ground, heel raised. Reverse which thigh leads compared with contact A. Wide unmistakable walking stride about 50 game pixels between boots. Keep the torso upright, stable head height, pelvis centered, right-facing three-quarter side camera. Give the arms a small opposite swing. Exactly two connected human legs: two thighs, two knees, two calves, two boots total; no duplicate limbs. Preserve her two compact cat tails curled behind the upper body, clearly separate from her two legs. The four walk frames must show substantial leg articulation rather than four standing poses. Full body in one small game frame, standing-equivalent height 138px within 192px cell. Entire hair, cape, boots and hands fit with ample empty transparent margins. Body only, true transparent background, no shadows, effects, text, ground line or additional poses."
+    },
+    {
+      "fighter": "NEKOMATA",
+      "frame": 4,
+      "file": "nekomata-v11-walk/walk-4.png",
+      "bounds": {
+        "x": 42,
+        "y": 46,
+        "width": 107,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 73,
+        "top": 95,
+        "right": 35,
+        "bottom": 109
+      },
+      "prompt": "Use case: identity-preserve. Edit this existing adult NIGHTBLOOM NEKOMATA game sprite into walk-cycle frame 4 of 4. Preserve the reference's exact original outfit, face, hair, ornaments, sleeves, cape, legwear, boots, palette and pixel-art style. No new garments or costume changes. Change the legs to this SPECIFIC walking phase: PASSING B: camera-NEAR leg swings forward with a visibly BENT KNEE lifted to the right, boot clearly airborne in front of the supporting shin; FAR leg is straight supporting the body near center. Narrow silhouette, ONE grounded boot and ONE visibly lifted boot. Walking, not running or kicking. Keep the torso upright, stable head height, pelvis centered, right-facing three-quarter side camera. Give the arms a small opposite swing. Exactly two connected human legs: two thighs, two knees, two calves, two boots total; no duplicate limbs. Preserve her two compact cat tails curled behind the upper body, clearly separate from her two legs. The four walk frames must show substantial leg articulation rather than four standing poses. Full body in one small game frame, standing-equivalent height 138px within 192px cell. Entire hair, cape, boots and hands fit with ample empty transparent margins. Body only, true transparent background, no shadows, effects, text, ground line or additional poses."
+    }
+  ]
+}

@@ -1,13 +1,13 @@
-# NIGHTBLOOM Prototype 0.49
+# NIGHTBLOOM Prototype 0.50
 
 This package is organized for GitHub Pages testing.
 
 ## Current sprite pass
-- Nekomata V10: 72 isolated original-outfit body frames with transparent gutters.
-- Vampira retains the approved V13 anatomy repairs.
+- Vampira V14 and Nekomata V11 add wider walking strides and lifted passing steps, with an 8fps walk cadence.
+- All non-walking artwork retains the previously approved anatomy and original outfits.
 - Separate FX atlases for Vampira, Nekomata, and Banshee.
 - Atlas Inspector can preview BODY / FX / COMPOSITE.
-- [Play the current build](https://gavenecko.github.io/nightbloom/?v=049-nekomata-v10).
+- [Play the current build](https://gavenecko.github.io/nightbloom/?v=050-walk-v14-n11).
 
 ## Included
 - `index.html`

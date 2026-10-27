@@ -1,0 +1,82 @@
+{
+  "fighter": "VAMPIRA",
+  "version": 14,
+  "cell": 192,
+  "gutter": 8,
+  "baseline": 184,
+  "unchangedCells": 68,
+  "frames": [
+    {
+      "fighter": "VAMPIRA",
+      "frame": 1,
+      "file": "vampira-v14-walk/walk-1.png",
+      "bounds": {
+        "x": 43,
+        "y": 46,
+        "width": 105,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 62,
+        "top": 108,
+        "right": 65,
+        "bottom": 93
+      },
+      "prompt": "Use case: identity-preserve. Edit this existing adult NIGHTBLOOM VAMPIRA game sprite into walk-cycle frame 1 of 4. Preserve the reference's exact original outfit, face, hair, ornaments, sleeves, cape, legwear, boots, palette and pixel-art style. No new garments or costume changes. Change the legs to this SPECIFIC walking phase: CONTACT A: the camera-near leg extends clearly forward to the RIGHT, heel contacting the ground well ahead of the hips; the far leg extends backward LEFT, rear toe touching ground with heel raised. Wide unmistakable walking stride, about 50 game pixels between the two boots at 138px character height. Keep the torso upright, stable head height, pelvis centered, right-facing three-quarter side camera. Give the arms a small opposite swing. Exactly two connected human legs: two thighs, two knees, two calves, two boots total; no duplicate limbs.  The four walk frames must show substantial leg articulation rather than four standing poses. Full body in one small game frame, standing-equivalent height 138px within 192px cell. Entire hair, cape, boots and hands fit with ample empty transparent margins. Body only, true transparent background, no shadows, effects, text, ground line or additional poses."
+    },
+    {
+      "fighter": "VAMPIRA",
+      "frame": 2,
+      "file": "vampira-v14-walk/walk-2.png",
+      "bounds": {
+        "x": 45,
+        "y": 46,
+        "width": 101,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 139,
+        "top": 165,
+        "right": 169,
+        "bottom": 128
+      },
+      "prompt": "Use case: identity-preserve. Edit this existing adult NIGHTBLOOM VAMPIRA game sprite into walk-cycle frame 2 of 4. Preserve the reference's exact original outfit, face, hair, ornaments, sleeves, cape, legwear, boots, palette and pixel-art style. No new garments or costume changes. Change the legs to this SPECIFIC walking phase: PASSING A: far leg swings forward with a visibly BENT KNEE, its boot lifted clearly above the ground and tucked behind the supporting shin; camera-near leg is straight supporting the body near center. Narrow silhouette, ONE boot on the ground and ONE boot visibly airborne. Walking, not running or kicking. Keep the torso upright, stable head height, pelvis centered, right-facing three-quarter side camera. Give the arms a small opposite swing. Exactly two connected human legs: two thighs, two knees, two calves, two boots total; no duplicate limbs.  The four walk frames must show substantial leg articulation rather than four standing poses. Full body in one small game frame, standing-equivalent height 138px within 192px cell. Entire hair, cape, boots and hands fit with ample empty transparent margins. Body only, true transparent background, no shadows, effects, text, ground line or additional poses."
+    },
+    {
+      "fighter": "VAMPIRA",
+      "frame": 3,
+      "file": "vampira-v14-walk/walk-3.png",
+      "bounds": {
+        "x": 42,
+        "y": 46,
+        "width": 108,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 152,
+        "top": 159,
+        "right": 104,
+        "bottom": 143
+      },
+      "prompt": "Make the next walking-animation pose from this existing adult fantasy game sprite. Lower the raised boot into a forward heel strike well to the RIGHT of the hips, and move the currently supporting leg backward to the LEFT into a toe-off. Clear long walking step with two separated boots on the same floor baseline. Exactly two natural legs. Keep the upper body, face, lavender hair, rose, cape, original costume, garters and boots identical to the reference; do not add or change clothing. Same right-facing game camera and pixel-art style. Single complete full-body sprite, generous transparent padding, true transparent background, no other objects or effects."
+    },
+    {
+      "fighter": "VAMPIRA",
+      "frame": 4,
+      "file": "vampira-v14-walk/walk-4.png",
+      "bounds": {
+        "x": 44,
+        "y": 46,
+        "width": 103,
+        "height": 138
+      },
+      "sourceMargin": {
+        "left": 146,
+        "top": 163,
+        "right": 138,
+        "bottom": 119
+      },
+      "prompt": "Use case: identity-preserve. Edit this existing adult NIGHTBLOOM VAMPIRA game sprite into walk-cycle frame 4 of 4. Preserve the reference's exact original outfit, face, hair, ornaments, sleeves, cape, legwear, boots, palette and pixel-art style. No new garments or costume changes. Change the legs to this SPECIFIC walking phase: PASSING B: camera-NEAR leg swings forward with a visibly BENT KNEE lifted to the right, boot clearly airborne in front of the supporting shin; FAR leg is straight supporting the body near center. Narrow silhouette, ONE grounded boot and ONE visibly lifted boot. Walking, not running or kicking. Keep the torso upright, stable head height, pelvis centered, right-facing three-quarter side camera. Give the arms a small opposite swing. Exactly two connected human legs: two thighs, two knees, two calves, two boots total; no duplicate limbs.  The four walk frames must show substantial leg articulation rather than four standing poses. Full body in one small game frame, standing-equivalent height 138px within 192px cell. Entire hair, cape, boots and hands fit with ample empty transparent margins. Body only, true transparent background, no shadows, effects, text, ground line or additional poses."
+    }
+  ]
+}
