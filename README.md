@@ -1,8 +1,11 @@
-# NIGHTBLOOM Prototype 0.53
+# NIGHTBLOOM Prototype 0.54
 
 This package is organized for GitHub Pages testing.
 
 ## Current sprite pass
+- Full roster portraits now match the rebuilt fighters; Jiangshi keeps her approved portrait.
+- New full-body design references and portraits for Yurei, Dullahan, Werewolf, Mummy and Witch. Their animation sheets remain unchanged.
+- [View character designs](https://gavenecko.github.io/nightbloom/docs/roster-gallery.html).
 - Jiangshi V10 adds the approved adult Court Lady design, 72 isolated body frames, a distinct hopping cycle and matching portrait.
 - Medusa V10 adds 72 isolated original-outfit body frames, an Inspector entry and a separate layer using existing serpent/petrify effects.
 - Banshee V10 adds 72 isolated original-outfit body frames, separate from the FX atlas.
@@ -10,7 +13,7 @@ This package is organized for GitHub Pages testing.
 - Vampira and Nekomata retain their previously approved artwork and original outfits.
 - Separate FX atlases for Vampira, Nekomata, Banshee, Medusa and Jiangshi.
 - Atlas Inspector can preview BODY / FX / COMPOSITE.
-- [Play the current build](https://gavenecko.github.io/nightbloom/?v=053-jiangshi-v10).
+- [Play the current build](https://gavenecko.github.io/nightbloom/?v=054-roster-portraits).
 
 ## Included
 - `index.html`
