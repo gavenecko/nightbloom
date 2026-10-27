@@ -6,6 +6,6 @@ Body cells are 192 × 192 in an eight-column, nine-row atlas (1536 × 1728), wit
 
 Walking uses clear contact and lifted-foot passing poses at 8fps, matching the other converted fighters. Movement speeds, collision boxes and combat timing are unchanged. Medusa is added to the Atlas Inspector; body, FX and composite previews use separate body/FX dimensions.
 
-The separate 128 × 160-cell FX atlas reuses the existing shared serpent and petrify effect artwork for specialA, specialB and super. Its 72 cell borders pass an exact transparent 8px gutter check. Idle and other body-only actions intentionally have empty FX cells. Existing shared runtime effect instances are preserved; giant summoned snakes are excluded from body frames.
+The separate 128 × 160-cell FX atlas reuses the existing shared serpent and petrify effect artwork for specialA, specialB and super. Its 72 cell borders pass an exact transparent 8px gutter check. SpecialA/specialB effects shift 36px toward the forward casting hand; super remains centered. Idle and other body-only actions intentionally have empty FX cells. Existing shared runtime effect instances are preserved; giant summoned snakes are excluded from body frames.
 
 The previous Medusa sprite sheet is preserved unchanged as `assets/fighters/benchmark/nightbloom_medusa_legacy_12x10.png`. Vampira V14, Nekomata V11 and Banshee V10 remain unchanged. Exact accepted prompts are retained with the completed pass.

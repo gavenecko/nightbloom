@@ -9,7 +9,7 @@ This package is organized for GitHub Pages testing.
 - Vampira and Nekomata retain their previously approved artwork and original outfits.
 - Separate FX atlases for Vampira, Nekomata, Banshee and Medusa.
 - Atlas Inspector can preview BODY / FX / COMPOSITE.
-- [Play the current build](https://gavenecko.github.io/nightbloom/?v=052-medusa-v10).
+- [Play the current build](https://gavenecko.github.io/nightbloom/?v=052-medusa-v10-fx).
 
 ## Included
 - `index.html`

@@ -637,6 +637,7 @@ function actionFxOffset(name,action,frame){
    if(['light','heavy','throw'].includes(action))return {x:8,y:-18};
    return {x:0,y:0};
  }
+ if(name==='MEDUSA'&&['specialA','specialB'].includes(action))return {x:36,y:0};
  return {x:0,y:0};
 }
 // Keep every atlas sample inside its destination rectangle, including inspector previews.
