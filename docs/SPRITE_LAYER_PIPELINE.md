@@ -1,6 +1,6 @@
 # NIGHTBLOOM Layered Sprite Pipeline
 
-Vampira V13 and Nekomata V10 use individually generated 192 × 192 body cells with an eight-pixel transparent gutter and a shared baseline at pixel 184. Each body atlas is 1536 × 1728. Body cell dimensions are selected per fighter; the independent FX layers and remaining fighters keep the legacy dimensions below. See `VAMPIRA_V13_ANATOMY.md`, `NEKOMATA_V10.md`, and the individual frame manifests for the padded body contract.
+Vampira V14, Nekomata V11 and Banshee V10 use individually generated 192 × 192 body cells with an eight-pixel transparent gutter and a shared baseline at pixel 184. Each body atlas is 1536 × 1728. Body cell dimensions are selected per fighter; archived benchmark body sheets and the independent FX atlases keep the legacy dimensions below. See `WALK_CYCLES_050.md`, `NEKOMATA_V10.md`, `BANSHEE_V10.md` and the individual frame manifests for the padded body contract.
 
 ## Legacy body atlas
 - 1024 × 1440
