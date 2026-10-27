@@ -1735,7 +1735,7 @@ function drawMoveList(name,px,py,align='left'){
  x.fillText('I  Throw / Throw Tech',px,py+120);
 }
 function drawTrainingPanel(){
- if(!training)return;
+ if(!training||roundIntro>0)return;
  x.save();
  const left=180,top=94,width=600,height=trainingPanelExpanded?156:62;
  roundRect(left,top,width,height,7,'rgba(6,5,11,.88)','#57e8d2',1);
@@ -2274,7 +2274,7 @@ function drawTitleScreen(){
  drawSectionLabel('TEN QUEENS · ONE RED MOON',139,'#ff91be');
 
  MAIN_MENU.forEach((item,i)=>{
-   let y=151+i*35,sel=mainMenuIndex===i,accent=sel?'#ff65a6':'#574063';
+   let y=151+i*32,sel=mainMenuIndex===i,accent=sel?'#ff65a6':'#574063';
    if(sel){
      x.save();x.shadowColor='#ff3b8c';x.shadowBlur=15;roundRect(304,y,352,28,6,'rgba(73,18,57,.78)','#ff65a6',2);x.restore();
      x.strokeStyle='rgba(255,101,166,.45)';x.beginPath();x.moveTo(246,y+14);x.lineTo(292,y+14);x.moveTo(668,y+14);x.lineTo(714,y+14);x.stroke();
@@ -2741,7 +2741,7 @@ function pointerHoverTarget(px,py){
     &&inRect(px,py,14,14,94,27))return true;
 
  if(gameState==='title'){
-   for(let i=0;i<MAIN_MENU.length;i++)if(inRect(px,py,304,151+i*35,352,28)){mainMenuIndex=i;return true}
+   for(let i=0;i<MAIN_MENU.length;i++)if(inRect(px,py,304,151+i*32,352,28)){mainMenuIndex=i;return true}
  }
  if(gameState==='charSelect'){
    const slots=[[10,66],[198,66],[386,66],[574,66],[762,66],[10,145],[198,145],[386,145],[574,145],[762,145]];
@@ -2787,7 +2787,7 @@ function pointerActivate(px,py){
     &&inRect(px,py,14,14,94,27)){pointerBack();return true}
 
  if(gameState==='title'){
-   for(let i=0;i<MAIN_MENU.length;i++)if(inRect(px,py,304,151+i*35,352,28)){mainMenuIndex=i;pointerPress('Enter');return true}
+   for(let i=0;i<MAIN_MENU.length;i++)if(inRect(px,py,304,151+i*32,352,28)){mainMenuIndex=i;pointerPress('Enter');return true}
  }
  if(gameState==='charSelect'){
    const slots=[[10,66],[198,66],[386,66],[574,66],[762,66],[10,145],[198,145],[386,145],[574,145],[762,145]];
