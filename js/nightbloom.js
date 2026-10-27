@@ -1890,7 +1890,8 @@ function hud(){
  if(p2.name==='WEREWOLF'&&p2.rage>=50)chip(p2.rage>=90?'FRENZY':'FERAL',W-242,86,p2.rage>=90?'#ffd067':'#ff6848','right');
 
  if(announcement&&announceT>0){
-   x.textAlign='center';x.font='bold 18px Georgia';x.shadowColor='#000';x.shadowBlur=8;x.fillStyle='#fff';x.fillText(announcement,W/2,116);x.shadowBlur=0;
+   const announcementY=training&&roundIntro<=0?(trainingPanelExpanded?268:174):116;
+   x.textAlign='center';x.font='bold 18px Georgia';x.shadowColor='#000';x.shadowBlur=8;x.fillStyle='#fff';x.fillText(announcement,W/2,announcementY);x.shadowBlur=0;
  }
  // combo readouts
  if(p1.combo>1&&p1.comboT>0){x.textAlign='left';glowText(p1.combo+' HIT',70,152,24,p1.accent,p1.accent,'Georgia');x.font='10px Consolas';x.fillStyle='#fff';x.fillText(Math.round(p1.comboDamage)+' DAMAGE',72,169)}
@@ -2931,7 +2932,7 @@ function loop(now){
  let simAdvance=!paused||trainingFrameStep;
  let simDt=training?(trainingFrameStep?1:dt*trainingSpeed):dt;
  let animationDt=0;
- if(simAdvance){ageMotions(simDt);updateBuffer(simDt);}
+ if(simAdvance){ageMotions(simDt);updateBuffer(simDt);if(announceT>0)announceT=Math.max(0,announceT-simDt);}
 
  if(!roundOver&&simAdvance){
    if(roundIntro>0){roundIntro-=simDt;animationDt=simDt;}
