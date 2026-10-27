@@ -1,7 +1,7 @@
 
 const c=document.getElementById('game'),x=c.getContext('2d'); x.imageSmoothingEnabled=false;
 const W=c.width,H=c.height, ground=430;
-const BUILD_INFO={version:'0.54',channel:'ROSTER PORTRAITS',date:'2026-10-27',label:'ROSTER PORTRAITS'};
+const BUILD_INFO={version:'0.55',channel:'PLAYABILITY POLISH',date:'2026-10-27',label:'PLAYABILITY POLISH'};
 const keys={},kbKeys={},padKeys={},pressed={};
 const p2Keys={},p2KbKeys={},p2PadKeys={},p2Pressed={};
 const P2_KEYMAP={
@@ -266,7 +266,7 @@ let shake=0,flash=0,roundOver=false,paused=false,timer=99,last=performance.now()
 let superCine=0,superOwner=null,koCine=0,koLoser=null,roundBanner=0,witchSigils=[];
 let round=1,p1Wins=0,p2Wins=0,roundIntro=120,koTimer=0,matchOver=false,announcement='ROUND 1',announceT=120;
 let hitstop=0,debug=false,training=false,buffer=[],prevPadButtons=[],prevPadButtons2=[],trainingMsg='';
-let trainingDummyMode=0,trainingMeterInfinite=true;
+let trainingDummyMode=0,trainingMeterInfinite=true,trainingPanelExpanded=false;
 let trainingSpeed=1,trainingFrameStep=false,trainingSnapshot=null,trainingLastDamage=0,trainingLastEvent='—';
 let diagnosticResults=[],diagnosticRunAt=0,diagnosticCopied=false;
 
@@ -822,11 +822,32 @@ function animName(f){
  if(Math.abs(f.vx)>1)return 'walk';
  return f.state==='crouch'?'crouch':'idle';
 }
+// Presentation clocks are independent of combat timers and advance with simulation time.
+const fighterAnimationClocks=new WeakMap();
+const BODY_ACTIONS={lowlight:'light',lowheavy:'heavy',overhead:'heavy',airlight:'light',airheavy:'heavy'};
+const PADDED_VISUAL_ANIMS={
+ idle:{frames:4,fps:6,loop:true},walk:{frames:4,fps:8,loop:true},
+ dash:{frames:4,fps:16,loop:false},crouch:{frames:4,fps:12,loop:false},
+ jump:{frames:4,fps:10,loop:false},fall:{frames:4,fps:10,loop:false},
+ hit:{frames:4,fps:14,loop:false},block:{frames:4,fps:12,loop:false},
+ down:{frames:4,fps:10,loop:false},recover:{frames:4,fps:12,loop:false},
+ intro:{frames:4,fps:8,loop:false},victory:{frames:4,fps:6,loop:true}
+};
+function stepFighterAnimation(f,dt){
+ let name=animName(f),state=fighterAnimationClocks.get(f);
+ if(!state||state.name!==name||state.attack!==f.attack){state={name,attack:f.attack,clock:0};fighterAnimationClocks.set(f,state)}
+ else state.clock+=dt;
+}
+function attackPoseFrame(a){
+ if(a.frame<a.start)return a.frame<a.start*.65?0:1;
+ if(a.frame<a.start+a.active)return 2;
+ return 3;
+}
 function animFrame(f){
- let name=animName(f),a=ANIMS[name]||ANIMS.idle;
- if(name==='walk'&&REMADE_SHEET_FIGHTERS.has(f.name))a={frames:4,fps:8,loop:true};
- let clock=(name==='intro'||name==='victory') ? performance.now()/16.667 : f.t;
- let fr=Math.floor(clock/(60/a.fps));
+ let name=animName(f),body=BODY_ACTIONS[name]||name;
+ if(f.attack&&REMADE_SHEET_FIGHTERS.has(f.name))return attackPoseFrame(f.attack);
+ let a=(REMADE_SHEET_FIGHTERS.has(f.name)?PADDED_VISUAL_ANIMS[body]:null)||ANIMS[name]||ANIMS.idle;
+ let clock=fighterAnimationClocks.get(f)?.clock||0,fr=Math.floor(clock/(60/a.fps));
  return a.loop?fr%a.frames:Math.min(a.frames-1,fr);
 }
 
@@ -861,6 +882,7 @@ function applyTrainingFighter(f,s){
  for(let k of Object.keys(s))f[k]=s[k];
  f.attack=null;f.hitstun=0;f.blockstun=0;f.knockdown=0;f.wakeup=0;f.techWindow=0;f.throwTech=0;
  f.combo=0;f.comboT=0;f.comboDamage=0;f.juggle=0;f.invuln=0;f.inputBuffer=[];f.motionHistory=[];
+ fighterAnimationClocks.delete(f);
 }
 function saveTrainingSnapshot(){
  if(!training)return;
@@ -1590,8 +1612,7 @@ function pxrect(x0,y0,w,h,c){x.fillStyle=c;x.fillRect(Math.round(x0),Math.round(
 
 function drawF(f){
  let raw=animName(f);
- let stateMap={lowlight:'light',lowheavy:'heavy',overhead:'heavy',airlight:'light',airheavy:'heavy'};
- let state=stateMap[raw]||raw;
+ let state=BODY_ACTIONS[raw]||raw;
  let remade=REMADE_SHEET_FIGHTERS.has(f.name);
  let img=(f.name==='DULLAHAN'&&f.headless>0)?spriteDH:spriteFor(f.name);
  let tune=FIGHTER_RENDER_TUNE[f.name]||{y:0,scale:1};
@@ -1603,8 +1624,7 @@ function drawF(f){
    let info=REMADE_ANIMS[state]||REMADE_ANIMS.idle;
    let frames=info.frames||[0,1,2,3];
    if(f.attack){
-     let total=Math.max(1,f.attack.start+f.attack.active+f.attack.end);
-     fr=Math.min(frames.length-1,Math.floor((f.attack.frame/total)*frames.length));
+     fr=attackPoseFrame(f.attack);
    }else{
      fr=animFrame(f)%frames.length;
    }
@@ -1717,33 +1737,30 @@ function drawMoveList(name,px,py,align='left'){
 function drawTrainingPanel(){
  if(!training)return;
  x.save();
- x.fillStyle='#06050be8';x.fillRect(650,96,295,260);
- x.strokeStyle='#57e8d2';x.lineWidth=1;x.strokeRect(650,96,295,260);
- x.textAlign='left';x.font='bold 12px Consolas';x.fillStyle='#72ffd7';x.fillText('TRAINING LAB',663,116);
+ const left=180,top=94,width=600,height=trainingPanelExpanded?156:62;
+ roundRect(left,top,width,height,7,'rgba(6,5,11,.88)','#57e8d2',1);
+ x.textAlign='left';x.font='bold 10px Consolas';x.fillStyle='#72ffd7';
+ x.fillText('TRAINING LAB',left+12,top+16);
+ x.textAlign='right';x.fillStyle='#c5b8d1';x.fillText('H · '+(trainingPanelExpanded?'LESS':'DETAILS'),left+width-12,top+16);x.textAlign='left';
+ const a=p1.attack,move=a?(MOVE_NAMES[p1.name]?.[a.type==='specialA'?'a':a.type==='specialB'?'b':'']||a.type):'Ready';
  x.font='10px Consolas';x.fillStyle='#f0eaf7';
- let a=p1.attack;
- if(a){
-   let moveLabel=MOVE_NAMES[p1.name]?.[a.type==='specialA'?'a':a.type==='specialB'?'b':'']||a.type;
-   x.fillText('Move: '+moveLabel,663,136);
-   x.fillText('Phase: '+attackPhase(a)+'  Frame '+Math.floor(a.frame)+' / '+(a.start+a.active+a.end),663,151);
-   x.fillText('Startup '+a.start+' · Active '+a.active+' · Recovery '+a.end,663,166);
-   x.fillText('Hit '+(a.hitAdv>=0?'+':'')+a.hitAdv+' · Block '+(a.blockAdv>=0?'+':'')+a.blockAdv,663,181);
- }else{
-   x.fillText('Move: —',663,136);x.fillText('Phase: IDLE',663,151);
+ x.fillText(move+(a?' · '+attackPhase(a)+' '+Math.floor(a.frame)+'/'+(a.start+a.active+a.end):''),left+12,top+34,310);
+ x.fillText('Combo '+p1.combo+' hits / '+Math.round(p1.comboDamage)+' dmg',left+330,top+34);
+ x.fillStyle='#c5b8d1';x.fillText('F4 '+TRAINING_DUMMIES[trainingDummyMode]+' · '+Math.round(trainingSpeed*100)+'% speed',left+12,top+50);
+ x.fillText('Last '+trainingLastEvent+' · '+trainingLastDamage.toFixed(1)+' dmg',left+330,top+50,258);
+ if(trainingPanelExpanded){
+   x.fillStyle='#d8cdea';
+   x.fillText(a?'Startup '+a.start+' · Active '+a.active+' · Recovery '+a.end:'Startup / active / recovery appear during an attack',left+12,top+72);
+   x.fillText(a?'Hit '+(a.hitAdv>=0?'+':'')+a.hitAdv+' · Block '+(a.blockAdv>=0?'+':'')+a.blockAdv:'Hit / block advantage appear during an attack',left+12,top+88);
+   const dirs=(p1.motionHistory||[]).slice(-6).map(m=>m.d).join(' > ')||'—';
+   x.fillText('Motion '+dirs,left+330,top+72,258);
+   const target=p1.name==='MUMMY'?'Target curse '+p2.curseStacks+'/3':p1.name==='WITCH'?'Active sigils '+witchSigils.filter(s=>s.owner===p1).length+'/2':'Dummy HP '+Math.round(p2.hp)+'/'+p2.maxhp;
+   x.fillText(target,left+330,top+88);
+   x.fillText('F8 save · F9 load · Snapshot '+(trainingSnapshot?'READY':'EMPTY'),left+12,top+108);
+   x.fillText('F3 refill · F5 positions · F2 hitboxes',left+12,top+126);
+   x.fillText('P pause · [ speed · ] step while paused',left+12,top+144);
+   x.fillText('FPS '+perfFPS.toFixed(0)+(perfLowFrames>120?' · LOW PERFORMANCE':''),left+330,top+144);
  }
- x.fillStyle='#d8cdea';x.fillText('Dummy: '+TRAINING_DUMMIES[trainingDummyMode]+'  [F4]',663,202);
- x.fillText('Last: '+trainingLastEvent+'  '+trainingLastDamage.toFixed(1)+' dmg',663,217);
- x.fillText('Combo: '+p1.combo+' hit / '+Math.round(p1.comboDamage)+' dmg',663,232);
- x.fillText('Speed: '+Math.round(trainingSpeed*100)+'%  [ cycles · ] frame step',663,247);
- x.fillText('Snapshot: '+(trainingSnapshot?'READY':'EMPTY')+'  F8 save · F9 load',663,262);
- let dirs=(p1.motionHistory||[]).slice(-6).map(m=>m.d).join(' > ')||'—';
- x.fillText('Motion: '+dirs,663,277);
- if(p1.name==='MUMMY')x.fillText('Target Curse: '+p2.curseStacks+'/3',663,292);
- else if(p1.name==='WITCH')x.fillText('Active Sigils: '+witchSigils.filter(s=>s.owner===p1).length+'/2',663,292);
- else x.fillText('Dummy HP: '+Math.round(p2.hp)+' / '+p2.maxhp,663,292);
- x.fillStyle='#a99bb5';x.fillText('F3 refill · F5 positions · F2 hitboxes',663,313);
- x.fillText('P pause · ] advances exactly one simulation frame',663,328);
- x.fillText('FPS '+perfFPS.toFixed(0)+(perfLowFrames>120?'  LOW PERFORMANCE':'') ,663,343);
  x.restore();
 }
 
@@ -2265,7 +2282,7 @@ function drawTitleScreen(){
    x.font=(sel?'bold ':'')+'16px Georgia';x.fillStyle=sel?'#fff':'#c9b9d2';x.textAlign='center';x.fillText(item,W/2,y+19);
  });
  x.font='9px Consolas';x.fillStyle='#91849a';x.fillText('↑/↓ SELECT  ·  ENTER CONFIRM  ·  M MUTE',W/2,481);
- x.fillStyle='#72ffd7';x.fillText('0.54 · ROSTER PORTRAITS',W/2,499);
+ x.fillStyle='#72ffd7';x.fillText('0.55 · PLAYABILITY POLISH',W/2,499);
  x.fillStyle='#675c70';x.fillText('ALL MONSTERS ARE BEAUTIFUL.',W/2,517);
 }
 function drawCharacterSelect(){
@@ -2850,12 +2867,22 @@ c.addEventListener('pointerdown',ev=>{
  pointerActivate(p.x,p.y);
 });
 
+const contextHelp=document.getElementById('contextHelp'),trainingDetailsButton=document.getElementById('trainingDetails');
+let contextHelpKey='';
+trainingDetailsButton.addEventListener('click',()=>{trainingPanelExpanded=!trainingPanelExpanded;updateContextHelp();c.focus()});
+function updateContextHelp(){
+ const key=[gameState,training,trainingPanelExpanded,SYSTEM.controls,gameMode].join('|');if(key===contextHelpKey)return;contextHelpKey=key;
+ const fight=gameState==='fight',arcade=SYSTEM.controls==='ARCADE'&&gameMode!=='local';
+ contextHelp.textContent=gameState==='atlasInspector'?'←/→ fighter · ↑/↓ action · A/D frame · Space play/pause · Q/E speed · 1/2/3 layers · Esc title':fight?(arcade?'Arrows move · Z/X attacks · C special · V super · B throw · N guard · P pause':'WASD move · J/K attacks · L special · U super · I throw · Shift guard · P pause'):'Click or use arrows to select · Enter confirm · Backspace back · Esc title';
+ trainingDetailsButton.hidden=!(fight&&training);trainingDetailsButton.textContent=trainingPanelExpanded?'Hide training details (H)':'Training details (H)';trainingDetailsButton.setAttribute('aria-expanded',String(trainingPanelExpanded));
+}
 function loop(now){
  let rawMs=Math.max(.1,now-last),rawFrames=rawMs/16.667,dt=Math.min(2.1,rawFrames);last=now;
  let instantFPS=1000/rawMs;perfFPS=perfFPS*.94+instantFPS*.06;
  if(perfFPS<42)perfLowFrames++;else perfLowFrames=Math.max(0,perfLowFrames-2);
- worldClock+=((gameState!=='fight'||!paused)?dt:0);
+ if(gameState!=='fight')worldClock+=dt;
  gamepad();
+ updateContextHelp();
  if(pressed.KeyM){AUDIO.mute=!AUDIO.mute;applyAudioLevels();saveAudio();announcement=AUDIO.mute?'MUTED':'AUDIO ON';announceT=30}
  musicTick();
 
@@ -2879,6 +2906,7 @@ function loop(now){
    training=!training;if(training)balanceOverlay=false;trainingMsg=training?'TRAINING MODE':'MATCH MODE';announcement=trainingMsg;announceT=55;
    if(training){trainingDummyMode=0;trainingSpeed=1;trainingSnapshot=null;trainingLastDamage=0;trainingLastEvent='—';p1.hp=p1.maxhp;p2.hp=p2.maxhp;p1.meter=p2.meter=100;roundOver=false;timer=99}
  }
+ if(pressed.KeyH&&training)trainingPanelExpanded=!trainingPanelExpanded;
  if(pressed.F2)debug=!debug;
  if(pressed.F6){balanceOverlay=!balanceOverlay;announcement=balanceOverlay?'BALANCE HUD ON':'BALANCE HUD OFF';announceT=28}
  if(pressed.F7){SESSION_BALANCE.matches=0;SESSION_BALANCE.fighters={};announcement='SESSION BALANCE RESET';announceT=32;}
@@ -2888,6 +2916,7 @@ function loop(now){
    p1.x=300;p2.x=660;p1.y=p2.y=ground;p1.vx=p2.vx=p1.vy=p2.vy=0;p1.air=p2.air=false;
    p1.attack=p2.attack=null;p1.hitstun=p2.hitstun=p1.blockstun=p2.blockstun=0;p1.combo=p2.combo=0;p1.juggle=p2.juggle=0;
    projectiles=[];particles=[];fxInstances=[];witchSigils=[];trainingLastDamage=0;trainingLastEvent='—';
+   fighterAnimationClocks.delete(p1);fighterAnimationClocks.delete(p2);
    announcement='POSITIONS RESET';announceT=32;
  }
  if(pressed.F8&&training)saveTrainingSnapshot();
@@ -2901,14 +2930,15 @@ function loop(now){
  }
  let simAdvance=!paused||trainingFrameStep;
  let simDt=training?(trainingFrameStep?1:dt*trainingSpeed):dt;
+ let animationDt=0;
  if(simAdvance){ageMotions(simDt);updateBuffer(simDt);}
 
  if(!roundOver&&simAdvance){
-   if(roundIntro>0)roundIntro-=simDt;
+   if(roundIntro>0){roundIntro-=simDt;animationDt=simDt;}
    else if(superCine>0){superCine-=simDt;if(superCine<=0){superCine=0;superOwner=null}}
    else if(hitstop>0){hitstop-=simDt}
    else{
-     updateF(p1,p2,simDt);updateF(p2,p1,simDt);resolvePushboxes(p1,p2);face();
+     updateF(p1,p2,simDt);updateF(p2,p1,simDt);resolvePushboxes(p1,p2);face();animationDt=simDt;
      if(training){timer=99;p1.hp=p1.maxhp;p2.hp=p2.maxhp;if(trainingMeterInfinite){p1.meter=p2.meter=100}}
      else if(!timerInfinite()){timerAcc+=simDt;if(timerAcc>=60){timer-=1;timerAcc-=60}}
    }
@@ -2925,7 +2955,7 @@ function loop(now){
      if(!tied){if(p1.hp>p2.hp)p1Wins++;else p2Wins++}
    }
  }else if(roundOver&&simAdvance&&koTimer>0){
-   koTimer-=simDt;if(koCine>0)koCine-=simDt;
+   animationDt=simDt;koTimer-=simDt;if(koCine>0)koCine-=simDt;
    if(koTimer<=0&&!matchOver){
      let need=winsNeeded();
      if(p1Wins>=need||p2Wins>=need){
@@ -2981,6 +3011,8 @@ function loop(now){
    if(fxAtlas.complete&&fxAtlas.naturalWidth)x.drawImage(fxAtlas,fr*FX.cell,row*FX.cell,FX.cell,FX.cell,-34,-34,68,68);
    x.fillStyle='#fff';x.fillRect(-3,-3,6,6);x.restore();
  });
+ worldClock+=animationDt;
+ stepFighterAnimation(p1,animationDt);stepFighterAnimation(p2,animationDt);
  drawSigils();drawF(p1);drawF(p2);drawStageForeground();fxInstances.forEach(drawFXInstance);debugDraw();
  particles.forEach(p=>{x.globalAlpha=Math.min(1,p.life/8);pxrect(p.x,p.y,p.s,p.s,p.col)});x.globalAlpha=1;x.restore();
  hud();drawTrainingPanel();drawBalanceOverlay();drawRoundBanner();drawSuperCinematic();drawKOEmphasis();
