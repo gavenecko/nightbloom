@@ -28,3 +28,6 @@ Vampira V14, Nekomata V11, Banshee V10, Medusa V10 and Jiangshi V10 use individu
 - Row 6: hit / block
 - Row 7: down / recover
 - Row 8: intro / victory
+
+## Yurei V10
+Yurei joins the padded 192x192 body pipeline, with 72 distinct frames and exact 8px transparent margins. Her glide alternates feet beneath the kimono, with small visual lifts [0,2,0,2]. Grave Reach and Lantern Curse remain separate effects; her approved roster portrait is unchanged.
