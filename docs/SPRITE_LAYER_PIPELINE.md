@@ -34,3 +34,6 @@ Yurei joins the padded 192x192 body pipeline, with 72 distinct frames and exact 
 
 ## Dullahan V10
 72 padded192x192 armor-body frames, with individually anchored head and lance props. Head Toss hides the held head and uses that same head asset for its projectile. Inspector uses a320x256 preview space to contain the lance. See DULLAHAN_V10.md and DULLAHAN_V10_PROMPTS.json.
+
+## Witch V10
+72 isolated padded body frames; closed grimoire retained in left hand and right-hand casting gestures. Separate Moon Sigil, Hex Bolt and super effects. See WITCH_V10.md and WITCH_V10_PROMPTS.json.
