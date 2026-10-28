@@ -31,3 +31,6 @@ Vampira V14, Nekomata V11, Banshee V10, Medusa V10 and Jiangshi V10 use individu
 
 ## Yurei V10
 Yurei joins the padded 192x192 body pipeline, with 72 distinct frames and exact 8px transparent margins. Her glide alternates feet beneath the kimono, with small visual lifts [0,2,0,2]. Grave Reach and Lantern Curse remain separate effects; her approved roster portrait is unchanged.
+
+## Dullahan V10
+72 padded192x192 armor-body frames, with individually anchored head and lance props. Head Toss hides the held head and uses that same head asset for its projectile. Inspector uses a320x256 preview space to contain the lance. See DULLAHAN_V10.md and DULLAHAN_V10_PROMPTS.json.

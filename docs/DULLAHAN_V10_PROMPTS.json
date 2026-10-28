@@ -1,0 +1,1000 @@
+{
+  "fighter": "DULLAHAN",
+  "version": 10,
+  "method": "Built-in image_gen. Sharp crops, resizes, pads, packs and composites generated transparent assets; no procedural anatomy edits.",
+  "references": {
+    "body": {
+      "source": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-468ad822-5dfb-4318-8f64-093d39e95bd1.png",
+      "prompt": "Create ONE full-body body-only animation reference sprite of the EXACT mature adult Dullahan knight from LEFT panel of reference. Same dark charcoal articulated plate armor, silver edges, emerald fittings, fitted breastplate, opaque black underarmor and trousers, strong athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. Facing RIGHT in three-quarter fighting view, upright balanced stance with one foot ahead. HEADLESS BODY ONLY: dark sealed collar at top, no head on shoulders and NO carried head anywhere. No wound, blood or gore. Her LEFT forearm cradles an EMPTY space close to ribs at waist/chest height for a separate head sprite. Her RIGHT fist is closed at mid-torso height as if holding an invisible upright lance; DO NOT draw any lance or other weapon. Exactly two arms, hands, legs and boots. Crisp richly shaded pixel art matching design. Entire complete figure and cloak visible centered on square TRUE TRANSPARENT canvas with at least12 percent empty margin all around. No head, face, detached parts, magic, smoke, floor, shadows, text or inset. Single headless knight BODY only.",
+      "reference": "C:/Users/gaven/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an/outputs/roster-art-v1/dullahan-design.png"
+    },
+    "head": {
+      "source": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-5ea4c236-ab90-40d3-a414-f95fd15b80ac.png",
+      "prompt": "Create ONE isolated magical carried-head game asset of the EXACT mature adult Dullahan woman in reference. Use RIGHT panel for identity: wavy copper-red hair, pale freckled mature face around30, green eyes, silver circlet with emerald center, confident wry expression. Head alone, slight three-quarter view facing RIGHT, complete hair silhouette from crown through all curls below jaw. No attached neck, shoulders, body or hands, no visible wound or gore; hair softly encloses lower edge. Not a portrait rectangle: TRUE transparent cutout of just the head and hair, no background, frame, UI, text, glow or particles. Crisp detailed pixel art matching the original character. Full head including every curl within square image with generous15 percent transparent margins. Exactly one head, no duplicate face.",
+      "reference": "C:/Users/gaven/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an/outputs/roster-art-v1/dullahan-design.png"
+    },
+    "lance": {
+      "source": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-d0402f2c-bbda-4d49-9ab8-2bf59cb64af4.png",
+      "prompt": "Create ONE isolated equipment asset: the exact long black-and-silver lance held in LEFT panel of reference Dullahan knight. Straight dark shaft with silver decorative bands, long tapered silver/black spear blade with emerald diamond inset and angular silver guards, smaller silver pointed butt cap. Lance stands perfectly vertical, blade at TOP and butt cap at BOTTOM; complete unbroken rigid pole from tip to tip. No human, hand, armor or face. Crisp detailed pixel art matching the reference. TRUE TRANSPARENT background, no shadow, glow, magic, text or borders. Center the complete lance on portrait canvas, ample transparent margin at both ends and sides, no clipped tip or shaft. The shaft must remain straight.",
+      "reference": "C:/Users/gaven/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an/outputs/roster-art-v1/dullahan-design.png"
+    }
+  },
+  "propPoses": {
+    "idle": [
+      [
+        25,
+        -110,
+        -29,
+        -104,
+        0
+      ],
+      [
+        25,
+        -111,
+        -29,
+        -105,
+        0
+      ],
+      [
+        25,
+        -110,
+        -28,
+        -104,
+        0
+      ],
+      [
+        25,
+        -110,
+        -29,
+        -104,
+        0
+      ]
+    ],
+    "walk": [
+      [
+        25,
+        -110,
+        -12,
+        -88,
+        0.03
+      ],
+      [
+        23,
+        -109,
+        -22,
+        -100,
+        0.05
+      ],
+      [
+        25,
+        -110,
+        -23,
+        -102,
+        0.03
+      ],
+      [
+        23,
+        -109,
+        -23,
+        -97,
+        0.05
+      ]
+    ],
+    "dash": [
+      [
+        36,
+        -89,
+        -13,
+        -71,
+        0.45
+      ],
+      [
+        38,
+        -83,
+        -12,
+        -81,
+        1.2
+      ],
+      [
+        -3,
+        -93,
+        55,
+        -89,
+        1.57
+      ],
+      [
+        28,
+        -107,
+        -9,
+        -92,
+        0
+      ]
+    ],
+    "crouch": [
+      [
+        23,
+        -87,
+        -11,
+        -74,
+        0.1
+      ],
+      [
+        23,
+        -75,
+        -20,
+        -78,
+        0.3
+      ],
+      [
+        23,
+        -70,
+        -17,
+        -77,
+        0.3
+      ],
+      [
+        26,
+        -83,
+        -4,
+        -71,
+        0.1
+      ]
+    ],
+    "jump": [
+      [
+        28,
+        -85,
+        -24,
+        -59,
+        0.9
+      ],
+      [
+        35,
+        -88,
+        -11,
+        -95,
+        0.2
+      ],
+      [
+        37,
+        -99,
+        -24,
+        -105,
+        0.35
+      ],
+      [
+        33,
+        -98,
+        -19,
+        -96,
+        0.2
+      ]
+    ],
+    "fall": [
+      [
+        40,
+        -94,
+        -9,
+        -109,
+        0.2
+      ],
+      [
+        30,
+        -95,
+        -16,
+        -81,
+        0.15
+      ],
+      [
+        28,
+        -96,
+        -25,
+        -90,
+        0.1
+      ],
+      [
+        27,
+        -83,
+        -1,
+        -74,
+        0.05
+      ]
+    ],
+    "light": [
+      [
+        34,
+        -113,
+        -16,
+        -119,
+        1.35
+      ],
+      [
+        32,
+        -114,
+        62,
+        -119,
+        1.57
+      ],
+      [
+        4,
+        -108,
+        64,
+        -119,
+        1.57
+      ],
+      [
+        26,
+        -112,
+        -26,
+        -103,
+        0.2
+      ]
+    ],
+    "heavy": [
+      [
+        29,
+        -105,
+        -27,
+        -118,
+        -0.4
+      ],
+      [
+        38,
+        -106,
+        -22,
+        -120,
+        1.2
+      ],
+      [
+        38,
+        -108,
+        -27,
+        -96,
+        1.9
+      ],
+      [
+        26,
+        -111,
+        -21,
+        -87,
+        0
+      ]
+    ],
+    "specialA": [
+      [
+        38,
+        -87,
+        -5,
+        -84,
+        1.1
+      ],
+      [
+        36,
+        -84,
+        -9,
+        -83,
+        1.57
+      ],
+      [
+        -3,
+        -92,
+        53,
+        -89,
+        1.57
+      ],
+      [
+        32,
+        -113,
+        -30,
+        -104,
+        0.1
+      ]
+    ],
+    "specialB": [
+      [
+        30,
+        -112,
+        -31,
+        -92,
+        0
+      ],
+      [
+        45,
+        -107,
+        -34,
+        -94,
+        0
+      ],
+      [
+        52,
+        -107,
+        -20,
+        -95,
+        0
+      ],
+      [
+        29,
+        -112,
+        -28,
+        -103,
+        0
+      ]
+    ],
+    "super": [
+      [
+        36,
+        -110,
+        -25,
+        -126,
+        0.1
+      ],
+      [
+        34,
+        -111,
+        -29,
+        -134,
+        0.35
+      ],
+      [
+        37,
+        -110,
+        -19,
+        -132,
+        0.65
+      ],
+      [
+        30,
+        -111,
+        -20,
+        -85,
+        0
+      ]
+    ],
+    "throw": [
+      [
+        33,
+        -110,
+        -8,
+        -100,
+        0.5
+      ],
+      [
+        36,
+        -110,
+        6,
+        -108,
+        0.6
+      ],
+      [
+        36,
+        -112,
+        -26,
+        -96,
+        0.8
+      ],
+      [
+        23,
+        -111,
+        -15,
+        -84,
+        0
+      ]
+    ],
+    "hit": [
+      [
+        37,
+        -111,
+        -10,
+        -91,
+        0.1
+      ],
+      [
+        35,
+        -113,
+        -34,
+        -107,
+        -0.1
+      ],
+      [
+        39,
+        -112,
+        -9,
+        -114,
+        0.2
+      ],
+      [
+        20,
+        -112,
+        -8,
+        -99,
+        0
+      ]
+    ],
+    "block": [
+      [
+        35,
+        -115,
+        -20,
+        -121,
+        0.2
+      ],
+      [
+        31,
+        -114,
+        1,
+        -122,
+        0.35
+      ],
+      [
+        31,
+        -113,
+        3,
+        -116,
+        0.4
+      ],
+      [
+        27,
+        -111,
+        -21,
+        -85,
+        0.05
+      ]
+    ],
+    "down": [
+      [
+        5,
+        -86,
+        -25,
+        -70,
+        1
+      ],
+      [
+        -10,
+        -64,
+        -51,
+        -24,
+        1.2
+      ],
+      [
+        -35,
+        -52,
+        -49,
+        -20,
+        1.57
+      ],
+      [
+        -35,
+        -52,
+        -49,
+        -18,
+        1.57
+      ]
+    ],
+    "recover": [
+      [
+        27,
+        -68,
+        -11,
+        -40,
+        1.2
+      ],
+      [
+        41,
+        -79,
+        -19,
+        -56,
+        0.9
+      ],
+      [
+        33,
+        -93,
+        -2,
+        -86,
+        0.15
+      ],
+      [
+        36,
+        -106,
+        -5,
+        -94,
+        0
+      ]
+    ],
+    "intro": [
+      [
+        26,
+        -111,
+        -22,
+        -80,
+        0
+      ],
+      [
+        29,
+        -112,
+        -12,
+        -104,
+        0.05
+      ],
+      [
+        29,
+        -111,
+        -13,
+        -83,
+        0
+      ],
+      [
+        31,
+        -111,
+        -11,
+        -96,
+        0
+      ]
+    ],
+    "victory": [
+      [
+        30,
+        -111,
+        -12,
+        -83,
+        0
+      ],
+      [
+        49,
+        -127,
+        -22,
+        -78,
+        0
+      ],
+      [
+        30,
+        -131,
+        -8,
+        -95,
+        0
+      ],
+      [
+        29,
+        -112,
+        -20,
+        -84,
+        0
+      ]
+    ]
+  },
+  "frames": [
+    {
+      "action": "idle",
+      "frame": 1,
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-468ad822-5dfb-4318-8f64-093d39e95bd1.png",
+      "prompt": "Create ONE full-body body-only animation reference sprite of the EXACT mature adult Dullahan knight from LEFT panel of reference. Same dark charcoal articulated plate armor, silver edges, emerald fittings, fitted breastplate, opaque black underarmor and trousers, strong athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. Facing RIGHT in three-quarter fighting view, upright balanced stance with one foot ahead. HEADLESS BODY ONLY: dark sealed collar at top, no head on shoulders and NO carried head anywhere. No wound, blood or gore. Her LEFT forearm cradles an EMPTY space close to ribs at waist/chest height for a separate head sprite. Her RIGHT fist is closed at mid-torso height as if holding an invisible upright lance; DO NOT draw any lance or other weapon. Exactly two arms, hands, legs and boots. Crisp richly shaded pixel art matching design. Entire complete figure and cloak visible centered on square TRUE TRANSPARENT canvas with at least12 percent empty margin all around. No head, face, detached parts, magic, smoke, floor, shadows, text or inset. Single headless knight BODY only."
+    },
+    {
+      "action": "idle",
+      "frame": 2,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: small chest rise, same cradling left forearm and right gripping fist, both boots planted.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-a3e52f9b-b79c-4ea1-9eea-a918f720a401.png"
+    },
+    {
+      "action": "idle",
+      "frame": 3,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: shoulders settle slightly, cloak drifts behind, same empty cradling forearm and gripping fist.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-7725a37f-0516-4ca4-8a38-a179040cdaed.png"
+    },
+    {
+      "action": "idle",
+      "frame": 4,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: return toward initial guard with gentle cloak sway, both boots grounded.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-949cab60-e657-44a2-8f4c-e277e9b6cc6e.png"
+    },
+    {
+      "action": "walk",
+      "frame": 1,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: clear forward walking stride, front armored boot right and rear boot left, left forearm cradles empty space at ribs, right fist at hip.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-c2949fbb-ea77-4cf1-a318-5188d564261f.png"
+    },
+    {
+      "action": "walk",
+      "frame": 2,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: passing step with rear knee raised and boot visibly moving forward, planted forward leg straight, left arm still cradling.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-218889ae-889b-47a6-9798-93383fecbf57.png"
+    },
+    {
+      "action": "walk",
+      "frame": 3,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: opposite armored boot leads to right, other boot trails to left, torso upright and cloak lags.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-34c20cf2-5e2a-4c5c-92c0-22c92b86d244.png"
+    },
+    {
+      "action": "walk",
+      "frame": 4,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: second passing step, heel raised and two legs clearly separated, both arms retain their held-object poses.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-fbc65e8f-bb5d-453c-9a65-25b804786e56.png"
+    },
+    {
+      "action": "dash",
+      "frame": 1,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: dash anticipation, knees flexed and torso leaning forward, left forearm across ribs cradling empty space, right fist near hip.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-c7cc7bf3-61d9-4254-a313-3d68fe60637d.png"
+    },
+    {
+      "action": "dash",
+      "frame": 2,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: fast forward lunge with front knee bent and rear leg extended, right gripping fist forward at lower chest height, left forearm holds empty space close.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-8f5cb890-c436-4c34-986a-37b69ad894b2.png"
+    },
+    {
+      "action": "dash",
+      "frame": 3,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: maximum forward low lunge, two separate boots, right fist thrust right at chest height, left arm cradling at ribs.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-02c51ed5-8990-41b9-8ffe-3051659e1cdc.png"
+    },
+    {
+      "action": "dash",
+      "frame": 4,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: rise from dash toward guard, rear foot steps in, right fist returns to hip and left forearm stays across ribs.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-65b36173-3087-4c45-a352-62213bf0b545.png"
+    },
+    {
+      "action": "crouch",
+      "frame": 1,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: bend both armored knees slightly, headless collar lowers, left forearm cradling empty space at ribs, right fist near waist.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-ca8116ad-96f0-44ff-b5ad-1fb08aca618d.png"
+    },
+    {
+      "action": "crouch",
+      "frame": 2,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: deep guarded crouch on two distinct boots, right fist forward near shoulder, left forearm protects empty space across chest.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-bce158e9-9185-4700-922f-f2074b803133.png"
+    },
+    {
+      "action": "crouch",
+      "frame": 3,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: low crouch braced on front knee and rear boot, two legs only, right fist at shoulder and left arm cradled.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-6338c47d-edd4-465b-8216-d634d8e11927.png"
+    },
+    {
+      "action": "crouch",
+      "frame": 4,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: begin rising from crouch with bent knees, right fist at hip, left forearm retains cradle.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-cd872e61-a307-480b-9205-4a322dbdc2e8.png"
+    },
+    {
+      "action": "jump",
+      "frame": 1,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: jump preparation with both knees bent, two boots grounded, left forearm cradled at ribs and right gripping fist near hip.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-f5910c8e-cfc5-4e95-8f62-6840370d6a1f.png"
+    },
+    {
+      "action": "jump",
+      "frame": 2,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: rising jump with both boots lifted and knees bent, left forearm cradled close and right fist at chest.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-4cc796b5-e502-40da-828d-ec180d628148.png"
+    },
+    {
+      "action": "jump",
+      "frame": 3,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: jump apex with front knee raised and rear leg extended down, two boots separate, arms retain cradle and grip.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-77f0fa8f-3c72-444c-b42a-412c86f46e46.png"
+    },
+    {
+      "action": "jump",
+      "frame": 4,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: descending jump with both legs extending toward landing, left forearm at ribs and right fist near hip.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-b7cf4189-74ae-4453-91e4-9a762de15172.png"
+    },
+    {
+      "action": "fall",
+      "frame": 1,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: downward airborne motion with two bent knees and separate boots, left arm cradling and right fist gripping near chest.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-7d84c923-0250-474f-9b46-710760223a3b.png"
+    },
+    {
+      "action": "fall",
+      "frame": 2,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: descending with one leg reaching down and rear knee bent, right fist near hip and left forearm across ribs.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-8d529d24-5751-40b4-affa-8bd1ece47ea1.png"
+    },
+    {
+      "action": "fall",
+      "frame": 3,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: both boots extend below body separately approaching landing, torso inclines forward slightly, arms retain held-object poses.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-8dae9117-733d-4c05-9486-bfab50b65d94.png"
+    },
+    {
+      "action": "fall",
+      "frame": 4,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: land on both boots with deep knee compression, cloak settles, right fist near waist and left forearm cradled.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-3af4f7f9-d16e-44c1-8e78-ef7b81083c42.png"
+    },
+    {
+      "action": "light",
+      "frame": 1,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: lance jab windup WITHOUT weapon: right closed fist draws back near chest, elbow bent, left forearm cradles empty space close at ribs.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-83a09b31-e010-4d59-89b2-dfd17ca6466f.png"
+    },
+    {
+      "action": "light",
+      "frame": 2,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: quick right-arm thrust to RIGHT at chest height, closed gripping fist and straight wrist, left forearm stays at ribs.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-f2755780-29d6-4e1d-820b-6a197a448d75.png"
+    },
+    {
+      "action": "light",
+      "frame": 3,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: full right-arm horizontal extension to RIGHT at chest height, fist firmly closed, front knee flexed, left forearm cradled.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-90280fe0-39cd-40e2-bc47-ef5ab28f0690.png"
+    },
+    {
+      "action": "light",
+      "frame": 4,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: retract right fist toward chest then hip, torso returns upright, left arm retains cradle.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-ca076668-2ae6-4011-bff6-2ff522c24218.png"
+    },
+    {
+      "action": "heavy",
+      "frame": 1,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: heavy sweep windup WITHOUT weapon: right gripping fist draws back near right shoulder, torso turns slightly away, left forearm cradles empty space.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-1e704fa4-8de2-42e8-9b7e-2608a0e3890c.png"
+    },
+    {
+      "action": "heavy",
+      "frame": 2,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: strong right-arm sweeping movement forward toward RIGHT with closed fist at chest height, wide grounded stance, left arm cradled.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-ba910a4b-e028-44ea-8049-68a9f20ea4c4.png"
+    },
+    {
+      "action": "heavy",
+      "frame": 3,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: full heavy sweep follow-through: right gripping fist forward and lower at waist height, torso turned into motion, left forearm still near ribs.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-8aac4510-f814-4d0c-b9bd-f71cbb08a31b.png"
+    },
+    {
+      "action": "heavy",
+      "frame": 4,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: recover from sweep, right fist returns near hip, torso straightens and feet settle, left arm cradled.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-eef68619-a7dc-4f6d-9900-4c1ecef426cc.png"
+    },
+    {
+      "action": "specialA",
+      "frame": 1,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: Black Ride charge preparation, forward knee bends and torso leans low, right fist near chest and left forearm cradles empty space close.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-38547a40-5965-4416-b2ac-f8266246169d.png"
+    },
+    {
+      "action": "specialA",
+      "frame": 2,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: charging forward step with front boot planted and rear leg extended, right gripping fist thrust forward at chest height, left arm close across ribs.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-b43a87ff-67e8-4ffb-bee5-908c42eee164.png"
+    },
+    {
+      "action": "specialA",
+      "frame": 3,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: maximum charging lunge, closed right fist fully extended to RIGHT, strong two-leg silhouette, left forearm cradled protectively.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-50daf8f3-939d-4d68-90bb-0d362320a0e9.png"
+    },
+    {
+      "action": "specialA",
+      "frame": 4,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: recover from charge, rise toward guard and draw right fist back, left arm cradled close.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-cad52b0e-105e-4ac7-841d-78a4d6024288.png"
+    },
+    {
+      "action": "specialB",
+      "frame": 1,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: Head Toss windup WITHOUT any head: LEFT forearm cradles EMPTY space across ribs, right closed fist near hip.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-4bd17160-b560-404d-96e0-b2e03b648e4b.png"
+    },
+    {
+      "action": "specialB",
+      "frame": 2,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: LEFT arm extends forward to RIGHT at chest height with open palm as if releasing an invisible object, right fist remains near hip.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-1e51713c-7a3c-4796-b5fc-345c52143591.png"
+    },
+    {
+      "action": "specialB",
+      "frame": 3,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: LEFT arm fully extended to RIGHT at chest height with open release fingers, right gripping fist near hip, no object drawn.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-e66e6492-db5b-450b-8eef-e83be6509221.png"
+    },
+    {
+      "action": "specialB",
+      "frame": 4,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: LEFT hand retracts toward ribs to return to empty cradle, right fist stays at hip, two feet planted.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-eb9abb77-8f95-4aa6-b6b2-2e5b9d3c951e.png"
+    },
+    {
+      "action": "super",
+      "frame": 1,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: Midnight Procession preparation, right gripping fist near shoulder and elbow bent, left forearm cradled close at ribs, boots apart.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-24694905-5880-40f6-8514-bdd34beff16a.png"
+    },
+    {
+      "action": "super",
+      "frame": 2,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: right fist lifts to shoulder height, torso straightens ceremonially, left arm retains cradle.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-017e02bf-c97f-463d-ac09-c3578fae7e44.png"
+    },
+    {
+      "action": "super",
+      "frame": 3,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: peak casting/command stance, right gripping fist thrust diagonally up and right but no higher than collar, left arm cradled at chest, wide boots.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-7d605508-861d-4458-8e23-080755a08fe3.png"
+    },
+    {
+      "action": "super",
+      "frame": 4,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: lower right fist from shoulder toward hip, left forearm returns to lower ribs, cloak settles.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-e039616e-b750-4cba-9c24-33e9f57f0231.png"
+    },
+    {
+      "action": "throw",
+      "frame": 1,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: armored throw anticipation: right elbow draws back and gripping fist near waist, left forearm cradled close to ribs.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-dbf6d7e0-50a0-453d-9e3f-c7d249ce52c5.png"
+    },
+    {
+      "action": "throw",
+      "frame": 2,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: step forward into a right shoulder and elbow drive, right fist near chest, left forearm remains cradled, no opponent.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-2dd2d6d0-927e-45a4-aa12-04e21692eb2e.png"
+    },
+    {
+      "action": "throw",
+      "frame": 3,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: turn torso and pull right elbow backward in throw follow-through, right gripping fist near hip, left arm still protecting empty cradle.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-f4106880-d8f4-471e-b1d0-071d76342849.png"
+    },
+    {
+      "action": "throw",
+      "frame": 4,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: release the throw motion and settle into guard, right fist at forward hip and left forearm across ribs.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-7f6e36cb-0cc6-44f9-a35c-10c1b0523cd0.png"
+    },
+    {
+      "action": "hit",
+      "frame": 1,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: small hit recoil, torso shifts backward and collar tilts, right fist remains near hip and left forearm cradles empty space.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-a21c4cd2-01d6-4f6b-b521-99f430fc4aa4.png"
+    },
+    {
+      "action": "hit",
+      "frame": 2,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: stronger backward recoil with chest lifting and one shoulder raised, two boots grounded, left arm cradled and right fist closed.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-d2501ef6-6b22-4069-bfa1-363904b877dc.png"
+    },
+    {
+      "action": "hit",
+      "frame": 3,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: stagger with one knee bent and short backward step, cloak swings forward, right fist drawn near chest, left arm cradled.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-d352f2de-39d6-4baf-9298-7943095d1298.png"
+    },
+    {
+      "action": "hit",
+      "frame": 4,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: recover posture from hit, shoulders square, right fist returns to hip, left forearm across ribs.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-ff00f167-36e5-42df-b367-9397df4919f5.png"
+    },
+    {
+      "action": "block",
+      "frame": 1,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: guard anticipation with right gripping fist and forearm lifting in front of chest, left forearm cradles empty space close.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-fe6a8550-89b4-48df-a86d-236673658ba3.png"
+    },
+    {
+      "action": "block",
+      "frame": 2,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: firm standing guard, right closed fist near shoulder and forearm diagonal in front of breastplate, left arm cradled behind guard.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-e834b3c1-24a6-4bd8-9901-d564a13ada08.png"
+    },
+    {
+      "action": "block",
+      "frame": 3,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: brace into guard with front knee bent, right fist at upper chest, left arm tight across lower ribs.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-11447b26-3333-49e3-8a90-ed674e78c6ba.png"
+    },
+    {
+      "action": "block",
+      "frame": 4,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: release guard toward ready stance, right fist lowers toward hip, left forearm cradled, two boots planted.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-d6900c82-2150-412a-bcf0-3652149e0169.png"
+    },
+    {
+      "action": "down",
+      "frame": 1,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: lose balance backward, both knees buckle and torso tilts, left forearm holds empty cradle close, right fist stays closed near waist.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-df930cfc-3cc4-46a8-b7ef-8d77bd7826aa.png"
+    },
+    {
+      "action": "down",
+      "frame": 2,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: fall sideways toward floor, body diagonal with collar and shoulders toward LEFT and boots toward RIGHT, two legs bent, both arms close.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-f102278d-0495-4985-bfc6-2971d8cec56a.png"
+    },
+    {
+      "action": "down",
+      "frame": 3,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: lying horizontally on side with COLLAR/SHOULDERS at LEFT and BOTH BOOTS at RIGHT, left forearm tucked across ribs and right fist near waist, no head anywhere.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-6b9fd018-127e-4779-9b26-7429d4bf6192.png"
+    },
+    {
+      "action": "down",
+      "frame": 4,
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-bd4eed95-3935-4e56-88df-9b9bb98794fb.png",
+      "prompt": "Create the next settled knockdown animation frame by editing this armored Dullahan BODY sprite. Preserve the exact same armor, proportions, camera view and side-lying layout: empty sealed collar and shoulders stay at LEFT, both armored boots stay at RIGHT. Keep all chest and leg armor and opaque black underarmor exactly as reference. Make a small nonsexual battle-animation change only: torso and shoulder settle slightly lower, right fist relaxes a little closer to the ground, left gauntlet stays across the breastplate/upper waist. Two arms and two legs only. Keep the complete green cloak. Headless body only, no head, face, weapon, blood, wound or gore. Same pixel art, transparent background and generous empty margins. One full-body combat knockdown pose, no text or extra parts.",
+      "retry": "Minor pose progression from accepted armored down frame3; exact outfit/proportions retained",
+      "reference": "down-2"
+    },
+    {
+      "action": "recover",
+      "frame": 1,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: kneeling recovery with two armored knees folded, torso upright, left forearm cradled at chest and right fist near forward knee.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-fec72c63-c544-4fdb-8b22-35089fcd1e62.png"
+    },
+    {
+      "action": "recover",
+      "frame": 2,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: rise from one knee with front boot planted and rear knee low, left forearm cradled at ribs and right fist near hip.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-3d9d4faf-795b-4e10-9236-3f308feddd65.png"
+    },
+    {
+      "action": "recover",
+      "frame": 3,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: push up from side-lying pose, COLLAR/SHOULDERS LEFT and BOOTS RIGHT, right closed fist braced near waist and left forearm cradles empty space.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-bc0ac25e-9219-451d-92ae-fb19958a00ad.png"
+    },
+    {
+      "action": "recover",
+      "frame": 4,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: complete recovery into right-facing guard, two boots grounded, left forearm cradled and right fist at forward hip.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-2c518699-b32d-43fb-b33d-91e76c299882.png"
+    },
+    {
+      "action": "intro",
+      "frame": 1,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: solemn ceremonial entrance, headless collar tilted down slightly, two feet planted, left forearm cradles empty space at ribs and right fist near hip.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-2591778b-9466-4390-a691-ce1dd96c56cd.png"
+    },
+    {
+      "action": "intro",
+      "frame": 2,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: straighten shoulders with dignified posture, right closed fist rises near lower chest, left arm retains cradle.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-94cc2d70-2960-4da8-98c4-255998b59b54.png"
+    },
+    {
+      "action": "intro",
+      "frame": 3,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: small formal forward inclination of torso, right fist near hip, left forearm cradles empty space close across ribs.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-6058b482-8eb0-449f-802c-f870bd9dcd59.png"
+    },
+    {
+      "action": "intro",
+      "frame": 4,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: settle into combat guard facing right, front boot ahead, right gripping fist near hip and left forearm cradled.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-1ce67eca-709c-4105-aa7f-44c33d0c633a.png"
+    },
+    {
+      "action": "victory",
+      "frame": 1,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: victory begins with proud upright posture, right fist near hip, left forearm cradles empty space at lower ribs.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-60e4ca86-b733-48e0-b503-d5b46a8b73d9.png"
+    },
+    {
+      "action": "victory",
+      "frame": 2,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: LEFT forearm lifts its EMPTY cradling space higher to chest height, right fist stays near hip, body still headless.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-4f3d1c30-1d49-4fd2-a4e6-1f738dcbeca2.png"
+    },
+    {
+      "action": "victory",
+      "frame": 3,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: hold LEFT cradling forearm high near upper chest beside collar but not on collar, right fist at hip, proud headless knight stance.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-6b66d3c3-23a0-42ab-b0f1-9eb472677ae3.png"
+    },
+    {
+      "action": "victory",
+      "frame": 4,
+      "prompt": "Generate ONE isolated BODY-ONLY animation frame of the exact mature adult Dullahan knight BODY in reference. Keep the same charcoal articulated plate armor, silver edging, emerald fittings, fitted breastplate, opaque black underarmor and trousers, athletic curvy adult proportions, armored heeled boots and gauntlets, ragged deep green cloak. HEADLESS BODY: dark sealed collar, NO HEAD anywhere (not on shoulders, not carried), no face, no wound or gore. Her separate head will be added later. NO LANCE or weapon anywhere; right hand forms a closed gripping fist for the separate lance. Left forearm cradles EMPTY space unless pose explicitly releases it. Exactly two arms, two hands, two legs and two boots, each attached correctly. Do not add arms to support invisible props. Same crisp richly shaded pixel art and costume. Right-facing three-quarter side combat view except specified ground poses. True TRANSPARENT background, no shadows, smoke, magic, particles, floor, text, frames or extra figures. Entire body, every boot and cloak tip fully inside canvas with generous12 percent transparent margins on ALL sides. No head, weapon or extra object. Pose for this ONE frame: lower LEFT forearm back toward ribs and rest in dignified guard, right gripping fist at hip, both boots grounded.",
+      "path": "C:\\Users\\gaven\\.codex\\generated_images\\01a17894-452d-7542-a389-1b7fb8694eab\\exec-7f025ea6-f318-4edf-9b63-d0da93066f63.png"
+    }
+  ]
+}
