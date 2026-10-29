@@ -24,7 +24,7 @@ This package is organized for GitHub Pages testing.
 - Vampira and Nekomata retain their previously approved artwork and original outfits.
 - Separate FX atlases for Vampira, Nekomata, Banshee, Medusa, Jiangshi, Yurei, Dullahan, Witch and Werewolf.
 - Atlas Inspector can preview BODY / FX / COMPOSITE.
-- [Play the current build](https://gavenecko.github.io/nightbloom/?v=059-werewolf-v10).
+- [Play the current build](https://gavenecko.github.io/nightbloom/?v=059-werewolf-v10-r2).
 
 ## Included
 - `index.html`

@@ -2205,9 +2205,9 @@ function drawAtlasInspector(){
 
  x.fillStyle='#72ffd7';x.font='bold 13px Consolas';x.fillText('FIGHTERS',32,92);
  INSPECTOR_FIGHTERS.forEach((name,i)=>{
-   let y=110+i*INSPECTOR_FIGHTER_STEP, active=i===inspectorFighterIndex;
+   let y=INSPECTOR_FIGHTER_TOP+i*INSPECTOR_FIGHTER_STEP+INSPECTOR_FIGHTER_H-2, active=i===inspectorFighterIndex;
    roundRect(30,INSPECTOR_FIGHTER_TOP+i*INSPECTOR_FIGHTER_STEP,194,INSPECTOR_FIGHTER_H,5,active?'rgba(82,33,106,.95)':'rgba(22,19,32,.96)',active?'#c88dff':'#413551',1);
-   x.fillStyle=active?'#fff4ff':'#d1c5dd';x.font='12px Consolas';x.fillText(name,42,y+2);
+   x.fillStyle=active?'#fff4ff':'#d1c5dd';x.font='10px Consolas';x.fillText(name,42,y);
  });
 
  x.fillStyle='#72ffd7';x.font='bold 13px Consolas';x.fillText('ACTIONS',32,232);
