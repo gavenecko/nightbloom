@@ -1,7 +1,7 @@
 
 const c=document.getElementById('game'),x=c.getContext('2d'); x.imageSmoothingEnabled=false;
 const W=c.width,H=c.height, ground=430;
-const BUILD_INFO={version:'0.60',channel:'MUMMY REGAL EMPRESS',date:'2026-10-29',label:'MUMMY REGAL EMPRESS'};
+const BUILD_INFO={version:'0.61',channel:'TRAINING & INSPECTOR POLISH',date:'2026-10-29',label:'TRAINING & INSPECTOR POLISH'};
 const keys={},kbKeys={},padKeys={},pressed={};
 const p2Keys={},p2KbKeys={},p2PadKeys={},p2Pressed={};
 const P2_KEYMAP={
@@ -614,6 +614,7 @@ const REMADE_ANIMS={
 };
 const INSPECTOR_FIGHTERS=['VAMPIRA','NEKOMATA','BANSHEE','MEDUSA','JIANGSHI','YUREI','DULLAHAN','WITCH','WEREWOLF','MUMMY'];
 const INSPECTOR_FIGHTER_STEP=12,INSPECTOR_FIGHTER_TOP=98,INSPECTOR_FIGHTER_H=11;
+function inspectorFrameRect(i){return {x:272+i*106,y:364,w:92,h:122};}
 const INSPECTOR_ACTIONS=['idle','walk','dash','crouch','jump','fall','light','heavy','specialA','specialB','super','throw','hit','block','down','recover','intro','victory'];
 let inspectorFighterIndex=0,inspectorActionIndex=0,inspectorFrameIndex=0,inspectorPlaying=true,inspectorTick=0,inspectorSpeed=14;
 let inspectorLayerMode=2; // 0 body, 1 fx, 2 composite
@@ -2198,7 +2199,7 @@ function drawAtlasInspector(){
 
  x.fillStyle='#0a0812';x.fillRect(0,0,W,H);
  x.fillStyle='rgba(110,48,144,.18)';x.fillRect(0,0,W,60);
- x.fillStyle='#efe3ff';x.font='bold 24px Consolas';x.textAlign='left';x.fillText('ATLAS INSPECTOR',24,38);
+ x.fillStyle='#efe3ff';x.font='bold 24px Consolas';x.textAlign='left';x.fillText('ATLAS INSPECTOR',124,38);
  x.fillStyle='#cdbde1';x.font='11px Consolas';
  x.fillText('LEFT/RIGHT fighter · UP/DOWN action · A/D frame · SPACE play/pause · Q/E speed · 1/2/3 layer',24,54);
 
@@ -2228,13 +2229,13 @@ function drawAtlasInspector(){
  });
  x.textAlign='left';
  x.fillStyle='#d8cae5';x.font='11px Consolas';
- x.fillText('mode: '+layerNames[inspectorLayerMode],32,520);
+ x.fillText(layerNames[inspectorLayerMode]+' · '+(inspectorPlaying?'PLAYING':'PAUSED'),32,516);
  if(fighter==='VAMPIRA'){x.fillStyle='#72ffd7';x.font='10px Consolas';x.fillText('V14 BODY · stronger walk cycle · 8px margin',278,520);}
  if(fighter==='NEKOMATA'){x.fillStyle='#72ffd7';x.font='10px Consolas';x.fillText('N11 BODY · stronger walk cycle · 8px margin',278,520);}
  if(fighter==='BANSHEE'){x.fillStyle='#72ffd7';x.font='10px Consolas';x.fillText('B10 BODY · isolated frames · 8px margin',278,520);}
  if(fighter==='MEDUSA'){x.fillStyle='#72ffd7';x.font='10px Consolas';x.fillText('M10 BODY · isolated frames · 8px margin',278,520);}
  if(fighter==='JIANGSHI'){x.fillStyle='#72ffd7';x.font='10px Consolas';x.fillText('J10 BODY · hopping cycle · 8px margin',278,520);}
- x.fillText('frames: '+frames.join(', '),32,536);
+ x.fillStyle='#d8cae5';x.font='10px Consolas';x.fillText('Frame '+(idx+1)+' / '+frames.length+' · '+Math.round(60/inspectorSpeed)+' fps',32,531);
 
  if(body&&body.complete&&body.naturalWidth){
    let scale=Math.min(190/body.naturalWidth,224/body.naturalHeight);
@@ -2274,21 +2275,20 @@ function drawAtlasInspector(){
 
  x.fillStyle='#72ffd7';x.font='bold 13px Consolas';x.fillText('FRAME STRIP',586,346);
  frames.forEach((fr,i)=>{
-   let bx=272+i*106, by=364, active=i===idx;
-   roundRect(bx,by,92,148,6,active?'rgba(82,33,106,.95)':'rgba(15,12,22,.96)',active?'#c88dff':'#473957',1);
+   let card=inspectorFrameRect(i),bx=card.x,by=card.y,active=i===idx;
+   roundRect(bx,by,card.w,card.h,6,active?'rgba(82,33,106,.95)':'rgba(15,12,22,.96)',active?'#c88dff':'#473957',1);
    x.fillStyle='#d8cae5';x.font='11px Consolas';x.textAlign='center';x.fillText('#'+fr,bx+46,380);
    if(body&&body.complete&&body.naturalWidth){
       let srcCol = meta.remade ? fr : ((meta.start+fr)%meta.cols);
       let srcRow = meta.remade ? meta.row : Math.floor((meta.start+fr)/meta.cols);
       let sx=srcCol*meta.cellW, sy=srcRow*meta.cellH;
-      drawInspectorFrameLayers(body,fx,meta,fighter,action,i,fr,sx,sy,bx+8,392,76,96);
+      drawInspectorFrameLayers(body,fx,meta,fighter,action,i,fr,sx,sy,bx+8,388,76,90);
    }
  });
 
  x.textAlign='left';
  x.fillStyle='#d8cae5';x.font='11px Consolas';
- x.fillText('Use this screen to compare clean body frames against a separate contained FX layer.',30,524);
- x.fillText('If body-only playback is clean while composite breaks, the generated effects are the likely culprit.',30,540);
+ x.font='10px Consolas';x.fillText('Click a frame to pause and inspect it. Switch layers to compare body and effects.',278,534);
 }
 
 function drawTitleScreen(){
@@ -2318,7 +2318,7 @@ function drawTitleScreen(){
    x.font=(sel?'bold ':'')+'16px Georgia';x.fillStyle=sel?'#fff':'#c9b9d2';x.textAlign='center';x.fillText(item,W/2,y+19);
  });
  x.font='9px Consolas';x.fillStyle='#91849a';x.fillText('↑/↓ SELECT  ·  ENTER CONFIRM  ·  M MUTE',W/2,481);
- x.fillStyle='#72ffd7';x.fillText('0.60 · MUMMY REGAL EMPRESS',W/2,499);
+ x.fillStyle='#72ffd7';x.fillText('0.61 · TRAINING & INSPECTOR POLISH',W/2,499);
  x.fillStyle='#675c70';x.fillText('ALL MONSTERS ARE BEAUTIFUL.',W/2,517);
 }
 function drawCharacterSelect(){
@@ -2764,7 +2764,7 @@ function inRect(px,py,rx,ry,rw,rh){return px>=rx&&px<=rx+rw&&py>=ry&&py<=ry+rh}
 function pointerPress(code){pressed[code]=1}
 function pointerBack(){
  resetConfirmUntil=0;
- if(gameState==='credits'||gameState==='diagnostics'||gameState==='gallery'||gameState==='options'||gameState==='matchResult'){
+ if(gameState==='atlasInspector'||gameState==='credits'||gameState==='diagnostics'||gameState==='gallery'||gameState==='options'||gameState==='matchResult'){
    pointerPress('Backspace');return;
  }
  if(gameState==='difficultySelect'||gameState==='charSelect'||gameState==='stageSelect'||gameState==='matchSetup'||gameState==='continueScreen'){
@@ -2773,7 +2773,7 @@ function pointerBack(){
 }
 function pointerHoverTarget(px,py){
  // Returns true when the pointer is over an interactive frontend region.
- if(gameState!=='title'&&['options','gallery','difficultySelect','matchSetup','matchResult','diagnostics','credits','charSelect','stageSelect','continueScreen'].includes(gameState)
+ if(gameState!=='title'&&['options','gallery','difficultySelect','matchSetup','matchResult','diagnostics','credits','charSelect','stageSelect','continueScreen','atlasInspector'].includes(gameState)
     &&inRect(px,py,14,14,94,27))return true;
 
  if(gameState==='title'){
@@ -2798,9 +2798,10 @@ function pointerHoverTarget(px,py){
    for(let i=0;i<slots.length;i++){let [sx,sy]=slots[i];if(inRect(px,py,sx,sy,178,101)){galleryIndex=i;return true}}
  }
  if(gameState==='atlasInspector'){
-   for(let i=0;i<INSPECTOR_FIGHTERS.length;i++)if(inRect(px,py,30,INSPECTOR_FIGHTER_TOP+i*INSPECTOR_FIGHTER_STEP,194,INSPECTOR_FIGHTER_H)){inspectorFighterIndex=i;return true}
-   for(let i=0;i<INSPECTOR_ACTIONS.length;i++){let col=i<9?0:1,row=i%9,xx=30+col*97,yy=248+row*24;if(inRect(px,py,xx,yy-12,90,19)){inspectorActionIndex=i;return true}}
-   for(let i=0;i<4;i++)if(inRect(px,py,386+i*132,364,118,148)){inspectorFrameIndex=i;inspectorPlaying=false;return true}
+   for(let i=0;i<INSPECTOR_FIGHTERS.length;i++)if(inRect(px,py,30,INSPECTOR_FIGHTER_TOP+i*INSPECTOR_FIGHTER_STEP,194,INSPECTOR_FIGHTER_H)){if(inspectorFighterIndex!==i){inspectorFighterIndex=i;atlasInspectorReset()}return true}
+   for(let i=0;i<INSPECTOR_ACTIONS.length;i++){let col=i<9?0:1,row=i%9,xx=30+col*97,yy=248+row*24;if(inRect(px,py,xx,yy-12,90,19)){if(inspectorActionIndex!==i){inspectorActionIndex=i;atlasInspectorReset()}return true}}
+   for(let i=0;i<4;i++){const r=inspectorFrameRect(i);if(inRect(px,py,r.x,r.y,r.w,r.h))return true;}
+   for(let i=0;i<3;i++)if(inRect(px,py,86+i*50,458,46,18))return true;
  }
  if(gameState==='matchSetup'){
    for(let i=0;i<MATCH_RULE_OPTIONS.length;i++)if(inRect(px,py,190,102+i*58,580,44)){matchSetupIndex=i;return true}
@@ -2819,7 +2820,7 @@ function pointerHoverTarget(px,py){
 }
 function pointerActivate(px,py){
  // Universal clickable Back/Abandon button.
- if(gameState!=='title'&&['options','gallery','difficultySelect','matchSetup','matchResult','diagnostics','credits','charSelect','stageSelect','continueScreen'].includes(gameState)
+ if(gameState!=='title'&&['options','gallery','difficultySelect','matchSetup','matchResult','diagnostics','credits','charSelect','stageSelect','continueScreen','atlasInspector'].includes(gameState)
     &&inRect(px,py,14,14,94,27)){pointerBack();return true}
 
  if(gameState==='title'){
@@ -2858,9 +2859,10 @@ function pointerActivate(px,py){
    for(let i=0;i<slots.length;i++){let [sx,sy]=slots[i];if(inRect(px,py,sx,sy,178,101)){galleryIndex=i;return true}}
  }
  if(gameState==='atlasInspector'){
-   for(let i=0;i<INSPECTOR_FIGHTERS.length;i++)if(inRect(px,py,30,INSPECTOR_FIGHTER_TOP+i*INSPECTOR_FIGHTER_STEP,194,INSPECTOR_FIGHTER_H)){inspectorFighterIndex=i;return true}
-   for(let i=0;i<INSPECTOR_ACTIONS.length;i++){let col=i<9?0:1,row=i%9,xx=30+col*97,yy=248+row*24;if(inRect(px,py,xx,yy-12,90,19)){inspectorActionIndex=i;return true}}
-   for(let i=0;i<4;i++)if(inRect(px,py,386+i*132,364,118,148)){inspectorFrameIndex=i;inspectorPlaying=false;return true}
+   for(let i=0;i<INSPECTOR_FIGHTERS.length;i++)if(inRect(px,py,30,INSPECTOR_FIGHTER_TOP+i*INSPECTOR_FIGHTER_STEP,194,INSPECTOR_FIGHTER_H)){if(inspectorFighterIndex!==i){inspectorFighterIndex=i;atlasInspectorReset()}return true}
+   for(let i=0;i<INSPECTOR_ACTIONS.length;i++){let col=i<9?0:1,row=i%9,xx=30+col*97,yy=248+row*24;if(inRect(px,py,xx,yy-12,90,19)){if(inspectorActionIndex!==i){inspectorActionIndex=i;atlasInspectorReset()}return true}}
+   for(let i=0;i<4;i++){const r=inspectorFrameRect(i);if(inRect(px,py,r.x,r.y,r.w,r.h)){inspectorFrameIndex=i;inspectorTick=0;inspectorPlaying=false;return true}}
+   for(let i=0;i<3;i++)if(inRect(px,py,86+i*50,458,46,18)){inspectorLayerMode=i;return true}
  }
  if(gameState==='matchSetup'){
    for(let i=0;i<MATCH_RULE_OPTIONS.length;i++){
@@ -2905,13 +2907,26 @@ c.addEventListener('pointerdown',ev=>{
 });
 
 const contextHelp=document.getElementById('contextHelp'),trainingDetailsButton=document.getElementById('trainingDetails');
+const trainingTools=document.getElementById('trainingTools'),inspectorTools=document.getElementById('inspectorTools');
+const gameCommandButtons=document.querySelectorAll('[data-game-command]');
+new ResizeObserver(entries=>{
+ document.documentElement.style.setProperty('--help-space',Math.max(100,Math.ceil(entries[0].contentRect.height)+34)+'px');
+}).observe(document.getElementById('help'));
+gameCommandButtons.forEach(button=>button.addEventListener('click',()=>{if(!button.disabled){pointerPress(button.dataset.gameCommand);c.focus()}}));
 let contextHelpKey='';
 trainingDetailsButton.addEventListener('click',()=>{trainingPanelExpanded=!trainingPanelExpanded;updateContextHelp();c.focus()});
 function updateContextHelp(){
- const key=[gameState,training,trainingPanelExpanded,SYSTEM.controls,gameMode].join('|');if(key===contextHelpKey)return;contextHelpKey=key;
+ const key=[gameState,training,trainingPanelExpanded,SYSTEM.controls,gameMode,paused,trainingDummyMode,trainingSpeed,inspectorPlaying,inspectorLayerMode].join('|');if(key===contextHelpKey)return;contextHelpKey=key;
  const fight=gameState==='fight',arcade=SYSTEM.controls==='ARCADE'&&gameMode!=='local';
  contextHelp.textContent=gameState==='atlasInspector'?'←/→ fighter · ↑/↓ action · A/D frame · Space play/pause · Q/E speed · 1/2/3 layers · Esc title':fight?(arcade?'Arrows move · Z/X attacks · C special · V super · B throw · N guard · P pause':'WASD move · J/K attacks · L special · U super · I throw · Shift guard · P pause'):'Click or use arrows to select · Enter confirm · Backspace back · Esc title';
  trainingDetailsButton.hidden=!(fight&&training);trainingDetailsButton.textContent=trainingPanelExpanded?'Hide training details (H)':'Training details (H)';trainingDetailsButton.setAttribute('aria-expanded',String(trainingPanelExpanded));
+ trainingTools.hidden=!(fight&&training);inspectorTools.hidden=gameState!=='atlasInspector';
+ document.getElementById('dummyControl').textContent='Dummy: '+TRAINING_DUMMIES[trainingDummyMode];
+ document.getElementById('speedControl').textContent='Speed: '+Math.round(trainingSpeed*100)+'%';
+ document.getElementById('pauseControl').textContent=paused?'Resume':'Pause';
+ document.getElementById('stepControl').disabled=!paused;
+ document.getElementById('inspectorPlay').textContent=inspectorPlaying?'Pause':'Play';
+ gameCommandButtons.forEach(button=>{if(button.dataset.layer!==undefined)button.setAttribute('aria-pressed',String(Number(button.dataset.layer)===inspectorLayerMode))});
 }
 function loop(now){
  let rawMs=Math.max(.1,now-last),rawFrames=rawMs/16.667,dt=Math.min(2.1,rawFrames);last=now;

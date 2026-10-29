@@ -1,8 +1,12 @@
-# NIGHTBLOOM Prototype 0.60
+# NIGHTBLOOM Prototype 0.61
 
 This package is organized for GitHub Pages testing.
 
 ## Playability polish
+- Training has clickable position reset, refill, dummy mode, speed, pause and frame-step controls.
+- Atlas Inspector has clickable playback, speed and layer controls. Visible frame cards select the correct pose, and hovering leaves playback running.
+- Inspector cards and status text fit inside their panels; Back returns to the title screen.
+- The game reserves space for the control panel as it wraps or expands, and browser zoom is enabled.
 - Controls appear below the game, with contextual help and expandable shortcuts.
 - Compact training panel; H or the footer button shows detailed frame data.
 - Presentation clocks restart on animation changes and respect pause, slow motion and frame stepping.
@@ -25,7 +29,7 @@ This package is organized for GitHub Pages testing.
 - Vampira and Nekomata retain their previously approved artwork and original outfits.
 - Separate FX atlases for Vampira, Nekomata, Banshee, Medusa, Jiangshi, Yurei, Dullahan, Witch, Werewolf and Mummy.
 - Atlas Inspector can preview BODY / FX / COMPOSITE.
-- [Play the current build](https://gavenecko.github.io/nightbloom/?v=060-mummy-v10).
+- [Play the current build](https://gavenecko.github.io/nightbloom/?v=061-training-inspector).
 
 ## Included
 - `index.html`
