@@ -37,3 +37,6 @@ Yurei joins the padded 192x192 body pipeline, with 72 distinct frames and exact 
 
 ## Witch V10
 72 isolated padded body frames; closed grimoire retained in left hand and right-hand casting gestures. Separate Moon Sigil, Hex Bolt and super effects. See WITCH_V10.md and WITCH_V10_PROMPTS.json.
+
+## Werewolf V10
+72 isolated padded body frames; full canine head, one tail, two digitigrade legs and clawed paws. Separate Moon Claw, Howl Wave and super effects. Rage mechanics and aura behavior retained. See WEREWOLF_V10.md and WEREWOLF_V10_PROMPTS.json.
