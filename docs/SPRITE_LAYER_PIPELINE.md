@@ -40,3 +40,6 @@ Yurei joins the padded 192x192 body pipeline, with 72 distinct frames and exact 
 
 ## Werewolf V10
 72 isolated padded body frames; full canine head, one tail, two digitigrade legs and clawed paws. Separate Moon Claw, Howl Wave and super effects. Rage mechanics and aura behavior retained. See WEREWOLF_V10.md and WEREWOLF_V10_PROMPTS.json.
+
+## Mummy V10 — Regal Empress A
+72 isolated padded body frames using the approved fuller build, ivory wraps and split lapis overskirt. Matching portrait and new design file preserve originals. Bandage Lash, Scarab Curse and super effects remain separate. All ten fighters now use the rebuilt body pipeline; curse mechanics unchanged. See MUMMY_V10.md and MUMMY_V10_PROMPTS.json.
