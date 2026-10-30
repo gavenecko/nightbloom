@@ -56,7 +56,7 @@
  function draw(c,kind,phase=0,options={}){
   const p=options.profile||byKind[kind]||profiles.WITCH,col=options.color||p.color,t=clamp(phase),low=options.quality==='LOW'||options.quality==='OFF'||!!options.reducedMotion,still=!!options.reducedMotion;
   const paintedKey=['hit','guard','counter'].includes(kind)?kind:kind==='super'?p.name?.toLowerCase()+'-super':kind===p.a||kind==='light'||kind==='heavy'?p.name?.toLowerCase()+'-a':kind===p.b?p.name?.toLowerCase()+'-b':null;
-  if(paintedKey&&root.NightbloomPaintedFX?.draw(c,paintedKey,t,{...options,size:kind==='light'?84:kind==='heavy'?100:undefined}))return;
+  if(paintedKey&&root.NightbloomPaintedFX?.draw(c,paintedKey,t,{...options,size:kind==='light'?84:kind==='heavy'?100:options.size}))return;
   const impact=['hit','impact','guard','counter'].includes(kind),travel=!!options.projectile;
   const envelope=travel?1:Math.min(1,t*7)*Math.min(1,(1-t)*4);
   if(envelope<=0)return;c.save();c.globalAlpha*=envelope;
