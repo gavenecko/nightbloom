@@ -1,6 +1,14 @@
-# NIGHTBLOOM Prototype 0.61
+# NIGHTBLOOM Prototype 0.62
 
 This package is organized for GitHub Pages testing.
+
+## Character effects pass
+- Ten distinct magic styles, directional projectile trails, bright contact sparks, blue guard arcs and gold counter-hit accents.
+- Effects originate from the fighter's attack pose, build into contact and dissipate during recovery.
+- Witch traps show their arming progress; curse, petrify, armor and rage have clearer visual markers.
+- Training and Inspector offer Full / Low / Minimal effects and reduced-motion controls. Essential projectile cores remain visible.
+- The Inspector previews the same effects used in combat. [Compare all ten fighters in the effects gallery](https://gavenecko.github.io/nightbloom/docs/effects-gallery.html).
+- Four legacy effects images were extracted unchanged from the script, reducing the main script by roughly 25%. Original art is preserved.
 
 ## Playability polish
 - Training has clickable position reset, refill, dummy mode, speed, pause and frame-step controls.
@@ -29,7 +37,7 @@ This package is organized for GitHub Pages testing.
 - Vampira and Nekomata retain their previously approved artwork and original outfits.
 - Separate FX atlases for Vampira, Nekomata, Banshee, Medusa, Jiangshi, Yurei, Dullahan, Witch, Werewolf and Mummy.
 - Atlas Inspector can preview BODY / FX / COMPOSITE.
-- [Play the current build](https://gavenecko.github.io/nightbloom/?v=061-training-inspector).
+- [Play the current build](https://gavenecko.github.io/nightbloom/?v=062-character-effects).
 
 ## Included
 - `index.html`
