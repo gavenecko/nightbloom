@@ -7,7 +7,7 @@ This package is organized for GitHub Pages testing.
 - Effects originate from the fighter's attack pose, build into contact and dissipate during recovery.
 - Witch traps show their arming progress; curse, petrify, armor and rage have clearer visual markers.
 - Training and Inspector offer Full / Low / Minimal effects and reduced-motion controls. Essential projectile cores remain visible.
-- The Inspector previews the same effects used in combat. [Compare all ten fighters in the effects gallery](https://gavenecko.github.io/nightbloom/docs/effects-gallery.html).
+- The Inspector previews the same effects used in combat. [Compare all ten fighters in the effects gallery](https://gavenecko.github.io/nightbloom/docs/effects-gallery.html?v=062-r2).
 - Four legacy effects images were extracted unchanged from the script, reducing the main script by roughly 25%. Original art is preserved.
 
 ## Playability polish
