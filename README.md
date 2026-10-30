@@ -1,13 +1,18 @@
-# NIGHTBLOOM Prototype 0.62
+# NIGHTBLOOM Prototype 0.63
 
 This package is organized for GitHub Pages testing.
+
+## Painted effects pass
+- 132 painted frames across33 sheets replace the geometric spell cores for all ten fighters, supers, projectiles and shared impacts.
+- Original high-resolution sheets and exact prompts are preserved; all packed frames have transparent gutters.
+- Textures preload for the selected fighters and refresh paused gallery previews when loaded.
 
 ## Character effects pass
 - Ten distinct magic styles, directional projectile trails, bright contact sparks, blue guard arcs and gold counter-hit accents.
 - Effects originate from the fighter's attack pose, build into contact and dissipate during recovery.
 - Witch traps show their arming progress; curse, petrify, armor and rage have clearer visual markers.
 - Training and Inspector offer Full / Low / Minimal effects and reduced-motion controls. Essential projectile cores remain visible.
-- The Inspector previews the same effects used in combat. [Compare all ten fighters in the effects gallery](https://gavenecko.github.io/nightbloom/docs/effects-gallery.html?v=062-r2).
+- The Inspector previews the same effects used in combat. [Compare all ten fighters in the effects gallery](https://gavenecko.github.io/nightbloom/docs/effects-gallery.html?v=063-painted).
 - Four legacy effects images were extracted unchanged from the script, reducing the main script by roughly 25%. Original art is preserved.
 
 ## Playability polish
@@ -37,7 +42,7 @@ This package is organized for GitHub Pages testing.
 - Vampira and Nekomata retain their previously approved artwork and original outfits.
 - Separate FX atlases for Vampira, Nekomata, Banshee, Medusa, Jiangshi, Yurei, Dullahan, Witch, Werewolf and Mummy.
 - Atlas Inspector can preview BODY / FX / COMPOSITE.
-- [Play the current build](https://gavenecko.github.io/nightbloom/?v=062-character-effects).
+- [Play the current build](https://gavenecko.github.io/nightbloom/?v=063-painted-effects).
 
 ## Included
 - `index.html`

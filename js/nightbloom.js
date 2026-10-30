@@ -1,7 +1,7 @@
 
 const c=document.getElementById('game'),x=c.getContext('2d'); x.imageSmoothingEnabled=false;
 const W=c.width,H=c.height, ground=430;
-const BUILD_INFO={version:'0.62',channel:'CHARACTER EFFECTS',date:'2026-10-30',label:'CHARACTER EFFECTS'};
+const BUILD_INFO={version:'0.63',channel:'PAINTED EFFECTS',date:'2026-10-30',label:'PAINTED EFFECTS'};
 const keys={},kbKeys={},padKeys={},pressed={};
 const p2Keys={},p2KbKeys={},p2PadKeys={},p2Pressed={};
 const P2_KEYMAP={
@@ -634,10 +634,10 @@ function fxSpriteFor(name){
 }
 function actionFxOffset(name,action,frame){
  if(typeof NightbloomFX!=='undefined'){
-  if(name==='WEREWOLF'&&action==='specialB')return {x:42,y:-32};
+  if(name==='WEREWOLF'&&action==='specialB')return {x:62,y:-32};
   const handY={VAMPIRA:-25,NEKOMATA:-25,BANSHEE:-34,MEDUSA:-30,JIANGSHI:-20,YUREI:-25,DULLAHAN:-20,WEREWOLF:14,MUMMY:-32,WITCH:-25}[name]??-26;
-  if(['specialA','specialB'].includes(action))return {x:42,y:handY};
-  if(['light','heavy'].includes(action))return {x:34,y:handY};
+  if(['specialA','specialB'].includes(action))return {x:name==='DULLAHAN'?80:62,y:handY};
+  if(['light','heavy'].includes(action))return {x:48,y:handY};
   if(action==='dash')return {x:-24,y:46};
   return {x:0,y:0};
  }
@@ -962,6 +962,7 @@ function resetRound(){
  emit('round_start',{round});announcement='ROUND '+round;announceT=80;
 }
 function startFight(){
+ if(typeof NightbloomPaintedFX!=='undefined'){NightbloomPaintedFX.preload(playerChoice);NightbloomPaintedFX.preload(enemyChoice);}
  clearInputs();paused=false;inputHistory=[];round=1;p1Wins=0;p2Wins=0;matchOver=false;flash=0;shake=0;training=false;roundOver=false;matchPeakCombo=0;lastMatchResult=null;
  if(gameMode==='versus')difficulty=MATCH_RULES.cpuDifficulty;
  resetMatchStats();resetRound();routeHandled=false;gameState='fight';musicKey='';
@@ -1912,7 +1913,7 @@ function hud(){
  if(p1.meter>=100){x.strokeStyle=p1.accent;x.globalAlpha=.6;x.strokeRect(31,489,258,15);x.globalAlpha=1}
  if(p2.meter>=100){x.strokeStyle=p2.accent;x.globalAlpha=.6;x.strokeRect(W-289,489,258,15);x.globalAlpha=1}
 
- x.textAlign='center';x.font='9px Consolas';x.fillStyle='#817486';x.fillText(selectedStage+'  //  0.62 CHARACTER EFFECTS'+(gamepadConnected?'  //  PAD':'')+(AUDIO.mute?'  //  MUTED':''),W/2,524);
+ x.textAlign='center';x.font='9px Consolas';x.fillStyle='#817486';x.fillText(selectedStage+'  //  0.63 PAINTED EFFECTS'+(gamepadConnected?'  //  PAD':'')+(AUDIO.mute?'  //  MUTED':''),W/2,524);
  if(gameMode==='story'||gameMode==='arcade'){
    x.font='bold 9px Consolas';x.fillStyle='#f2c7df';let label=(gameMode==='story'?'STORY':'ARCADE')+' '+Math.min(ladderIndex+1,ladder.length)+'/'+ladder.length+' · '+difficulty;if(gameMode==='arcade')label+=' · '+routeScore.toLocaleString();x.fillText(label,W/2,474);
  }else if(gameMode==='local'){x.font='bold 9px Consolas';x.fillStyle='#72ffd7';x.fillText('LOCAL VERSUS · '+matchFormatLabel(),W/2,474)}
@@ -2321,7 +2322,7 @@ function drawTitleScreen(){
    x.font=(sel?'bold ':'')+'16px Georgia';x.fillStyle=sel?'#fff':'#c9b9d2';x.textAlign='center';x.fillText(item,W/2,y+19);
  });
  x.font='9px Consolas';x.fillStyle='#91849a';x.fillText('↑/↓ SELECT  ·  ENTER CONFIRM  ·  M MUTE',W/2,481);
- x.fillStyle='#72ffd7';x.fillText('0.62 · CHARACTER EFFECTS',W/2,499);
+ x.fillStyle='#72ffd7';x.fillText('0.63 · PAINTED EFFECTS',W/2,499);
  x.fillStyle='#675c70';x.fillText('ALL MONSTERS ARE BEAUTIFUL.',W/2,517);
 }
 function drawCharacterSelect(){

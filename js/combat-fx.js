@@ -14,7 +14,7 @@
   MUMMY:{color:'#55e5c6',light:'#ffe6a3',a:'bandageLash',b:'scarabCurse',motif:'scarab'},
   WITCH:{color:'#cd88ff',light:'#ffe2ff',a:'moonSigil',b:'hexBolt',motif:'star'}
  };
- const byKind={};Object.values(profiles).forEach(p=>{byKind[p.a]=p;byKind[p.b]=p;});
+ const byKind={};Object.entries(profiles).forEach(([name,p])=>{p.name=name;byKind[p.a]=p;byKind[p.b]=p;});
  function line(c,color,width,build,glow=false){
   c.beginPath();build(c);c.lineCap='round';c.lineJoin='round';
   c.strokeStyle='#110d23';c.lineWidth=width+2;c.stroke();
@@ -55,6 +55,8 @@
  }
  function draw(c,kind,phase=0,options={}){
   const p=options.profile||byKind[kind]||profiles.WITCH,col=options.color||p.color,t=clamp(phase),low=options.quality==='LOW'||options.quality==='OFF'||!!options.reducedMotion,still=!!options.reducedMotion;
+  const paintedKey=['hit','guard','counter'].includes(kind)?kind:kind==='super'?p.name?.toLowerCase()+'-super':kind===p.a||kind==='light'||kind==='heavy'?p.name?.toLowerCase()+'-a':kind===p.b?p.name?.toLowerCase()+'-b':null;
+  if(paintedKey&&root.NightbloomPaintedFX?.draw(c,paintedKey,t,{...options,size:kind==='light'?84:kind==='heavy'?100:undefined}))return;
   const impact=['hit','impact','guard','counter'].includes(kind),travel=!!options.projectile;
   const envelope=travel?1:Math.min(1,t*7)*Math.min(1,(1-t)*4);
   if(envelope<=0)return;c.save();c.globalAlpha*=envelope;
@@ -151,7 +153,7 @@
  }
  function projectile(c,q,time,options={}){
   const p=profiles[q.owner.name]||profiles.WITCH;c.save();c.translate(Math.round(q.x),Math.round(q.y));if(q.vx<0)c.scale(-1,1);
-  if(q.head){if(options.quality!=='OFF'){c.save();c.globalAlpha=.55;draw(c,'shadow',.45,{...options,profile:p});c.restore();}}
+  if(q.head){if(options.quality!=='OFF'){c.save();c.globalAlpha=.55;draw(c,p.b,(time/26)%1,{...options,profile:p,projectile:true});c.restore();}}
   else draw(c,q.kind,(time/26)%1,{...options,profile:p,projectile:true});c.restore();
  }
  function status(c,f,time,options={}){
@@ -162,5 +164,5 @@
   if(f.armor>0){c.save();c.translate(19,-80);ring(c,profiles.JIANGSHI.color,22,-1.4,1.4,2,.9);c.restore();}
   c.restore();
  }
- root.NightbloomFX={profiles,draw,atlas,projectile,status};
+ root.NightbloomFX={profiles,draw,atlas,projectile,status,clearCache:()=>cache.clear()};
 })(typeof globalThis!=='undefined'?globalThis:this);
