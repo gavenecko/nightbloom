@@ -2,7 +2,7 @@
 (function(root){
  'use strict';
  const bank=new Map(),listeners=new Set(),api={revision:0};
- const names=['vampira','nekomata','banshee','medusa','jiangshi','yurei','dullahan','werewolf','mummy','witch'];
+ const names=['vampira','nekomata','banshee','medusa','jiangshi','yurei','dullahan','werewolf','mummy','witch','arachne','living-doll'];
  const keys=new Set([...names.flatMap(name=>['a','b','super'].map(slot=>name+'-'+slot)),'hit','guard','counter']);
  // Resolve relative to this script so both the game and docs gallery use the same files.
  const base=typeof document!=='undefined'&&document.currentScript?.src?new URL('../assets/fx/painted-v1/',document.currentScript.src).href:'assets/fx/painted-v1/';
@@ -23,7 +23,7 @@
   ctx.save();ctx.globalAlpha*=envelope;ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
   ctx.drawImage(img,frame*256,0,256,256,-size/2,-size/2,size,size);ctx.restore();return true;
  };
- api.preload=function(name){for(const slot of ['a','b','super'])image(name.toLowerCase()+'-'+slot);for(const key of ['hit','guard','counter'])image(key);};
+ api.preload=function(name){for(const slot of ['a','b','super'])image(name.toLowerCase().replaceAll(' ','-')+'-'+slot);for(const key of ['hit','guard','counter'])image(key);};
  api.subscribe=function(fn){listeners.add(fn);return()=>listeners.delete(fn);};
  root.NightbloomPaintedFX=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

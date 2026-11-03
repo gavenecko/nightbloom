@@ -12,7 +12,9 @@
   DULLAHAN:{color:'#56edbd',light:'#dbfff1',a:'blackRide',b:'headToss',motif:'blade'},
   WEREWOLF:{color:'#a8caff',light:'#f1f8ff',a:'moonClaw',b:'howlWave',motif:'moon'},
   MUMMY:{color:'#55e5c6',light:'#ffe6a3',a:'bandageLash',b:'scarabCurse',motif:'scarab'},
-  WITCH:{color:'#cd88ff',light:'#ffe2ff',a:'moonSigil',b:'hexBolt',motif:'star'}
+  WITCH:{color:'#cd88ff',light:'#ffe2ff',a:'moonSigil',b:'hexBolt',motif:'star'},
+  ARACHNE:{color:'#d697ea',light:'#fff1ff',a:'silkLash',b:'widowWeb',motif:'web'},
+  'LIVING DOLL':{color:'#e7a2ad',light:'#fff4e8',a:'porcelainStrike',b:'needleThread',motif:'thread'}
  };
  const byKind={};Object.entries(profiles).forEach(([name,p])=>{p.name=name;byKind[p.a]=p;byKind[p.b]=p;});
  function line(c,color,width,build,glow=false){
@@ -32,6 +34,15 @@
   c.fillStyle=p.light;c.beginPath();c.arc(0,-r*.9,r*.24,0,TAU);c.fill();
  }
  function rune(c,p,motif,r=17){
+  if(motif==='web'){
+   for(let i=0;i<8;i++){const a=i*TAU/8;line(c,p.light,1,q=>{q.moveTo(0,0);q.lineTo(Math.cos(a)*r,Math.sin(a)*r);});}
+   for(const k of [.4,.75,1])ring(c,p.color,r*k,0,TAU,1);
+   return;
+  }
+  if(motif==='thread'){
+   line(c,p.light,2,q=>{q.moveTo(-r,0);q.lineTo(r,0);});
+   line(c,p.color,1.5,q=>{q.moveTo(-r,0);q.bezierCurveTo(-r*1.8,-r,-r*2,r,-r*2.5,0);});return;
+  }
   if(motif==='star'){star(c,p.color,r);ring(c,p.light,r+4,0,TAU,1);}
   else if(motif==='scarab')scarab(c,p,r*.65);
   else if(motif==='paw'){
@@ -55,7 +66,7 @@
  }
  function draw(c,kind,phase=0,options={}){
   const p=options.profile||byKind[kind]||profiles.WITCH,col=options.color||p.color,t=clamp(phase),low=options.quality==='LOW'||options.quality==='OFF'||!!options.reducedMotion,still=!!options.reducedMotion;
-  const paintedKey=['hit','guard','counter'].includes(kind)?kind:kind==='super'?p.name?.toLowerCase()+'-super':kind===p.a||kind==='light'||kind==='heavy'?p.name?.toLowerCase()+'-a':kind===p.b?p.name?.toLowerCase()+'-b':null;
+  const paintedKey=['hit','guard','counter'].includes(kind)?kind:kind==='super'?p.name?.toLowerCase().replaceAll(' ','-')+'-super':kind===p.a||kind==='light'||kind==='heavy'?p.name?.toLowerCase().replaceAll(' ','-')+'-a':kind===p.b?p.name?.toLowerCase().replaceAll(' ','-')+'-b':null;
   if(paintedKey&&root.NightbloomPaintedFX?.draw(c,paintedKey,t,{...options,size:kind==='light'?84:kind==='heavy'?100:options.size}))return;
   const impact=['hit','impact','guard','counter'].includes(kind),travel=!!options.projectile;
   const envelope=travel?1:Math.min(1,t*7)*Math.min(1,(1-t)*4);

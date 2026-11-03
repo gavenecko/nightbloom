@@ -1,4 +1,11 @@
-# NIGHTBLOOM Prototype 0.63
+# NIGHTBLOOM Prototype 0.64
+
+## Secret fighters
+- Complete Story Mode to unlock Arachne. Complete Story Mode with Arachne to unlock the Living Doll.
+- Existing Story clears count, and unlocks persist in the existing browser save.
+- Two new ten-chapter routes, endings, portraits, 144 isolated body frames and 24 painted effects frames.
+- See [release notes](docs/SECRET_FIGHTERS_064.md) for controls, save behavior and validation.
+
 
 This package is organized for GitHub Pages testing.
 
