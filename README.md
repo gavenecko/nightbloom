@@ -1,4 +1,8 @@
-# NIGHTBLOOM Prototype 0.64
+# NIGHTBLOOM Prototype 0.65
+
+## Hidden selection cards and atlas review
+- Secret selection cards appear only after their unlock conditions are met. Keyboard, mouse and controller selection skip hidden fighters.
+- Atlas Inspector includes Arachne and Living Doll immediately for animation review; inspecting them does not unlock them for play.
 
 ## Secret fighters
 - Complete Story Mode to unlock Arachne. Complete Story Mode with Arachne to unlock the Living Doll.

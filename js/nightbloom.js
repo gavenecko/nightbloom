@@ -391,7 +391,7 @@ function unlockStoryClear(name){
  newlyUnlocked=ROSTER.filter(n=>isFighterUnlocked(n)&&!before.includes(n));refreshSecretInspector();
 }
 function refreshSecretInspector(){
- INSPECTOR_FIGHTERS.splice(0,INSPECTOR_FIGHTERS.length,...ROSTER.filter(isFighterUnlocked));
+ INSPECTOR_FIGHTERS.splice(0,INSPECTOR_FIGHTERS.length,...ROSTER);
  inspectorFighterIndex=Math.min(inspectorFighterIndex,INSPECTOR_FIGHTERS.length-1);
 }
 function saveArcadeBest(name,score){
@@ -2344,10 +2344,13 @@ function drawTitleScreen(){
    x.font=(sel?'bold ':'')+'16px Georgia';x.fillStyle=sel?'#fff':'#c9b9d2';x.textAlign='center';x.fillText(item,W/2,y+19);
  });
  x.font='9px Consolas';x.fillStyle='#91849a';x.fillText('↑/↓ SELECT  ·  ENTER CONFIRM  ·  M MUTE',W/2,481);
- x.fillStyle='#72ffd7';x.fillText('0.64 · SECRET FIGHTERS',W/2,499);
+ x.fillStyle='#72ffd7';x.fillText('0.65 · HIDDEN SECRETS',W/2,499);
  x.fillStyle='#675c70';x.fillText('ALL MONSTERS ARE BEAUTIFUL.',W/2,517);
 }
+function selectableFighters(){return ROSTER.filter(isFighterUnlocked)}
+function cycleSelectableFighter(dir){const available=selectableFighters(),name=ROSTER[menuIndex];menuIndex=ROSTER.indexOf(available[cycle(available,dir,Math.max(0,available.indexOf(name)))]);}
 function drawCharacterSelect(){
+ if(!isFighterUnlocked(ROSTER[menuIndex]))menuIndex=0;
  let selected=ROSTER[menuIndex],info=CHAR_INFO[selected],accent=info.accent,m=MOVE_NAMES[selected];
  let oldStage=selectedStage;selectedStage=selected==='WITCH'||selected==='YUREI'?'CURSED LIBRARY':selected==='WEREWOLF'||selected==='DULLAHAN'?'BONEFIELD':selected==='MUMMY'?'BONEFIELD':selected==='NEKOMATA'?'MOONLIT SHRINE':selected==='BANSHEE'?'FORSAKEN HARBOR':'CRIMSON CATHEDRAL';drawStage();selectedStage=oldStage;
  x.fillStyle='rgba(4,3,9,.72)';x.fillRect(0,0,W,H);drawScreenVignette(.72);
@@ -2355,7 +2358,7 @@ function drawCharacterSelect(){
  let subtitle=(gameMode==='story'?'CHOOSE YOUR STORY QUEEN':gameMode==='arcade'?'CHOOSE YOUR ARCADE QUEEN':gameMode==='training'?(charSelectPhase==='p1'?'CHOOSE TRAINING FIGHTER':'CHOOSE DUMMY'):gameMode==='local'?(charSelectPhase==='p1'?'CHOOSE PLAYER 1':'CHOOSE PLAYER 2'):charSelectPhase==='p1'?'CHOOSE PLAYER FIGHTER':'CHOOSE CPU OPPONENT');
  drawSectionLabel(subtitle,53,accent);
  const slots=CHARACTER_SLOTS;
- ROSTER.forEach((name,i)=>{let [px,py]=slots[i];menuCard(px,py,148,66,name,menuIndex===i,!isFighterUnlocked(name));});
+ ROSTER.forEach((name,i)=>{if(!isFighterUnlocked(name))return;let [px,py]=slots[i];menuCard(px,py,148,66,name,menuIndex===i,false);});
 
  // lower dossier panel
  roundRect(62,226,836,245,10,'rgba(7,5,13,.91)',rgba(accent,.72),2);
@@ -2386,7 +2389,7 @@ function drawCharacterSelect(){
  x.fillStyle='#c1b4c9';x.fillText('QCF+J / L  '+m.a,314,445);x.fillText('QCF+K      '+m.b,500,445);
  x.textAlign='center';x.fillStyle='#a89ab1';x.font='9px Consolas';
  x.fillText(gameMode==='local'?'MENU: P1 controls · FIGHT: P2 Arrows + Numpad or Controller 2':'WASD / ARROWS SELECT · ENTER CONFIRM · BACKSPACE BACK',W/2,499);
- x.fillStyle=accent;x.fillText('10 CORE FIGHTERS · '+ROSTER.filter(n=>!CORE_ROSTER.includes(n)&&isFighterUnlocked(n)).length+' / 2 SECRETS UNLOCKED',W/2,517);
+ x.fillStyle=accent;x.fillText(selectableFighters().length+' FIGHTERS AVAILABLE',W/2,517);
 }function drawStageSelect(){
  selectedStage=STAGES[stageIndex];drawStage();x.fillStyle='rgba(4,3,9,.62)';x.fillRect(0,0,W,H);drawScreenVignette(.7);
  let current=STAGE_PRESENTATION[selectedStage];
@@ -2708,8 +2711,8 @@ function handleFrontend(){
    return;
  }
  if(gameState==='charSelect'){
-   if(pressed.ArrowUp||pressed.KeyW||pressed.ArrowLeft||pressed.KeyA)menuIndex=cycle(ROSTER,-1,menuIndex);
-   if(pressed.ArrowDown||pressed.KeyS||pressed.ArrowRight||pressed.KeyD)menuIndex=cycle(ROSTER,1,menuIndex);
+   if(pressed.ArrowUp||pressed.KeyW||pressed.ArrowLeft||pressed.KeyA)cycleSelectableFighter(-1);
+   if(pressed.ArrowDown||pressed.KeyS||pressed.ArrowRight||pressed.KeyD)cycleSelectableFighter(1);
    if(pressed.Enter||pressed.Space){
      let choice=ROSTER[menuIndex];if(!isFighterUnlocked(choice)){announcement=unlockRequirement(choice);announceT=90;return;}
      if(charSelectPhase==='p1'){
@@ -2815,7 +2818,7 @@ function pointerHoverTarget(px,py){
  }
  if(gameState==='charSelect'){
    const slots=CHARACTER_SLOTS;
-   for(let i=0;i<slots.length;i++){let [sx,sy]=slots[i];if(inRect(px,py,sx,sy,148,66)){menuIndex=i;return true}}
+   for(let i=0;i<slots.length;i++){let [sx,sy]=slots[i];if(isFighterUnlocked(ROSTER[i])&&inRect(px,py,sx,sy,148,66)){menuIndex=i;return true}}
  }
  if(gameState==='stageSelect'){
    const slots=[[24,76],[338,76],[652,76],[24,263],[338,263],[652,263]];
@@ -2862,7 +2865,7 @@ function pointerActivate(px,py){
  }
  if(gameState==='charSelect'){
    const slots=CHARACTER_SLOTS;
-   for(let i=0;i<slots.length;i++){let [sx,sy]=slots[i];if(inRect(px,py,sx,sy,148,66)){menuIndex=i;pointerPress('Enter');return true}}
+   for(let i=0;i<slots.length;i++){let [sx,sy]=slots[i];if(isFighterUnlocked(ROSTER[i])&&inRect(px,py,sx,sy,148,66)){menuIndex=i;pointerPress('Enter');return true}}
  }
  if(gameState==='stageSelect'){
    const slots=[[24,76],[338,76],[652,76],[24,263],[338,263],[652,263]];

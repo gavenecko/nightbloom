@@ -1,6 +1,6 @@
 # 0.64 — Secret fighters
 
-Complete any of the original ten Story routes to unlock **Arachne, the Silk Widow**. Complete Arachne’s Story route to unlock **the Living Doll**. Both become available in all fighter-selection modes and the Atlas Inspector once earned. Locked cards explain the requirements. Endings remain separate Gallery rewards for completing each character’s own route.
+Complete any of the original ten Story routes to unlock **Arachne, the Silk Widow**. Complete Arachne’s Story route to unlock **the Living Doll**. Both become available in all fighter-selection modes once earned. As of0.65, locked selection cards are fully hidden and skipped by navigation. Atlas Inspector includes both secret fighters immediately for art review; inspection does not unlock them for play. Endings remain separate Gallery rewards for completing each character’s own route.
 
 Existing saved Story clears count automatically. Progress uses the existing `nightbloom_progress` browser save: no second unlock flag to lose or desynchronize. It is local to the browser and site origin; it does not sync across devices. Progress reset/restore also resets/restores the derived unlocks. Arcade clears, losses, and partial routes do not unlock fighters.
 
