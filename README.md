@@ -1,4 +1,8 @@
-# NIGHTBLOOM Prototype 0.65
+# NIGHTBLOOM Prototype 0.66
+
+## Arachne individual frame pass
+-72 isolated body frames use the approved detailed pixel-art design and spiderweb pantyhose.
+- All18 actions rebuilt, with source and gutter checks. See [art notes](docs/ARACHNE_V10.md).
 
 ## Hidden selection cards and atlas review
 - Secret selection cards appear only after their unlock conditions are met. Keyboard, mouse and controller selection skip hidden fighters.
