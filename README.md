@@ -1,4 +1,8 @@
-# NIGHTBLOOM Prototype 0.67
+# NIGHTBLOOM Prototype 0.68
+
+## Living Doll individual frame pass
+- 72 separate high-resolution body frames use the approved mint-and-white ball-jointed doll design.
+- Matching portrait and mint roster accents; see [art notes](docs/LIVING_DOLL_V10.md).
 
 ## Arachne orientation correction
 - Final knockdown frame corrected;71 other body frames unchanged.

@@ -1,12 +1,12 @@
 /* Secret fighter definitions. Unlocks are derived from existing Story clear saves. */
 const SECRET_ART={};
 for(const [name,key] of [['ARACHNE','arachne'],['LIVING DOLL','living-doll']]){
- const body=new Image(),portrait=new Image();body.src='assets/fighters/secrets/'+(name==='ARACHNE'?'arachne-v10-r2':key+'-v1')+'.png';portrait.src='assets/portraits/secrets/'+key+'-v1.png';SECRET_ART[name]={body,portrait};
+ const body=new Image(),portrait=new Image();body.src='assets/fighters/secrets/'+(name==='ARACHNE'?'arachne-v10-r2':name==='LIVING DOLL'?'living-doll-v10':key+'-v1')+'.png';portrait.src='assets/portraits/secrets/'+(name==='LIVING DOLL'?'living-doll-v10':key+'-v1')+'.png';SECRET_ART[name]={body,portrait};
 }
 function installSecretFighters(){
  Object.assign(CHAR_INFO,{
   ARACHNE:{color:'#d6bddb',accent:'#d697ea',team:'THE SILK WIDOW',quote:'“Every road ends in my web.”',effect:'silkLash'},
-  'LIVING DOLL':{color:'#f0ddd8',accent:'#e7a2ad',team:'THE UNSTRUNG',quote:'“I have cut the strings. Have you?”',effect:'porcelainStrike'}
+  'LIVING DOLL':{color:'#f0eee4',accent:'#91d9c0',team:'THE UNSTRUNG',quote:'“I have cut the strings. Have you?”',effect:'porcelainStrike'}
  });
  Object.assign(AI_PROFILES,{
   ARACHNE:{range:160,guard:1.05,throw:.9,normal:1.02,projectile:1.2,jump:1.1,dash:.9,super:1.1,retreat:1.05,desc:'silk midrange controller'},
