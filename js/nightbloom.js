@@ -2451,11 +2451,11 @@ function drawCharacterSelect(){
 
  x.fillStyle='#130d1bdd';x.fillRect(280,292,400,58);x.strokeStyle=CHAR_INFO[playerChoice].accent;x.strokeRect(280,292,400,58);
  x.font='12px Consolas';x.fillStyle='#fff';x.textAlign='left';
- let pLines=wrapLines(rivalLine(playerChoice,opp),370,'12px Consolas');pLines.slice(0,2).forEach((ln,i)=>x.fillText(playerChoice+': '+(i?ln:pLines[i]),296,314+i*18));
+ let pLines=wrapLines(playerChoice+': '+rivalLine(playerChoice,opp),370,'12px Consolas');pLines.slice(0,2).forEach((ln,i)=>x.fillText(ln,296,314+i*18));
 
  x.fillStyle='#130d1bdd';x.fillRect(280,361,400,58);x.strokeStyle=CHAR_INFO[opp].accent;x.strokeRect(280,361,400,58);
- x.fillStyle='#fff';let oLines=wrapLines(rivalLine(opp,playerChoice),370,'12px Consolas');
- oLines.slice(0,2).forEach((ln,i)=>x.fillText(opp+': '+(i?ln:oLines[i]),296,383+i*18));
+ x.fillStyle='#fff';let oLines=wrapLines(opp+': '+rivalLine(opp,playerChoice),370,'12px Consolas');
+ oLines.slice(0,2).forEach((ln,i)=>x.fillText(ln,296,383+i*18));
 
  x.textAlign='center';x.fillStyle='#72ffd7';x.font='bold 16px Consolas';x.fillText('PRESS ENTER — BEGIN FIGHT',W/2,466);
  x.fillStyle='#a899b4';x.font='11px Consolas';x.fillText(difficulty+' · '+DIFFICULTIES[difficulty].desc,W/2,491);
