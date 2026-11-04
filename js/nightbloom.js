@@ -2014,10 +2014,13 @@ function drawScreenVignette(alpha=.65){
 function drawSectionLabel(text,py,accent='#72ffd7'){
  x.textAlign='center';x.font='bold 9px Consolas';x.fillStyle=accent;x.fillText('—  '+text+'  —',W/2,py);
 }
-function drawImageContained(img,px,py,w,h){
+function drawImageContained(img,px,py,w,h,mirror=false){
  if(!img?.complete||!img.naturalWidth)return;
  const scale=Math.min(w/img.naturalWidth,h/img.naturalHeight),dw=img.naturalWidth*scale,dh=img.naturalHeight*scale;
- x.drawImage(img,px+(w-dw)/2,py+(h-dh)/2,dw,dh);
+ x.save();
+ if(mirror){x.translate(px+w,py);x.scale(-1,1);x.drawImage(img,(w-dw)/2,(h-dh)/2,dw,dh)}
+ else x.drawImage(img,px+(w-dw)/2,py+(h-dh)/2,dw,dh);
+ x.restore();
 }
 function drawPortraitFrame(img,px,py,w,h,accent,selected=false){
  x.save();roundRect(px-3,py-3,w+6,h+6,7,'#080611e8',selected?accent:'#4a3854',selected?3:1);
@@ -2418,7 +2421,7 @@ function drawCharacterSelect(){
 
  if(storyAfterText){
    x.save();x.globalAlpha=.35;drawImageContained(oImg,46,126,235,235);x.restore();
-   drawImageContained(pImg,679,126,235,235);
+   drawImageContained(pImg,679,126,235,235,true);
    x.strokeStyle=CHAR_INFO[playerChoice].accent;x.lineWidth=3;x.strokeRect(679,126,235,235);
    x.textAlign='left';x.font='bold 25px Georgia';x.fillStyle=CHAR_INFO[playerChoice].accent;x.fillText('AFTERMATH',330,108);
    let lines=wrapLines(storyAfterText,315,'15px Consolas');x.font='15px Consolas';x.fillStyle='#e9e0ef';
@@ -2438,7 +2441,7 @@ function drawCharacterSelect(){
  }
 
  // pre-fight faceoff
- drawImageContained(pImg,48,119,220,220);drawImageContained(oImg,692,119,220,220);
+ drawImageContained(pImg,48,119,220,220);drawImageContained(oImg,692,119,220,220,true);
  x.strokeStyle=CHAR_INFO[playerChoice].accent;x.lineWidth=3;x.strokeRect(48,119,220,220);
  x.strokeStyle=CHAR_INFO[opp].accent;x.strokeRect(692,119,220,220);
  x.textAlign='center';x.font='bold 23px Georgia';x.fillStyle=CHAR_INFO[playerChoice].accent;x.fillText(playerChoice,158,405);
