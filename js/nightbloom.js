@@ -1897,7 +1897,7 @@ function hud(){
  roundRect(15,15,930,73,9,'rgba(5,4,12,.91)','#58285c',2);
  x.strokeStyle='rgba(219,70,142,.35)';x.strokeRect(20.5,20.5,919,62);
  let pImg=portraitFor(p1.name),eImg=portraitFor(p2.name);
- drawPortraitFrame(pImg,27,25,56,56,p1.accent,false);drawPortraitFrame(eImg,W-83,25,56,56,p2.accent,false);
+ drawPortraitFrame(pImg,27,25,56,56,p1.accent,false);drawPortraitFrame(eImg,W-83,25,56,56,p2.accent,false,true);
  x.font='bold 16px Georgia';x.fillStyle='#fff';x.textAlign='left';x.fillText(p1.name,92,38);x.textAlign='right';x.fillText(p2.name,W-92,38);
 
  // health bar frames
@@ -2018,9 +2018,9 @@ function drawImageContained(img,px,py,w,h,mirror=false){
  else x.drawImage(img,px+(w-dw)/2,py+(h-dh)/2,dw,dh);
  x.restore();
 }
-function drawPortraitFrame(img,px,py,w,h,accent,selected=false){
+function drawPortraitFrame(img,px,py,w,h,accent,selected=false,mirror=false){
  x.save();roundRect(px-3,py-3,w+6,h+6,7,'#080611e8',selected?accent:'#4a3854',selected?3:1);
- x.beginPath();x.rect(px,py,w,h);x.clip();drawImageContained(img,px,py,w,h);x.restore();
+ x.beginPath();x.rect(px,py,w,h);x.clip();drawImageContained(img,px,py,w,h,mirror);x.restore();
  let grad=x.createLinearGradient(px,py,px,py+h);grad.addColorStop(.55,'rgba(0,0,0,0)');grad.addColorStop(1,'rgba(0,0,0,.55)');x.fillStyle=grad;x.fillRect(px,py,w,h);
  if(selected){x.save();x.globalAlpha=.18;x.strokeStyle=accent;x.lineWidth=8;x.strokeRect(px+2,py+2,w-4,h-4);x.restore()}
 }
