@@ -1,4 +1,6 @@
-# NIGHTBLOOM Prototype 0.70
+# NIGHTBLOOM Prototype 0.71
+
+Compact super banners keep fighters visible. Dash and tech recovery art now follows short action timings, with a clear pause indicator.
 
 Five-second victory scenes, fight stats before route dialog, visible intro and wake-up poses, and square dialog portraits. See [presentation notes](docs/POST_FIGHT_070.md).
 

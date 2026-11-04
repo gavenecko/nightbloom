@@ -1,7 +1,7 @@
 
 const c=document.getElementById('game'),x=c.getContext('2d'); x.imageSmoothingEnabled=false;
 const W=c.width,H=c.height, ground=430;
-const BUILD_INFO={version:'0.70',channel:'POST-FIGHT PRESENTATION',date:'2026-11-03',label:'POST-FIGHT PRESENTATION'};
+const BUILD_INFO={version:'0.71',channel:'CLEAR COMBAT PRESENTATION',date:'2026-11-04',label:'CLEAR COMBAT PRESENTATION'};
 const keys={},kbKeys={},padKeys={},pressed={};
 const p2Keys={},p2KbKeys={},p2PadKeys={},p2Pressed={};
 const P2_KEYMAP={
@@ -890,6 +890,7 @@ function animName(f){
  if(!f.air&&f.wakeup>0)return f.wakeup>14?'down':'recover';
  if(f.air&&f.knockdown>0)return f.vy<0?'hit':'fall';
  if(f.attack)return f.attack.type;
+ if(f.visualRecover>0&&f.hitstun<=0&&f.blockstun<=0)return 'recover';
  if(f.state==='hit'||f.state==='block'||f.state==='down'||f.state==='recover'||f.state==='dash')return f.state;
  if(f.air)return f.vy<0?'jump':'fall';
  if(Math.abs(f.vx)>1)return 'walk';
@@ -918,6 +919,8 @@ function attackPoseFrame(a){
 }
 function animFrame(f){
  let name=animName(f),body=BODY_ACTIONS[name]||name;
+ if(name==='dash'&&REMADE_SHEET_FIGHTERS.has(f.name))return Math.min(3,Math.max(0,Math.floor((10-f.dashT)/10*4)));
+ if(name==='recover'&&f.visualRecover>0&&REMADE_SHEET_FIGHTERS.has(f.name))return Math.min(3,Math.floor((18-f.visualRecover)/18*4));
  if(!matchOver&&!roundOver&&!f.air&&f.wakeup>0&&REMADE_SHEET_FIGHTERS.has(f.name))return Math.min(3,Math.floor((name==='down'?28-f.wakeup:14-f.wakeup)/14*4));
  if(f.attack&&name===f.attack.type&&REMADE_SHEET_FIGHTERS.has(f.name))return attackPoseFrame(f.attack);
  let a=(REMADE_SHEET_FIGHTERS.has(f.name)?PADDED_VISUAL_ANIMS[body]:null)||ANIMS[name]||ANIMS.idle;
@@ -956,7 +959,7 @@ function applyTrainingFighter(f,s){
  for(let k of Object.keys(s))f[k]=s[k];
  f.attack=null;f.hitstun=0;f.blockstun=0;f.knockdown=0;f.wakeup=0;f.techWindow=0;f.throwTech=0;
  f.combo=0;f.comboT=0;f.comboDamage=0;f.juggle=0;f.invuln=0;f.inputBuffer=[];f.motionHistory=[];
- fighterAnimationClocks.delete(f);
+ f.visualRecover=0;fighterAnimationClocks.delete(f);
 }
 function saveTrainingSnapshot(){
  if(!training)return;
@@ -1169,7 +1172,7 @@ function techThrow(def,att){
 }
 function groundTech(f,dir){
  f.techWindow=0;f.hitstun=0;f.blockstun=0;f.knockdown=0;f.wakeup=0;
- f.state='recover';f.invuln=Math.max(f.invuln,11);f.vx=dir*5.2;
+ f.visualRecover=18;f.state='recover';f.invuln=Math.max(f.invuln,11);f.vx=dir*5.2;
  f.x=clamp(f.x+dir*42,45,W-45);f.lastTech=45;
  spawnFX('guard',f.x,f.y-48,false,.55);
  announcement='TECH';announceT=24;emit('ground_tech',{fighter:f.name});
@@ -1334,6 +1337,7 @@ function spawnHit(px,py,col,n=12,kind=null){
  }
 }
 function updateF(f,o,dt){
+ if(f.visualRecover>0)f.visualRecover=Math.max(0,f.visualRecover-dt);
  f.t+=dt;if(f.comboT>0)f.comboT-=dt;else{f.combo=0;f.comboDamage=0;}
  if(f.lastTech>0)f.lastTech-=dt;
  if(f.throwTech>0){
@@ -1488,7 +1492,7 @@ function updateF(f,o,dt){
    let techDir=!f.ai?(pressedFor(f,'KeyA')?-1:pressedFor(f,'KeyD')?1:0):(Math.random()<.02?(f.x<o.x?-1:1):0);
    let techNow=techDir!==0||(!f.ai&&pressedFor(f,'KeyW'))||f.airRecover>20;
    if(techNow){
-     f.vy=-2.1;f.vx=techDir?techDir*3.6:f.vx*.55;f.state='recover';f.invuln=6;f.airRecover=0;
+     f.vy=-2.1;f.vx=techDir?techDir*3.6:f.vx*.55;f.state='recover';f.visualRecover=18;f.invuln=6;f.airRecover=0;
      announcement='AIR TECH';announceT=20;emit('air_tech',{fighter:f.name});
    }
  }
@@ -1833,26 +1837,18 @@ function drawTrainingPanel(){
 function superName(name){return MOVE_NAMES[name]?.super||'SUPER'}
 function drawSuperCinematic(){
  if(superCine<=0||!superOwner)return;
- let t=clamp(superCine/30,0,1),ease=SYSTEM.reducedMotion?.88:1-Math.abs(t-.5)*1.7;ease=clamp(ease,0,1),col=superOwner.accent;
- x.save();x.globalAlpha=.96*ease;x.fillStyle='#020106';x.fillRect(0,0,W,H);
- let grad=x.createLinearGradient(0,0,W,H);grad.addColorStop(0,rgba(col,.36));grad.addColorStop(.48,'rgba(0,0,0,0)');grad.addColorStop(1,rgba(col,.14));x.fillStyle=grad;x.fillRect(0,0,W,H);
- drawSuperMotif(superOwner.name,col,ease);
- // diagonal energy rails
- x.globalAlpha=.44*ease;x.strokeStyle=col;x.lineWidth=2;
- for(let i=-2;i<8;i++){x.beginPath();x.moveTo(i*150,-20);x.lineTo(i*150+360,H+20);x.stroke()}
- x.globalAlpha=ease;
- let left=superOwner===p1,img=portraitFor(superOwner.name),px=left?38:657;
- drawPortraitFrame(img,px,74,265,370,col,true);
- let tx=left?336:624,align=left?'left':'right';
- x.textAlign=align;x.font='bold 10px Consolas';x.fillStyle=col;x.fillText('NIGHTBLOOM SUPER',tx,150);
- glowText(superOwner.name,tx,202,42,'#fff',col,align,'Georgia');
- x.font='bold 25px Georgia';x.fillStyle=col;x.fillText(superName(superOwner.name),tx,244);
- x.font='11px Consolas';x.fillStyle='#cfc1d8';x.fillText(ARCHETYPE_LABELS[superOwner.name],tx,269);
- x.fillStyle='#817286';x.fillText(CHAR_INFO[superOwner.name].team,tx,288);
- x.strokeStyle=col;x.lineWidth=3;x.beginPath();if(left){x.moveTo(tx,305);x.lineTo(862,305)}else{x.moveTo(tx,305);x.lineTo(98,305)}x.stroke();
- x.font='italic 12px Georgia';x.fillStyle='#eadfed';x.fillText(CHAR_INFO[superOwner.name].quote,tx,338);
- x.globalAlpha=.16*ease;x.fillStyle=col;x.fillRect(left?0:W-14,0,14,H);
+ const col=superOwner.accent,t=clamp(superCine/30,0,1);
+ x.save();x.globalAlpha=SYSTEM.reducedMotion?1:Math.min(1,(1-t)*8+.3);
+ roundRect(270,102,420,60,8,'rgba(8,4,15,.88)',col,2);
+ x.textAlign='center';x.font='bold 10px Consolas';x.fillStyle='#e6dbe9';x.fillText(superOwner.name+' · SUPER',W/2,122);
+ x.font='bold 19px Georgia';x.fillStyle=col;x.fillText(superName(superOwner.name),W/2,147,392);
  x.restore();
+}
+function drawPauseIndicator(){
+ if(!paused)return;
+ x.save();roundRect(330,208,300,86,10,'rgba(8,5,15,.92)','#bda0d3',1);
+ x.textAlign='center';x.font='bold 25px Georgia';x.fillStyle='#fff';x.fillText(focusPaused?'AUTO PAUSED':'PAUSED',W/2,242);
+ x.font='11px Consolas';x.fillStyle='#d5c5e0';x.fillText('P — RESUME · ESC — TITLE',W/2,271);x.restore();
 }
 function drawKOEmphasis(){
  if(koCine<=0)return;
@@ -1928,7 +1924,7 @@ function hud(){
  if(p1.meter>=100){x.strokeStyle=p1.accent;x.globalAlpha=.6;x.strokeRect(31,489,258,15);x.globalAlpha=1}
  if(p2.meter>=100){x.strokeStyle=p2.accent;x.globalAlpha=.6;x.strokeRect(W-289,489,258,15);x.globalAlpha=1}
 
- x.textAlign='center';x.font='9px Consolas';x.fillStyle='#817486';x.fillText(selectedStage+'  //  0.63 PAINTED EFFECTS'+(gamepadConnected?'  //  PAD':'')+(AUDIO.mute?'  //  MUTED':''),W/2,524);
+ x.textAlign='center';x.font='9px Consolas';x.fillStyle='#817486';x.fillText(selectedStage+'  //  '+BUILD_INFO.version+' PAINTED EFFECTS'+(gamepadConnected?'  //  PAD':'')+(AUDIO.mute?'  //  MUTED':''),W/2,524);
  if(gameMode==='story'||gameMode==='arcade'){
    x.font='bold 9px Consolas';x.fillStyle='#f2c7df';let label=(gameMode==='story'?'STORY':'ARCADE')+' '+Math.min(ladderIndex+1,ladder.length)+'/'+ladder.length+' · '+difficulty;if(gameMode==='arcade')label+=' · '+routeScore.toLocaleString();x.fillText(label,W/2,474);
  }else if(gameMode==='local'){x.font='bold 9px Consolas';x.fillStyle='#72ffd7';x.fillText('LOCAL VERSUS · '+matchFormatLabel(),W/2,474)}
@@ -1944,7 +1940,7 @@ function hud(){
  if(p1.name==='WEREWOLF'&&p1.rage>=50)chip(p1.rage>=90?'FRENZY':'FERAL',242,86,p1.rage>=90?'#ffd067':'#ff6848');
  if(p2.name==='WEREWOLF'&&p2.rage>=50)chip(p2.rage>=90?'FRENZY':'FERAL',W-242,86,p2.rage>=90?'#ffd067':'#ff6848','right');
 
- if(announcement&&announceT>0){
+ if(announcement&&announceT>0&&superCine<=0){
    const announcementY=training&&roundIntro<=0?(trainingPanelExpanded?268:174):116;
    x.textAlign='center';x.font='bold 18px Georgia';x.shadowColor='#000';x.shadowBlur=8;x.fillStyle='#fff';x.fillText(announcement,W/2,announcementY);x.shadowBlur=0;
  }
@@ -2346,7 +2342,7 @@ function drawTitleScreen(){
    x.font=(sel?'bold ':'')+'16px Georgia';x.fillStyle=sel?'#fff':'#c9b9d2';x.textAlign='center';x.fillText(item,W/2,y+19);
  });
  x.font='9px Consolas';x.fillStyle='#91849a';x.fillText('↑/↓ SELECT  ·  ENTER CONFIRM  ·  M MUTE',W/2,481);
- x.fillStyle='#72ffd7';x.fillText('0.70 · VICTORY & FIGHT STATS',W/2,499);
+ x.fillStyle='#72ffd7';x.fillText('0.71 · CLEAR COMBAT PRESENTATION',W/2,499);
  x.fillStyle='#675c70';x.fillText('ALL MONSTERS ARE BEAUTIFUL.',W/2,517);
 }
 function selectableFighters(){return ROSTER.filter(isFighterUnlocked)}
@@ -3111,7 +3107,7 @@ function loop(now){
  x.save();
  let camZoom=1,camX=W/2,camY=ground-105;
  if(!SYSTEM.reducedMotion&&koCine>0&&koLoser){let kp=clamp(koCine/62,0,1);camZoom=1+(1-kp)*.12;camX=koLoser.x;camY=koLoser.y-55}
- else if(!SYSTEM.reducedMotion&&superCine>0&&superOwner){camZoom=1.035;camX=superOwner.x;camY=superOwner.y-65}
+
  if(camZoom!==1){x.translate(W/2,H/2);x.scale(camZoom,camZoom);x.translate(-camX,-camY)}
  if(shake>0&&SYSTEM.shake&&!SYSTEM.reducedMotion&&simAdvance){x.translate(rnd(-shake,shake),rnd(-shake,shake));shake*=.82;if(shake<.3)shake=0}else if(!SYSTEM.shake||SYSTEM.reducedMotion)shake=0
  drawStage();
@@ -3129,6 +3125,7 @@ function loop(now){
  });x.globalAlpha=1;x.restore();
  hud();drawTrainingPanel();drawBalanceOverlay();drawRoundBanner();drawSuperCinematic();drawKOEmphasis();
  if(flash>0){if(SYSTEM.flashes&&!SYSTEM.reducedMotion){x.fillStyle='#fff';x.globalAlpha=Math.min(.22,.055*flash);x.fillRect(0,0,W,H);x.globalAlpha=1}if(simAdvance)flash=Math.max(0,flash-simDt)}
+ drawPauseIndicator();
  trainingFrameStep=false;for(let k in pressed)delete pressed[k];for(let k in p2Pressed)delete p2Pressed[k];
  requestAnimationFrame(loop)
 }
