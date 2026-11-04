@@ -1,7 +1,7 @@
 
 const c=document.getElementById('game'),x=c.getContext('2d'); x.imageSmoothingEnabled=false;
 const W=c.width,H=c.height, ground=430;
-const BUILD_INFO={version:'0.68',channel:'LIVING DOLL MINT PORCELAIN',date:'2026-11-03',label:'LIVING DOLL MINT PORCELAIN'};
+const BUILD_INFO={version:'0.69',channel:'ARACHNE PORTRAIT',date:'2026-11-03',label:'ARACHNE PORTRAIT'};
 const keys={},kbKeys={},padKeys={},pressed={};
 const p2Keys={},p2KbKeys={},p2PadKeys={},p2Pressed={};
 const P2_KEYMAP={
@@ -2344,7 +2344,7 @@ function drawTitleScreen(){
    x.font=(sel?'bold ':'')+'16px Georgia';x.fillStyle=sel?'#fff':'#c9b9d2';x.textAlign='center';x.fillText(item,W/2,y+19);
  });
  x.font='9px Consolas';x.fillStyle='#91849a';x.fillText('↑/↓ SELECT  ·  ENTER CONFIRM  ·  M MUTE',W/2,481);
- x.fillStyle='#72ffd7';x.fillText('0.68 · LIVING DOLL REBUILT',W/2,499);
+ x.fillStyle='#72ffd7';x.fillText('0.69 · ARACHNE PORTRAIT',W/2,499);
  x.fillStyle='#675c70';x.fillText('ALL MONSTERS ARE BEAUTIFUL.',W/2,517);
 }
 function selectableFighters(){return ROSTER.filter(isFighterUnlocked)}

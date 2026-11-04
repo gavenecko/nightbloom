@@ -1,7 +1,7 @@
 /* Secret fighter definitions. Unlocks are derived from existing Story clear saves. */
 const SECRET_ART={};
 for(const [name,key] of [['ARACHNE','arachne'],['LIVING DOLL','living-doll']]){
- const body=new Image(),portrait=new Image();body.src='assets/fighters/secrets/'+(name==='ARACHNE'?'arachne-v10-r2':name==='LIVING DOLL'?'living-doll-v10':key+'-v1')+'.png';portrait.src='assets/portraits/secrets/'+(name==='LIVING DOLL'?'living-doll-v10':key+'-v1')+'.png';SECRET_ART[name]={body,portrait};
+ const body=new Image(),portrait=new Image();body.src='assets/fighters/secrets/'+(name==='ARACHNE'?'arachne-v10-r2':name==='LIVING DOLL'?'living-doll-v10':key+'-v1')+'.png';portrait.src='assets/portraits/secrets/'+(name==='LIVING DOLL'?'living-doll-v10':name==='ARACHNE'?'arachne-v2':key+'-v1')+'.png';SECRET_ART[name]={body,portrait};
 }
 function installSecretFighters(){
  Object.assign(CHAR_INFO,{

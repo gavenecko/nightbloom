@@ -1,4 +1,6 @@
-# NIGHTBLOOM Prototype 0.68
+# NIGHTBLOOM Prototype 0.69
+
+Arachne now has a refined anime pixel-art portrait matching her approved sprite design.
 
 ## Living Doll individual frame pass
 - 72 separate high-resolution body frames use the approved mint-and-white ball-jointed doll design.
