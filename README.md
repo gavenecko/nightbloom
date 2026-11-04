@@ -1,4 +1,6 @@
-# NIGHTBLOOM Prototype 0.69
+# NIGHTBLOOM Prototype 0.70
+
+Five-second victory scenes, fight stats before route dialog, visible intro and wake-up poses, and square dialog portraits. See [presentation notes](docs/POST_FIGHT_070.md).
 
 Arachne now has a refined anime pixel-art portrait matching her approved sprite design.
 
