@@ -1,4 +1,7 @@
-# NIGHTBLOOM Prototype 0.66
+# NIGHTBLOOM Prototype 0.67
+
+## Arachne orientation correction
+- Final knockdown frame corrected;71 other body frames unchanged.
 
 ## Arachne individual frame pass
 -72 isolated body frames use the approved detailed pixel-art design and spiderweb pantyhose.

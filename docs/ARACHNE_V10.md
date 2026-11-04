@@ -5,3 +5,5 @@
 Atlas:1536×1728,8 columns×9 rows,192px cells,baseline184,8px exact transparent gutters. Body-only frames keep magic on the existing separate painted FX layer. Prior Arachne sheet retained under its original filename.
 
 Hidden selection cards, browser-persisted chained Story unlocks and immediate Atlas Inspector art access retained. This pass changes Arachne body artwork and presentation metadata only; moves, combat values, AI, Story scripts, other fighter artwork and effects are preserved.
+
+0.67 correction: final knockdown frame down-3 now has the head on the right and boots on the left, matching the preceding fall direction. Other71 packed frames are byte-for-byte unchanged. Prior source and atlas preserved in workspace backups.
