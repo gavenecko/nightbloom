@@ -4,11 +4,26 @@
  const assignments={NARRATOR:'bf_lily',VAMPIRA:'bf_alice',NEKOMATA:'af_bella',BANSHEE:'af_aoede',MEDUSA:'bf_isabella',JIANGSHI:'af_kore',YUREI:'af_nicole',DULLAHAN:'bf_lily',WEREWOLF:'af_alloy',MUMMY:'bf_emma',WITCH:'af_jessica',ARACHNE:'bf_emma','LIVING DOLL':'af_nicole'};
  const overrides={};
  let engine=null,loading=null,ready=false,token=0,busy=false,auto=false,sceneKey='',lines=[],finishCurrent=null;
+ let recordedLoading=null,recordedData=null,recordedIndex=null,activeAudio=null;
  let getVolume=()=>1,onBusy=()=>{};
  const el=id=>document.getElementById(id),supported=()=>!!(global.speechSynthesis&&global.SpeechSynthesisUtterance);
  function status(text){el('voiceStatus').textContent=text;}
  function setBusy(value){busy=value;el('voiceRead').disabled=value||!lines.length;el('voiceStop').disabled=!value;onBusy();}
- function stop(){token++;const finish=finishCurrent;finishCurrent=null;engine?.stop();global.speechSynthesis?.cancel();finish?.();setBusy(false);}
+ function stop(){token++;const finish=finishCurrent;finishCurrent=null;if(activeAudio){activeAudio.onended=activeAudio.onerror=null;activeAudio.pause();activeAudio.removeAttribute('src');activeAudio.load();activeAudio=null;}engine?.stop();global.speechSynthesis?.cancel();finish?.();setBusy(false);}
+ async function recordedClip(line){
+  if(!global.fetch||!global.Audio)return null;
+  if(!recordedLoading)recordedLoading=global.fetch('assets/audio/story-v1/manifest.json?v=1').then(response=>{if(!response.ok)throw Error('Recordings unavailable');return response.json()}).then(data=>{if(!data.complete||!Array.isArray(data.clips))throw Error('Recordings incomplete');recordedData=data;recordedIndex=new Map(data.clips.map(clip=>[JSON.stringify([clip.speaker,clip.text]),clip]));}).catch(()=>{});
+  await recordedLoading;
+  if(!recordedIndex)return null;
+  const profile=recordedData.profiles?.[line.speaker];
+  for(const field of ['voice','delivery','effect','speed','pitchSemitones','echo','filterHz'])if(overrides[line.speaker]?.[field]!==undefined&&overrides[line.speaker][field]!==profile?.[field])return null;
+  return recordedIndex.get(JSON.stringify([line.speaker,line.text]))||null;
+ }
+ function recordedLine(clip,current){return new Promise((resolve,reject)=>{
+  if(current!==token)return resolve();const player=new global.Audio();activeAudio=player;player.preload='none';player.volume=Math.max(0,Math.min(1,getVolume()));player.src=clip.src;
+  finishCurrent=resolve;player.onended=()=>{if(current===token){finishCurrent=null;activeAudio=null;}resolve()};player.onerror=()=>{if(activeAudio===player)activeAudio=null;current===token?reject(Error('Recording could not play.')):resolve()};
+  player.play().catch(error=>{if(activeAudio===player)activeAudio=null;reject(error)});
+ });}
  function loadScript(src){return new Promise((resolve,reject)=>{const script=document.createElement('script');script.src=src;script.onload=resolve;script.onerror=()=>{script.remove();reject(Error('Voice engine could not load.'))};document.head.appendChild(script);});}
  async function loadNeural(){
   if(ready)return;if(loading)return loading;
@@ -38,7 +53,9 @@
  async function read(){
   stop();if(!lines.length)return;if(getVolume()<=0){status('Unmute audio to hear the dialog.');return;}
   const current=token,sequence=lines.map(line=>({...line}));setBusy(true);
-  try{for(const line of sequence){if(current!==token)break;status((ready?'Neural voice · ':'Device voice · ')+line.speaker);if(ready){try{await neuralLine(line,current)}catch(error){if(current===token)await deviceLine(line,current)}}else await deviceLine(line,current);}
+  try{for(const line of sequence){if(current!==token)break;const clip=await recordedClip(line);if(current!==token)break;
+   let played=false;if(clip){status('Recorded voice · '+line.speaker);try{await recordedLine(clip,current);played=true}catch(error){/* Retain reading when a recording is unavailable. */}}
+   if(current!==token)break;if(!played){status((ready?'Neural voice · ':'Device voice · ')+line.speaker);if(ready){try{await neuralLine(line,current)}catch(error){if(current===token)await deviceLine(line,current)}}else await deviceLine(line,current);}}
    if(current===token)status('Finished. Continue whenever you are ready.');
   }catch(error){if(current===token)status('Voice playback unavailable. You can still read the dialog.');}
   finally{if(current===token){finishCurrent=null;setBusy(false);}}
@@ -46,7 +63,7 @@
  function update(key,nextLines){
   if(busy&&getVolume()<=0){stop();status('Voice stopped while muted.');}
   if(key===sceneKey)return;stop();sceneKey=key;lines=nextLines||[];el('voiceTools').hidden=!lines.length;setBusy(false);
-  status(ready?'Neural voices ready.':supported()?'Device reading available. Neural model download is optional.':'Load neural voices to enable dialog reading.');
+  status('Recorded voices play on demand. Neural model download is optional.');
   if(auto&&lines.length)void read();
  }
  function configure(options={}){

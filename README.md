@@ -1,4 +1,6 @@
-# NIGHTBLOOM Prototype 0.73
+# NIGHTBLOOM Prototype 0.74
+
+266 prerecorded clips cover 292 dialog entries using the five approved voices. Recordings load only when read; no neural model is needed for these lines. See [recorded voice notes](docs/PRERECORDED_VOICES_074.md).
 
 Story dialogue can be read aloud using device speech or the optional Gaven Echoes neural voice engine. Neural downloads start only when requested.
 

@@ -1,0 +1,24 @@
+{
+  "clips": 266,
+  "coveredEntries": 292,
+  "totalEntries": 452,
+  "bytes": 7227640,
+  "rawBytes": 132765304,
+  "reductionPercent": 94.5560776933106,
+  "durationSeconds": 1178.4080000000013,
+  "manifestBytes": 62623,
+  "speakers": {
+    "VAMPIRA": 11,
+    "NEKOMATA": 11,
+    "ARACHNE": 10,
+    "LIVING DOLL": 10,
+    "NARRATOR": 224
+  },
+  "checks": [
+    "Each clip decoded and measured during generation",
+    "All approved exported lines mapped",
+    "All final file sizes and SHA256 hashes match",
+    "No duplicate speaker/text jobs",
+    "Lazy clip loading, cancellation, mute, fallback and imported-profile overrides tested"
+  ]
+}
