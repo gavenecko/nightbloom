@@ -1,6 +1,6 @@
-# NIGHTBLOOM Prototype 0.74
+# NIGHTBLOOM Prototype 0.75
 
-266 prerecorded clips cover 292 dialog entries using the five approved voices. Recordings load only when read; no neural model is needed for these lines. See [recorded voice notes](docs/PRERECORDED_VOICES_074.md).
+354 prerecorded clips cover all 452 exported story dialog entries with the approved twelve fighters and narrator. Recordings load only when read; no neural model is needed for these lines. See [recorded voice notes](docs/FULL_RECORDED_DIALOGUE_075.md).
 
 Story dialogue can be read aloud using device speech or the optional Gaven Echoes neural voice engine. Neural downloads start only when requested.
 
@@ -91,4 +91,4 @@ This package is organized for GitHub Pages testing.
 
 [Second audition set: eight remaining fighters, three options each](docs/voice-auditions-v2.html). More varied pace, pitch and light echo; all 24 clips total 404 KB and load only when played. Exported profiles retain each option's settings.
 
-All 12 fighters and the narrator now have [approved voice profiles](docs/APPROVED_VOICE_PROFILES.json), including the exact pace, pitch and echo settings chosen in the second audition set. The first prerecorded library is unchanged; recordings for the newly approved eight fighters remain to be rendered.
+All 12 fighters and the narrator now have [approved voice profiles](docs/APPROVED_VOICE_PROFILES.json), including the exact pace, pitch and echo settings chosen in the second audition set. All approved roles now have prerecorded dialog. The original 266 clips are unchanged.

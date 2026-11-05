@@ -1,0 +1,35 @@
+{
+  "uniqueClips": 354,
+  "coveredEntries": 452,
+  "totalEntries": 452,
+  "roles": 13,
+  "newClips": 88,
+  "reusedUnchanged": 266,
+  "totalBytes": 9094056,
+  "rawBytes": 167396376,
+  "reductionPercent": 94.56735192403448,
+  "durationSeconds": 1480.7880000000005,
+  "manifestBytes": 82013,
+  "perRole": {
+    "VAMPIRA": 11,
+    "NEKOMATA": 11,
+    "ARACHNE": 10,
+    "LIVING DOLL": 10,
+    "NARRATOR": 224,
+    "BANSHEE": 11,
+    "MEDUSA": 11,
+    "JIANGSHI": 11,
+    "YUREI": 11,
+    "DULLAHAN": 11,
+    "WEREWOLF": 11,
+    "MUMMY": 11,
+    "WITCH": 11
+  },
+  "checks": [
+    "Every exported dialog entry has a clip",
+    "Every MP3 decoded and checked for audible audio",
+    "All final SHA256 hashes and sizes verified",
+    "All original 266 recordings unchanged",
+    "New clips use approved speed, pitch, filter and echo settings"
+  ]
+}

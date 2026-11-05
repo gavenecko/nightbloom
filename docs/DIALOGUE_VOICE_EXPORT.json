@@ -1,9 +1,9 @@
 {
-  "version": 1,
+  "version": 2,
   "game": "NIGHTBLOOM",
-  "build": "0.72",
+  "build": "0.75",
   "language": "en",
-  "note": "Text and speaker export for voice production. Suggested filenames only; recordings are not yet installed.",
+  "note": "All entries have prerecorded MP3 file references. Repeated lines for the same role share one recording.",
   "speakers": [
     "NARRATOR",
     "VAMPIRA",
@@ -26,7 +26,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "A second heartbeat prowls beneath the shrine bells. Vampira follows it because hunger recognizes hunger.",
-      "file": "assets/audio/voices/vampira-chapter-01-before.mp3"
+      "file": "assets/audio/story-v1/narrator-5e585ab0b1f2431e.mp3"
     },
     {
       "id": "vampira-chapter-01-player",
@@ -34,7 +34,7 @@
       "chapter": 1,
       "speaker": "VAMPIRA",
       "text": "Come closer, NEKOMATA. I prefer my nightmares warm.",
-      "file": "assets/audio/voices/vampira-chapter-01-player.mp3"
+      "file": "assets/audio/story-v1/vampira-d8c588a18cedd096.mp3"
     },
     {
       "id": "vampira-chapter-01-opponent",
@@ -42,7 +42,7 @@
       "chapter": 1,
       "speaker": "NEKOMATA",
       "text": "Try to keep up, VAMPIRA. I have lives to spare.",
-      "file": "assets/audio/voices/vampira-chapter-01-opponent.mp3"
+      "file": "assets/audio/story-v1/nekomata-faf622a974af326c.mp3"
     },
     {
       "id": "vampira-chapter-01-after",
@@ -50,7 +50,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "Nekomata laughs through the pain. “You are less boring than the dead ones.”",
-      "file": "assets/audio/voices/vampira-chapter-01-after.mp3"
+      "file": "assets/audio/story-v1/narrator-f3a8c8f539b94e23.mp3"
     },
     {
       "id": "vampira-chapter-02-before",
@@ -58,7 +58,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "A voice without lungs fills the cathedral. Vampira discovers there are hungers blood cannot answer.",
-      "file": "assets/audio/voices/vampira-chapter-02-before.mp3"
+      "file": "assets/audio/story-v1/narrator-e7f280918fd06f61.mp3"
     },
     {
       "id": "vampira-chapter-02-player",
@@ -66,7 +66,7 @@
       "chapter": 2,
       "speaker": "VAMPIRA",
       "text": "Come closer, BANSHEE. I prefer my nightmares warm.",
-      "file": "assets/audio/voices/vampira-chapter-02-player.mp3"
+      "file": "assets/audio/story-v1/vampira-dab4c4c1f61ef298.mp3"
     },
     {
       "id": "vampira-chapter-02-opponent",
@@ -74,7 +74,7 @@
       "chapter": 2,
       "speaker": "BANSHEE",
       "text": "Listen carefully, VAMPIRA. The next sound is for you.",
-      "file": "assets/audio/voices/vampira-chapter-02-opponent.mp3"
+      "file": "assets/audio/story-v1/banshee-1c1f2e4cef4b5a0f.mp3"
     },
     {
       "id": "vampira-chapter-02-after",
@@ -82,7 +82,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "The song breaks into silence, but the silence remembers her name.",
-      "file": "assets/audio/voices/vampira-chapter-02-after.mp3"
+      "file": "assets/audio/story-v1/narrator-6ab520524d2b8ce0.mp3"
     },
     {
       "id": "vampira-chapter-03-before",
@@ -90,7 +90,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "At the heart of Nightbloom waits a queen whose stare has outlived empires.",
-      "file": "assets/audio/voices/vampira-chapter-03-before.mp3"
+      "file": "assets/audio/story-v1/narrator-e9495cb2b07bc46d.mp3"
     },
     {
       "id": "vampira-chapter-03-player",
@@ -98,7 +98,7 @@
       "chapter": 3,
       "speaker": "VAMPIRA",
       "text": "Come closer, MEDUSA. I prefer my nightmares warm.",
-      "file": "assets/audio/voices/vampira-chapter-03-player.mp3"
+      "file": "assets/audio/story-v1/vampira-5f98677febcd1da2.mp3"
     },
     {
       "id": "vampira-chapter-03-opponent",
@@ -106,7 +106,7 @@
       "chapter": 3,
       "speaker": "MEDUSA",
       "text": "Look at me when I end this, VAMPIRA.",
-      "file": "assets/audio/voices/vampira-chapter-03-opponent.mp3"
+      "file": "assets/audio/story-v1/medusa-5e8739732863bd4e.mp3"
     },
     {
       "id": "vampira-chapter-03-after",
@@ -114,7 +114,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "Stone cracks. The Red Moon chooses appetite over eternity.",
-      "file": "assets/audio/voices/vampira-chapter-03-after.mp3"
+      "file": "assets/audio/story-v1/narrator-33463dbeb0258de5.mp3"
     },
     {
       "id": "vampira-chapter-04-before",
@@ -122,7 +122,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "A paper seal flaps in the harbor wind. Something dead beneath it has been waiting for the Red Moon.",
-      "file": "assets/audio/voices/vampira-chapter-04-before.mp3"
+      "file": "assets/audio/story-v1/narrator-50f0924e2b316603.mp3"
     },
     {
       "id": "vampira-chapter-04-player",
@@ -130,7 +130,7 @@
       "chapter": 4,
       "speaker": "VAMPIRA",
       "text": "Come closer, JIANGSHI. I prefer my nightmares warm.",
-      "file": "assets/audio/voices/vampira-chapter-04-player.mp3"
+      "file": "assets/audio/story-v1/vampira-71a08063d79570e7.mp3"
     },
     {
       "id": "vampira-chapter-04-opponent",
@@ -138,7 +138,7 @@
       "chapter": 4,
       "speaker": "JIANGSHI",
       "text": "Seal intact. Target: VAMPIRA. Proceeding.",
-      "file": "assets/audio/voices/vampira-chapter-04-opponent.mp3"
+      "file": "assets/audio/story-v1/jiangshi-4734d55188fd309a.mp3"
     },
     {
       "id": "vampira-chapter-04-after",
@@ -146,7 +146,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "The seal chars at the edges. Vampira tastes thunder where blood should be.",
-      "file": "assets/audio/voices/vampira-chapter-04-after.mp3"
+      "file": "assets/audio/story-v1/narrator-40b0109f3630df73.mp3"
     },
     {
       "id": "vampira-chapter-05-before",
@@ -154,7 +154,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "A pale reflection appears in every dark window of the library. None of them belong to Vampira.",
-      "file": "assets/audio/voices/vampira-chapter-05-before.mp3"
+      "file": "assets/audio/story-v1/narrator-eac6181700ad04d4.mp3"
     },
     {
       "id": "vampira-chapter-05-player",
@@ -162,7 +162,7 @@
       "chapter": 5,
       "speaker": "VAMPIRA",
       "text": "Come closer, YUREI. I prefer my nightmares warm.",
-      "file": "assets/audio/voices/vampira-chapter-05-player.mp3"
+      "file": "assets/audio/story-v1/vampira-b7ab100d47d4b0d3.mp3"
     },
     {
       "id": "vampira-chapter-05-opponent",
@@ -170,7 +170,7 @@
       "chapter": 5,
       "speaker": "YUREI",
       "text": "You have been standing beside a ghost longer than you think, VAMPIRA.",
-      "file": "assets/audio/voices/vampira-chapter-05-opponent.mp3"
+      "file": "assets/audio/story-v1/yurei-5a5521ad1f1a33a4.mp3"
     },
     {
       "id": "vampira-chapter-05-after",
@@ -178,7 +178,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "The books close themselves. Something remains standing between the words.",
-      "file": "assets/audio/voices/vampira-chapter-05-after.mp3"
+      "file": "assets/audio/story-v1/narrator-d49b764b63f6bbb9.mp3"
     },
     {
       "id": "vampira-chapter-06-before",
@@ -186,7 +186,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "Hoofbeats arrive without a horse in sight. Dullahan carries her own head and a lance aimed at the first thirst.",
-      "file": "assets/audio/voices/vampira-chapter-06-before.mp3"
+      "file": "assets/audio/story-v1/narrator-2a7cc976312907bf.mp3"
     },
     {
       "id": "vampira-chapter-06-player",
@@ -194,7 +194,7 @@
       "chapter": 6,
       "speaker": "VAMPIRA",
       "text": "Come closer, DULLAHAN. I prefer my nightmares warm.",
-      "file": "assets/audio/voices/vampira-chapter-06-player.mp3"
+      "file": "assets/audio/story-v1/vampira-0fc44bdb65c3b626.mp3"
     },
     {
       "id": "vampira-chapter-06-opponent",
@@ -202,7 +202,7 @@
       "chapter": 6,
       "speaker": "DULLAHAN",
       "text": "Choose a road, VAMPIRA. I will meet you at the end of it.",
-      "file": "assets/audio/voices/vampira-chapter-06-opponent.mp3"
+      "file": "assets/audio/story-v1/dullahan-ffdea07b71caf0ce.mp3"
     },
     {
       "id": "vampira-chapter-06-after",
@@ -210,7 +210,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "For once, Vampira is not the only woman carrying hunger separately from her heart.",
-      "file": "assets/audio/voices/vampira-chapter-06-after.mp3"
+      "file": "assets/audio/story-v1/narrator-48ba6222304d1045.mp3"
     },
     {
       "id": "vampira-chapter-07-before",
@@ -218,7 +218,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "The horizon brightens. A wolf-woman waits where the Red Moon is dying, furious that night is ending before the hunt does.",
-      "file": "assets/audio/voices/vampira-chapter-07-before.mp3"
+      "file": "assets/audio/story-v1/narrator-2b2238c43797ea1e.mp3"
     },
     {
       "id": "vampira-chapter-07-player",
@@ -226,7 +226,7 @@
       "chapter": 7,
       "speaker": "VAMPIRA",
       "text": "Come closer, WEREWOLF. I prefer my nightmares warm.",
-      "file": "assets/audio/voices/vampira-chapter-07-player.mp3"
+      "file": "assets/audio/story-v1/vampira-9707095e9c202c20.mp3"
     },
     {
       "id": "vampira-chapter-07-opponent",
@@ -234,7 +234,7 @@
       "chapter": 7,
       "speaker": "WEREWOLF",
       "text": "Run if you want, VAMPIRA. It improves the hunt.",
-      "file": "assets/audio/voices/vampira-chapter-07-opponent.mp3"
+      "file": "assets/audio/story-v1/werewolf-5c5bcdca9d6782b3.mp3"
     },
     {
       "id": "vampira-chapter-07-after",
@@ -242,7 +242,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "Dawn arrives smelling of iron, roses, and wet fur.",
-      "file": "assets/audio/voices/vampira-chapter-07-after.mp3"
+      "file": "assets/audio/story-v1/narrator-ffd77073298fb60b.mp3"
     },
     {
       "id": "vampira-chapter-08-before",
@@ -250,7 +250,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "The wrapped queen smells like dust, resin, and a heartbeat that stopped centuries ago.",
-      "file": "assets/audio/voices/vampira-chapter-08-before.mp3"
+      "file": "assets/audio/story-v1/narrator-fb59594453c8a905.mp3"
     },
     {
       "id": "vampira-chapter-08-player",
@@ -258,7 +258,7 @@
       "chapter": 8,
       "speaker": "VAMPIRA",
       "text": "Come closer, MUMMY. I prefer my nightmares warm.",
-      "file": "assets/audio/voices/vampira-chapter-08-player.mp3"
+      "file": "assets/audio/story-v1/vampira-487cc943b95bfbb8.mp3"
     },
     {
       "id": "vampira-chapter-08-opponent",
@@ -266,7 +266,7 @@
       "chapter": 8,
       "speaker": "MUMMY",
       "text": "Stand still, VAMPIRA. The wrappings work better that way.",
-      "file": "assets/audio/voices/vampira-chapter-08-opponent.mp3"
+      "file": "assets/audio/story-v1/mummy-df7b87b588c69b5d.mp3"
     },
     {
       "id": "vampira-chapter-08-after",
@@ -274,7 +274,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "Vampira discovers curses have an aftertaste.",
-      "file": "assets/audio/voices/vampira-chapter-08-after.mp3"
+      "file": "assets/audio/story-v1/narrator-adf22e50e5024a0d.mp3"
     },
     {
       "id": "vampira-chapter-09-before",
@@ -282,7 +282,7 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "Witch has prepared six circles. Vampira steps into all of them on purpose.",
-      "file": "assets/audio/voices/vampira-chapter-09-before.mp3"
+      "file": "assets/audio/story-v1/narrator-936573d59b2e0c52.mp3"
     },
     {
       "id": "vampira-chapter-09-player",
@@ -290,7 +290,7 @@
       "chapter": 9,
       "speaker": "VAMPIRA",
       "text": "Come closer, WITCH. I prefer my nightmares warm.",
-      "file": "assets/audio/voices/vampira-chapter-09-player.mp3"
+      "file": "assets/audio/story-v1/vampira-c5521f64a16d01d5.mp3"
     },
     {
       "id": "vampira-chapter-09-opponent",
@@ -298,7 +298,7 @@
       "chapter": 9,
       "speaker": "WITCH",
       "text": "Careful, VAMPIRA. You are standing inside the spell already.",
-      "file": "assets/audio/voices/vampira-chapter-09-opponent.mp3"
+      "file": "assets/audio/story-v1/witch-be969ff9842c21bb.mp3"
     },
     {
       "id": "vampira-chapter-09-after",
@@ -306,14 +306,14 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "The library gains a new rule: never invite a vampire into a ritual.",
-      "file": "assets/audio/voices/vampira-chapter-09-after.mp3"
+      "file": "assets/audio/story-v1/narrator-9284c3f80ea07720.mp3"
     },
     {
       "id": "vampira-ending",
       "route": "VAMPIRA",
       "speaker": "NARRATOR",
       "text": "Vampira stands beneath a sunrise she was never meant to see. The Red Moon has withdrawn, but its taste remains in every shadow. She smiles—not because the night survived, but because hunger did.",
-      "file": "assets/audio/voices/vampira-ending.mp3"
+      "file": "assets/audio/story-v1/narrator-9227f61a5977ff0e.mp3"
     },
     {
       "id": "nekomata-chapter-01-before",
@@ -321,7 +321,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "A ghost-song steals every small sound from the shrine bells. Nekomata takes that personally.",
-      "file": "assets/audio/voices/nekomata-chapter-01-before.mp3"
+      "file": "assets/audio/story-v1/narrator-f585e6ad56c13965.mp3"
     },
     {
       "id": "nekomata-chapter-01-player",
@@ -329,7 +329,7 @@
       "chapter": 1,
       "speaker": "NEKOMATA",
       "text": "Try to keep up, BANSHEE. I have lives to spare.",
-      "file": "assets/audio/voices/nekomata-chapter-01-player.mp3"
+      "file": "assets/audio/story-v1/nekomata-54e6813365a3d00e.mp3"
     },
     {
       "id": "nekomata-chapter-01-opponent",
@@ -337,7 +337,7 @@
       "chapter": 1,
       "speaker": "BANSHEE",
       "text": "Listen carefully, NEKOMATA. The next sound is for you.",
-      "file": "assets/audio/voices/nekomata-chapter-01-opponent.mp3"
+      "file": "assets/audio/story-v1/banshee-16bb86531d1224bc.mp3"
     },
     {
       "id": "nekomata-chapter-01-after",
@@ -345,7 +345,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "The last note becomes a purr in the dark.",
-      "file": "assets/audio/voices/nekomata-chapter-01-after.mp3"
+      "file": "assets/audio/story-v1/narrator-6ac0e37dda84621d.mp3"
     },
     {
       "id": "nekomata-chapter-02-before",
@@ -353,7 +353,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "Every snake watches both tails. Nekomata grins at the impossible amount of attention.",
-      "file": "assets/audio/voices/nekomata-chapter-02-before.mp3"
+      "file": "assets/audio/story-v1/narrator-c95e41cc2c0388cd.mp3"
     },
     {
       "id": "nekomata-chapter-02-player",
@@ -361,7 +361,7 @@
       "chapter": 2,
       "speaker": "NEKOMATA",
       "text": "Try to keep up, MEDUSA. I have lives to spare.",
-      "file": "assets/audio/voices/nekomata-chapter-02-player.mp3"
+      "file": "assets/audio/story-v1/nekomata-4d9bccbeaac47954.mp3"
     },
     {
       "id": "nekomata-chapter-02-opponent",
@@ -369,7 +369,7 @@
       "chapter": 2,
       "speaker": "MEDUSA",
       "text": "Look at me when I end this, NEKOMATA.",
-      "file": "assets/audio/voices/nekomata-chapter-02-opponent.mp3"
+      "file": "assets/audio/story-v1/medusa-edb2df9978c69ef7.mp3"
     },
     {
       "id": "nekomata-chapter-02-after",
@@ -377,7 +377,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "The snakes learn that curiosity is contagious.",
-      "file": "assets/audio/voices/nekomata-chapter-02-after.mp3"
+      "file": "assets/audio/story-v1/narrator-f3b2a122f4584085.mp3"
     },
     {
       "id": "nekomata-chapter-03-before",
@@ -385,7 +385,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "The tournament closes around two predators who refuse to become prey.",
-      "file": "assets/audio/voices/nekomata-chapter-03-before.mp3"
+      "file": "assets/audio/story-v1/narrator-c20afcaea2bbee57.mp3"
     },
     {
       "id": "nekomata-chapter-03-player",
@@ -393,7 +393,7 @@
       "chapter": 3,
       "speaker": "NEKOMATA",
       "text": "Try to keep up, VAMPIRA. I have lives to spare.",
-      "file": "assets/audio/voices/nekomata-chapter-03-player.mp3"
+      "file": "assets/audio/story-v1/nekomata-faf622a974af326c.mp3"
     },
     {
       "id": "nekomata-chapter-03-opponent",
@@ -401,7 +401,7 @@
       "chapter": 3,
       "speaker": "VAMPIRA",
       "text": "Come closer, NEKOMATA. I prefer my nightmares warm.",
-      "file": "assets/audio/voices/nekomata-chapter-03-opponent.mp3"
+      "file": "assets/audio/story-v1/vampira-d8c588a18cedd096.mp3"
     },
     {
       "id": "nekomata-chapter-03-after",
@@ -409,7 +409,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "Nekomata lands on her feet. Of course she does.",
-      "file": "assets/audio/voices/nekomata-chapter-03-after.mp3"
+      "file": "assets/audio/story-v1/narrator-1d53bda24cdca20b.mp3"
     },
     {
       "id": "nekomata-chapter-04-before",
@@ -417,7 +417,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "The harbor corpse hops in perfect rhythm. Nekomata immediately decides the rhythm is wrong.",
-      "file": "assets/audio/voices/nekomata-chapter-04-before.mp3"
+      "file": "assets/audio/story-v1/narrator-94da9c5a6b4812bd.mp3"
     },
     {
       "id": "nekomata-chapter-04-player",
@@ -425,7 +425,7 @@
       "chapter": 4,
       "speaker": "NEKOMATA",
       "text": "Try to keep up, JIANGSHI. I have lives to spare.",
-      "file": "assets/audio/voices/nekomata-chapter-04-player.mp3"
+      "file": "assets/audio/story-v1/nekomata-b753f2260b93d7f9.mp3"
     },
     {
       "id": "nekomata-chapter-04-opponent",
@@ -433,7 +433,7 @@
       "chapter": 4,
       "speaker": "JIANGSHI",
       "text": "Seal intact. Target: NEKOMATA. Proceeding.",
-      "file": "assets/audio/voices/nekomata-chapter-04-opponent.mp3"
+      "file": "assets/audio/story-v1/jiangshi-d60786abd8f53c32.mp3"
     },
     {
       "id": "nekomata-chapter-04-after",
@@ -441,7 +441,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "A bell rings once. Two tails answer twice.",
-      "file": "assets/audio/voices/nekomata-chapter-04-after.mp3"
+      "file": "assets/audio/story-v1/narrator-7f246f926b8e6966.mp3"
     },
     {
       "id": "nekomata-chapter-05-before",
@@ -449,7 +449,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "Nekomata notices the same ghost watching from six different shelves. Finally, a worthy stalking game.",
-      "file": "assets/audio/voices/nekomata-chapter-05-before.mp3"
+      "file": "assets/audio/story-v1/narrator-5346ce3731bfb3a4.mp3"
     },
     {
       "id": "nekomata-chapter-05-player",
@@ -457,7 +457,7 @@
       "chapter": 5,
       "speaker": "NEKOMATA",
       "text": "Try to keep up, YUREI. I have lives to spare.",
-      "file": "assets/audio/voices/nekomata-chapter-05-player.mp3"
+      "file": "assets/audio/story-v1/nekomata-f72d19495a709143.mp3"
     },
     {
       "id": "nekomata-chapter-05-opponent",
@@ -465,7 +465,7 @@
       "chapter": 5,
       "speaker": "YUREI",
       "text": "You have been standing beside a ghost longer than you think, NEKOMATA.",
-      "file": "assets/audio/voices/nekomata-chapter-05-opponent.mp3"
+      "file": "assets/audio/story-v1/yurei-701f1f2bff2c7df9.mp3"
     },
     {
       "id": "nekomata-chapter-05-after",
@@ -473,7 +473,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "The ghost fades. One tail is still pointing at where she went.",
-      "file": "assets/audio/voices/nekomata-chapter-05-after.mp3"
+      "file": "assets/audio/story-v1/narrator-1e3c07f8dee1f7bf.mp3"
     },
     {
       "id": "nekomata-chapter-06-before",
@@ -481,7 +481,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "Dullahan removes her head. Nekomata immediately forgets this is supposed to be frightening.",
-      "file": "assets/audio/voices/nekomata-chapter-06-before.mp3"
+      "file": "assets/audio/story-v1/narrator-5f05f02cdeb3d4b9.mp3"
     },
     {
       "id": "nekomata-chapter-06-player",
@@ -489,7 +489,7 @@
       "chapter": 6,
       "speaker": "NEKOMATA",
       "text": "Try to keep up, DULLAHAN. I have lives to spare.",
-      "file": "assets/audio/voices/nekomata-chapter-06-player.mp3"
+      "file": "assets/audio/story-v1/nekomata-b5f93cf3ce5c7afa.mp3"
     },
     {
       "id": "nekomata-chapter-06-opponent",
@@ -497,7 +497,7 @@
       "chapter": 6,
       "speaker": "DULLAHAN",
       "text": "Choose a road, NEKOMATA. I will meet you at the end of it.",
-      "file": "assets/audio/voices/nekomata-chapter-06-opponent.mp3"
+      "file": "assets/audio/story-v1/dullahan-acc23c70d9b51a66.mp3"
     },
     {
       "id": "nekomata-chapter-06-after",
@@ -505,7 +505,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "The head returns with two new scratches and absolutely no explanation.",
-      "file": "assets/audio/voices/nekomata-chapter-06-after.mp3"
+      "file": "assets/audio/story-v1/narrator-f098a47fab092d7b.mp3"
     },
     {
       "id": "nekomata-chapter-07-before",
@@ -513,7 +513,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "The first sunlight finds two predators pretending they are not enjoying this far too much.",
-      "file": "assets/audio/voices/nekomata-chapter-07-before.mp3"
+      "file": "assets/audio/story-v1/narrator-c8c68c5faa3a12da.mp3"
     },
     {
       "id": "nekomata-chapter-07-player",
@@ -521,7 +521,7 @@
       "chapter": 7,
       "speaker": "NEKOMATA",
       "text": "Try to keep up, WEREWOLF. I have lives to spare.",
-      "file": "assets/audio/voices/nekomata-chapter-07-player.mp3"
+      "file": "assets/audio/story-v1/nekomata-ac8cca31fedff644.mp3"
     },
     {
       "id": "nekomata-chapter-07-opponent",
@@ -529,7 +529,7 @@
       "chapter": 7,
       "speaker": "WEREWOLF",
       "text": "Run if you want, NEKOMATA. It improves the hunt.",
-      "file": "assets/audio/voices/nekomata-chapter-07-opponent.mp3"
+      "file": "assets/audio/story-v1/werewolf-b617cacab4f2a365.mp3"
     },
     {
       "id": "nekomata-chapter-07-after",
@@ -537,7 +537,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "Nekomata decides eight lives is still a comfortable margin.",
-      "file": "assets/audio/voices/nekomata-chapter-07-after.mp3"
+      "file": "assets/audio/story-v1/narrator-a9576ca0b98e39de.mp3"
     },
     {
       "id": "nekomata-chapter-08-before",
@@ -545,7 +545,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "Nekomata immediately wants to pull the loose bandage. Mummy immediately regrets everything.",
-      "file": "assets/audio/voices/nekomata-chapter-08-before.mp3"
+      "file": "assets/audio/story-v1/narrator-8a4950273c93db69.mp3"
     },
     {
       "id": "nekomata-chapter-08-player",
@@ -553,7 +553,7 @@
       "chapter": 8,
       "speaker": "NEKOMATA",
       "text": "Try to keep up, MUMMY. I have lives to spare.",
-      "file": "assets/audio/voices/nekomata-chapter-08-player.mp3"
+      "file": "assets/audio/story-v1/nekomata-96b9a40f8c42ec7e.mp3"
     },
     {
       "id": "nekomata-chapter-08-opponent",
@@ -561,7 +561,7 @@
       "chapter": 8,
       "speaker": "MUMMY",
       "text": "Stand still, NEKOMATA. The wrappings work better that way.",
-      "file": "assets/audio/voices/nekomata-chapter-08-opponent.mp3"
+      "file": "assets/audio/story-v1/mummy-0998829047f2c51e.mp3"
     },
     {
       "id": "nekomata-chapter-08-after",
@@ -569,7 +569,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "Two tails leave carrying one stolen strip of ancient linen.",
-      "file": "assets/audio/voices/nekomata-chapter-08-after.mp3"
+      "file": "assets/audio/story-v1/narrator-a68b24776c1521e7.mp3"
     },
     {
       "id": "nekomata-chapter-09-before",
@@ -577,7 +577,7 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "Witch draws a perfect sigil. Nekomata sits directly in the middle of it.",
-      "file": "assets/audio/voices/nekomata-chapter-09-before.mp3"
+      "file": "assets/audio/story-v1/narrator-dd9b9ce1c988957b.mp3"
     },
     {
       "id": "nekomata-chapter-09-player",
@@ -585,7 +585,7 @@
       "chapter": 9,
       "speaker": "NEKOMATA",
       "text": "Try to keep up, WITCH. I have lives to spare.",
-      "file": "assets/audio/voices/nekomata-chapter-09-player.mp3"
+      "file": "assets/audio/story-v1/nekomata-32aed6a02b1031d1.mp3"
     },
     {
       "id": "nekomata-chapter-09-opponent",
@@ -593,7 +593,7 @@
       "chapter": 9,
       "speaker": "WITCH",
       "text": "Careful, NEKOMATA. You are standing inside the spell already.",
-      "file": "assets/audio/voices/nekomata-chapter-09-opponent.mp3"
+      "file": "assets/audio/story-v1/witch-74cf3c59d6493d92.mp3"
     },
     {
       "id": "nekomata-chapter-09-after",
@@ -601,14 +601,14 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "The spell works. The cat simply refuses to acknowledge that.",
-      "file": "assets/audio/voices/nekomata-chapter-09-after.mp3"
+      "file": "assets/audio/story-v1/narrator-cd70817fb3f73afc.mp3"
     },
     {
       "id": "nekomata-ending",
       "route": "NEKOMATA",
       "speaker": "NARRATOR",
       "text": "Nekomata watches dawn split into two reflections across the shrine pond. One tail curls toward home. The other points toward whatever impossible thing comes next.",
-      "file": "assets/audio/voices/nekomata-ending.mp3"
+      "file": "assets/audio/story-v1/narrator-c2cef9bef024a273.mp3"
     },
     {
       "id": "banshee-chapter-01-before",
@@ -616,7 +616,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "Banshee sings into the moonlit bamboo. Something with a thousand eyes answers.",
-      "file": "assets/audio/voices/banshee-chapter-01-before.mp3"
+      "file": "assets/audio/story-v1/narrator-0525d91c86377e6e.mp3"
     },
     {
       "id": "banshee-chapter-01-player",
@@ -624,7 +624,7 @@
       "chapter": 1,
       "speaker": "BANSHEE",
       "text": "Listen carefully, MEDUSA. The next sound is for you.",
-      "file": "assets/audio/voices/banshee-chapter-01-player.mp3"
+      "file": "assets/audio/story-v1/banshee-0456ca2c9406b50f.mp3"
     },
     {
       "id": "banshee-chapter-01-opponent",
@@ -632,7 +632,7 @@
       "chapter": 1,
       "speaker": "MEDUSA",
       "text": "Look at me when I end this, BANSHEE.",
-      "file": "assets/audio/voices/banshee-chapter-01-opponent.mp3"
+      "file": "assets/audio/story-v1/medusa-3406221c38efeef4.mp3"
     },
     {
       "id": "banshee-chapter-01-after",
@@ -640,7 +640,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "The gaze breaks before the voice does.",
-      "file": "assets/audio/voices/banshee-chapter-01-after.mp3"
+      "file": "assets/audio/story-v1/narrator-62458340705fd3d3.mp3"
     },
     {
       "id": "banshee-chapter-02-before",
@@ -648,7 +648,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "Vampira offers immortality. Banshee already knows what forever costs.",
-      "file": "assets/audio/voices/banshee-chapter-02-before.mp3"
+      "file": "assets/audio/story-v1/narrator-e425dad4d7fb5465.mp3"
     },
     {
       "id": "banshee-chapter-02-player",
@@ -656,7 +656,7 @@
       "chapter": 2,
       "speaker": "BANSHEE",
       "text": "Listen carefully, VAMPIRA. The next sound is for you.",
-      "file": "assets/audio/voices/banshee-chapter-02-player.mp3"
+      "file": "assets/audio/story-v1/banshee-1c1f2e4cef4b5a0f.mp3"
     },
     {
       "id": "banshee-chapter-02-opponent",
@@ -664,7 +664,7 @@
       "chapter": 2,
       "speaker": "VAMPIRA",
       "text": "Come closer, BANSHEE. I prefer my nightmares warm.",
-      "file": "assets/audio/voices/banshee-chapter-02-opponent.mp3"
+      "file": "assets/audio/story-v1/vampira-dab4c4c1f61ef298.mp3"
     },
     {
       "id": "banshee-chapter-02-after",
@@ -672,7 +672,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "The cathedral windows tremble long after the fight ends.",
-      "file": "assets/audio/voices/banshee-chapter-02-after.mp3"
+      "file": "assets/audio/story-v1/narrator-b4b443e9d299989b.mp3"
     },
     {
       "id": "banshee-chapter-03-before",
@@ -680,7 +680,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "Two tails trace the rhythm of a song that should have died centuries ago.",
-      "file": "assets/audio/voices/banshee-chapter-03-before.mp3"
+      "file": "assets/audio/story-v1/narrator-b8fee78ca0f944ef.mp3"
     },
     {
       "id": "banshee-chapter-03-player",
@@ -688,7 +688,7 @@
       "chapter": 3,
       "speaker": "BANSHEE",
       "text": "Listen carefully, NEKOMATA. The next sound is for you.",
-      "file": "assets/audio/voices/banshee-chapter-03-player.mp3"
+      "file": "assets/audio/story-v1/banshee-16bb86531d1224bc.mp3"
     },
     {
       "id": "banshee-chapter-03-opponent",
@@ -696,7 +696,7 @@
       "chapter": 3,
       "speaker": "NEKOMATA",
       "text": "Try to keep up, BANSHEE. I have lives to spare.",
-      "file": "assets/audio/voices/banshee-chapter-03-opponent.mp3"
+      "file": "assets/audio/story-v1/nekomata-54e6813365a3d00e.mp3"
     },
     {
       "id": "banshee-chapter-03-after",
@@ -704,7 +704,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "For one moment, the dead and the living share the same chorus.",
-      "file": "assets/audio/voices/banshee-chapter-03-after.mp3"
+      "file": "assets/audio/story-v1/narrator-9f60eefa9c17916f.mp3"
     },
     {
       "id": "banshee-chapter-04-before",
@@ -712,7 +712,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "Banshee finds an opponent with no breath, no pulse, and still somehow too much silence.",
-      "file": "assets/audio/voices/banshee-chapter-04-before.mp3"
+      "file": "assets/audio/story-v1/narrator-02177b28045315ba.mp3"
     },
     {
       "id": "banshee-chapter-04-player",
@@ -720,7 +720,7 @@
       "chapter": 4,
       "speaker": "BANSHEE",
       "text": "Listen carefully, JIANGSHI. The next sound is for you.",
-      "file": "assets/audio/voices/banshee-chapter-04-player.mp3"
+      "file": "assets/audio/story-v1/banshee-65534743dc896fda.mp3"
     },
     {
       "id": "banshee-chapter-04-opponent",
@@ -728,7 +728,7 @@
       "chapter": 4,
       "speaker": "JIANGSHI",
       "text": "Seal intact. Target: BANSHEE. Proceeding.",
-      "file": "assets/audio/voices/banshee-chapter-04-opponent.mp3"
+      "file": "assets/audio/story-v1/jiangshi-e8dec859e64201b2.mp3"
     },
     {
       "id": "banshee-chapter-04-after",
@@ -736,7 +736,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "The talisman trembles to a note only the dead can hear.",
-      "file": "assets/audio/voices/banshee-chapter-04-after.mp3"
+      "file": "assets/audio/story-v1/narrator-7196b8d246126172.mp3"
     },
     {
       "id": "banshee-chapter-05-before",
@@ -744,7 +744,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "The library gives Banshee an echo before she sings. Yūrei is already inside the answer.",
-      "file": "assets/audio/voices/banshee-chapter-05-before.mp3"
+      "file": "assets/audio/story-v1/narrator-bfc50741f9c68b49.mp3"
     },
     {
       "id": "banshee-chapter-05-player",
@@ -752,7 +752,7 @@
       "chapter": 5,
       "speaker": "BANSHEE",
       "text": "Listen carefully, YUREI. The next sound is for you.",
-      "file": "assets/audio/voices/banshee-chapter-05-player.mp3"
+      "file": "assets/audio/story-v1/banshee-c6d91cac46ecc955.mp3"
     },
     {
       "id": "banshee-chapter-05-opponent",
@@ -760,7 +760,7 @@
       "chapter": 5,
       "speaker": "YUREI",
       "text": "You have been standing beside a ghost longer than you think, BANSHEE.",
-      "file": "assets/audio/voices/banshee-chapter-05-opponent.mp3"
+      "file": "assets/audio/story-v1/yurei-e8e8ebedd22cc526.mp3"
     },
     {
       "id": "banshee-chapter-05-after",
@@ -768,7 +768,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "For once, silence and song agree on who won.",
-      "file": "assets/audio/voices/banshee-chapter-05-after.mp3"
+      "file": "assets/audio/story-v1/narrator-47c71c4dbdf58072.mp3"
     },
     {
       "id": "banshee-chapter-06-before",
@@ -776,7 +776,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "Banshee sings across the bonefield. Somewhere in the fog, a severed head smiles back.",
-      "file": "assets/audio/voices/banshee-chapter-06-before.mp3"
+      "file": "assets/audio/story-v1/narrator-a72197d6f7e73b7a.mp3"
     },
     {
       "id": "banshee-chapter-06-player",
@@ -784,7 +784,7 @@
       "chapter": 6,
       "speaker": "BANSHEE",
       "text": "Listen carefully, DULLAHAN. The next sound is for you.",
-      "file": "assets/audio/voices/banshee-chapter-06-player.mp3"
+      "file": "assets/audio/story-v1/banshee-4dcfdf7c0e9a370e.mp3"
     },
     {
       "id": "banshee-chapter-06-opponent",
@@ -792,7 +792,7 @@
       "chapter": 6,
       "speaker": "DULLAHAN",
       "text": "Choose a road, BANSHEE. I will meet you at the end of it.",
-      "file": "assets/audio/voices/banshee-chapter-06-opponent.mp3"
+      "file": "assets/audio/story-v1/dullahan-fdd9abcea92addad.mp3"
     },
     {
       "id": "banshee-chapter-06-after",
@@ -800,7 +800,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "The rider leaves before the last note finishes. Her head stays to listen.",
-      "file": "assets/audio/voices/banshee-chapter-06-after.mp3"
+      "file": "assets/audio/story-v1/narrator-69a81acb971c399a.mp3"
     },
     {
       "id": "banshee-chapter-07-before",
@@ -808,7 +808,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "The horizon answers Banshee with a howl that refuses to be background noise.",
-      "file": "assets/audio/voices/banshee-chapter-07-before.mp3"
+      "file": "assets/audio/story-v1/narrator-e76a2cb2e7c9aa8c.mp3"
     },
     {
       "id": "banshee-chapter-07-player",
@@ -816,7 +816,7 @@
       "chapter": 7,
       "speaker": "BANSHEE",
       "text": "Listen carefully, WEREWOLF. The next sound is for you.",
-      "file": "assets/audio/voices/banshee-chapter-07-player.mp3"
+      "file": "assets/audio/story-v1/banshee-f5e195623bc1921e.mp3"
     },
     {
       "id": "banshee-chapter-07-opponent",
@@ -824,7 +824,7 @@
       "chapter": 7,
       "speaker": "WEREWOLF",
       "text": "Run if you want, BANSHEE. It improves the hunt.",
-      "file": "assets/audio/voices/banshee-chapter-07-opponent.mp3"
+      "file": "assets/audio/story-v1/werewolf-47542ef090cdc625.mp3"
     },
     {
       "id": "banshee-chapter-07-after",
@@ -832,7 +832,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "For one impossible second, howl and wail become harmony.",
-      "file": "assets/audio/voices/banshee-chapter-07-after.mp3"
+      "file": "assets/audio/story-v1/narrator-c876309f75ae1182.mp3"
     },
     {
       "id": "banshee-chapter-08-before",
@@ -840,7 +840,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "Banshee sings to a corpse that has already been mourned by civilizations.",
-      "file": "assets/audio/voices/banshee-chapter-08-before.mp3"
+      "file": "assets/audio/story-v1/narrator-08d7c3f11985e716.mp3"
     },
     {
       "id": "banshee-chapter-08-player",
@@ -848,7 +848,7 @@
       "chapter": 8,
       "speaker": "BANSHEE",
       "text": "Listen carefully, MUMMY. The next sound is for you.",
-      "file": "assets/audio/voices/banshee-chapter-08-player.mp3"
+      "file": "assets/audio/story-v1/banshee-3b0b40fc6649c653.mp3"
     },
     {
       "id": "banshee-chapter-08-opponent",
@@ -856,7 +856,7 @@
       "chapter": 8,
       "speaker": "MUMMY",
       "text": "Stand still, BANSHEE. The wrappings work better that way.",
-      "file": "assets/audio/voices/banshee-chapter-08-opponent.mp3"
+      "file": "assets/audio/story-v1/mummy-696f51045e3ecfe1.mp3"
     },
     {
       "id": "banshee-chapter-08-after",
@@ -864,7 +864,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "The wrappings vibrate with a melody older than the grave.",
-      "file": "assets/audio/voices/banshee-chapter-08-after.mp3"
+      "file": "assets/audio/story-v1/narrator-15830841edb8e8a1.mp3"
     },
     {
       "id": "banshee-chapter-09-before",
@@ -872,7 +872,7 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "Witch reads an incantation. Banshee answers with a note that edits the punctuation.",
-      "file": "assets/audio/voices/banshee-chapter-09-before.mp3"
+      "file": "assets/audio/story-v1/narrator-fe2b9dc22b95a65d.mp3"
     },
     {
       "id": "banshee-chapter-09-player",
@@ -880,7 +880,7 @@
       "chapter": 9,
       "speaker": "BANSHEE",
       "text": "Listen carefully, WITCH. The next sound is for you.",
-      "file": "assets/audio/voices/banshee-chapter-09-player.mp3"
+      "file": "assets/audio/story-v1/banshee-e59d353c1073350b.mp3"
     },
     {
       "id": "banshee-chapter-09-opponent",
@@ -888,7 +888,7 @@
       "chapter": 9,
       "speaker": "WITCH",
       "text": "Careful, BANSHEE. You are standing inside the spell already.",
-      "file": "assets/audio/voices/banshee-chapter-09-opponent.mp3"
+      "file": "assets/audio/story-v1/witch-4c5e751f8f707462.mp3"
     },
     {
       "id": "banshee-chapter-09-after",
@@ -896,14 +896,14 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "Several books quietly reclassify screaming as grammar.",
-      "file": "assets/audio/voices/banshee-chapter-09-after.mp3"
+      "file": "assets/audio/story-v1/narrator-3f3cb5a48ef71f9d.mp3"
     },
     {
       "id": "banshee-ending",
       "route": "BANSHEE",
       "speaker": "NARRATOR",
       "text": "Banshee sings one final note into the morning. This time, the world answers instead of echoing. For the first time in centuries, her song belongs to the living as much as the dead.",
-      "file": "assets/audio/voices/banshee-ending.mp3"
+      "file": "assets/audio/story-v1/narrator-9231317fbb4dd491.mp3"
     },
     {
       "id": "medusa-chapter-01-before",
@@ -911,7 +911,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "Vampira refuses to avert her eyes. Medusa finds the arrogance refreshing.",
-      "file": "assets/audio/voices/medusa-chapter-01-before.mp3"
+      "file": "assets/audio/story-v1/narrator-98963ac3a7434ab5.mp3"
     },
     {
       "id": "medusa-chapter-01-player",
@@ -919,7 +919,7 @@
       "chapter": 1,
       "speaker": "MEDUSA",
       "text": "Look at me when I end this, VAMPIRA.",
-      "file": "assets/audio/voices/medusa-chapter-01-player.mp3"
+      "file": "assets/audio/story-v1/medusa-5e8739732863bd4e.mp3"
     },
     {
       "id": "medusa-chapter-01-opponent",
@@ -927,7 +927,7 @@
       "chapter": 1,
       "speaker": "VAMPIRA",
       "text": "Come closer, MEDUSA. I prefer my nightmares warm.",
-      "file": "assets/audio/voices/medusa-chapter-01-opponent.mp3"
+      "file": "assets/audio/story-v1/vampira-5f98677febcd1da2.mp3"
     },
     {
       "id": "medusa-chapter-01-after",
@@ -935,7 +935,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "The blood queen learns that statues can bleed when they fall.",
-      "file": "assets/audio/voices/medusa-chapter-01-after.mp3"
+      "file": "assets/audio/story-v1/narrator-a84465699bddbdb8.mp3"
     },
     {
       "id": "medusa-chapter-02-before",
@@ -943,7 +943,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "Nekomata keeps appearing where Medusa is not looking. The snakes begin arguing about it.",
-      "file": "assets/audio/voices/medusa-chapter-02-before.mp3"
+      "file": "assets/audio/story-v1/narrator-856a3316ece6e80b.mp3"
     },
     {
       "id": "medusa-chapter-02-player",
@@ -951,7 +951,7 @@
       "chapter": 2,
       "speaker": "MEDUSA",
       "text": "Look at me when I end this, NEKOMATA.",
-      "file": "assets/audio/voices/medusa-chapter-02-player.mp3"
+      "file": "assets/audio/story-v1/medusa-edb2df9978c69ef7.mp3"
     },
     {
       "id": "medusa-chapter-02-opponent",
@@ -959,7 +959,7 @@
       "chapter": 2,
       "speaker": "NEKOMATA",
       "text": "Try to keep up, MEDUSA. I have lives to spare.",
-      "file": "assets/audio/voices/medusa-chapter-02-opponent.mp3"
+      "file": "assets/audio/story-v1/nekomata-4d9bccbeaac47954.mp3"
     },
     {
       "id": "medusa-chapter-02-after",
@@ -967,7 +967,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "Even a gorgon can lose track of nine lives.",
-      "file": "assets/audio/voices/medusa-chapter-02-after.mp3"
+      "file": "assets/audio/story-v1/narrator-53e7504f3fa6c2ea.mp3"
     },
     {
       "id": "medusa-chapter-03-before",
@@ -975,7 +975,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "The challenger cannot be petrified by fear; she has already survived death.",
-      "file": "assets/audio/voices/medusa-chapter-03-before.mp3"
+      "file": "assets/audio/story-v1/narrator-b68d9d29b1d26b45.mp3"
     },
     {
       "id": "medusa-chapter-03-player",
@@ -983,7 +983,7 @@
       "chapter": 3,
       "speaker": "MEDUSA",
       "text": "Look at me when I end this, BANSHEE.",
-      "file": "assets/audio/voices/medusa-chapter-03-player.mp3"
+      "file": "assets/audio/story-v1/medusa-3406221c38efeef4.mp3"
     },
     {
       "id": "medusa-chapter-03-opponent",
@@ -991,7 +991,7 @@
       "chapter": 3,
       "speaker": "BANSHEE",
       "text": "Listen carefully, MEDUSA. The next sound is for you.",
-      "file": "assets/audio/voices/medusa-chapter-03-opponent.mp3"
+      "file": "assets/audio/story-v1/banshee-0456ca2c9406b50f.mp3"
     },
     {
       "id": "medusa-chapter-03-after",
@@ -999,7 +999,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "The stone garden remembers the final note.",
-      "file": "assets/audio/voices/medusa-chapter-03-after.mp3"
+      "file": "assets/audio/story-v1/narrator-6bf76ad3d9c5813b.mp3"
     },
     {
       "id": "medusa-chapter-04-before",
@@ -1007,7 +1007,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "A talisman forbids the corpse from looking away. Medusa considers that an invitation.",
-      "file": "assets/audio/voices/medusa-chapter-04-before.mp3"
+      "file": "assets/audio/story-v1/narrator-6a95728589562f17.mp3"
     },
     {
       "id": "medusa-chapter-04-player",
@@ -1015,7 +1015,7 @@
       "chapter": 4,
       "speaker": "MEDUSA",
       "text": "Look at me when I end this, JIANGSHI.",
-      "file": "assets/audio/voices/medusa-chapter-04-player.mp3"
+      "file": "assets/audio/story-v1/medusa-119a2f86bf0bb7c2.mp3"
     },
     {
       "id": "medusa-chapter-04-opponent",
@@ -1023,7 +1023,7 @@
       "chapter": 4,
       "speaker": "JIANGSHI",
       "text": "Seal intact. Target: MEDUSA. Proceeding.",
-      "file": "assets/audio/voices/medusa-chapter-04-opponent.mp3"
+      "file": "assets/audio/story-v1/jiangshi-e8e8d2b802d161eb.mp3"
     },
     {
       "id": "medusa-chapter-04-after",
@@ -1031,7 +1031,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "The paper survives the gaze. The corpse beneath it does not.",
-      "file": "assets/audio/voices/medusa-chapter-04-after.mp3"
+      "file": "assets/audio/story-v1/narrator-2e46c487b5af1000.mp3"
     },
     {
       "id": "medusa-chapter-05-before",
@@ -1039,7 +1039,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "Medusa can petrify flesh. Yūrei has brought very little flesh to the argument.",
-      "file": "assets/audio/voices/medusa-chapter-05-before.mp3"
+      "file": "assets/audio/story-v1/narrator-a63a41d7d5e0547c.mp3"
     },
     {
       "id": "medusa-chapter-05-player",
@@ -1047,7 +1047,7 @@
       "chapter": 5,
       "speaker": "MEDUSA",
       "text": "Look at me when I end this, YUREI.",
-      "file": "assets/audio/voices/medusa-chapter-05-player.mp3"
+      "file": "assets/audio/story-v1/medusa-9aeeb60e6a440c2c.mp3"
     },
     {
       "id": "medusa-chapter-05-opponent",
@@ -1055,7 +1055,7 @@
       "chapter": 5,
       "speaker": "YUREI",
       "text": "You have been standing beside a ghost longer than you think, MEDUSA.",
-      "file": "assets/audio/voices/medusa-chapter-05-opponent.mp3"
+      "file": "assets/audio/story-v1/yurei-75a2576163af4601.mp3"
     },
     {
       "id": "medusa-chapter-05-after",
@@ -1063,7 +1063,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "A cracked mirror is the only witness willing to look back.",
-      "file": "assets/audio/voices/medusa-chapter-05-after.mp3"
+      "file": "assets/audio/story-v1/narrator-7aa785b2387c9225.mp3"
     },
     {
       "id": "medusa-chapter-06-before",
@@ -1071,7 +1071,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "Medusa orders Dullahan to face her. The rider lifts her head in one hand and politely complies.",
-      "file": "assets/audio/voices/medusa-chapter-06-before.mp3"
+      "file": "assets/audio/story-v1/narrator-a25462a75af0bbc7.mp3"
     },
     {
       "id": "medusa-chapter-06-player",
@@ -1079,7 +1079,7 @@
       "chapter": 6,
       "speaker": "MEDUSA",
       "text": "Look at me when I end this, DULLAHAN.",
-      "file": "assets/audio/voices/medusa-chapter-06-player.mp3"
+      "file": "assets/audio/story-v1/medusa-9864d869470963a0.mp3"
     },
     {
       "id": "medusa-chapter-06-opponent",
@@ -1087,7 +1087,7 @@
       "chapter": 6,
       "speaker": "DULLAHAN",
       "text": "Choose a road, MEDUSA. I will meet you at the end of it.",
-      "file": "assets/audio/voices/medusa-chapter-06-opponent.mp3"
+      "file": "assets/audio/story-v1/dullahan-49196528567c7119.mp3"
     },
     {
       "id": "medusa-chapter-06-after",
@@ -1095,7 +1095,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "Even the snakes cannot decide which pair of eyes won.",
-      "file": "assets/audio/voices/medusa-chapter-06-after.mp3"
+      "file": "assets/audio/story-v1/narrator-7e332d79e7a8a750.mp3"
     },
     {
       "id": "medusa-chapter-07-before",
@@ -1103,7 +1103,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "Werewolf refuses to lower her eyes. Medusa refuses to admit that makes the fight interesting.",
-      "file": "assets/audio/voices/medusa-chapter-07-before.mp3"
+      "file": "assets/audio/story-v1/narrator-76f24fd25172a630.mp3"
     },
     {
       "id": "medusa-chapter-07-player",
@@ -1111,7 +1111,7 @@
       "chapter": 7,
       "speaker": "MEDUSA",
       "text": "Look at me when I end this, WEREWOLF.",
-      "file": "assets/audio/voices/medusa-chapter-07-player.mp3"
+      "file": "assets/audio/story-v1/medusa-c37bc99210cbb1ec.mp3"
     },
     {
       "id": "medusa-chapter-07-opponent",
@@ -1119,7 +1119,7 @@
       "chapter": 7,
       "speaker": "WEREWOLF",
       "text": "Run if you want, MEDUSA. It improves the hunt.",
-      "file": "assets/audio/voices/medusa-chapter-07-opponent.mp3"
+      "file": "assets/audio/story-v1/werewolf-af64e965b8bc4204.mp3"
     },
     {
       "id": "medusa-chapter-07-after",
@@ -1127,7 +1127,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "The snakes learn exactly how fast a wolf can move before sunrise.",
-      "file": "assets/audio/voices/medusa-chapter-07-after.mp3"
+      "file": "assets/audio/story-v1/narrator-92c2c87a4d7c33aa.mp3"
     },
     {
       "id": "medusa-chapter-08-before",
@@ -1135,7 +1135,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "Mummy has no reason to blink. Medusa considers that rude.",
-      "file": "assets/audio/voices/medusa-chapter-08-before.mp3"
+      "file": "assets/audio/story-v1/narrator-8b763676171c97ca.mp3"
     },
     {
       "id": "medusa-chapter-08-player",
@@ -1143,7 +1143,7 @@
       "chapter": 8,
       "speaker": "MEDUSA",
       "text": "Look at me when I end this, MUMMY.",
-      "file": "assets/audio/voices/medusa-chapter-08-player.mp3"
+      "file": "assets/audio/story-v1/medusa-6c49b6ed56694674.mp3"
     },
     {
       "id": "medusa-chapter-08-opponent",
@@ -1151,7 +1151,7 @@
       "chapter": 8,
       "speaker": "MUMMY",
       "text": "Stand still, MEDUSA. The wrappings work better that way.",
-      "file": "assets/audio/voices/medusa-chapter-08-opponent.mp3"
+      "file": "assets/audio/story-v1/mummy-ab17c87c34a4e6fc.mp3"
     },
     {
       "id": "medusa-chapter-08-after",
@@ -1159,7 +1159,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "The curse survives the gaze. The linen does not enjoy the experience.",
-      "file": "assets/audio/voices/medusa-chapter-08-after.mp3"
+      "file": "assets/audio/story-v1/narrator-8772a59257a94602.mp3"
     },
     {
       "id": "medusa-chapter-09-before",
@@ -1167,7 +1167,7 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "Witch has drawn a ward against sight. The snakes take that personally.",
-      "file": "assets/audio/voices/medusa-chapter-09-before.mp3"
+      "file": "assets/audio/story-v1/narrator-83be52a95866fa1c.mp3"
     },
     {
       "id": "medusa-chapter-09-player",
@@ -1175,7 +1175,7 @@
       "chapter": 9,
       "speaker": "MEDUSA",
       "text": "Look at me when I end this, WITCH.",
-      "file": "assets/audio/voices/medusa-chapter-09-player.mp3"
+      "file": "assets/audio/story-v1/medusa-e52bf76eb32ee0f8.mp3"
     },
     {
       "id": "medusa-chapter-09-opponent",
@@ -1183,7 +1183,7 @@
       "chapter": 9,
       "speaker": "WITCH",
       "text": "Careful, MEDUSA. You are standing inside the spell already.",
-      "file": "assets/audio/voices/medusa-chapter-09-opponent.mp3"
+      "file": "assets/audio/story-v1/witch-ed9a7401beb1bb9f.mp3"
     },
     {
       "id": "medusa-chapter-09-after",
@@ -1191,14 +1191,14 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "Every sigil ends the fight facing the wrong direction.",
-      "file": "assets/audio/voices/medusa-chapter-09-after.mp3"
+      "file": "assets/audio/story-v1/narrator-e39ce1127bb6de66.mp3"
     },
     {
       "id": "medusa-ending",
       "route": "MEDUSA",
       "speaker": "NARRATOR",
       "text": "Medusa walks through a garden of statues warmed by sunrise. Hair-serpents blink at the light. Nothing turns away. She decides eternity may be tolerable if it can still surprise her.",
-      "file": "assets/audio/voices/medusa-ending.mp3"
+      "file": "assets/audio/story-v1/narrator-b7c8e2416908c341.mp3"
     },
     {
       "id": "jiangshi-chapter-01-before",
@@ -1206,7 +1206,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "The harbor fog carries a song. Jiangshi has no lungs with which to answer, so her talisman answers instead.",
-      "file": "assets/audio/voices/jiangshi-chapter-01-before.mp3"
+      "file": "assets/audio/story-v1/narrator-5f812e8c7d71435f.mp3"
     },
     {
       "id": "jiangshi-chapter-01-player",
@@ -1214,7 +1214,7 @@
       "chapter": 1,
       "speaker": "JIANGSHI",
       "text": "Seal intact. Target: BANSHEE. Proceeding.",
-      "file": "assets/audio/voices/jiangshi-chapter-01-player.mp3"
+      "file": "assets/audio/story-v1/jiangshi-e8dec859e64201b2.mp3"
     },
     {
       "id": "jiangshi-chapter-01-opponent",
@@ -1222,7 +1222,7 @@
       "chapter": 1,
       "speaker": "BANSHEE",
       "text": "Listen carefully, JIANGSHI. The next sound is for you.",
-      "file": "assets/audio/voices/jiangshi-chapter-01-opponent.mp3"
+      "file": "assets/audio/story-v1/banshee-65534743dc896fda.mp3"
     },
     {
       "id": "jiangshi-chapter-01-after",
@@ -1230,7 +1230,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "The dead woman bows. The ghost bows back.",
-      "file": "assets/audio/voices/jiangshi-chapter-01-after.mp3"
+      "file": "assets/audio/story-v1/narrator-aaf36b5d5cd86bf0.mp3"
     },
     {
       "id": "jiangshi-chapter-02-before",
@@ -1238,7 +1238,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "Nekomata circles the paper seal like a toy. Jiangshi remains perfectly still until she does not.",
-      "file": "assets/audio/voices/jiangshi-chapter-02-before.mp3"
+      "file": "assets/audio/story-v1/narrator-9e7f1242f4b91f64.mp3"
     },
     {
       "id": "jiangshi-chapter-02-player",
@@ -1246,7 +1246,7 @@
       "chapter": 2,
       "speaker": "JIANGSHI",
       "text": "Seal intact. Target: NEKOMATA. Proceeding.",
-      "file": "assets/audio/voices/jiangshi-chapter-02-player.mp3"
+      "file": "assets/audio/story-v1/jiangshi-d60786abd8f53c32.mp3"
     },
     {
       "id": "jiangshi-chapter-02-opponent",
@@ -1254,7 +1254,7 @@
       "chapter": 2,
       "speaker": "NEKOMATA",
       "text": "Try to keep up, JIANGSHI. I have lives to spare.",
-      "file": "assets/audio/voices/jiangshi-chapter-02-opponent.mp3"
+      "file": "assets/audio/story-v1/nekomata-b753f2260b93d7f9.mp3"
     },
     {
       "id": "jiangshi-chapter-02-after",
@@ -1262,7 +1262,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "One hop lands where nine lives were certain she could not.",
-      "file": "assets/audio/voices/jiangshi-chapter-02-after.mp3"
+      "file": "assets/audio/story-v1/narrator-8c4a1ca42aa03868.mp3"
     },
     {
       "id": "jiangshi-chapter-03-before",
@@ -1270,7 +1270,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "Medusa commands her to look away. The seal contains no such instruction.",
-      "file": "assets/audio/voices/jiangshi-chapter-03-before.mp3"
+      "file": "assets/audio/story-v1/narrator-621f080eb7c8c929.mp3"
     },
     {
       "id": "jiangshi-chapter-03-player",
@@ -1278,7 +1278,7 @@
       "chapter": 3,
       "speaker": "JIANGSHI",
       "text": "Seal intact. Target: MEDUSA. Proceeding.",
-      "file": "assets/audio/voices/jiangshi-chapter-03-player.mp3"
+      "file": "assets/audio/story-v1/jiangshi-e8e8d2b802d161eb.mp3"
     },
     {
       "id": "jiangshi-chapter-03-opponent",
@@ -1286,7 +1286,7 @@
       "chapter": 3,
       "speaker": "MEDUSA",
       "text": "Look at me when I end this, JIANGSHI.",
-      "file": "assets/audio/voices/jiangshi-chapter-03-opponent.mp3"
+      "file": "assets/audio/story-v1/medusa-119a2f86bf0bb7c2.mp3"
     },
     {
       "id": "jiangshi-chapter-03-after",
@@ -1294,7 +1294,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "Stone dust settles on yellow paper.",
-      "file": "assets/audio/voices/jiangshi-chapter-03-after.mp3"
+      "file": "assets/audio/story-v1/narrator-2a124b9f9056e5d2.mp3"
     },
     {
       "id": "jiangshi-chapter-04-before",
@@ -1302,7 +1302,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "Vampira discovers a body with no heartbeat and no intention of surrendering.",
-      "file": "assets/audio/voices/jiangshi-chapter-04-before.mp3"
+      "file": "assets/audio/story-v1/narrator-f6e25f2235f89391.mp3"
     },
     {
       "id": "jiangshi-chapter-04-player",
@@ -1310,7 +1310,7 @@
       "chapter": 4,
       "speaker": "JIANGSHI",
       "text": "Seal intact. Target: VAMPIRA. Proceeding.",
-      "file": "assets/audio/voices/jiangshi-chapter-04-player.mp3"
+      "file": "assets/audio/story-v1/jiangshi-4734d55188fd309a.mp3"
     },
     {
       "id": "jiangshi-chapter-04-opponent",
@@ -1318,7 +1318,7 @@
       "chapter": 4,
       "speaker": "VAMPIRA",
       "text": "Come closer, JIANGSHI. I prefer my nightmares warm.",
-      "file": "assets/audio/voices/jiangshi-chapter-04-opponent.mp3"
+      "file": "assets/audio/story-v1/vampira-71a08063d79570e7.mp3"
     },
     {
       "id": "jiangshi-chapter-04-after",
@@ -1326,7 +1326,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "For the first time tonight, hunger has nothing to drink.",
-      "file": "assets/audio/voices/jiangshi-chapter-04-after.mp3"
+      "file": "assets/audio/story-v1/narrator-718469dd6d950e03.mp3"
     },
     {
       "id": "jiangshi-chapter-05-before",
@@ -1334,7 +1334,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "The talisman knows how to restrain a corpse. It has no instructions for a ghost.",
-      "file": "assets/audio/voices/jiangshi-chapter-05-before.mp3"
+      "file": "assets/audio/story-v1/narrator-c2236e37954635fc.mp3"
     },
     {
       "id": "jiangshi-chapter-05-player",
@@ -1342,7 +1342,7 @@
       "chapter": 5,
       "speaker": "JIANGSHI",
       "text": "Seal intact. Target: YUREI. Proceeding.",
-      "file": "assets/audio/voices/jiangshi-chapter-05-player.mp3"
+      "file": "assets/audio/story-v1/jiangshi-adaa00c090edb457.mp3"
     },
     {
       "id": "jiangshi-chapter-05-opponent",
@@ -1350,7 +1350,7 @@
       "chapter": 5,
       "speaker": "YUREI",
       "text": "You have been standing beside a ghost longer than you think, JIANGSHI.",
-      "file": "assets/audio/voices/jiangshi-chapter-05-opponent.mp3"
+      "file": "assets/audio/story-v1/yurei-24f43c49f07b80f7.mp3"
     },
     {
       "id": "jiangshi-chapter-05-after",
@@ -1358,7 +1358,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "Jiangshi pins one corner of the veil to the floor. The rest keeps moving.",
-      "file": "assets/audio/voices/jiangshi-chapter-05-after.mp3"
+      "file": "assets/audio/story-v1/narrator-c3920c2b88fce85e.mp3"
     },
     {
       "id": "jiangshi-chapter-06-before",
@@ -1366,7 +1366,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "One corpse is sealed. The other misplaced her head. Neither sees a problem.",
-      "file": "assets/audio/voices/jiangshi-chapter-06-before.mp3"
+      "file": "assets/audio/story-v1/narrator-5778573d73941275.mp3"
     },
     {
       "id": "jiangshi-chapter-06-player",
@@ -1374,7 +1374,7 @@
       "chapter": 6,
       "speaker": "JIANGSHI",
       "text": "Seal intact. Target: DULLAHAN. Proceeding.",
-      "file": "assets/audio/voices/jiangshi-chapter-06-player.mp3"
+      "file": "assets/audio/story-v1/jiangshi-0cc4271d184c0501.mp3"
     },
     {
       "id": "jiangshi-chapter-06-opponent",
@@ -1382,7 +1382,7 @@
       "chapter": 6,
       "speaker": "DULLAHAN",
       "text": "Choose a road, JIANGSHI. I will meet you at the end of it.",
-      "file": "assets/audio/voices/jiangshi-chapter-06-opponent.mp3"
+      "file": "assets/audio/story-v1/dullahan-8cb9042d5ccb51ed.mp3"
     },
     {
       "id": "jiangshi-chapter-06-after",
@@ -1390,7 +1390,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "The bonefield receives another perfectly formal bow.",
-      "file": "assets/audio/voices/jiangshi-chapter-06-after.mp3"
+      "file": "assets/audio/story-v1/narrator-ec4e854971b86c9a.mp3"
     },
     {
       "id": "jiangshi-chapter-07-before",
@@ -1398,7 +1398,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "The moon is fading, but something feral is getting stronger. Jiangshi hops forward anyway.",
-      "file": "assets/audio/voices/jiangshi-chapter-07-before.mp3"
+      "file": "assets/audio/story-v1/narrator-45e6a81d9b62007b.mp3"
     },
     {
       "id": "jiangshi-chapter-07-player",
@@ -1406,7 +1406,7 @@
       "chapter": 7,
       "speaker": "JIANGSHI",
       "text": "Seal intact. Target: WEREWOLF. Proceeding.",
-      "file": "assets/audio/voices/jiangshi-chapter-07-player.mp3"
+      "file": "assets/audio/story-v1/jiangshi-444c78b95e442eee.mp3"
     },
     {
       "id": "jiangshi-chapter-07-opponent",
@@ -1414,7 +1414,7 @@
       "chapter": 7,
       "speaker": "WEREWOLF",
       "text": "Run if you want, JIANGSHI. It improves the hunt.",
-      "file": "assets/audio/voices/jiangshi-chapter-07-opponent.mp3"
+      "file": "assets/audio/story-v1/werewolf-d3e5bbc465c63ff4.mp3"
     },
     {
       "id": "jiangshi-chapter-07-after",
@@ -1422,7 +1422,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "The talisman survives with claw marks through three characters.",
-      "file": "assets/audio/voices/jiangshi-chapter-07-after.mp3"
+      "file": "assets/audio/story-v1/narrator-516662389795a9a7.mp3"
     },
     {
       "id": "jiangshi-chapter-08-before",
@@ -1430,7 +1430,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "One corpse is held together by paper. The other prefers linen. Neither comments.",
-      "file": "assets/audio/voices/jiangshi-chapter-08-before.mp3"
+      "file": "assets/audio/story-v1/narrator-b52c5dbdd988c46d.mp3"
     },
     {
       "id": "jiangshi-chapter-08-player",
@@ -1438,7 +1438,7 @@
       "chapter": 8,
       "speaker": "JIANGSHI",
       "text": "Seal intact. Target: MUMMY. Proceeding.",
-      "file": "assets/audio/voices/jiangshi-chapter-08-player.mp3"
+      "file": "assets/audio/story-v1/jiangshi-fb4d6346369fdbfa.mp3"
     },
     {
       "id": "jiangshi-chapter-08-opponent",
@@ -1446,7 +1446,7 @@
       "chapter": 8,
       "speaker": "MUMMY",
       "text": "Stand still, JIANGSHI. The wrappings work better that way.",
-      "file": "assets/audio/voices/jiangshi-chapter-08-opponent.mp3"
+      "file": "assets/audio/story-v1/mummy-1f6897b30d8b8182.mp3"
     },
     {
       "id": "jiangshi-chapter-08-after",
@@ -1454,7 +1454,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "Ancient funerary traditions agree to disagree.",
-      "file": "assets/audio/voices/jiangshi-chapter-08-after.mp3"
+      "file": "assets/audio/story-v1/narrator-51c5f98cba2ddbf6.mp3"
     },
     {
       "id": "jiangshi-chapter-09-before",
@@ -1462,7 +1462,7 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "Witch wants to know whether the forehead seal counts as a spell component.",
-      "file": "assets/audio/voices/jiangshi-chapter-09-before.mp3"
+      "file": "assets/audio/story-v1/narrator-d37e3278c42dc908.mp3"
     },
     {
       "id": "jiangshi-chapter-09-player",
@@ -1470,7 +1470,7 @@
       "chapter": 9,
       "speaker": "JIANGSHI",
       "text": "Seal intact. Target: WITCH. Proceeding.",
-      "file": "assets/audio/voices/jiangshi-chapter-09-player.mp3"
+      "file": "assets/audio/story-v1/jiangshi-27fd5454e3d567fb.mp3"
     },
     {
       "id": "jiangshi-chapter-09-opponent",
@@ -1478,7 +1478,7 @@
       "chapter": 9,
       "speaker": "WITCH",
       "text": "Careful, JIANGSHI. You are standing inside the spell already.",
-      "file": "assets/audio/voices/jiangshi-chapter-09-opponent.mp3"
+      "file": "assets/audio/story-v1/witch-a2441f6014db47fc.mp3"
     },
     {
       "id": "jiangshi-chapter-09-after",
@@ -1486,14 +1486,14 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "Jiangshi declines peer review with both feet.",
-      "file": "assets/audio/voices/jiangshi-chapter-09-after.mp3"
+      "file": "assets/audio/story-v1/narrator-3b825f1eb6d95a53.mp3"
     },
     {
       "id": "jiangshi-ending",
       "route": "JIANGSHI",
       "speaker": "NARRATOR",
       "text": "Jiangshi reaches the edge of dawn and stops. Her talisman flutters once, then lies still. The seal remains intact—but now it feels less like a prison and more like a choice.",
-      "file": "assets/audio/voices/jiangshi-ending.mp3"
+      "file": "assets/audio/story-v1/narrator-6db2994dc69d0374.mp3"
     },
     {
       "id": "yurei-chapter-01-before",
@@ -1501,7 +1501,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "Jiangshi arrives carrying rules for the dead. Yūrei has forgotten how to obey them.",
-      "file": "assets/audio/voices/yurei-chapter-01-before.mp3"
+      "file": "assets/audio/story-v1/narrator-7499fd0031e93363.mp3"
     },
     {
       "id": "yurei-chapter-01-player",
@@ -1509,7 +1509,7 @@
       "chapter": 1,
       "speaker": "YUREI",
       "text": "You have been standing beside a ghost longer than you think, JIANGSHI.",
-      "file": "assets/audio/voices/yurei-chapter-01-player.mp3"
+      "file": "assets/audio/story-v1/yurei-24f43c49f07b80f7.mp3"
     },
     {
       "id": "yurei-chapter-01-opponent",
@@ -1517,7 +1517,7 @@
       "chapter": 1,
       "speaker": "JIANGSHI",
       "text": "Seal intact. Target: YUREI. Proceeding.",
-      "file": "assets/audio/voices/yurei-chapter-01-opponent.mp3"
+      "file": "assets/audio/story-v1/jiangshi-adaa00c090edb457.mp3"
     },
     {
       "id": "yurei-chapter-01-after",
@@ -1525,7 +1525,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "The talisman falls through an empty sleeve.",
-      "file": "assets/audio/voices/yurei-chapter-01-after.mp3"
+      "file": "assets/audio/story-v1/narrator-56a70a5a00dc3db5.mp3"
     },
     {
       "id": "yurei-chapter-02-before",
@@ -1533,7 +1533,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "Banshee sings across the harbor. Yūrei answers from inside the sound.",
-      "file": "assets/audio/voices/yurei-chapter-02-before.mp3"
+      "file": "assets/audio/story-v1/narrator-9f25f5df998fe2ff.mp3"
     },
     {
       "id": "yurei-chapter-02-player",
@@ -1541,7 +1541,7 @@
       "chapter": 2,
       "speaker": "YUREI",
       "text": "You have been standing beside a ghost longer than you think, BANSHEE.",
-      "file": "assets/audio/voices/yurei-chapter-02-player.mp3"
+      "file": "assets/audio/story-v1/yurei-e8e8ebedd22cc526.mp3"
     },
     {
       "id": "yurei-chapter-02-opponent",
@@ -1549,7 +1549,7 @@
       "chapter": 2,
       "speaker": "BANSHEE",
       "text": "Listen carefully, YUREI. The next sound is for you.",
-      "file": "assets/audio/voices/yurei-chapter-02-opponent.mp3"
+      "file": "assets/audio/story-v1/banshee-c6d91cac46ecc955.mp3"
     },
     {
       "id": "yurei-chapter-02-after",
@@ -1557,7 +1557,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "The final echo belongs to neither woman.",
-      "file": "assets/audio/voices/yurei-chapter-02-after.mp3"
+      "file": "assets/audio/story-v1/narrator-0ee1a20c81ab933d.mp3"
     },
     {
       "id": "yurei-chapter-03-before",
@@ -1565,7 +1565,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "Nekomata can track anything that moves. Yūrei decides not to move in ways that count.",
-      "file": "assets/audio/voices/yurei-chapter-03-before.mp3"
+      "file": "assets/audio/story-v1/narrator-1c8137cf98aa8b99.mp3"
     },
     {
       "id": "yurei-chapter-03-player",
@@ -1573,7 +1573,7 @@
       "chapter": 3,
       "speaker": "YUREI",
       "text": "You have been standing beside a ghost longer than you think, NEKOMATA.",
-      "file": "assets/audio/voices/yurei-chapter-03-player.mp3"
+      "file": "assets/audio/story-v1/yurei-701f1f2bff2c7df9.mp3"
     },
     {
       "id": "yurei-chapter-03-opponent",
@@ -1581,7 +1581,7 @@
       "chapter": 3,
       "speaker": "NEKOMATA",
       "text": "Try to keep up, YUREI. I have lives to spare.",
-      "file": "assets/audio/voices/yurei-chapter-03-opponent.mp3"
+      "file": "assets/audio/story-v1/nekomata-f72d19495a709143.mp3"
     },
     {
       "id": "yurei-chapter-03-after",
@@ -1589,7 +1589,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "For once, the cat watches an empty doorway first.",
-      "file": "assets/audio/voices/yurei-chapter-03-after.mp3"
+      "file": "assets/audio/story-v1/narrator-053ae92fac09e62a.mp3"
     },
     {
       "id": "yurei-chapter-04-before",
@@ -1597,7 +1597,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "Medusa commands the ghost to meet her gaze. Yūrei has spent centuries looking through walls.",
-      "file": "assets/audio/voices/yurei-chapter-04-before.mp3"
+      "file": "assets/audio/story-v1/narrator-48c2003c8be03a76.mp3"
     },
     {
       "id": "yurei-chapter-04-player",
@@ -1605,7 +1605,7 @@
       "chapter": 4,
       "speaker": "YUREI",
       "text": "You have been standing beside a ghost longer than you think, MEDUSA.",
-      "file": "assets/audio/voices/yurei-chapter-04-player.mp3"
+      "file": "assets/audio/story-v1/yurei-75a2576163af4601.mp3"
     },
     {
       "id": "yurei-chapter-04-opponent",
@@ -1613,7 +1613,7 @@
       "chapter": 4,
       "speaker": "MEDUSA",
       "text": "Look at me when I end this, YUREI.",
-      "file": "assets/audio/voices/yurei-chapter-04-opponent.mp3"
+      "file": "assets/audio/story-v1/medusa-9aeeb60e6a440c2c.mp3"
     },
     {
       "id": "yurei-chapter-04-after",
@@ -1621,7 +1621,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "The snakes hiss at a reflection that refuses to become stone.",
-      "file": "assets/audio/voices/yurei-chapter-04-after.mp3"
+      "file": "assets/audio/story-v1/narrator-f822cd3c7970824f.mp3"
     },
     {
       "id": "yurei-chapter-05-before",
@@ -1629,7 +1629,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "At the last bell, first blood faces the woman who has none.",
-      "file": "assets/audio/voices/yurei-chapter-05-before.mp3"
+      "file": "assets/audio/story-v1/narrator-e97c64bd40682e06.mp3"
     },
     {
       "id": "yurei-chapter-05-player",
@@ -1637,7 +1637,7 @@
       "chapter": 5,
       "speaker": "YUREI",
       "text": "You have been standing beside a ghost longer than you think, VAMPIRA.",
-      "file": "assets/audio/voices/yurei-chapter-05-player.mp3"
+      "file": "assets/audio/story-v1/yurei-5a5521ad1f1a33a4.mp3"
     },
     {
       "id": "yurei-chapter-05-opponent",
@@ -1645,7 +1645,7 @@
       "chapter": 5,
       "speaker": "VAMPIRA",
       "text": "Come closer, YUREI. I prefer my nightmares warm.",
-      "file": "assets/audio/voices/yurei-chapter-05-opponent.mp3"
+      "file": "assets/audio/story-v1/vampira-b7ab100d47d4b0d3.mp3"
     },
     {
       "id": "yurei-chapter-05-after",
@@ -1653,7 +1653,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "The Red Moon shines through Yūrei. Dawn does not.",
-      "file": "assets/audio/voices/yurei-chapter-05-after.mp3"
+      "file": "assets/audio/story-v1/narrator-0b634ac26d95f853.mp3"
     },
     {
       "id": "yurei-chapter-06-before",
@@ -1661,7 +1661,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "Dullahan rides toward every place Yūrei is not. Eventually the ghost decides to be somewhere.",
-      "file": "assets/audio/voices/yurei-chapter-06-before.mp3"
+      "file": "assets/audio/story-v1/narrator-ce761d59fed19daa.mp3"
     },
     {
       "id": "yurei-chapter-06-player",
@@ -1669,7 +1669,7 @@
       "chapter": 6,
       "speaker": "YUREI",
       "text": "You have been standing beside a ghost longer than you think, DULLAHAN.",
-      "file": "assets/audio/voices/yurei-chapter-06-player.mp3"
+      "file": "assets/audio/story-v1/yurei-8dc9623253968716.mp3"
     },
     {
       "id": "yurei-chapter-06-opponent",
@@ -1677,7 +1677,7 @@
       "chapter": 6,
       "speaker": "DULLAHAN",
       "text": "Choose a road, YUREI. I will meet you at the end of it.",
-      "file": "assets/audio/voices/yurei-chapter-06-opponent.mp3"
+      "file": "assets/audio/story-v1/dullahan-21dbc13e354fe137.mp3"
     },
     {
       "id": "yurei-chapter-06-after",
@@ -1685,7 +1685,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "The head whispers a road name no living map remembers.",
-      "file": "assets/audio/voices/yurei-chapter-06-after.mp3"
+      "file": "assets/audio/story-v1/narrator-671d058c051f8fff.mp3"
     },
     {
       "id": "yurei-chapter-07-before",
@@ -1693,7 +1693,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "Werewolf smells what is not there. Yūrei realizes invisibility is less useful against a nose.",
-      "file": "assets/audio/voices/yurei-chapter-07-before.mp3"
+      "file": "assets/audio/story-v1/narrator-88b1efba8c2b9148.mp3"
     },
     {
       "id": "yurei-chapter-07-player",
@@ -1701,7 +1701,7 @@
       "chapter": 7,
       "speaker": "YUREI",
       "text": "You have been standing beside a ghost longer than you think, WEREWOLF.",
-      "file": "assets/audio/voices/yurei-chapter-07-player.mp3"
+      "file": "assets/audio/story-v1/yurei-50ce141fc6cd37d8.mp3"
     },
     {
       "id": "yurei-chapter-07-opponent",
@@ -1709,7 +1709,7 @@
       "chapter": 7,
       "speaker": "WEREWOLF",
       "text": "Run if you want, YUREI. It improves the hunt.",
-      "file": "assets/audio/voices/yurei-chapter-07-opponent.mp3"
+      "file": "assets/audio/story-v1/werewolf-dc1b2b7ada3763fc.mp3"
     },
     {
       "id": "yurei-chapter-07-after",
@@ -1717,7 +1717,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "The ghost leaves no footprints. The wolf follows anyway.",
-      "file": "assets/audio/voices/yurei-chapter-07-after.mp3"
+      "file": "assets/audio/story-v1/narrator-2f1392c8323604ff.mp3"
     },
     {
       "id": "yurei-chapter-08-before",
@@ -1725,7 +1725,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "Mummy curses what she can name. Yūrei has been avoiding names for centuries.",
-      "file": "assets/audio/voices/yurei-chapter-08-before.mp3"
+      "file": "assets/audio/story-v1/narrator-adaeefffcd448dfd.mp3"
     },
     {
       "id": "yurei-chapter-08-player",
@@ -1733,7 +1733,7 @@
       "chapter": 8,
       "speaker": "YUREI",
       "text": "You have been standing beside a ghost longer than you think, MUMMY.",
-      "file": "assets/audio/voices/yurei-chapter-08-player.mp3"
+      "file": "assets/audio/story-v1/yurei-5ea514bb7ad51c1c.mp3"
     },
     {
       "id": "yurei-chapter-08-opponent",
@@ -1741,7 +1741,7 @@
       "chapter": 8,
       "speaker": "MUMMY",
       "text": "Stand still, YUREI. The wrappings work better that way.",
-      "file": "assets/audio/voices/yurei-chapter-08-opponent.mp3"
+      "file": "assets/audio/story-v1/mummy-d59a217480b493cf.mp3"
     },
     {
       "id": "yurei-chapter-08-after",
@@ -1749,7 +1749,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "The curse lands on a reflection and refuses to leave.",
-      "file": "assets/audio/voices/yurei-chapter-08-after.mp3"
+      "file": "assets/audio/story-v1/narrator-ea35b10796debeba.mp3"
     },
     {
       "id": "yurei-chapter-09-before",
@@ -1757,7 +1757,7 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "Witch seals every exit. Yūrei arrives from inside the chalk line.",
-      "file": "assets/audio/voices/yurei-chapter-09-before.mp3"
+      "file": "assets/audio/story-v1/narrator-be6f91831a49d505.mp3"
     },
     {
       "id": "yurei-chapter-09-player",
@@ -1765,7 +1765,7 @@
       "chapter": 9,
       "speaker": "YUREI",
       "text": "You have been standing beside a ghost longer than you think, WITCH.",
-      "file": "assets/audio/voices/yurei-chapter-09-player.mp3"
+      "file": "assets/audio/story-v1/yurei-5b11652bd0a65d92.mp3"
     },
     {
       "id": "yurei-chapter-09-opponent",
@@ -1773,7 +1773,7 @@
       "chapter": 9,
       "speaker": "WITCH",
       "text": "Careful, YUREI. You are standing inside the spell already.",
-      "file": "assets/audio/voices/yurei-chapter-09-opponent.mp3"
+      "file": "assets/audio/story-v1/witch-84909646367dcac9.mp3"
     },
     {
       "id": "yurei-chapter-09-after",
@@ -1781,14 +1781,14 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "The grimoire adds a margin note: ghosts cheat.",
-      "file": "assets/audio/voices/yurei-chapter-09-after.mp3"
+      "file": "assets/audio/story-v1/narrator-f0f2a46f41fcef8b.mp3"
     },
     {
       "id": "yurei-ending",
       "route": "YUREI",
       "speaker": "NARRATOR",
       "text": "Yūrei fades with the last violet edge of night, then reappears in the reflection of morning glass. Dawn cannot exorcise a memory that has learned its own name.",
-      "file": "assets/audio/voices/yurei-ending.mp3"
+      "file": "assets/audio/story-v1/narrator-3a5685c713be984b.mp3"
     },
     {
       "id": "dullahan-chapter-01-before",
@@ -1796,7 +1796,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "The rider follows a road that only dead women can see. Yūrei is standing in the intersection.",
-      "file": "assets/audio/voices/dullahan-chapter-01-before.mp3"
+      "file": "assets/audio/story-v1/narrator-e9dfdfaeff8901b1.mp3"
     },
     {
       "id": "dullahan-chapter-01-player",
@@ -1804,7 +1804,7 @@
       "chapter": 1,
       "speaker": "DULLAHAN",
       "text": "Choose a road, YUREI. I will meet you at the end of it.",
-      "file": "assets/audio/voices/dullahan-chapter-01-player.mp3"
+      "file": "assets/audio/story-v1/dullahan-21dbc13e354fe137.mp3"
     },
     {
       "id": "dullahan-chapter-01-opponent",
@@ -1812,7 +1812,7 @@
       "chapter": 1,
       "speaker": "YUREI",
       "text": "You have been standing beside a ghost longer than you think, DULLAHAN.",
-      "file": "assets/audio/voices/dullahan-chapter-01-opponent.mp3"
+      "file": "assets/audio/story-v1/yurei-8dc9623253968716.mp3"
     },
     {
       "id": "dullahan-chapter-01-after",
@@ -1820,7 +1820,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "For once, Dullahan asks her head which direction the ghost went.",
-      "file": "assets/audio/voices/dullahan-chapter-01-after.mp3"
+      "file": "assets/audio/story-v1/narrator-b9cf11df4f76eca2.mp3"
     },
     {
       "id": "dullahan-chapter-02-before",
@@ -1828,7 +1828,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "The harbor offers a corpse that moves without breath. Dullahan respects the professionalism.",
-      "file": "assets/audio/voices/dullahan-chapter-02-before.mp3"
+      "file": "assets/audio/story-v1/narrator-b338632dc27e7e5f.mp3"
     },
     {
       "id": "dullahan-chapter-02-player",
@@ -1836,7 +1836,7 @@
       "chapter": 2,
       "speaker": "DULLAHAN",
       "text": "Choose a road, JIANGSHI. I will meet you at the end of it.",
-      "file": "assets/audio/voices/dullahan-chapter-02-player.mp3"
+      "file": "assets/audio/story-v1/dullahan-8cb9042d5ccb51ed.mp3"
     },
     {
       "id": "dullahan-chapter-02-opponent",
@@ -1844,7 +1844,7 @@
       "chapter": 2,
       "speaker": "JIANGSHI",
       "text": "Seal intact. Target: DULLAHAN. Proceeding.",
-      "file": "assets/audio/voices/dullahan-chapter-02-opponent.mp3"
+      "file": "assets/audio/story-v1/jiangshi-0cc4271d184c0501.mp3"
     },
     {
       "id": "dullahan-chapter-02-after",
@@ -1852,7 +1852,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "Two dead women depart in opposite directions without ever saying goodbye.",
-      "file": "assets/audio/voices/dullahan-chapter-02-after.mp3"
+      "file": "assets/audio/story-v1/narrator-86b1a28662c800b7.mp3"
     },
     {
       "id": "dullahan-chapter-03-before",
@@ -1860,7 +1860,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "Banshee hears hoofbeats in her own voice. Dullahan hears a road in the scream.",
-      "file": "assets/audio/voices/dullahan-chapter-03-before.mp3"
+      "file": "assets/audio/story-v1/narrator-d239f6c310b7bed4.mp3"
     },
     {
       "id": "dullahan-chapter-03-player",
@@ -1868,7 +1868,7 @@
       "chapter": 3,
       "speaker": "DULLAHAN",
       "text": "Choose a road, BANSHEE. I will meet you at the end of it.",
-      "file": "assets/audio/voices/dullahan-chapter-03-player.mp3"
+      "file": "assets/audio/story-v1/dullahan-fdd9abcea92addad.mp3"
     },
     {
       "id": "dullahan-chapter-03-opponent",
@@ -1876,7 +1876,7 @@
       "chapter": 3,
       "speaker": "BANSHEE",
       "text": "Listen carefully, DULLAHAN. The next sound is for you.",
-      "file": "assets/audio/voices/dullahan-chapter-03-opponent.mp3"
+      "file": "assets/audio/story-v1/banshee-4dcfdf7c0e9a370e.mp3"
     },
     {
       "id": "dullahan-chapter-03-after",
@@ -1884,7 +1884,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "The bones vibrate after both women stop moving.",
-      "file": "assets/audio/voices/dullahan-chapter-03-after.mp3"
+      "file": "assets/audio/story-v1/narrator-87b59edeacbd7aaa.mp3"
     },
     {
       "id": "dullahan-chapter-04-before",
@@ -1892,7 +1892,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "Medusa has never fought someone who can choose which hand holds her eyes.",
-      "file": "assets/audio/voices/dullahan-chapter-04-before.mp3"
+      "file": "assets/audio/story-v1/narrator-a7cfc808fc990b1d.mp3"
     },
     {
       "id": "dullahan-chapter-04-player",
@@ -1900,7 +1900,7 @@
       "chapter": 4,
       "speaker": "DULLAHAN",
       "text": "Choose a road, MEDUSA. I will meet you at the end of it.",
-      "file": "assets/audio/voices/dullahan-chapter-04-player.mp3"
+      "file": "assets/audio/story-v1/dullahan-49196528567c7119.mp3"
     },
     {
       "id": "dullahan-chapter-04-opponent",
@@ -1908,7 +1908,7 @@
       "chapter": 4,
       "speaker": "MEDUSA",
       "text": "Look at me when I end this, DULLAHAN.",
-      "file": "assets/audio/voices/dullahan-chapter-04-opponent.mp3"
+      "file": "assets/audio/story-v1/medusa-9864d869470963a0.mp3"
     },
     {
       "id": "dullahan-chapter-04-after",
@@ -1916,7 +1916,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "The snakes spend the rest of the night checking behind themselves.",
-      "file": "assets/audio/voices/dullahan-chapter-04-after.mp3"
+      "file": "assets/audio/story-v1/narrator-584ac1b2109edb4d.mp3"
     },
     {
       "id": "dullahan-chapter-05-before",
@@ -1924,7 +1924,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "Dullahan throws her head exactly once. Nekomata interprets this as the beginning of a game.",
-      "file": "assets/audio/voices/dullahan-chapter-05-before.mp3"
+      "file": "assets/audio/story-v1/narrator-6f1c366411b3e4d5.mp3"
     },
     {
       "id": "dullahan-chapter-05-player",
@@ -1932,7 +1932,7 @@
       "chapter": 5,
       "speaker": "DULLAHAN",
       "text": "Choose a road, NEKOMATA. I will meet you at the end of it.",
-      "file": "assets/audio/voices/dullahan-chapter-05-player.mp3"
+      "file": "assets/audio/story-v1/dullahan-acc23c70d9b51a66.mp3"
     },
     {
       "id": "dullahan-chapter-05-opponent",
@@ -1940,7 +1940,7 @@
       "chapter": 5,
       "speaker": "NEKOMATA",
       "text": "Try to keep up, DULLAHAN. I have lives to spare.",
-      "file": "assets/audio/voices/dullahan-chapter-05-opponent.mp3"
+      "file": "assets/audio/story-v1/nekomata-b5f93cf3ce5c7afa.mp3"
     },
     {
       "id": "dullahan-chapter-05-after",
@@ -1948,7 +1948,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "The shrine receives a new rule: no playing fetch with cursed nobility.",
-      "file": "assets/audio/voices/dullahan-chapter-05-after.mp3"
+      "file": "assets/audio/story-v1/narrator-237ef9c64d8d8a16.mp3"
     },
     {
       "id": "dullahan-chapter-06-before",
@@ -1956,7 +1956,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "At the final bell, a rider without a pulse faces a hunger without an ending.",
-      "file": "assets/audio/voices/dullahan-chapter-06-before.mp3"
+      "file": "assets/audio/story-v1/narrator-7983b0c9eb6bddfc.mp3"
     },
     {
       "id": "dullahan-chapter-06-player",
@@ -1964,7 +1964,7 @@
       "chapter": 6,
       "speaker": "DULLAHAN",
       "text": "Choose a road, VAMPIRA. I will meet you at the end of it.",
-      "file": "assets/audio/voices/dullahan-chapter-06-player.mp3"
+      "file": "assets/audio/story-v1/dullahan-ffdea07b71caf0ce.mp3"
     },
     {
       "id": "dullahan-chapter-06-opponent",
@@ -1972,7 +1972,7 @@
       "chapter": 6,
       "speaker": "VAMPIRA",
       "text": "Come closer, DULLAHAN. I prefer my nightmares warm.",
-      "file": "assets/audio/voices/dullahan-chapter-06-opponent.mp3"
+      "file": "assets/audio/story-v1/vampira-0fc44bdb65c3b626.mp3"
     },
     {
       "id": "dullahan-chapter-06-after",
@@ -1980,7 +1980,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "Dawn finds the road empty except for one set of hoofprints and one laughing head.",
-      "file": "assets/audio/voices/dullahan-chapter-06-after.mp3"
+      "file": "assets/audio/story-v1/narrator-f142d982f25147f7.mp3"
     },
     {
       "id": "dullahan-chapter-07-before",
@@ -1988,7 +1988,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "Dullahan hears claws on stone behind her. She smiles, lifts her lance, and turns the road into an arena.",
-      "file": "assets/audio/voices/dullahan-chapter-07-before.mp3"
+      "file": "assets/audio/story-v1/narrator-0c48228965e86442.mp3"
     },
     {
       "id": "dullahan-chapter-07-player",
@@ -1996,7 +1996,7 @@
       "chapter": 7,
       "speaker": "DULLAHAN",
       "text": "Choose a road, WEREWOLF. I will meet you at the end of it.",
-      "file": "assets/audio/voices/dullahan-chapter-07-player.mp3"
+      "file": "assets/audio/story-v1/dullahan-af02bdf4b9bbca3c.mp3"
     },
     {
       "id": "dullahan-chapter-07-opponent",
@@ -2004,7 +2004,7 @@
       "chapter": 7,
       "speaker": "WEREWOLF",
       "text": "Run if you want, DULLAHAN. It improves the hunt.",
-      "file": "assets/audio/voices/dullahan-chapter-07-opponent.mp3"
+      "file": "assets/audio/story-v1/werewolf-d3c4bdbf63d80a52.mp3"
     },
     {
       "id": "dullahan-chapter-07-after",
@@ -2012,7 +2012,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "One set of hoofbeats and one set of pawprints vanish into dawn.",
-      "file": "assets/audio/voices/dullahan-chapter-07-after.mp3"
+      "file": "assets/audio/story-v1/narrator-72f3fc956a23c3bb.mp3"
     },
     {
       "id": "dullahan-chapter-08-before",
@@ -2020,7 +2020,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "One warrior carries her head. The other carries several civilizations of burial protocol.",
-      "file": "assets/audio/voices/dullahan-chapter-08-before.mp3"
+      "file": "assets/audio/story-v1/narrator-9245a0614d84530e.mp3"
     },
     {
       "id": "dullahan-chapter-08-player",
@@ -2028,7 +2028,7 @@
       "chapter": 8,
       "speaker": "DULLAHAN",
       "text": "Choose a road, MUMMY. I will meet you at the end of it.",
-      "file": "assets/audio/voices/dullahan-chapter-08-player.mp3"
+      "file": "assets/audio/story-v1/dullahan-8e26a6b9a7be392e.mp3"
     },
     {
       "id": "dullahan-chapter-08-opponent",
@@ -2036,7 +2036,7 @@
       "chapter": 8,
       "speaker": "MUMMY",
       "text": "Stand still, DULLAHAN. The wrappings work better that way.",
-      "file": "assets/audio/voices/dullahan-chapter-08-opponent.mp3"
+      "file": "assets/audio/story-v1/mummy-76aad8e2b9288ace.mp3"
     },
     {
       "id": "dullahan-chapter-08-after",
@@ -2044,7 +2044,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "The bonefield receives no useful etiquette guidance.",
-      "file": "assets/audio/voices/dullahan-chapter-08-after.mp3"
+      "file": "assets/audio/story-v1/narrator-8532aa496041e734.mp3"
     },
     {
       "id": "dullahan-chapter-09-before",
@@ -2052,7 +2052,7 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "Witch asks Dullahan to place something personal in the circle. Dullahan places her head.",
-      "file": "assets/audio/voices/dullahan-chapter-09-before.mp3"
+      "file": "assets/audio/story-v1/narrator-eec802376983af69.mp3"
     },
     {
       "id": "dullahan-chapter-09-player",
@@ -2060,7 +2060,7 @@
       "chapter": 9,
       "speaker": "DULLAHAN",
       "text": "Choose a road, WITCH. I will meet you at the end of it.",
-      "file": "assets/audio/voices/dullahan-chapter-09-player.mp3"
+      "file": "assets/audio/story-v1/dullahan-f6cc7ddf61632bbf.mp3"
     },
     {
       "id": "dullahan-chapter-09-opponent",
@@ -2068,7 +2068,7 @@
       "chapter": 9,
       "speaker": "WITCH",
       "text": "Careful, DULLAHAN. You are standing inside the spell already.",
-      "file": "assets/audio/voices/dullahan-chapter-09-opponent.mp3"
+      "file": "assets/audio/story-v1/witch-310ebeb24af28efd.mp3"
     },
     {
       "id": "dullahan-chapter-09-after",
@@ -2076,14 +2076,14 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "The ritual becomes much less academic.",
-      "file": "assets/audio/voices/dullahan-chapter-09-after.mp3"
+      "file": "assets/audio/story-v1/narrator-9fabb166b504c927.mp3"
     },
     {
       "id": "dullahan-ending",
       "route": "DULLAHAN",
       "speaker": "NARRATOR",
       "text": "Dullahan rides directly into sunrise with her head tucked under one arm. The road does not end. It merely becomes visible.",
-      "file": "assets/audio/voices/dullahan-ending.mp3"
+      "file": "assets/audio/story-v1/narrator-b0356a912ef09835.mp3"
     },
     {
       "id": "werewolf-chapter-01-before",
@@ -2091,7 +2091,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "The headless rider smells like iron, grave soil, and a road that never ends. Werewolf follows all three.",
-      "file": "assets/audio/voices/werewolf-chapter-01-before.mp3"
+      "file": "assets/audio/story-v1/narrator-6aa3ff6f5d6ecd32.mp3"
     },
     {
       "id": "werewolf-chapter-01-player",
@@ -2099,7 +2099,7 @@
       "chapter": 1,
       "speaker": "WEREWOLF",
       "text": "Run if you want, DULLAHAN. It improves the hunt.",
-      "file": "assets/audio/voices/werewolf-chapter-01-player.mp3"
+      "file": "assets/audio/story-v1/werewolf-d3c4bdbf63d80a52.mp3"
     },
     {
       "id": "werewolf-chapter-01-opponent",
@@ -2107,7 +2107,7 @@
       "chapter": 1,
       "speaker": "DULLAHAN",
       "text": "Choose a road, WEREWOLF. I will meet you at the end of it.",
-      "file": "assets/audio/voices/werewolf-chapter-01-opponent.mp3"
+      "file": "assets/audio/story-v1/dullahan-af02bdf4b9bbca3c.mp3"
     },
     {
       "id": "werewolf-chapter-01-after",
@@ -2115,7 +2115,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "The thrown head bites back. Werewolf approves.",
-      "file": "assets/audio/voices/werewolf-chapter-01-after.mp3"
+      "file": "assets/audio/story-v1/narrator-0ffc91867edf3e4f.mp3"
     },
     {
       "id": "werewolf-chapter-02-before",
@@ -2123,7 +2123,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "The library is full of old paper and one scent that keeps vanishing through walls.",
-      "file": "assets/audio/voices/werewolf-chapter-02-before.mp3"
+      "file": "assets/audio/story-v1/narrator-f5d191db73c6a730.mp3"
     },
     {
       "id": "werewolf-chapter-02-player",
@@ -2131,7 +2131,7 @@
       "chapter": 2,
       "speaker": "WEREWOLF",
       "text": "Run if you want, YUREI. It improves the hunt.",
-      "file": "assets/audio/voices/werewolf-chapter-02-player.mp3"
+      "file": "assets/audio/story-v1/werewolf-dc1b2b7ada3763fc.mp3"
     },
     {
       "id": "werewolf-chapter-02-opponent",
@@ -2139,7 +2139,7 @@
       "chapter": 2,
       "speaker": "YUREI",
       "text": "You have been standing beside a ghost longer than you think, WEREWOLF.",
-      "file": "assets/audio/voices/werewolf-chapter-02-opponent.mp3"
+      "file": "assets/audio/story-v1/yurei-50ce141fc6cd37d8.mp3"
     },
     {
       "id": "werewolf-chapter-02-after",
@@ -2147,7 +2147,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "Yūrei learns that a hunter can follow fear even when fear has no pulse.",
-      "file": "assets/audio/voices/werewolf-chapter-02-after.mp3"
+      "file": "assets/audio/story-v1/narrator-7cab72040ce8c9c9.mp3"
     },
     {
       "id": "werewolf-chapter-03-before",
@@ -2155,7 +2155,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "Jiangshi does not run. She hops. Werewolf considers this inefficient and therefore offensive.",
-      "file": "assets/audio/voices/werewolf-chapter-03-before.mp3"
+      "file": "assets/audio/story-v1/narrator-21fc4bedffb5bd2e.mp3"
     },
     {
       "id": "werewolf-chapter-03-player",
@@ -2163,7 +2163,7 @@
       "chapter": 3,
       "speaker": "WEREWOLF",
       "text": "Run if you want, JIANGSHI. It improves the hunt.",
-      "file": "assets/audio/voices/werewolf-chapter-03-player.mp3"
+      "file": "assets/audio/story-v1/werewolf-d3e5bbc465c63ff4.mp3"
     },
     {
       "id": "werewolf-chapter-03-opponent",
@@ -2171,7 +2171,7 @@
       "chapter": 3,
       "speaker": "JIANGSHI",
       "text": "Seal intact. Target: WEREWOLF. Proceeding.",
-      "file": "assets/audio/voices/werewolf-chapter-03-opponent.mp3"
+      "file": "assets/audio/story-v1/jiangshi-444c78b95e442eee.mp3"
     },
     {
       "id": "werewolf-chapter-03-after",
@@ -2179,7 +2179,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "The dock has claw marks exactly one hop apart.",
-      "file": "assets/audio/voices/werewolf-chapter-03-after.mp3"
+      "file": "assets/audio/story-v1/narrator-2903ce4e41651206.mp3"
     },
     {
       "id": "werewolf-chapter-04-before",
@@ -2187,7 +2187,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "A scream rolls across the shrine. Werewolf answers with one of her own.",
-      "file": "assets/audio/voices/werewolf-chapter-04-before.mp3"
+      "file": "assets/audio/story-v1/narrator-197fb4d9415f8eed.mp3"
     },
     {
       "id": "werewolf-chapter-04-player",
@@ -2195,7 +2195,7 @@
       "chapter": 4,
       "speaker": "WEREWOLF",
       "text": "Run if you want, BANSHEE. It improves the hunt.",
-      "file": "assets/audio/voices/werewolf-chapter-04-player.mp3"
+      "file": "assets/audio/story-v1/werewolf-47542ef090cdc625.mp3"
     },
     {
       "id": "werewolf-chapter-04-opponent",
@@ -2203,7 +2203,7 @@
       "chapter": 4,
       "speaker": "BANSHEE",
       "text": "Listen carefully, WEREWOLF. The next sound is for you.",
-      "file": "assets/audio/voices/werewolf-chapter-04-opponent.mp3"
+      "file": "assets/audio/story-v1/banshee-f5e195623bc1921e.mp3"
     },
     {
       "id": "werewolf-chapter-04-after",
@@ -2211,7 +2211,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "Every lantern goes dark at the same time.",
-      "file": "assets/audio/voices/werewolf-chapter-04-after.mp3"
+      "file": "assets/audio/story-v1/narrator-892913e14deb9d56.mp3"
     },
     {
       "id": "werewolf-chapter-05-before",
@@ -2219,7 +2219,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "Medusa tells the wolf to kneel. The wolf has never been especially trainable.",
-      "file": "assets/audio/voices/werewolf-chapter-05-before.mp3"
+      "file": "assets/audio/story-v1/narrator-6328cc894f903896.mp3"
     },
     {
       "id": "werewolf-chapter-05-player",
@@ -2227,7 +2227,7 @@
       "chapter": 5,
       "speaker": "WEREWOLF",
       "text": "Run if you want, MEDUSA. It improves the hunt.",
-      "file": "assets/audio/voices/werewolf-chapter-05-player.mp3"
+      "file": "assets/audio/story-v1/werewolf-af64e965b8bc4204.mp3"
     },
     {
       "id": "werewolf-chapter-05-opponent",
@@ -2235,7 +2235,7 @@
       "chapter": 5,
       "speaker": "MEDUSA",
       "text": "Look at me when I end this, WEREWOLF.",
-      "file": "assets/audio/voices/werewolf-chapter-05-opponent.mp3"
+      "file": "assets/audio/story-v1/medusa-c37bc99210cbb1ec.mp3"
     },
     {
       "id": "werewolf-chapter-05-after",
@@ -2243,7 +2243,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "Several snakes require a long and embarrassing recovery.",
-      "file": "assets/audio/voices/werewolf-chapter-05-after.mp3"
+      "file": "assets/audio/story-v1/narrator-012a63808ad6bac2.mp3"
     },
     {
       "id": "werewolf-chapter-06-before",
@@ -2251,7 +2251,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "Two hunters circle each other beneath the last useful piece of moon.",
-      "file": "assets/audio/voices/werewolf-chapter-06-before.mp3"
+      "file": "assets/audio/story-v1/narrator-1cdd7d42d0ff1939.mp3"
     },
     {
       "id": "werewolf-chapter-06-player",
@@ -2259,7 +2259,7 @@
       "chapter": 6,
       "speaker": "WEREWOLF",
       "text": "Run if you want, NEKOMATA. It improves the hunt.",
-      "file": "assets/audio/voices/werewolf-chapter-06-player.mp3"
+      "file": "assets/audio/story-v1/werewolf-b617cacab4f2a365.mp3"
     },
     {
       "id": "werewolf-chapter-06-opponent",
@@ -2267,7 +2267,7 @@
       "chapter": 6,
       "speaker": "NEKOMATA",
       "text": "Try to keep up, WEREWOLF. I have lives to spare.",
-      "file": "assets/audio/voices/werewolf-chapter-06-opponent.mp3"
+      "file": "assets/audio/story-v1/nekomata-ac8cca31fedff644.mp3"
     },
     {
       "id": "werewolf-chapter-06-after",
@@ -2275,7 +2275,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "Nobody admits who chased whom.",
-      "file": "assets/audio/voices/werewolf-chapter-06-after.mp3"
+      "file": "assets/audio/story-v1/narrator-eb6f497b4f3b6811.mp3"
     },
     {
       "id": "werewolf-chapter-07-before",
@@ -2283,7 +2283,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "Night is almost gone. Two creatures built for darkness decide which one gets the final minute.",
-      "file": "assets/audio/voices/werewolf-chapter-07-before.mp3"
+      "file": "assets/audio/story-v1/narrator-6bf7b9aa462cb0e4.mp3"
     },
     {
       "id": "werewolf-chapter-07-player",
@@ -2291,7 +2291,7 @@
       "chapter": 7,
       "speaker": "WEREWOLF",
       "text": "Run if you want, VAMPIRA. It improves the hunt.",
-      "file": "assets/audio/voices/werewolf-chapter-07-player.mp3"
+      "file": "assets/audio/story-v1/werewolf-5c5bcdca9d6782b3.mp3"
     },
     {
       "id": "werewolf-chapter-07-opponent",
@@ -2299,7 +2299,7 @@
       "chapter": 7,
       "speaker": "VAMPIRA",
       "text": "Come closer, WEREWOLF. I prefer my nightmares warm.",
-      "file": "assets/audio/voices/werewolf-chapter-07-opponent.mp3"
+      "file": "assets/audio/story-v1/vampira-9707095e9c202c20.mp3"
     },
     {
       "id": "werewolf-chapter-07-after",
@@ -2307,7 +2307,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "The sun rises on a battlefield that still smells like the Red Moon.",
-      "file": "assets/audio/voices/werewolf-chapter-07-after.mp3"
+      "file": "assets/audio/story-v1/narrator-438a894ed10449ea.mp3"
     },
     {
       "id": "werewolf-chapter-08-before",
@@ -2315,7 +2315,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "Werewolf can smell the curse before she sees the wrappings.",
-      "file": "assets/audio/voices/werewolf-chapter-08-before.mp3"
+      "file": "assets/audio/story-v1/narrator-394b8e03d3fe8b04.mp3"
     },
     {
       "id": "werewolf-chapter-08-player",
@@ -2323,7 +2323,7 @@
       "chapter": 8,
       "speaker": "WEREWOLF",
       "text": "Run if you want, MUMMY. It improves the hunt.",
-      "file": "assets/audio/voices/werewolf-chapter-08-player.mp3"
+      "file": "assets/audio/story-v1/werewolf-36a9882ca1e7223d.mp3"
     },
     {
       "id": "werewolf-chapter-08-opponent",
@@ -2331,7 +2331,7 @@
       "chapter": 8,
       "speaker": "MUMMY",
       "text": "Stand still, WEREWOLF. The wrappings work better that way.",
-      "file": "assets/audio/voices/werewolf-chapter-08-opponent.mp3"
+      "file": "assets/audio/story-v1/mummy-7a17a35caa2a7502.mp3"
     },
     {
       "id": "werewolf-chapter-08-after",
@@ -2339,7 +2339,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "The bandages acquire an alarming number of ventilation holes.",
-      "file": "assets/audio/voices/werewolf-chapter-08-after.mp3"
+      "file": "assets/audio/story-v1/narrator-b3cd2cbb84d6555e.mp3"
     },
     {
       "id": "werewolf-chapter-09-before",
@@ -2347,7 +2347,7 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "Witch has a spell for beasts. Werewolf has never respected categories.",
-      "file": "assets/audio/voices/werewolf-chapter-09-before.mp3"
+      "file": "assets/audio/story-v1/narrator-e5cd9aa5f38dad58.mp3"
     },
     {
       "id": "werewolf-chapter-09-player",
@@ -2355,7 +2355,7 @@
       "chapter": 9,
       "speaker": "WEREWOLF",
       "text": "Run if you want, WITCH. It improves the hunt.",
-      "file": "assets/audio/voices/werewolf-chapter-09-player.mp3"
+      "file": "assets/audio/story-v1/werewolf-d71677c7a4623bbb.mp3"
     },
     {
       "id": "werewolf-chapter-09-opponent",
@@ -2363,7 +2363,7 @@
       "chapter": 9,
       "speaker": "WITCH",
       "text": "Careful, WEREWOLF. You are standing inside the spell already.",
-      "file": "assets/audio/voices/werewolf-chapter-09-opponent.mp3"
+      "file": "assets/audio/story-v1/witch-21d4e26362c2f956.mp3"
     },
     {
       "id": "werewolf-chapter-09-after",
@@ -2371,14 +2371,14 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "The circle breaks exactly where the claws said it would.",
-      "file": "assets/audio/voices/werewolf-chapter-09-after.mp3"
+      "file": "assets/audio/story-v1/narrator-70764014882e7884.mp3"
     },
     {
       "id": "werewolf-ending",
       "route": "WEREWOLF",
       "speaker": "NARRATOR",
       "text": "Werewolf watches the moon vanish and discovers the hunt does not. Daylight only gives the world fewer places to hide.",
-      "file": "assets/audio/voices/werewolf-ending.mp3"
+      "file": "assets/audio/story-v1/narrator-2895a27802e78552.mp3"
     },
     {
       "id": "mummy-chapter-01-before",
@@ -2386,7 +2386,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "Witch wants to study the funerary curse. Mummy wants fewer graduate students touching her things.",
-      "file": "assets/audio/voices/mummy-chapter-01-before.mp3"
+      "file": "assets/audio/story-v1/narrator-489d6c8c83285123.mp3"
     },
     {
       "id": "mummy-chapter-01-player",
@@ -2394,7 +2394,7 @@
       "chapter": 1,
       "speaker": "MUMMY",
       "text": "Stand still, WITCH. The wrappings work better that way.",
-      "file": "assets/audio/voices/mummy-chapter-01-player.mp3"
+      "file": "assets/audio/story-v1/mummy-de8e28e5644ea390.mp3"
     },
     {
       "id": "mummy-chapter-01-opponent",
@@ -2402,7 +2402,7 @@
       "chapter": 1,
       "speaker": "WITCH",
       "text": "Careful, MUMMY. You are standing inside the spell already.",
-      "file": "assets/audio/voices/mummy-chapter-01-opponent.mp3"
+      "file": "assets/audio/story-v1/witch-4fd7aa93e70c7f38.mp3"
     },
     {
       "id": "mummy-chapter-01-after",
@@ -2410,7 +2410,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "The grimoire develops a permanent scarab-shaped stain.",
-      "file": "assets/audio/voices/mummy-chapter-01-after.mp3"
+      "file": "assets/audio/story-v1/narrator-c65161298c290e28.mp3"
     },
     {
       "id": "mummy-chapter-02-before",
@@ -2418,7 +2418,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "Werewolf smells a tomb and decides the wrapping paper is optional.",
-      "file": "assets/audio/voices/mummy-chapter-02-before.mp3"
+      "file": "assets/audio/story-v1/narrator-9ecd7ac0f91650b2.mp3"
     },
     {
       "id": "mummy-chapter-02-player",
@@ -2426,7 +2426,7 @@
       "chapter": 2,
       "speaker": "MUMMY",
       "text": "Stand still, WEREWOLF. The wrappings work better that way.",
-      "file": "assets/audio/voices/mummy-chapter-02-player.mp3"
+      "file": "assets/audio/story-v1/mummy-7a17a35caa2a7502.mp3"
     },
     {
       "id": "mummy-chapter-02-opponent",
@@ -2434,7 +2434,7 @@
       "chapter": 2,
       "speaker": "WEREWOLF",
       "text": "Run if you want, MUMMY. It improves the hunt.",
-      "file": "assets/audio/voices/mummy-chapter-02-opponent.mp3"
+      "file": "assets/audio/story-v1/werewolf-36a9882ca1e7223d.mp3"
     },
     {
       "id": "mummy-chapter-02-after",
@@ -2442,7 +2442,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "Mummy adds “wolves” to an extremely old list of pests.",
-      "file": "assets/audio/voices/mummy-chapter-02-after.mp3"
+      "file": "assets/audio/story-v1/narrator-dda324ffa3e83132.mp3"
     },
     {
       "id": "mummy-chapter-03-before",
@@ -2450,7 +2450,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "Dullahan asks where the head is supposed to go. Mummy refuses to answer on principle.",
-      "file": "assets/audio/voices/mummy-chapter-03-before.mp3"
+      "file": "assets/audio/story-v1/narrator-b5a4547d481754a3.mp3"
     },
     {
       "id": "mummy-chapter-03-player",
@@ -2458,7 +2458,7 @@
       "chapter": 3,
       "speaker": "MUMMY",
       "text": "Stand still, DULLAHAN. The wrappings work better that way.",
-      "file": "assets/audio/voices/mummy-chapter-03-player.mp3"
+      "file": "assets/audio/story-v1/mummy-76aad8e2b9288ace.mp3"
     },
     {
       "id": "mummy-chapter-03-opponent",
@@ -2466,7 +2466,7 @@
       "chapter": 3,
       "speaker": "DULLAHAN",
       "text": "Choose a road, MUMMY. I will meet you at the end of it.",
-      "file": "assets/audio/voices/mummy-chapter-03-opponent.mp3"
+      "file": "assets/audio/story-v1/dullahan-8e26a6b9a7be392e.mp3"
     },
     {
       "id": "mummy-chapter-03-after",
@@ -2474,7 +2474,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "Neither funeral tradition wins, but both become significantly messier.",
-      "file": "assets/audio/voices/mummy-chapter-03-after.mp3"
+      "file": "assets/audio/story-v1/narrator-144e1e8002489cf0.mp3"
     },
     {
       "id": "mummy-chapter-04-before",
@@ -2482,7 +2482,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "The curse requires a name. The ghost offers none.",
-      "file": "assets/audio/voices/mummy-chapter-04-before.mp3"
+      "file": "assets/audio/story-v1/narrator-6486dc3edfac9191.mp3"
     },
     {
       "id": "mummy-chapter-04-player",
@@ -2490,7 +2490,7 @@
       "chapter": 4,
       "speaker": "MUMMY",
       "text": "Stand still, YUREI. The wrappings work better that way.",
-      "file": "assets/audio/voices/mummy-chapter-04-player.mp3"
+      "file": "assets/audio/story-v1/mummy-d59a217480b493cf.mp3"
     },
     {
       "id": "mummy-chapter-04-opponent",
@@ -2498,7 +2498,7 @@
       "chapter": 4,
       "speaker": "YUREI",
       "text": "You have been standing beside a ghost longer than you think, MUMMY.",
-      "file": "assets/audio/voices/mummy-chapter-04-opponent.mp3"
+      "file": "assets/audio/story-v1/yurei-5ea514bb7ad51c1c.mp3"
     },
     {
       "id": "mummy-chapter-04-after",
@@ -2506,7 +2506,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "Mummy writes the missing name in dust and waits.",
-      "file": "assets/audio/voices/mummy-chapter-04-after.mp3"
+      "file": "assets/audio/story-v1/narrator-e1973fe384df6634.mp3"
     },
     {
       "id": "mummy-chapter-05-before",
@@ -2514,7 +2514,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "Two preserved corpses meet beneath harbor fog. Archaeology immediately becomes dangerous.",
-      "file": "assets/audio/voices/mummy-chapter-05-before.mp3"
+      "file": "assets/audio/story-v1/narrator-9f2da1e4222ff4b7.mp3"
     },
     {
       "id": "mummy-chapter-05-player",
@@ -2522,7 +2522,7 @@
       "chapter": 5,
       "speaker": "MUMMY",
       "text": "Stand still, JIANGSHI. The wrappings work better that way.",
-      "file": "assets/audio/voices/mummy-chapter-05-player.mp3"
+      "file": "assets/audio/story-v1/mummy-1f6897b30d8b8182.mp3"
     },
     {
       "id": "mummy-chapter-05-opponent",
@@ -2530,7 +2530,7 @@
       "chapter": 5,
       "speaker": "JIANGSHI",
       "text": "Seal intact. Target: MUMMY. Proceeding.",
-      "file": "assets/audio/voices/mummy-chapter-05-opponent.mp3"
+      "file": "assets/audio/story-v1/jiangshi-fb4d6346369fdbfa.mp3"
     },
     {
       "id": "mummy-chapter-05-after",
@@ -2538,7 +2538,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "The talisman now has a matching strip of linen tied around it.",
-      "file": "assets/audio/voices/mummy-chapter-05-after.mp3"
+      "file": "assets/audio/story-v1/narrator-dc08e92ebe7006d2.mp3"
     },
     {
       "id": "mummy-chapter-06-before",
@@ -2546,7 +2546,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "Banshee sings into a body built to outlast mourning.",
-      "file": "assets/audio/voices/mummy-chapter-06-before.mp3"
+      "file": "assets/audio/story-v1/narrator-978d6c6d8d1420b6.mp3"
     },
     {
       "id": "mummy-chapter-06-player",
@@ -2554,7 +2554,7 @@
       "chapter": 6,
       "speaker": "MUMMY",
       "text": "Stand still, BANSHEE. The wrappings work better that way.",
-      "file": "assets/audio/voices/mummy-chapter-06-player.mp3"
+      "file": "assets/audio/story-v1/mummy-696f51045e3ecfe1.mp3"
     },
     {
       "id": "mummy-chapter-06-opponent",
@@ -2562,7 +2562,7 @@
       "chapter": 6,
       "speaker": "BANSHEE",
       "text": "Listen carefully, MUMMY. The next sound is for you.",
-      "file": "assets/audio/voices/mummy-chapter-06-opponent.mp3"
+      "file": "assets/audio/story-v1/banshee-3b0b40fc6649c653.mp3"
     },
     {
       "id": "mummy-chapter-06-after",
@@ -2570,7 +2570,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "One line of linen loosens to the rhythm.",
-      "file": "assets/audio/voices/mummy-chapter-06-after.mp3"
+      "file": "assets/audio/story-v1/narrator-281040b6ba2dc936.mp3"
     },
     {
       "id": "mummy-chapter-07-before",
@@ -2578,7 +2578,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "Medusa expects fear. Mummy has been looking at death for too long to be impressed.",
-      "file": "assets/audio/voices/mummy-chapter-07-before.mp3"
+      "file": "assets/audio/story-v1/narrator-3ff3938e91b17ec3.mp3"
     },
     {
       "id": "mummy-chapter-07-player",
@@ -2586,7 +2586,7 @@
       "chapter": 7,
       "speaker": "MUMMY",
       "text": "Stand still, MEDUSA. The wrappings work better that way.",
-      "file": "assets/audio/voices/mummy-chapter-07-player.mp3"
+      "file": "assets/audio/story-v1/mummy-ab17c87c34a4e6fc.mp3"
     },
     {
       "id": "mummy-chapter-07-opponent",
@@ -2594,7 +2594,7 @@
       "chapter": 7,
       "speaker": "MEDUSA",
       "text": "Look at me when I end this, MUMMY.",
-      "file": "assets/audio/voices/mummy-chapter-07-opponent.mp3"
+      "file": "assets/audio/story-v1/medusa-6c49b6ed56694674.mp3"
     },
     {
       "id": "mummy-chapter-07-after",
@@ -2602,7 +2602,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "Several wrappings become statues. The rest keep moving.",
-      "file": "assets/audio/voices/mummy-chapter-07-after.mp3"
+      "file": "assets/audio/story-v1/narrator-4ccc3e147b852b2d.mp3"
     },
     {
       "id": "mummy-chapter-08-before",
@@ -2610,7 +2610,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "Nekomata has already pulled the loose end before the warning finishes.",
-      "file": "assets/audio/voices/mummy-chapter-08-before.mp3"
+      "file": "assets/audio/story-v1/narrator-096812fb71e28886.mp3"
     },
     {
       "id": "mummy-chapter-08-player",
@@ -2618,7 +2618,7 @@
       "chapter": 8,
       "speaker": "MUMMY",
       "text": "Stand still, NEKOMATA. The wrappings work better that way.",
-      "file": "assets/audio/voices/mummy-chapter-08-player.mp3"
+      "file": "assets/audio/story-v1/mummy-0998829047f2c51e.mp3"
     },
     {
       "id": "mummy-chapter-08-opponent",
@@ -2626,7 +2626,7 @@
       "chapter": 8,
       "speaker": "NEKOMATA",
       "text": "Try to keep up, MUMMY. I have lives to spare.",
-      "file": "assets/audio/voices/mummy-chapter-08-opponent.mp3"
+      "file": "assets/audio/story-v1/nekomata-96b9a40f8c42ec7e.mp3"
     },
     {
       "id": "mummy-chapter-08-after",
@@ -2634,7 +2634,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "The shrine gains several hundred meters of extremely annoyed linen.",
-      "file": "assets/audio/voices/mummy-chapter-08-after.mp3"
+      "file": "assets/audio/story-v1/narrator-2a4e1c44e95b556c.mp3"
     },
     {
       "id": "mummy-chapter-09-before",
@@ -2642,7 +2642,7 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "At sunrise, first thirst faces a queen preserved before half the world had names.",
-      "file": "assets/audio/voices/mummy-chapter-09-before.mp3"
+      "file": "assets/audio/story-v1/narrator-a32fbeb209add310.mp3"
     },
     {
       "id": "mummy-chapter-09-player",
@@ -2650,7 +2650,7 @@
       "chapter": 9,
       "speaker": "MUMMY",
       "text": "Stand still, VAMPIRA. The wrappings work better that way.",
-      "file": "assets/audio/voices/mummy-chapter-09-player.mp3"
+      "file": "assets/audio/story-v1/mummy-df7b87b588c69b5d.mp3"
     },
     {
       "id": "mummy-chapter-09-opponent",
@@ -2658,7 +2658,7 @@
       "chapter": 9,
       "speaker": "VAMPIRA",
       "text": "Come closer, MUMMY. I prefer my nightmares warm.",
-      "file": "assets/audio/voices/mummy-chapter-09-opponent.mp3"
+      "file": "assets/audio/story-v1/vampira-487cc943b95bfbb8.mp3"
     },
     {
       "id": "mummy-chapter-09-after",
@@ -2666,14 +2666,14 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "Dawn warms the tomb dust. The curse does not fade.",
-      "file": "assets/audio/voices/mummy-chapter-09-after.mp3"
+      "file": "assets/audio/story-v1/narrator-0648c82d5e584aee.mp3"
     },
     {
       "id": "mummy-ending",
       "route": "MUMMY",
       "speaker": "NARRATOR",
       "text": "Mummy enters dawn carrying nine new curses and one old name. Sunlight warms the wrappings. Nothing turns to dust. Somewhere beneath the linen, she laughs.",
-      "file": "assets/audio/voices/mummy-ending.mp3"
+      "file": "assets/audio/story-v1/narrator-84225778832fa736.mp3"
     },
     {
       "id": "witch-chapter-01-before",
@@ -2681,7 +2681,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "Witch asks permission to examine the curse. Mummy says no. Witch begins taking notes anyway.",
-      "file": "assets/audio/voices/witch-chapter-01-before.mp3"
+      "file": "assets/audio/story-v1/narrator-b2e62fc7952fef2e.mp3"
     },
     {
       "id": "witch-chapter-01-player",
@@ -2689,7 +2689,7 @@
       "chapter": 1,
       "speaker": "WITCH",
       "text": "Careful, MUMMY. You are standing inside the spell already.",
-      "file": "assets/audio/voices/witch-chapter-01-player.mp3"
+      "file": "assets/audio/story-v1/witch-4fd7aa93e70c7f38.mp3"
     },
     {
       "id": "witch-chapter-01-opponent",
@@ -2697,7 +2697,7 @@
       "chapter": 1,
       "speaker": "MUMMY",
       "text": "Stand still, WITCH. The wrappings work better that way.",
-      "file": "assets/audio/voices/witch-chapter-01-opponent.mp3"
+      "file": "assets/audio/story-v1/mummy-de8e28e5644ea390.mp3"
     },
     {
       "id": "witch-chapter-01-after",
@@ -2705,7 +2705,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "The notes survive. The desk does not.",
-      "file": "assets/audio/voices/witch-chapter-01-after.mp3"
+      "file": "assets/audio/story-v1/narrator-eac235c7d46597d4.mp3"
     },
     {
       "id": "witch-chapter-02-before",
@@ -2713,7 +2713,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "The moon is part of the formula. Unfortunately, so are the teeth.",
-      "file": "assets/audio/voices/witch-chapter-02-before.mp3"
+      "file": "assets/audio/story-v1/narrator-2f51cd2faec42964.mp3"
     },
     {
       "id": "witch-chapter-02-player",
@@ -2721,7 +2721,7 @@
       "chapter": 2,
       "speaker": "WITCH",
       "text": "Careful, WEREWOLF. You are standing inside the spell already.",
-      "file": "assets/audio/voices/witch-chapter-02-player.mp3"
+      "file": "assets/audio/story-v1/witch-21d4e26362c2f956.mp3"
     },
     {
       "id": "witch-chapter-02-opponent",
@@ -2729,7 +2729,7 @@
       "chapter": 2,
       "speaker": "WEREWOLF",
       "text": "Run if you want, WITCH. It improves the hunt.",
-      "file": "assets/audio/voices/witch-chapter-02-opponent.mp3"
+      "file": "assets/audio/story-v1/werewolf-d71677c7a4623bbb.mp3"
     },
     {
       "id": "witch-chapter-02-after",
@@ -2737,7 +2737,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "Witch crosses out “obedient familiar” and writes “absolutely not.”",
-      "file": "assets/audio/voices/witch-chapter-02-after.mp3"
+      "file": "assets/audio/story-v1/narrator-5c98449c09302753.mp3"
     },
     {
       "id": "witch-chapter-03-before",
@@ -2745,7 +2745,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "Dullahan offers the ritual exactly one head and refuses to specify where it came from.",
-      "file": "assets/audio/voices/witch-chapter-03-before.mp3"
+      "file": "assets/audio/story-v1/narrator-100f222a728199b6.mp3"
     },
     {
       "id": "witch-chapter-03-player",
@@ -2753,7 +2753,7 @@
       "chapter": 3,
       "speaker": "WITCH",
       "text": "Careful, DULLAHAN. You are standing inside the spell already.",
-      "file": "assets/audio/voices/witch-chapter-03-player.mp3"
+      "file": "assets/audio/story-v1/witch-310ebeb24af28efd.mp3"
     },
     {
       "id": "witch-chapter-03-opponent",
@@ -2761,7 +2761,7 @@
       "chapter": 3,
       "speaker": "DULLAHAN",
       "text": "Choose a road, WITCH. I will meet you at the end of it.",
-      "file": "assets/audio/voices/witch-chapter-03-opponent.mp3"
+      "file": "assets/audio/story-v1/dullahan-f6cc7ddf61632bbf.mp3"
     },
     {
       "id": "witch-chapter-03-after",
@@ -2769,7 +2769,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "The spell works, technically, which is somehow worse.",
-      "file": "assets/audio/voices/witch-chapter-03-after.mp3"
+      "file": "assets/audio/story-v1/narrator-62728188119b82e6.mp3"
     },
     {
       "id": "witch-chapter-04-before",
@@ -2777,7 +2777,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "Witch seals the room. Yūrei arrives from inside the book.",
-      "file": "assets/audio/voices/witch-chapter-04-before.mp3"
+      "file": "assets/audio/story-v1/narrator-fd150c74a16b5cc3.mp3"
     },
     {
       "id": "witch-chapter-04-player",
@@ -2785,7 +2785,7 @@
       "chapter": 4,
       "speaker": "WITCH",
       "text": "Careful, YUREI. You are standing inside the spell already.",
-      "file": "assets/audio/voices/witch-chapter-04-player.mp3"
+      "file": "assets/audio/story-v1/witch-84909646367dcac9.mp3"
     },
     {
       "id": "witch-chapter-04-opponent",
@@ -2793,7 +2793,7 @@
       "chapter": 4,
       "speaker": "YUREI",
       "text": "You have been standing beside a ghost longer than you think, WITCH.",
-      "file": "assets/audio/voices/witch-chapter-04-opponent.mp3"
+      "file": "assets/audio/story-v1/yurei-5b11652bd0a65d92.mp3"
     },
     {
       "id": "witch-chapter-04-after",
@@ -2801,7 +2801,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "The grimoire now contains one page that cannot be turned.",
-      "file": "assets/audio/voices/witch-chapter-04-after.mp3"
+      "file": "assets/audio/story-v1/narrator-06fe9bbe9e3e7c37.mp3"
     },
     {
       "id": "witch-chapter-05-before",
@@ -2809,7 +2809,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "Witch recognizes the talisman as magic. Jiangshi recognizes the wand as a problem.",
-      "file": "assets/audio/voices/witch-chapter-05-before.mp3"
+      "file": "assets/audio/story-v1/narrator-52f02f538a8085a3.mp3"
     },
     {
       "id": "witch-chapter-05-player",
@@ -2817,7 +2817,7 @@
       "chapter": 5,
       "speaker": "WITCH",
       "text": "Careful, JIANGSHI. You are standing inside the spell already.",
-      "file": "assets/audio/voices/witch-chapter-05-player.mp3"
+      "file": "assets/audio/story-v1/witch-a2441f6014db47fc.mp3"
     },
     {
       "id": "witch-chapter-05-opponent",
@@ -2825,7 +2825,7 @@
       "chapter": 5,
       "speaker": "JIANGSHI",
       "text": "Seal intact. Target: WITCH. Proceeding.",
-      "file": "assets/audio/voices/witch-chapter-05-opponent.mp3"
+      "file": "assets/audio/story-v1/jiangshi-27fd5454e3d567fb.mp3"
     },
     {
       "id": "witch-chapter-05-after",
@@ -2833,7 +2833,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "Both forms of paperwork are damaged beyond repair.",
-      "file": "assets/audio/voices/witch-chapter-05-after.mp3"
+      "file": "assets/audio/story-v1/narrator-d7dd0b31d9efdd4e.mp3"
     },
     {
       "id": "witch-chapter-06-before",
@@ -2841,7 +2841,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "Witch needs one clean syllable. Banshee gives her an entire impossible chord.",
-      "file": "assets/audio/voices/witch-chapter-06-before.mp3"
+      "file": "assets/audio/story-v1/narrator-a9c8394dcf103934.mp3"
     },
     {
       "id": "witch-chapter-06-player",
@@ -2849,7 +2849,7 @@
       "chapter": 6,
       "speaker": "WITCH",
       "text": "Careful, BANSHEE. You are standing inside the spell already.",
-      "file": "assets/audio/voices/witch-chapter-06-player.mp3"
+      "file": "assets/audio/story-v1/witch-4c5e751f8f707462.mp3"
     },
     {
       "id": "witch-chapter-06-opponent",
@@ -2857,7 +2857,7 @@
       "chapter": 6,
       "speaker": "BANSHEE",
       "text": "Listen carefully, WITCH. The next sound is for you.",
-      "file": "assets/audio/voices/witch-chapter-06-opponent.mp3"
+      "file": "assets/audio/story-v1/banshee-e59d353c1073350b.mp3"
     },
     {
       "id": "witch-chapter-06-after",
@@ -2865,7 +2865,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "Three sigils shatter from the harmony alone.",
-      "file": "assets/audio/voices/witch-chapter-06-after.mp3"
+      "file": "assets/audio/story-v1/narrator-ab212d340f0314cf.mp3"
     },
     {
       "id": "witch-chapter-07-before",
@@ -2873,7 +2873,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "The ward is perfect. Medusa has more eyes than the ward budgeted for.",
-      "file": "assets/audio/voices/witch-chapter-07-before.mp3"
+      "file": "assets/audio/story-v1/narrator-d2a8505d18edb79f.mp3"
     },
     {
       "id": "witch-chapter-07-player",
@@ -2881,7 +2881,7 @@
       "chapter": 7,
       "speaker": "WITCH",
       "text": "Careful, MEDUSA. You are standing inside the spell already.",
-      "file": "assets/audio/voices/witch-chapter-07-player.mp3"
+      "file": "assets/audio/story-v1/witch-ed9a7401beb1bb9f.mp3"
     },
     {
       "id": "witch-chapter-07-opponent",
@@ -2889,7 +2889,7 @@
       "chapter": 7,
       "speaker": "MEDUSA",
       "text": "Look at me when I end this, WITCH.",
-      "file": "assets/audio/voices/witch-chapter-07-opponent.mp3"
+      "file": "assets/audio/story-v1/medusa-e52bf76eb32ee0f8.mp3"
     },
     {
       "id": "witch-chapter-07-after",
@@ -2897,7 +2897,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "Witch revises the diagram while dodging snakes.",
-      "file": "assets/audio/voices/witch-chapter-07-after.mp3"
+      "file": "assets/audio/story-v1/narrator-f59b2c7c8739803c.mp3"
     },
     {
       "id": "witch-chapter-08-before",
@@ -2905,7 +2905,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "Nekomata sits on the summoning mark and refuses to move.",
-      "file": "assets/audio/voices/witch-chapter-08-before.mp3"
+      "file": "assets/audio/story-v1/narrator-ea4a1ff920201893.mp3"
     },
     {
       "id": "witch-chapter-08-player",
@@ -2913,7 +2913,7 @@
       "chapter": 8,
       "speaker": "WITCH",
       "text": "Careful, NEKOMATA. You are standing inside the spell already.",
-      "file": "assets/audio/voices/witch-chapter-08-player.mp3"
+      "file": "assets/audio/story-v1/witch-74cf3c59d6493d92.mp3"
     },
     {
       "id": "witch-chapter-08-opponent",
@@ -2921,7 +2921,7 @@
       "chapter": 8,
       "speaker": "NEKOMATA",
       "text": "Try to keep up, WITCH. I have lives to spare.",
-      "file": "assets/audio/voices/witch-chapter-08-opponent.mp3"
+      "file": "assets/audio/story-v1/nekomata-32aed6a02b1031d1.mp3"
     },
     {
       "id": "witch-chapter-08-after",
@@ -2929,7 +2929,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "The spell summons exactly one annoyed cat, which was already there.",
-      "file": "assets/audio/voices/witch-chapter-08-after.mp3"
+      "file": "assets/audio/story-v1/narrator-2283b78a84b0b237.mp3"
     },
     {
       "id": "witch-chapter-09-before",
@@ -2937,7 +2937,7 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "At sunrise, Witch faces the oldest hunger in the tournament and opens to a blank page.",
-      "file": "assets/audio/voices/witch-chapter-09-before.mp3"
+      "file": "assets/audio/story-v1/narrator-5dde396512acd34f.mp3"
     },
     {
       "id": "witch-chapter-09-player",
@@ -2945,7 +2945,7 @@
       "chapter": 9,
       "speaker": "WITCH",
       "text": "Careful, VAMPIRA. You are standing inside the spell already.",
-      "file": "assets/audio/voices/witch-chapter-09-player.mp3"
+      "file": "assets/audio/story-v1/witch-be969ff9842c21bb.mp3"
     },
     {
       "id": "witch-chapter-09-opponent",
@@ -2953,7 +2953,7 @@
       "chapter": 9,
       "speaker": "VAMPIRA",
       "text": "Come closer, WITCH. I prefer my nightmares warm.",
-      "file": "assets/audio/voices/witch-chapter-09-opponent.mp3"
+      "file": "assets/audio/story-v1/vampira-c5521f64a16d01d5.mp3"
     },
     {
       "id": "witch-chapter-09-after",
@@ -2961,14 +2961,14 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "The first line written under daylight reads: “Nightbloom continues.”",
-      "file": "assets/audio/voices/witch-chapter-09-after.mp3"
+      "file": "assets/audio/story-v1/narrator-ffab47c94d32129f.mp3"
     },
     {
       "id": "witch-ending",
       "route": "WITCH",
       "speaker": "NARRATOR",
       "text": "Witch closes her grimoire as sunrise turns every sigil pale gold. The universe remains stubbornly intact, which means there is still plenty left to rewrite.",
-      "file": "assets/audio/voices/witch-ending.mp3"
+      "file": "assets/audio/story-v1/narrator-12064288df487a5a.mp3"
     },
     {
       "id": "arachne-chapter-01-before",
@@ -2976,7 +2976,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "A silver thread leads Arachne to VAMPIRA. Each guardian holds a knot in the spell binding a stranger beneath the library.",
-      "file": "assets/audio/voices/arachne-chapter-01-before.mp3"
+      "file": "assets/audio/story-v1/narrator-8725620cd64472fe.mp3"
     },
     {
       "id": "arachne-chapter-01-player",
@@ -2984,7 +2984,7 @@
       "chapter": 1,
       "speaker": "ARACHNE",
       "text": "Struggle if you like, VAMPIRA. The silk remembers.",
-      "file": "assets/audio/voices/arachne-chapter-01-player.mp3"
+      "file": "assets/audio/story-v1/arachne-d05e4c5e7b140c5c.mp3"
     },
     {
       "id": "arachne-chapter-01-opponent",
@@ -2992,7 +2992,7 @@
       "chapter": 1,
       "speaker": "VAMPIRA",
       "text": "Come closer, ARACHNE. I prefer my nightmares warm.",
-      "file": "assets/audio/voices/arachne-chapter-01-opponent.mp3"
+      "file": "assets/audio/story-v1/vampira-a103bcca4681a754.mp3"
     },
     {
       "id": "arachne-chapter-01-after",
@@ -3000,7 +3000,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "Another knot loosens. Beyond VAMPIRA, Arachne follows the trembling thread toward the library.",
-      "file": "assets/audio/voices/arachne-chapter-01-after.mp3"
+      "file": "assets/audio/story-v1/narrator-6bb150f6e09bf096.mp3"
     },
     {
       "id": "arachne-chapter-02-before",
@@ -3008,7 +3008,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "A silver thread leads Arachne to NEKOMATA. Each guardian holds a knot in the spell binding a stranger beneath the library.",
-      "file": "assets/audio/voices/arachne-chapter-02-before.mp3"
+      "file": "assets/audio/story-v1/narrator-36a9b24c72421ebd.mp3"
     },
     {
       "id": "arachne-chapter-02-player",
@@ -3016,7 +3016,7 @@
       "chapter": 2,
       "speaker": "ARACHNE",
       "text": "Struggle if you like, NEKOMATA. The silk remembers.",
-      "file": "assets/audio/voices/arachne-chapter-02-player.mp3"
+      "file": "assets/audio/story-v1/arachne-6ecd133a52dc7bd1.mp3"
     },
     {
       "id": "arachne-chapter-02-opponent",
@@ -3024,7 +3024,7 @@
       "chapter": 2,
       "speaker": "NEKOMATA",
       "text": "Try to keep up, ARACHNE. I have lives to spare.",
-      "file": "assets/audio/voices/arachne-chapter-02-opponent.mp3"
+      "file": "assets/audio/story-v1/nekomata-44e5608094cd106f.mp3"
     },
     {
       "id": "arachne-chapter-02-after",
@@ -3032,7 +3032,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "Another knot loosens. Beyond NEKOMATA, Arachne follows the trembling thread toward the library.",
-      "file": "assets/audio/voices/arachne-chapter-02-after.mp3"
+      "file": "assets/audio/story-v1/narrator-a95e5139452d1570.mp3"
     },
     {
       "id": "arachne-chapter-03-before",
@@ -3040,7 +3040,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "A silver thread leads Arachne to BANSHEE. Each guardian holds a knot in the spell binding a stranger beneath the library.",
-      "file": "assets/audio/voices/arachne-chapter-03-before.mp3"
+      "file": "assets/audio/story-v1/narrator-b4ddc0c7c84b23ed.mp3"
     },
     {
       "id": "arachne-chapter-03-player",
@@ -3048,7 +3048,7 @@
       "chapter": 3,
       "speaker": "ARACHNE",
       "text": "Struggle if you like, BANSHEE. The silk remembers.",
-      "file": "assets/audio/voices/arachne-chapter-03-player.mp3"
+      "file": "assets/audio/story-v1/arachne-79590d3e9b9d8e1e.mp3"
     },
     {
       "id": "arachne-chapter-03-opponent",
@@ -3056,7 +3056,7 @@
       "chapter": 3,
       "speaker": "BANSHEE",
       "text": "Listen carefully, ARACHNE. The next sound is for you.",
-      "file": "assets/audio/voices/arachne-chapter-03-opponent.mp3"
+      "file": "assets/audio/story-v1/banshee-1a339124ffba5ebc.mp3"
     },
     {
       "id": "arachne-chapter-03-after",
@@ -3064,7 +3064,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "Another knot loosens. Beyond BANSHEE, Arachne follows the trembling thread toward the library.",
-      "file": "assets/audio/voices/arachne-chapter-03-after.mp3"
+      "file": "assets/audio/story-v1/narrator-87611ad55092d775.mp3"
     },
     {
       "id": "arachne-chapter-04-before",
@@ -3072,7 +3072,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "A silver thread leads Arachne to MEDUSA. Each guardian holds a knot in the spell binding a stranger beneath the library.",
-      "file": "assets/audio/voices/arachne-chapter-04-before.mp3"
+      "file": "assets/audio/story-v1/narrator-5ca1650bc8d1fe2c.mp3"
     },
     {
       "id": "arachne-chapter-04-player",
@@ -3080,7 +3080,7 @@
       "chapter": 4,
       "speaker": "ARACHNE",
       "text": "Struggle if you like, MEDUSA. The silk remembers.",
-      "file": "assets/audio/voices/arachne-chapter-04-player.mp3"
+      "file": "assets/audio/story-v1/arachne-0968d24fa2275b11.mp3"
     },
     {
       "id": "arachne-chapter-04-opponent",
@@ -3088,7 +3088,7 @@
       "chapter": 4,
       "speaker": "MEDUSA",
       "text": "Look at me when I end this, ARACHNE.",
-      "file": "assets/audio/voices/arachne-chapter-04-opponent.mp3"
+      "file": "assets/audio/story-v1/medusa-67e8c37ed09d351b.mp3"
     },
     {
       "id": "arachne-chapter-04-after",
@@ -3096,7 +3096,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "Another knot loosens. Beyond MEDUSA, Arachne follows the trembling thread toward the library.",
-      "file": "assets/audio/voices/arachne-chapter-04-after.mp3"
+      "file": "assets/audio/story-v1/narrator-b2a015da3320b720.mp3"
     },
     {
       "id": "arachne-chapter-05-before",
@@ -3104,7 +3104,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "A silver thread leads Arachne to JIANGSHI. Each guardian holds a knot in the spell binding a stranger beneath the library.",
-      "file": "assets/audio/voices/arachne-chapter-05-before.mp3"
+      "file": "assets/audio/story-v1/narrator-5423ea819f4ed79f.mp3"
     },
     {
       "id": "arachne-chapter-05-player",
@@ -3112,7 +3112,7 @@
       "chapter": 5,
       "speaker": "ARACHNE",
       "text": "Struggle if you like, JIANGSHI. The silk remembers.",
-      "file": "assets/audio/voices/arachne-chapter-05-player.mp3"
+      "file": "assets/audio/story-v1/arachne-85f94f7425d77f6e.mp3"
     },
     {
       "id": "arachne-chapter-05-opponent",
@@ -3120,7 +3120,7 @@
       "chapter": 5,
       "speaker": "JIANGSHI",
       "text": "Seal intact. Target: ARACHNE. Proceeding.",
-      "file": "assets/audio/voices/arachne-chapter-05-opponent.mp3"
+      "file": "assets/audio/story-v1/jiangshi-faa7a5d93bf58a85.mp3"
     },
     {
       "id": "arachne-chapter-05-after",
@@ -3128,7 +3128,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "Another knot loosens. Beyond JIANGSHI, Arachne follows the trembling thread toward the library.",
-      "file": "assets/audio/voices/arachne-chapter-05-after.mp3"
+      "file": "assets/audio/story-v1/narrator-660a1fe9efd54914.mp3"
     },
     {
       "id": "arachne-chapter-06-before",
@@ -3136,7 +3136,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "A silver thread leads Arachne to YUREI. Each guardian holds a knot in the spell binding a stranger beneath the library.",
-      "file": "assets/audio/voices/arachne-chapter-06-before.mp3"
+      "file": "assets/audio/story-v1/narrator-392ae76b35e26863.mp3"
     },
     {
       "id": "arachne-chapter-06-player",
@@ -3144,7 +3144,7 @@
       "chapter": 6,
       "speaker": "ARACHNE",
       "text": "Struggle if you like, YUREI. The silk remembers.",
-      "file": "assets/audio/voices/arachne-chapter-06-player.mp3"
+      "file": "assets/audio/story-v1/arachne-24a4da2e7c775f63.mp3"
     },
     {
       "id": "arachne-chapter-06-opponent",
@@ -3152,7 +3152,7 @@
       "chapter": 6,
       "speaker": "YUREI",
       "text": "You have been standing beside a ghost longer than you think, ARACHNE.",
-      "file": "assets/audio/voices/arachne-chapter-06-opponent.mp3"
+      "file": "assets/audio/story-v1/yurei-78061c1349f85b92.mp3"
     },
     {
       "id": "arachne-chapter-06-after",
@@ -3160,7 +3160,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "Another knot loosens. Beyond YUREI, Arachne follows the trembling thread toward the library.",
-      "file": "assets/audio/voices/arachne-chapter-06-after.mp3"
+      "file": "assets/audio/story-v1/narrator-10ce1647cccacfb1.mp3"
     },
     {
       "id": "arachne-chapter-07-before",
@@ -3168,7 +3168,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "A silver thread leads Arachne to DULLAHAN. Each guardian holds a knot in the spell binding a stranger beneath the library.",
-      "file": "assets/audio/voices/arachne-chapter-07-before.mp3"
+      "file": "assets/audio/story-v1/narrator-3c147a9b29581e57.mp3"
     },
     {
       "id": "arachne-chapter-07-player",
@@ -3176,7 +3176,7 @@
       "chapter": 7,
       "speaker": "ARACHNE",
       "text": "Struggle if you like, DULLAHAN. The silk remembers.",
-      "file": "assets/audio/voices/arachne-chapter-07-player.mp3"
+      "file": "assets/audio/story-v1/arachne-1c174b9d714d50a9.mp3"
     },
     {
       "id": "arachne-chapter-07-opponent",
@@ -3184,7 +3184,7 @@
       "chapter": 7,
       "speaker": "DULLAHAN",
       "text": "Choose a road, ARACHNE. I will meet you at the end of it.",
-      "file": "assets/audio/voices/arachne-chapter-07-opponent.mp3"
+      "file": "assets/audio/story-v1/dullahan-5b8efab09f43d41e.mp3"
     },
     {
       "id": "arachne-chapter-07-after",
@@ -3192,7 +3192,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "Another knot loosens. Beyond DULLAHAN, Arachne follows the trembling thread toward the library.",
-      "file": "assets/audio/voices/arachne-chapter-07-after.mp3"
+      "file": "assets/audio/story-v1/narrator-c9ea20e96abec401.mp3"
     },
     {
       "id": "arachne-chapter-08-before",
@@ -3200,7 +3200,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "A silver thread leads Arachne to WEREWOLF. Each guardian holds a knot in the spell binding a stranger beneath the library.",
-      "file": "assets/audio/voices/arachne-chapter-08-before.mp3"
+      "file": "assets/audio/story-v1/narrator-74d75d7dbaf49071.mp3"
     },
     {
       "id": "arachne-chapter-08-player",
@@ -3208,7 +3208,7 @@
       "chapter": 8,
       "speaker": "ARACHNE",
       "text": "Struggle if you like, WEREWOLF. The silk remembers.",
-      "file": "assets/audio/voices/arachne-chapter-08-player.mp3"
+      "file": "assets/audio/story-v1/arachne-f4224008ae9402f0.mp3"
     },
     {
       "id": "arachne-chapter-08-opponent",
@@ -3216,7 +3216,7 @@
       "chapter": 8,
       "speaker": "WEREWOLF",
       "text": "Run if you want, ARACHNE. It improves the hunt.",
-      "file": "assets/audio/voices/arachne-chapter-08-opponent.mp3"
+      "file": "assets/audio/story-v1/werewolf-c1ee77c01765b98e.mp3"
     },
     {
       "id": "arachne-chapter-08-after",
@@ -3224,7 +3224,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "Another knot loosens. Beyond WEREWOLF, Arachne follows the trembling thread toward the library.",
-      "file": "assets/audio/voices/arachne-chapter-08-after.mp3"
+      "file": "assets/audio/story-v1/narrator-9938ab9d1b592197.mp3"
     },
     {
       "id": "arachne-chapter-09-before",
@@ -3232,7 +3232,7 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "A silver thread leads Arachne to MUMMY. Each guardian holds a knot in the spell binding a stranger beneath the library.",
-      "file": "assets/audio/voices/arachne-chapter-09-before.mp3"
+      "file": "assets/audio/story-v1/narrator-9f2e126fecdc8857.mp3"
     },
     {
       "id": "arachne-chapter-09-player",
@@ -3240,7 +3240,7 @@
       "chapter": 9,
       "speaker": "ARACHNE",
       "text": "Struggle if you like, MUMMY. The silk remembers.",
-      "file": "assets/audio/voices/arachne-chapter-09-player.mp3"
+      "file": "assets/audio/story-v1/arachne-601d041055f046d4.mp3"
     },
     {
       "id": "arachne-chapter-09-opponent",
@@ -3248,7 +3248,7 @@
       "chapter": 9,
       "speaker": "MUMMY",
       "text": "Stand still, ARACHNE. The wrappings work better that way.",
-      "file": "assets/audio/voices/arachne-chapter-09-opponent.mp3"
+      "file": "assets/audio/story-v1/mummy-869c7399f17c9549.mp3"
     },
     {
       "id": "arachne-chapter-09-after",
@@ -3256,7 +3256,7 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "Another knot loosens. Beyond MUMMY, Arachne follows the trembling thread toward the library.",
-      "file": "assets/audio/voices/arachne-chapter-09-after.mp3"
+      "file": "assets/audio/story-v1/narrator-bbc52ffae993869b.mp3"
     },
     {
       "id": "arachne-chapter-10-before",
@@ -3264,7 +3264,7 @@
       "chapter": 10,
       "speaker": "NARRATOR",
       "text": "Witch guards a locked chamber beneath the library. Behind its door, silver strings tremble around a porcelain prisoner. Arachne demands the key.",
-      "file": "assets/audio/voices/arachne-chapter-10-before.mp3"
+      "file": "assets/audio/story-v1/narrator-b68ac5ea13cc7ab3.mp3"
     },
     {
       "id": "arachne-chapter-10-player",
@@ -3272,7 +3272,7 @@
       "chapter": 10,
       "speaker": "ARACHNE",
       "text": "Struggle if you like, WITCH. The silk remembers.",
-      "file": "assets/audio/voices/arachne-chapter-10-player.mp3"
+      "file": "assets/audio/story-v1/arachne-c1f4addaa39a4776.mp3"
     },
     {
       "id": "arachne-chapter-10-opponent",
@@ -3280,7 +3280,7 @@
       "chapter": 10,
       "speaker": "WITCH",
       "text": "Careful, ARACHNE. You are standing inside the spell already.",
-      "file": "assets/audio/voices/arachne-chapter-10-opponent.mp3"
+      "file": "assets/audio/story-v1/witch-19482ab7be650671.mp3"
     },
     {
       "id": "arachne-chapter-10-after",
@@ -3288,14 +3288,14 @@
       "chapter": 10,
       "speaker": "NARRATOR",
       "text": "The grimoire falls open. Arachne descends the stairs, carrying a blade fine enough to cut a curse.",
-      "file": "assets/audio/voices/arachne-chapter-10-after.mp3"
+      "file": "assets/audio/story-v1/narrator-a6227b4ee3836f00.mp3"
     },
     {
       "id": "arachne-ending",
       "route": "ARACHNE",
       "speaker": "NARRATOR",
       "text": "Arachne gathers the last thread of the Red Moon. Beneath the library she finds a porcelain woman suspended by silver strings. For the first time, the widow makes a web to set someone free. One strand snaps. Then another. The doll opens her eyes.",
-      "file": "assets/audio/voices/arachne-ending.mp3"
+      "file": "assets/audio/story-v1/narrator-2e6196bcb2e6764d.mp3"
     },
     {
       "id": "living-doll-chapter-01-before",
@@ -3303,7 +3303,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "The Living Doll returns to the workshop. Witch insists a creation must obey its maker. The doll closes the door behind her.",
-      "file": "assets/audio/voices/living-doll-chapter-01-before.mp3"
+      "file": "assets/audio/story-v1/narrator-4a5ef6ee3adf0b06.mp3"
     },
     {
       "id": "living-doll-chapter-01-player",
@@ -3311,7 +3311,7 @@
       "chapter": 1,
       "speaker": "LIVING DOLL",
       "text": "Watch closely, WITCH. Nobody is moving me.",
-      "file": "assets/audio/voices/living-doll-chapter-01-player.mp3"
+      "file": "assets/audio/story-v1/living-doll-fba2f834e5107491.mp3"
     },
     {
       "id": "living-doll-chapter-01-opponent",
@@ -3319,7 +3319,7 @@
       "chapter": 1,
       "speaker": "WITCH",
       "text": "Careful, LIVING DOLL. You are standing inside the spell already.",
-      "file": "assets/audio/voices/living-doll-chapter-01-opponent.mp3"
+      "file": "assets/audio/story-v1/witch-835926eb8aeaa6de.mp3"
     },
     {
       "id": "living-doll-chapter-01-after",
@@ -3327,7 +3327,7 @@
       "chapter": 1,
       "speaker": "NARRATOR",
       "text": "A crack remains in the porcelain. The Living Doll leaves it there. It is proof the choice was hers.",
-      "file": "assets/audio/voices/living-doll-chapter-01-after.mp3"
+      "file": "assets/audio/story-v1/narrator-3ca9abcaf630a940.mp3"
     },
     {
       "id": "living-doll-chapter-02-before",
@@ -3335,7 +3335,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "MUMMY waits on the road to dawn. The Living Doll chooses to face her, with no hand pulling the strings.",
-      "file": "assets/audio/voices/living-doll-chapter-02-before.mp3"
+      "file": "assets/audio/story-v1/narrator-a3d31b6d937395a3.mp3"
     },
     {
       "id": "living-doll-chapter-02-player",
@@ -3343,7 +3343,7 @@
       "chapter": 2,
       "speaker": "LIVING DOLL",
       "text": "Watch closely, MUMMY. Nobody is moving me.",
-      "file": "assets/audio/voices/living-doll-chapter-02-player.mp3"
+      "file": "assets/audio/story-v1/living-doll-4c1849ebf781adfb.mp3"
     },
     {
       "id": "living-doll-chapter-02-opponent",
@@ -3351,7 +3351,7 @@
       "chapter": 2,
       "speaker": "MUMMY",
       "text": "Stand still, LIVING DOLL. The wrappings work better that way.",
-      "file": "assets/audio/voices/living-doll-chapter-02-opponent.mp3"
+      "file": "assets/audio/story-v1/mummy-ce90547bccf124e1.mp3"
     },
     {
       "id": "living-doll-chapter-02-after",
@@ -3359,7 +3359,7 @@
       "chapter": 2,
       "speaker": "NARRATOR",
       "text": "A crack remains in the porcelain. The Living Doll leaves it there. It is proof the choice was hers.",
-      "file": "assets/audio/voices/living-doll-chapter-02-after.mp3"
+      "file": "assets/audio/story-v1/narrator-3ca9abcaf630a940.mp3"
     },
     {
       "id": "living-doll-chapter-03-before",
@@ -3367,7 +3367,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "WEREWOLF waits on the road to dawn. The Living Doll chooses to face her, with no hand pulling the strings.",
-      "file": "assets/audio/voices/living-doll-chapter-03-before.mp3"
+      "file": "assets/audio/story-v1/narrator-dafed7be791c3cba.mp3"
     },
     {
       "id": "living-doll-chapter-03-player",
@@ -3375,7 +3375,7 @@
       "chapter": 3,
       "speaker": "LIVING DOLL",
       "text": "Watch closely, WEREWOLF. Nobody is moving me.",
-      "file": "assets/audio/voices/living-doll-chapter-03-player.mp3"
+      "file": "assets/audio/story-v1/living-doll-a3d423db79017ca0.mp3"
     },
     {
       "id": "living-doll-chapter-03-opponent",
@@ -3383,7 +3383,7 @@
       "chapter": 3,
       "speaker": "WEREWOLF",
       "text": "Run if you want, LIVING DOLL. It improves the hunt.",
-      "file": "assets/audio/voices/living-doll-chapter-03-opponent.mp3"
+      "file": "assets/audio/story-v1/werewolf-49ea68e0e56ca8dd.mp3"
     },
     {
       "id": "living-doll-chapter-03-after",
@@ -3391,7 +3391,7 @@
       "chapter": 3,
       "speaker": "NARRATOR",
       "text": "A crack remains in the porcelain. The Living Doll leaves it there. It is proof the choice was hers.",
-      "file": "assets/audio/voices/living-doll-chapter-03-after.mp3"
+      "file": "assets/audio/story-v1/narrator-3ca9abcaf630a940.mp3"
     },
     {
       "id": "living-doll-chapter-04-before",
@@ -3399,7 +3399,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "DULLAHAN waits on the road to dawn. The Living Doll chooses to face her, with no hand pulling the strings.",
-      "file": "assets/audio/voices/living-doll-chapter-04-before.mp3"
+      "file": "assets/audio/story-v1/narrator-c2534740dd77643f.mp3"
     },
     {
       "id": "living-doll-chapter-04-player",
@@ -3407,7 +3407,7 @@
       "chapter": 4,
       "speaker": "LIVING DOLL",
       "text": "Watch closely, DULLAHAN. Nobody is moving me.",
-      "file": "assets/audio/voices/living-doll-chapter-04-player.mp3"
+      "file": "assets/audio/story-v1/living-doll-56ad0f7018e576d5.mp3"
     },
     {
       "id": "living-doll-chapter-04-opponent",
@@ -3415,7 +3415,7 @@
       "chapter": 4,
       "speaker": "DULLAHAN",
       "text": "Choose a road, LIVING DOLL. I will meet you at the end of it.",
-      "file": "assets/audio/voices/living-doll-chapter-04-opponent.mp3"
+      "file": "assets/audio/story-v1/dullahan-3c00a2032bfb673f.mp3"
     },
     {
       "id": "living-doll-chapter-04-after",
@@ -3423,7 +3423,7 @@
       "chapter": 4,
       "speaker": "NARRATOR",
       "text": "A crack remains in the porcelain. The Living Doll leaves it there. It is proof the choice was hers.",
-      "file": "assets/audio/voices/living-doll-chapter-04-after.mp3"
+      "file": "assets/audio/story-v1/narrator-3ca9abcaf630a940.mp3"
     },
     {
       "id": "living-doll-chapter-05-before",
@@ -3431,7 +3431,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "YUREI waits on the road to dawn. The Living Doll chooses to face her, with no hand pulling the strings.",
-      "file": "assets/audio/voices/living-doll-chapter-05-before.mp3"
+      "file": "assets/audio/story-v1/narrator-7551b442596ecbc9.mp3"
     },
     {
       "id": "living-doll-chapter-05-player",
@@ -3439,7 +3439,7 @@
       "chapter": 5,
       "speaker": "LIVING DOLL",
       "text": "Watch closely, YUREI. Nobody is moving me.",
-      "file": "assets/audio/voices/living-doll-chapter-05-player.mp3"
+      "file": "assets/audio/story-v1/living-doll-0b42b4c9c323441b.mp3"
     },
     {
       "id": "living-doll-chapter-05-opponent",
@@ -3447,7 +3447,7 @@
       "chapter": 5,
       "speaker": "YUREI",
       "text": "You have been standing beside a ghost longer than you think, LIVING DOLL.",
-      "file": "assets/audio/voices/living-doll-chapter-05-opponent.mp3"
+      "file": "assets/audio/story-v1/yurei-56d5d4e4744ee07a.mp3"
     },
     {
       "id": "living-doll-chapter-05-after",
@@ -3455,7 +3455,7 @@
       "chapter": 5,
       "speaker": "NARRATOR",
       "text": "A crack remains in the porcelain. The Living Doll leaves it there. It is proof the choice was hers.",
-      "file": "assets/audio/voices/living-doll-chapter-05-after.mp3"
+      "file": "assets/audio/story-v1/narrator-3ca9abcaf630a940.mp3"
     },
     {
       "id": "living-doll-chapter-06-before",
@@ -3463,7 +3463,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "JIANGSHI waits on the road to dawn. The Living Doll chooses to face her, with no hand pulling the strings.",
-      "file": "assets/audio/voices/living-doll-chapter-06-before.mp3"
+      "file": "assets/audio/story-v1/narrator-b58c3db75f6ef6f0.mp3"
     },
     {
       "id": "living-doll-chapter-06-player",
@@ -3471,7 +3471,7 @@
       "chapter": 6,
       "speaker": "LIVING DOLL",
       "text": "Watch closely, JIANGSHI. Nobody is moving me.",
-      "file": "assets/audio/voices/living-doll-chapter-06-player.mp3"
+      "file": "assets/audio/story-v1/living-doll-a77e8e26183adb48.mp3"
     },
     {
       "id": "living-doll-chapter-06-opponent",
@@ -3479,7 +3479,7 @@
       "chapter": 6,
       "speaker": "JIANGSHI",
       "text": "Seal intact. Target: LIVING DOLL. Proceeding.",
-      "file": "assets/audio/voices/living-doll-chapter-06-opponent.mp3"
+      "file": "assets/audio/story-v1/jiangshi-39fac3fbb3cc8b09.mp3"
     },
     {
       "id": "living-doll-chapter-06-after",
@@ -3487,7 +3487,7 @@
       "chapter": 6,
       "speaker": "NARRATOR",
       "text": "A crack remains in the porcelain. The Living Doll leaves it there. It is proof the choice was hers.",
-      "file": "assets/audio/voices/living-doll-chapter-06-after.mp3"
+      "file": "assets/audio/story-v1/narrator-3ca9abcaf630a940.mp3"
     },
     {
       "id": "living-doll-chapter-07-before",
@@ -3495,7 +3495,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "MEDUSA waits on the road to dawn. The Living Doll chooses to face her, with no hand pulling the strings.",
-      "file": "assets/audio/voices/living-doll-chapter-07-before.mp3"
+      "file": "assets/audio/story-v1/narrator-1cf3f725499c9be8.mp3"
     },
     {
       "id": "living-doll-chapter-07-player",
@@ -3503,7 +3503,7 @@
       "chapter": 7,
       "speaker": "LIVING DOLL",
       "text": "Watch closely, MEDUSA. Nobody is moving me.",
-      "file": "assets/audio/voices/living-doll-chapter-07-player.mp3"
+      "file": "assets/audio/story-v1/living-doll-5ed33af54eca2999.mp3"
     },
     {
       "id": "living-doll-chapter-07-opponent",
@@ -3511,7 +3511,7 @@
       "chapter": 7,
       "speaker": "MEDUSA",
       "text": "Look at me when I end this, LIVING DOLL.",
-      "file": "assets/audio/voices/living-doll-chapter-07-opponent.mp3"
+      "file": "assets/audio/story-v1/medusa-59f116404a8fb524.mp3"
     },
     {
       "id": "living-doll-chapter-07-after",
@@ -3519,7 +3519,7 @@
       "chapter": 7,
       "speaker": "NARRATOR",
       "text": "A crack remains in the porcelain. The Living Doll leaves it there. It is proof the choice was hers.",
-      "file": "assets/audio/voices/living-doll-chapter-07-after.mp3"
+      "file": "assets/audio/story-v1/narrator-3ca9abcaf630a940.mp3"
     },
     {
       "id": "living-doll-chapter-08-before",
@@ -3527,7 +3527,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "BANSHEE waits on the road to dawn. The Living Doll chooses to face her, with no hand pulling the strings.",
-      "file": "assets/audio/voices/living-doll-chapter-08-before.mp3"
+      "file": "assets/audio/story-v1/narrator-e038522b6d667987.mp3"
     },
     {
       "id": "living-doll-chapter-08-player",
@@ -3535,7 +3535,7 @@
       "chapter": 8,
       "speaker": "LIVING DOLL",
       "text": "Watch closely, BANSHEE. Nobody is moving me.",
-      "file": "assets/audio/voices/living-doll-chapter-08-player.mp3"
+      "file": "assets/audio/story-v1/living-doll-1978f0d1af4abdca.mp3"
     },
     {
       "id": "living-doll-chapter-08-opponent",
@@ -3543,7 +3543,7 @@
       "chapter": 8,
       "speaker": "BANSHEE",
       "text": "Listen carefully, LIVING DOLL. The next sound is for you.",
-      "file": "assets/audio/voices/living-doll-chapter-08-opponent.mp3"
+      "file": "assets/audio/story-v1/banshee-871b6dc4c936f890.mp3"
     },
     {
       "id": "living-doll-chapter-08-after",
@@ -3551,7 +3551,7 @@
       "chapter": 8,
       "speaker": "NARRATOR",
       "text": "A crack remains in the porcelain. The Living Doll leaves it there. It is proof the choice was hers.",
-      "file": "assets/audio/voices/living-doll-chapter-08-after.mp3"
+      "file": "assets/audio/story-v1/narrator-3ca9abcaf630a940.mp3"
     },
     {
       "id": "living-doll-chapter-09-before",
@@ -3559,7 +3559,7 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "NEKOMATA waits on the road to dawn. The Living Doll chooses to face her, with no hand pulling the strings.",
-      "file": "assets/audio/voices/living-doll-chapter-09-before.mp3"
+      "file": "assets/audio/story-v1/narrator-440228fb31fec85b.mp3"
     },
     {
       "id": "living-doll-chapter-09-player",
@@ -3567,7 +3567,7 @@
       "chapter": 9,
       "speaker": "LIVING DOLL",
       "text": "Watch closely, NEKOMATA. Nobody is moving me.",
-      "file": "assets/audio/voices/living-doll-chapter-09-player.mp3"
+      "file": "assets/audio/story-v1/living-doll-a57b654730680bf4.mp3"
     },
     {
       "id": "living-doll-chapter-09-opponent",
@@ -3575,7 +3575,7 @@
       "chapter": 9,
       "speaker": "NEKOMATA",
       "text": "Try to keep up, LIVING DOLL. I have lives to spare.",
-      "file": "assets/audio/voices/living-doll-chapter-09-opponent.mp3"
+      "file": "assets/audio/story-v1/nekomata-a2ce2c292c4d5d95.mp3"
     },
     {
       "id": "living-doll-chapter-09-after",
@@ -3583,7 +3583,7 @@
       "chapter": 9,
       "speaker": "NARRATOR",
       "text": "A crack remains in the porcelain. The Living Doll leaves it there. It is proof the choice was hers.",
-      "file": "assets/audio/voices/living-doll-chapter-09-after.mp3"
+      "file": "assets/audio/story-v1/narrator-3ca9abcaf630a940.mp3"
     },
     {
       "id": "living-doll-chapter-10-before",
@@ -3591,7 +3591,7 @@
       "chapter": 10,
       "speaker": "NARRATOR",
       "text": "VAMPIRA waits on the road to dawn. The Living Doll chooses to face her, with no hand pulling the strings.",
-      "file": "assets/audio/voices/living-doll-chapter-10-before.mp3"
+      "file": "assets/audio/story-v1/narrator-2d99e24c04c7a9f8.mp3"
     },
     {
       "id": "living-doll-chapter-10-player",
@@ -3599,7 +3599,7 @@
       "chapter": 10,
       "speaker": "LIVING DOLL",
       "text": "Watch closely, VAMPIRA. Nobody is moving me.",
-      "file": "assets/audio/voices/living-doll-chapter-10-player.mp3"
+      "file": "assets/audio/story-v1/living-doll-962bea7b630037d9.mp3"
     },
     {
       "id": "living-doll-chapter-10-opponent",
@@ -3607,7 +3607,7 @@
       "chapter": 10,
       "speaker": "VAMPIRA",
       "text": "Come closer, LIVING DOLL. I prefer my nightmares warm.",
-      "file": "assets/audio/voices/living-doll-chapter-10-opponent.mp3"
+      "file": "assets/audio/story-v1/vampira-a9ba2de52bd6938e.mp3"
     },
     {
       "id": "living-doll-chapter-10-after",
@@ -3615,14 +3615,14 @@
       "chapter": 10,
       "speaker": "NARRATOR",
       "text": "The horizon brightens. For the first time, she walks without listening for a command.",
-      "file": "assets/audio/voices/living-doll-chapter-10-after.mp3"
+      "file": "assets/audio/story-v1/narrator-afeafe93c16d70cb.mp3"
     },
     {
       "id": "living-doll-ending",
       "route": "LIVING DOLL",
       "speaker": "NARRATOR",
       "text": "At dawn, the Living Doll reaches for strings that are no longer there. Her maker is gone, her porcelain is cracked, and her next step belongs entirely to her. She leaves a silver needle on the library steps. Arachne will understand.",
-      "file": "assets/audio/voices/living-doll-ending.mp3"
+      "file": "assets/audio/story-v1/narrator-71758d5d1cfa841a.mp3"
     }
   ]
 }
