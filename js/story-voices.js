@@ -1,7 +1,7 @@
 /* Optional Gaven Echoes dialogue reader. No model or remote engine loads until requested. */
 (function(global){
  'use strict';
- const assignments={NARRATOR:'af_sarah',VAMPIRA:'bf_alice',NEKOMATA:'af_nova',BANSHEE:'af_aoede',MEDUSA:'bf_isabella',JIANGSHI:'af_kore',YUREI:'af_nicole',DULLAHAN:'bf_lily',WEREWOLF:'af_alloy',MUMMY:'bf_emma',WITCH:'af_jessica',ARACHNE:'af_heart','LIVING DOLL':'af_bella'};
+ const assignments={NARRATOR:'bf_lily',VAMPIRA:'bf_alice',NEKOMATA:'af_bella',BANSHEE:'af_aoede',MEDUSA:'bf_isabella',JIANGSHI:'af_kore',YUREI:'af_nicole',DULLAHAN:'bf_lily',WEREWOLF:'af_alloy',MUMMY:'bf_emma',WITCH:'af_jessica',ARACHNE:'bf_emma','LIVING DOLL':'af_nicole'};
  const overrides={};
  let engine=null,loading=null,ready=false,token=0,busy=false,auto=false,sceneKey='',lines=[],finishCurrent=null;
  let getVolume=()=>1,onBusy=()=>{};

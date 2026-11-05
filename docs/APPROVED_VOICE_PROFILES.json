@@ -1,0 +1,11 @@
+{
+  "format": "gaven-neural-character-voices",
+  "version": 1,
+  "profiles": [
+    {"id":"vampira","name":"VAMPIRA","voice":"bf_alice","delivery":"natural","effect":"clean","speed":1,"pitchSemitones":0,"echo":0,"volume":1},
+    {"id":"nekomata","name":"NEKOMATA","voice":"af_bella","delivery":"natural","effect":"clean","speed":1,"pitchSemitones":0,"echo":0,"volume":1},
+    {"id":"arachne","name":"ARACHNE","voice":"bf_emma","delivery":"natural","effect":"clean","speed":1,"pitchSemitones":0,"echo":0,"volume":1},
+    {"id":"living-doll","name":"LIVING DOLL","voice":"af_nicole","delivery":"natural","effect":"clean","speed":1,"pitchSemitones":0,"echo":0,"volume":1},
+    {"id":"narrator","name":"NARRATOR","voice":"bf_lily","delivery":"natural","effect":"clean","speed":1,"pitchSemitones":0,"echo":0,"volume":1}
+  ]
+}
