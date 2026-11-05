@@ -1,4 +1,6 @@
-# NIGHTBLOOM Prototype 0.71
+# NIGHTBLOOM Prototype 0.72
+
+Grounded grab-and-release throws, directional back throws and opponent-facing retreat. See [controls and audio preparation](docs/THROWS_FOOTWORK_AUDIO_072.md).
 
 Compact super banners keep fighters visible. Dash and tech recovery art now follows short action timings, with a clear pause indicator.
 

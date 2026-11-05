@@ -1,7 +1,7 @@
 
 const c=document.getElementById('game'),x=c.getContext('2d'); x.imageSmoothingEnabled=false;
 const W=c.width,H=c.height, ground=430;
-const BUILD_INFO={version:'0.71',channel:'CLEAR COMBAT PRESENTATION',date:'2026-11-04',label:'CLEAR COMBAT PRESENTATION'};
+const BUILD_INFO={version:'0.72',channel:'THROWS & FOOTWORK',date:'2026-11-04',label:'THROWS & FOOTWORK'};
 const keys={},kbKeys={},padKeys={},pressed={};
 const p2Keys={},p2KbKeys={},p2PadKeys={},p2Pressed={};
 const P2_KEYMAP={
@@ -889,6 +889,7 @@ function animName(f){
  if(roundOver&&f===koLoser)return 'down';
  if(!f.air&&f.wakeup>0)return f.wakeup>14?'down':'recover';
  if(f.air&&f.knockdown>0)return f.vy<0?'hit':'fall';
+ if(f.thrownBy?.throwTarget===f)return 'hit';
  if(f.attack)return f.attack.type;
  if(f.visualRecover>0&&f.hitstun<=0&&f.blockstun<=0)return 'recover';
  if(f.state==='hit'||f.state==='block'||f.state==='down'||f.state==='recover'||f.state==='dash')return f.state;
@@ -919,6 +920,8 @@ function attackPoseFrame(a){
 }
 function animFrame(f){
  let name=animName(f),body=BODY_ACTIONS[name]||name;
+ if(name==='throw'&&f.throwHold>0)return f.throwHold>9?1:2;
+ if(name==='walk'&&f.vx*toward(f)<-1){const clock=fighterAnimationClocks.get(f)?.clock||0;return (3-Math.floor(clock/7.5)%4+4)%4;}
  if(name==='dash'&&REMADE_SHEET_FIGHTERS.has(f.name))return Math.min(3,Math.max(0,Math.floor((10-f.dashT)/10*4)));
  if(name==='recover'&&f.visualRecover>0&&REMADE_SHEET_FIGHTERS.has(f.name))return Math.min(3,Math.floor((18-f.visualRecover)/18*4));
  if(!matchOver&&!roundOver&&!f.air&&f.wakeup>0&&REMADE_SHEET_FIGHTERS.has(f.name))return Math.min(3,Math.floor((name==='down'?28-f.wakeup:14-f.wakeup)/14*4));
@@ -957,7 +960,7 @@ function captureTrainingFighter(f){
 function applyTrainingFighter(f,s){
  if(!s)return;
  for(let k of Object.keys(s))f[k]=s[k];
- f.attack=null;f.hitstun=0;f.blockstun=0;f.knockdown=0;f.wakeup=0;f.techWindow=0;f.throwTech=0;
+ clearThrowPair(f);f.thrownBy=null;f.attack=null;f.hitstun=0;f.blockstun=0;f.knockdown=0;f.wakeup=0;f.techWindow=0;f.throwTech=0;
  f.combo=0;f.comboT=0;f.comboDamage=0;f.juggle=0;f.invuln=0;f.inputBuffer=[];f.motionHistory=[];
  f.visualRecover=0;fighterAnimationClocks.delete(f);
 }
@@ -1158,10 +1161,22 @@ function theoreticalAdv(a,guard=false){
  let stun=a.stun*(guard?.18:.25);
  return Math.round(stun-a.end);
 }
+function clearThrowPair(att){
+ if(att?.throwTarget){att.throwTarget.thrownBy=null;att.throwTarget=null;}
+ if(att)att.throwHold=0;
+}
+function updateThrowHold(f,dt){
+ const target=f.throwTarget;if(!target)return false;
+ f.throwHold=Math.max(0,f.throwHold-dt);f.vx=f.vy=0;f.y=ground;f.air=false;
+ if(f.attack)f.attack.frame+=dt;
+ if(f.throwHold>0){target.x=clamp(f.x+toward(f)*40,45,W-45);target.y=ground-22;target.vx=target.vy=0;target.air=true;target.state='hit';return true;}
+ const dir=f.throwDirection;clearThrowPair(f);target.attack=null;target.y=ground-28;target.air=true;target.vx=dir*7;target.vy=-6;target.knockdown=45;target.hitstun=Math.max(target.hitstun,18);target.state='hit';target.throwTech=0;
+ spawnFX('hit',target.x,target.y-50,false,.85);shake=Math.max(shake,8);emit('throw_release',{fighter:f.name,defender:target.name});return true;
+}
 function techThrow(def,att){
  if(def.throwTech<=0||!att?.attack||att.attack.type!=='throw')return false;
  let dir=def.x<att.x?-1:1;
- att.attack=null;def.attack=null;def.throwTech=0;
+ clearThrowPair(att);att.attack=null;def.attack=null;def.throwTech=0;
  def.hitstun=def.blockstun=0;att.hitstun=att.blockstun=0;
  def.vx=dir*3.6;att.vx=-dir*3.6;
  def.invuln=Math.max(def.invuln,5);att.invuln=Math.max(att.invuln,5);
@@ -1255,7 +1270,7 @@ function doAttack(f,type){
  overhead:[18,6,22,76,78,105],specialA:[10,8,20,108,66,118],specialB:[12,7,20,90,42,105],super:[18,12,32,145,125,220],
  airlight:[6,6,10,60,38,55],airheavy:[10,8,18,78,68,90],throw:[5,4,22,48,95,130]}[type];
  data=applyMoveData(f,type,data);data=applyFrameTuning(f,type,data);
- if(type==='super'&&f.meter<100)return;if(type==='throw'&&f.throwCD>0)return;
+ if(type==='super'&&f.meter<100)return;if(type==='throw'&&(f.throwCD>0||f.air))return;
  if(type==='super'){
    f.meter=0;if(!training){superCine=30;superOwner=f;}flash=Math.max(flash,2);
    emit('super_start',{fighter:f.name});rumble(.65,.35,150);
@@ -1337,6 +1352,8 @@ function spawnHit(px,py,col,n=12,kind=null){
  }
 }
 function updateF(f,o,dt){
+ if(f.thrownBy?.throwTarget===f){f.vx=f.vy=0;return;}
+ if(f.throwTarget&&updateThrowHold(f,dt))return;
  if(f.visualRecover>0)f.visualRecover=Math.max(0,f.visualRecover-dt);
  f.t+=dt;if(f.comboT>0)f.comboT-=dt;else{f.combo=0;f.comboDamage=0;}
  if(f.lastTech>0)f.lastTech-=dt;
@@ -1420,13 +1437,14 @@ function updateF(f,o,dt){
     }
     }
   }
-  if(!f.ai)block=(block||awayHeld(f));if(block&&!f.air){f.state='block';f.guard=1;f.vx*=.55}
+  if(!f.ai){const threat=!!o.attack||projectiles.some(q=>q.owner!==f&&Math.abs(q.x-f.x)<240);block=block||(awayHeld(f)&&threat&&f.dashT<=0);}
+  if(block&&!f.air&&!f.attack&&f.dashT<=0){f.state='block';f.guard=1;f.vx*=.55}
   else if(!f.attack){f.guard=0;
    let rageMove=(f.name==='WEREWOLF'?(f.rage>=90?1.15:f.rage>=50?1.07:1):1),curseMove=1-Math.min(3,f.curseStacks)*.04;
-   let sp=(crouch?1.2:3.2)*(f.stoneSlow>0?.65:1)*(f.name==='DULLAHAN'&&f.headless>0?1.18:1)*rageMove*curseMove;if(f.dashT>0){f.dashT-=dt;f.vx*=.96;f.state='dash'}else f.vx=(right?sp:0)-(left?sp:0);
+   let retreat=((right?1:0)-(left?1:0))*toward(f)<0;let sp=(crouch?1.2:retreat?2.2:3.2)*(f.stoneSlow>0?.65:1)*(f.name==='DULLAHAN'&&f.headless>0?1.18:1)*rageMove*curseMove;if(f.dashT>0){f.dashT-=dt;f.vx*=.96;f.state='dash'}else f.vx=(right?sp:0)-(left?sp:0);
    if(jump&&!f.air){f.vy=-15.8;f.air=true;f.state='jump'}
    else if(jump&&f.air&&f.name==='NEKOMATA'&&f.extraJump<1){f.vy=-14.2;f.extraJump++;f.state='jump';spawnFX('shadow',f.x,f.y-55,false,.55)}
-   else if(crouch&&!f.air)f.state='crouch';else if(!f.air)f.state=Math.abs(f.vx)>.1?'walk':'idle';
+   else if(f.dashT>0&&!f.air)f.state='dash';else if(crouch&&!f.air)f.state='crouch';else if(!f.air)f.state=Math.abs(f.vx)>.1?'walk':'idle';
   }
  }
  if(f.attack){
@@ -1436,7 +1454,7 @@ function updateF(f,o,dt){
   if(a.frame>=a.start&&a.frame<a.start+a.active&&!a.hit){
    let dir=f.flip?-1:1,hb={x:f.x+(dir>0?22:-22-a.reach),y:f.y-f.h+18,w:a.reach,h:f.h-28};
    let oh=hurtbox(o);
-   if(rectHit(hb,oh)&&o.invuln<=0){
+   if(rectHit(hb,oh)&&o.invuln<=0&&(a.type!=='throw'||(!o.air&&!o.thrownBy&&Math.abs(o.x-f.x)<=76))){
     a.hit=true;
     if(o.armor>0&&a.type!=='throw'&&a.type!=='super'){o.armor=0;spawnFX('guard',o.x-dir*20,o.y-62,false,.7);announcement='ARMOR';announceT=24;hitstop=3;return}
     if(a.type==='throw'&&o.throwTech>0&&((!o.ai&&pressedFor(o,'KeyI'))||(o.ai&&training&&o===p2&&TRAINING_DUMMIES[trainingDummyMode]==='THROW TECH')||(o.ai&&Math.random()<.28))){if(techThrow(o,f))return}
@@ -1466,7 +1484,7 @@ function updateF(f,o,dt){
       if(f===p1||o===p1)rumble(.08,.10,40);
     }
     else{o.hitstun=a.stun*.25*(counter?a.counterStun:1);o.frameAdv=a.hitAdv;o.vx=dir*(a.type==='super'?9:a.type==='throw'?7:5);
-    if(a.type==='throw'){announcement='THROW';announceT=22;shake=Math.max(shake,8);spawnFX('hit',o.x-dir*20,o.y-58,false,.7);}
+    if(a.type==='throw'){f.throwTarget=o;o.thrownBy=f;o.throwTech=0;f.throwHold=18;f.throwDirection=awayHeld(f)?-dir:dir;o.attack=null;f.vx=0;announcement=f.throwDirection===dir?'THROW':'BACK THROW';announceT=30;shake=Math.max(shake,5);}
     if(a.type==='heavy'||a.type==='specialA'||a.type==='super'||a.type==='throw'){
       if(o.air)o.juggle++;
       let launch=(o.juggle>=4&&a.type!=='super')?1:(a.type==='super'?8:a.type==='throw'?6:4);
@@ -1705,7 +1723,7 @@ function drawF(f){
    let info=REMADE_ANIMS[state]||REMADE_ANIMS.idle;
    let frames=info.frames||[0,1,2,3];
    if(f.attack&&raw===f.attack.type){
-     fr=attackPoseFrame(f.attack);
+     fr=f.attack.type==='throw'&&f.throwHold>0?animFrame(f):attackPoseFrame(f.attack);
    }else{
      fr=animFrame(f)%frames.length;
    }
@@ -2342,7 +2360,7 @@ function drawTitleScreen(){
    x.font=(sel?'bold ':'')+'16px Georgia';x.fillStyle=sel?'#fff':'#c9b9d2';x.textAlign='center';x.fillText(item,W/2,y+19);
  });
  x.font='9px Consolas';x.fillStyle='#91849a';x.fillText('↑/↓ SELECT  ·  ENTER CONFIRM  ·  M MUTE',W/2,481);
- x.fillStyle='#72ffd7';x.fillText('0.71 · CLEAR COMBAT PRESENTATION',W/2,499);
+ x.fillStyle='#72ffd7';x.fillText('0.72 · THROWS & FOOTWORK',W/2,499);
  x.fillStyle='#675c70';x.fillText('ALL MONSTERS ARE BEAUTIFUL.',W/2,517);
 }
 function selectableFighters(){return ROSTER.filter(isFighterUnlocked)}
@@ -3048,7 +3066,7 @@ function loop(now){
    }
    let timedOut=!training&&!timerInfinite()&&timer<=0;
    if(!training&&(p1.hp<=0||p2.hp<=0||timedOut)){
-     roundOver=true;koTimer=165;koCine=62;
+     clearThrowPair(p1);clearThrowPair(p2);roundOver=true;koTimer=165;koCine=62;
      let tied=p1.hp===p2.hp;
      roundEndReason=timedOut?(tied?'DRAW':'TIME'):(tied?'DRAW':'KO');
      koLoser=tied?null:(p1.hp<p2.hp?p1:p2);
