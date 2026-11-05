@@ -1,6 +1,6 @@
 # Prerecorded story voices — 0.74
 
-266 unique clips cover 292 of the 452 exported dialogue entries. Approved casting: Vampira/Alice, Nekomata/Bella, Arachne/Emma, Living Doll/Nicole and Narrator/Lily. The other seven fighters retain the current device/neural fallback until their casting is approved. Narration covers all routes.
+266 unique clips cover 292 of the 452 exported dialogue entries. Approved casting: Vampira/Alice, Nekomata/Bella, Arachne/Emma, Living Doll/Nicole and Narrator/Lily. The other eight fighters retain the current device/neural fallback until their casting is approved. Narration covers all routes.
 
 Use Read dialog or optional Auto-read in Story mode. Saved recordings are preferred, with no model download or synthesis wait. The manifest loads on the first Read action; each audio file loads only when its line plays. Initial page load does not request the voice library. Stop, scene changes, focus loss and mute cancel playback. Music ducks while reading. Imported profiles that change a voice's settings bypass its baked recording.
 
