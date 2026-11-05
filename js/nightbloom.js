@@ -1,7 +1,7 @@
 
 const c=document.getElementById('game'),x=c.getContext('2d'); x.imageSmoothingEnabled=false;
 const W=c.width,H=c.height, ground=430;
-const BUILD_INFO={version:'0.75',channel:'FULL RECORDED DIALOGUE',date:'2026-11-05',label:'FULL RECORDED DIALOGUE'};
+const BUILD_INFO={version:'0.76',channel:'COMBAT VOICES',date:'2026-11-05',label:'COMBAT VOICES'};
 const keys={},kbKeys={},padKeys={},pressed={};
 const p2Keys={},p2KbKeys={},p2PadKeys={},p2Pressed={};
 const P2_KEYMAP={
@@ -55,6 +55,7 @@ addEventListener('keyup',e=>{
 
 function pauseForFocusLoss(){
  if(gameState==='fight'&&!paused){
+   if(typeof NightbloomCombatVoices!=='undefined')NightbloomCombatVoices.stop();
    paused=true;focusPaused=true;clearInputs();announcement='AUTO PAUSED';announceT=45;
    if(audioCtx&&audioMusic){musicDuck=.25;applyAudioLevels()}
  }
@@ -106,6 +107,7 @@ function unlockAudio(){
 addEventListener('keydown',unlockAudio,{passive:true});
 addEventListener('pointerdown',unlockAudio,{passive:true});
 function applyAudioLevels(immediate=false){
+ if(typeof NightbloomCombatVoices!=='undefined')NightbloomCombatVoices.refreshVolume();
  if(!audioCtx||!audioMaster)return;
  let t=audioCtx.currentTime,master=AUDIO.mute?0:AUDIO.master;
  let set=(param,val)=>immediate?param.setValueAtTime(val,t):param.setTargetAtTime(val,t,.025);
@@ -153,6 +155,7 @@ function charCue(name,kind='special'){
 }
 function audioEvent(type,data={}){
  if(!audioUnlocked)return;
+ if(typeof NightbloomCombatVoices!=='undefined')NightbloomCombatVoices.event(type,data);
  let pan=data.attacker?fighterPan(data.attacker):data.fighter?fighterPan(data.fighter):0;
  if(type==='attack'){
    if(data.move==='light'||data.move==='lowlight'||data.move==='airlight')sweep(310,190,.045,'triangle',.08,0,pan);
@@ -1273,7 +1276,7 @@ function doAttack(f,type){
  if(type==='super'&&f.meter<100)return;if(type==='throw'&&(f.throwCD>0||f.air))return;
  if(type==='super'){
    f.meter=0;if(!training){superCine=30;superOwner=f;}flash=Math.max(flash,2);
-   emit('super_start',{fighter:f.name});rumble(.65,.35,150);
+   emit('super_start',{fighter:f.name,fighterSide:f===p1?'p1':'p2'});rumble(.65,.35,150);
  }
  if(type==='throw'){
    f.throwCD=55;
@@ -1294,7 +1297,7 @@ function doAttack(f,type){
  if(f.name==='WITCH'&&type==='super'){
    witchSigils.filter(s=>s.owner===f).forEach(s=>{s.arm=0;s.life=Math.min(s.life,35);s.flash=18});
  }
- emit('attack',{fighter:f.name,move:type});
+ emit('attack',{fighter:f.name,fighterSide:f===p1?'p1':'p2',move:type});
  // Character spell effects follow the startup/contact/recovery body poses.
  if(type==='super'){shake=Math.max(shake,5);}
  let prop=moveProps(type);
@@ -1317,7 +1320,7 @@ function updateSigils(dt){
      spawnHit(s.x,ground-38,guarding?'#7feaff':'#d26cff',guarding?8:14);spawnFX(guarding?'guard':'moonSigil',s.x,ground-35,false,1.0);
      shake=Math.max(shake,guarding?2:5);hitstop=Math.max(hitstop,guarding?3:5);
      announcement=guarding?'SIGIL BLOCK':'SIGIL';announceT=22;
-     emit(guarding?'block':'hit',{attacker:s.owner.name,defender:target.name,move:'sigil',damage,counter:false});
+     emit(guarding?'block':'hit',{attacker:s.owner.name,defender:target.name,defenderSide:target===p1?'p1':'p2',move:'sigil',damage,counter:false});
      if(s.owner===p1||target===p1)rumble(guarding?.09:.24,guarding?.08:.16,guarding?40:70);
      witchSigils.splice(i,1);
    }
@@ -1489,7 +1492,7 @@ function updateF(f,o,dt){
       if(o.air)o.juggle++;
       let launch=(o.juggle>=4&&a.type!=='super')?1:(a.type==='super'?8:a.type==='throw'?6:4);
       o.vy=-launch;o.air=true;if(a.type==='super'||a.type==='throw'||o.juggle>=4||a.counterKnock&&counter)o.knockdown=45
-    }spawnHit(o.x-dir*20,o.y-65,f.accent,a.type==='super'?30:14,counter?'counter':'hit');emit('hit',{attacker:f.name,defender:o.name,move:a.type,damage:dmg,counter});if(f===p1||o===p1)rumble(a.type==='super'?.65:a.type==='heavy'?.30:.16,guarding?.10:.18,a.type==='super'?130:55);shake=a.type==='super'?14:7;flash=a.type==='super'?5:1;hitstop=Math.max(hitstop,a.impact+(counter?2:0));
+    }spawnHit(o.x-dir*20,o.y-65,f.accent,a.type==='super'?30:14,counter?'counter':'hit');emit('hit',{attacker:f.name,defender:o.name,defenderSide:o===p1?'p1':'p2',move:a.type,damage:dmg,counter});if(f===p1||o===p1)rumble(a.type==='super'?.65:a.type==='heavy'?.30:.16,guarding?.10:.18,a.type==='super'?130:55);shake=a.type==='super'?14:7;flash=a.type==='super'?5:1;hitstop=Math.max(hitstop,a.impact+(counter?2:0));
     f.combo++;f.comboDamage+=dmg;f.peakCombo=Math.max(f.peakCombo,f.combo);matchPeakCombo=Math.max(matchPeakCombo,f.combo);f.comboT=80}
    }
   }
@@ -2360,7 +2363,7 @@ function drawTitleScreen(){
    x.font=(sel?'bold ':'')+'16px Georgia';x.fillStyle=sel?'#fff':'#c9b9d2';x.textAlign='center';x.fillText(item,W/2,y+19);
  });
  x.font='9px Consolas';x.fillStyle='#91849a';x.fillText('↑/↓ SELECT  ·  ENTER CONFIRM  ·  M MUTE',W/2,481);
- x.fillStyle='#72ffd7';x.fillText('0.75 · FULL RECORDED DIALOGUE',W/2,499);
+ x.fillStyle='#72ffd7';x.fillText('0.76 · COMBAT VOICES',W/2,499);
  x.fillStyle='#675c70';x.fillText('ALL MONSTERS ARE BEAUTIFUL.',W/2,517);
 }
 function selectableFighters(){return ROSTER.filter(isFighterUnlocked)}
@@ -3017,6 +3020,7 @@ function loop(now){
  gamepad();
  updateContextHelp();
  if(pressed.KeyM){AUDIO.mute=!AUDIO.mute;applyAudioLevels();saveAudio();announcement=AUDIO.mute?'MUTED':'AUDIO ON';announceT=30}
+ if(typeof NightbloomCombatVoices!=='undefined')NightbloomCombatVoices.update({active:gameState==='fight'&&audioUnlocked,paused,fighters:[p1.name,p2.name]});
  musicTick();
 
  if(gameState!=='fight'){
@@ -3090,7 +3094,7 @@ function loop(now){
    if(koTimer<=0&&!matchOver){
      let need=winsNeeded();
      if(p1Wins>=need||p2Wins>=need){
-       matchOver=true;emit('match_end',{winner:p1Wins>p2Wins?p1.name:p2.name});announcement=(p1Wins>p2Wins?p1.name:p2.name)+' WINS';announceT=9999;
+       matchOver=true;emit('match_end',{winner:p1Wins>p2Wins?p1.name:p2.name,winnerSide:p1Wins>p2Wins?'p1':'p2'});announcement=(p1Wins>p2Wins?p1.name:p2.name)+' WINS';announceT=9999;
        captureMatchResult();victoryTimer=300;
        for(const f of [p1,p2]){f.attack=null;f.vx=f.vy=0;f.air=false;f.y=ground;fighterAnimationClocks.delete(f);if(f===koLoser)fighterAnimationClocks.set(f,{name:'down',attack:null,clock:60})}
        projectiles=[];witchSigils=[];fxInstances=[];
@@ -3121,7 +3125,7 @@ function loop(now){
        if(q.owner.name==='YUREI'){o.hitstun+=4;spawnFX('shadow',o.x,o.y-58,false,.55);sweep(520,190,.16,'sine',.10,0,fighterPan(q.owner.name))}
        if(q.owner.name==='MUMMY'){o.curseStacks=Math.min(3,(o.curseStacks||0)+1);o.curseTimer=240;announcement='CURSE '+o.curseStacks;announceT=28;tone(185,.16,'square',.10,0,fighterPan(q.owner.name))}
        q.owner.combo++;q.owner.comboDamage+=qd;q.owner.peakCombo=Math.max(q.owner.peakCombo,q.owner.combo);matchPeakCombo=Math.max(matchPeakCombo,q.owner.combo);q.owner.comboT=80;
-       emit('hit',{attacker:q.owner.name,defender:o.name,move:'projectile',damage:qd,counter:false});
+       emit('hit',{attacker:q.owner.name,defender:o.name,defenderSide:o===p1?'p1':'p2',move:'projectile',damage:qd,counter:false});
      }
      if(q.owner===p1||o===p1)rumble(guarding?.07:.16,guarding?.07:.11,guarding?38:52);
      spawnHit(q.x,q.y,guarding?'#7feaff':q.col,guarding?7:12);spawnFX(guarding?'guard':'hit',q.x,q.y,false,.8,q.col,q.owner.name);
@@ -3157,5 +3161,6 @@ function loop(now){
  requestAnimationFrame(loop)
 }
 installSecretFighters();
+if(typeof NightbloomCombatVoices!=='undefined')NightbloomCombatVoices.configure({getVolume:()=>AUDIO.mute?0:AUDIO.master*AUDIO.sfx*.85});
 if(typeof NightbloomVoices!=='undefined')NightbloomVoices.configure({getVolume:()=>AUDIO.mute?0:AUDIO.master*AUDIO.sfx,onBusy:()=>applyAudioLevels()});
 requestAnimationFrame(loop);

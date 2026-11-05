@@ -1,4 +1,6 @@
-# NIGHTBLOOM Prototype 0.75
+# NIGHTBLOOM Prototype 0.76
+
+Approved Chatterbox combat voices now play for all 12 fighters: exertions on normal attacks, attack calls on specials/throws/supers, pain on unblocked hits, and one character line during the winner’s five-second victory animation. Voices follow Master/SFX volume and mute; pauses and menus stop playback. Only the selected fighters’ clips preload. [Review the full cast](docs/combat-voice-roster.html).
 
 354 prerecorded clips cover all 452 exported story dialog entries with the approved twelve fighters and narrator. Recordings load only when read; no neural model is needed for these lines. See [recorded voice notes](docs/FULL_RECORDED_DIALOGUE_075.md).
 
@@ -93,4 +95,4 @@ This package is organized for GitHub Pages testing.
 
 All 12 fighters and the narrator now have [approved voice profiles](docs/APPROVED_VOICE_PROFILES.json), including the exact pace, pitch and echo settings chosen in the second audition set. All approved roles now have prerecorded dialog. The original 266 clips are unchanged.
 
-[Combat voice auditions](docs/combat-voice-auditions.html): 48 compact attack/pain previews across all twelve fighters, 233 KB total, loaded only on play. Preview only; no combat playback is installed until approval.
+[Combat voice auditions](docs/combat-voice-auditions.html): 48 compact attack/pain previews across all twelve fighters, 233 KB total, loaded only on play. These older Kokoro previews have been superseded by the approved Chatterbox full-cast recordings.
