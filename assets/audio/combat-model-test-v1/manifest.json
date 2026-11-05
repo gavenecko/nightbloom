@@ -1,0 +1,103 @@
+{
+  "model": "ResembleAI/chatterbox-turbo",
+  "samples": [
+    {
+      "character": "VAMPIRA",
+      "text": "Taste this!",
+      "file": "vampira-1.wav",
+      "seconds": 1.16,
+      "generationSeconds": 7.16,
+      "mp3": "vampira-1.mp3",
+      "duration": 1.16,
+      "rmsDb": -19.853346188660147,
+      "peak": 0.7806486487388611,
+      "bytes": 7580
+    },
+    {
+      "character": "VAMPIRA",
+      "text": "[chuckle] Too slow.",
+      "file": "vampira-2.wav",
+      "seconds": 1.56,
+      "generationSeconds": 9.09,
+      "mp3": "vampira-2.mp3",
+      "duration": 1.56,
+      "rmsDb": -19.537938659120194,
+      "peak": 0.7126842737197876,
+      "bytes": 9884
+    },
+    {
+      "character": "VAMPIRA",
+      "text": "Hah!",
+      "file": "vampira-3.wav",
+      "seconds": 0.64,
+      "generationSeconds": 5.21,
+      "mp3": "vampira-3.mp3",
+      "duration": 0.64,
+      "rmsDb": -20.29480276101178,
+      "peak": 0.7140191793441772,
+      "bytes": 4412
+    },
+    {
+      "character": "VAMPIRA",
+      "text": "[groan]",
+      "file": "vampira-4.wav",
+      "seconds": 0.88,
+      "generationSeconds": 6.28,
+      "mp3": "vampira-4.mp3",
+      "duration": 0.88,
+      "rmsDb": -19.894588918817686,
+      "peak": 0.7441304922103882,
+      "bytes": 5852
+    },
+    {
+      "character": "NEKOMATA",
+      "text": "Caught you!",
+      "file": "nekomata-1.wav",
+      "seconds": 0.98,
+      "generationSeconds": 6.08,
+      "mp3": "nekomata-1.mp3",
+      "duration": 0.98,
+      "rmsDb": -21.126477002498266,
+      "peak": 0.7032267451286316,
+      "bytes": 6428
+    },
+    {
+      "character": "NEKOMATA",
+      "text": "[chuckle] Try again!",
+      "file": "nekomata-2.wav",
+      "seconds": 1.54,
+      "generationSeconds": 7.98,
+      "mp3": "nekomata-2.mp3",
+      "duration": 1.54,
+      "rmsDb": -20.64182031374571,
+      "peak": 0.7357262372970581,
+      "bytes": 9884
+    },
+    {
+      "character": "NEKOMATA",
+      "text": "Nya!",
+      "file": "nekomata-3.wav",
+      "seconds": 0.78,
+      "generationSeconds": 5.3,
+      "mp3": "nekomata-3.mp3",
+      "duration": 0.78,
+      "rmsDb": -18.36587184717905,
+      "peak": 0.49331599473953247,
+      "bytes": 5276
+    },
+    {
+      "character": "NEKOMATA",
+      "text": "[gasp]",
+      "file": "nekomata-4.wav",
+      "seconds": 0.66,
+      "generationSeconds": 6.09,
+      "mp3": "nekomata-4.mp3",
+      "duration": 0.66,
+      "rmsDb": -20.727589909729534,
+      "peak": 0.632944643497467,
+      "bytes": 4556
+    }
+  ],
+  "referenceModel": "onnx-community/Kokoro-82M-v1.0-ONNX",
+  "gameplayInstalled": false
+}

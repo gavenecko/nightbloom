@@ -1,0 +1,38 @@
+[
+  {
+    "character": "VAMPIRA",
+    "path": "outputs/combat-model-test/vampira-reference.wav",
+    "sources": [
+      {
+        "src": "assets/audio/story-v1/vampira-d8c588a18cedd096.mp3",
+        "text": "Come closer, NEKOMATA. I prefer my nightmares warm."
+      },
+      {
+        "src": "assets/audio/story-v1/vampira-dab4c4c1f61ef298.mp3",
+        "text": "Come closer, BANSHEE. I prefer my nightmares warm."
+      },
+      {
+        "src": "assets/audio/story-v1/vampira-5f98677febcd1da2.mp3",
+        "text": "Come closer, MEDUSA. I prefer my nightmares warm."
+      }
+    ]
+  },
+  {
+    "character": "NEKOMATA",
+    "path": "outputs/combat-model-test/nekomata-reference.wav",
+    "sources": [
+      {
+        "src": "assets/audio/story-v1/nekomata-faf622a974af326c.mp3",
+        "text": "Try to keep up, VAMPIRA. I have lives to spare."
+      },
+      {
+        "src": "assets/audio/story-v1/nekomata-54e6813365a3d00e.mp3",
+        "text": "Try to keep up, BANSHEE. I have lives to spare."
+      },
+      {
+        "src": "assets/audio/story-v1/nekomata-4d9bccbeaac47954.mp3",
+        "text": "Try to keep up, MEDUSA. I have lives to spare."
+      }
+    ]
+  }
+]

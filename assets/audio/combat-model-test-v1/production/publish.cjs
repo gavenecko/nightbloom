@@ -1,0 +1,11 @@
+const fs=require('node:fs'),path=require('node:path'),{execFileSync}=require('node:child_process');
+const out=path.resolve('outputs/combat-model-test'),repo=path.resolve('work/nightbloom'),target=path.join(repo,'assets/audio/combat-model-test-v1');fs.mkdirSync(target,{recursive:true});
+const ff=path.resolve('work/audio-tools/imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v9.0.2.exe');
+for(const n of ['vampira','nekomata'])execFileSync(ff,['-v','error','-y','-i',path.join(out,n+'-reference.wav'),'-ac','1','-ar','24000','-c:a','libmp3lame','-b:a','48k',path.join(out,n+'-reference.mp3')]);
+let html=fs.readFileSync(path.join(out,'index.html'),'utf8').replaceAll('-reference.wav','-reference.mp3');fs.writeFileSync(path.join(out,'index.html'),html);
+for(const file of fs.readdirSync(out).filter(f=>f.endsWith('.mp3')))fs.copyFileSync(path.join(out,file),path.join(target,file));
+html=html.replace(/src="([^"]+\.mp3)"/g,'src="../assets/audio/combat-model-test-v1/$1"');fs.writeFileSync(path.join(repo,'docs/combat-model-comparison.html'),html);
+const manifest=JSON.parse(fs.readFileSync(path.join(out,'manifest.json')));manifest.referenceModel='onnx-community/Kokoro-82M-v1.0-ONNX';manifest.gameplayInstalled=false;fs.writeFileSync(path.join(target,'manifest.json'),JSON.stringify(manifest,null,2));
+const sources=path.join(target,'production');fs.mkdirSync(sources,{recursive:true});for(const file of ['test.py','prepare.cjs','package.cjs','publish.cjs'])fs.copyFileSync(path.join(__dirname,file),path.join(sources,file));
+fs.copyFileSync(path.join(out,'references.json'),path.join(sources,'references.json'));
+console.log('Prepared comparison page and 12 compressed audio files.');
