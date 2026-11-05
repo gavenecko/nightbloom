@@ -90,3 +90,5 @@ This package is organized for GitHub Pages testing.
 [Listen to five A/B voice pairs](docs/voice-auditions.html). All ten MP3s total 152 KB and load only when played; no neural model is needed. Choose voices and export the matching Gaven Echoes profiles. WAV masters remain outside the published game.
 
 [Second audition set: eight remaining fighters, three options each](docs/voice-auditions-v2.html). More varied pace, pitch and light echo; all 24 clips total 404 KB and load only when played. Exported profiles retain each option's settings.
+
+All 12 fighters and the narrator now have [approved voice profiles](docs/APPROVED_VOICE_PROFILES.json), including the exact pace, pitch and echo settings chosen in the second audition set. The first prerecorded library is unchanged; recordings for the newly approved eight fighters remain to be rendered.
