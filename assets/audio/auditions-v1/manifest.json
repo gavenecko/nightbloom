@@ -1,0 +1,124 @@
+{
+  "format": "nightbloom-voice-auditions",
+  "version": 1,
+  "delivery": "natural",
+  "effect": "clean",
+  "speed": 1,
+  "pitchSemitones": 0,
+  "echo": 0,
+  "samples": [
+    {
+      "id": "vampira-a",
+      "character": "Vampira",
+      "option": "A",
+      "voice": "bf_alice",
+      "label": "Alice · refined British",
+      "text": "Come closer. I prefer my nightmares warm.",
+      "bytes": 16220,
+      "rawBytes": 321644,
+      "src": "../assets/audio/auditions-v1/vampira-a.mp3"
+    },
+    {
+      "id": "vampira-b",
+      "character": "Vampira",
+      "option": "B",
+      "voice": "af_heart",
+      "label": "Heart · warm and expressive",
+      "text": "Come closer. I prefer my nightmares warm.",
+      "bytes": 15788,
+      "rawBytes": 316844,
+      "src": "../assets/audio/auditions-v1/vampira-b.mp3"
+    },
+    {
+      "id": "nekomata-a",
+      "character": "Nekomata",
+      "option": "A",
+      "voice": "af_nova",
+      "label": "Nova · energetic",
+      "text": "Try to keep up. I have lives to spare.",
+      "bytes": 14204,
+      "rawBytes": 304844,
+      "src": "../assets/audio/auditions-v1/nekomata-a.mp3"
+    },
+    {
+      "id": "nekomata-b",
+      "character": "Nekomata",
+      "option": "B",
+      "voice": "af_bella",
+      "label": "Bella · bright and warm",
+      "text": "Try to keep up. I have lives to spare.",
+      "bytes": 14060,
+      "rawBytes": 304844,
+      "src": "../assets/audio/auditions-v1/nekomata-b.mp3"
+    },
+    {
+      "id": "arachne-a",
+      "character": "Arachne",
+      "option": "A",
+      "voice": "bf_isabella",
+      "label": "Isabella · clear British",
+      "text": "Every road ends in my web.",
+      "bytes": 10460,
+      "rawBytes": 244844,
+      "src": "../assets/audio/auditions-v1/arachne-a.mp3"
+    },
+    {
+      "id": "arachne-b",
+      "character": "Arachne",
+      "option": "B",
+      "voice": "bf_emma",
+      "label": "Emma · warm British",
+      "text": "Every road ends in my web.",
+      "bytes": 10748,
+      "rawBytes": 249644,
+      "src": "../assets/audio/auditions-v1/arachne-b.mp3"
+    },
+    {
+      "id": "living-doll-a",
+      "character": "Living Doll",
+      "option": "A",
+      "voice": "af_nicole",
+      "label": "Nicole · soft-spoken",
+      "text": "I have cut the strings. Have you?",
+      "bytes": 15068,
+      "rawBytes": 319244,
+      "src": "../assets/audio/auditions-v1/living-doll-a.mp3"
+    },
+    {
+      "id": "living-doll-b",
+      "character": "Living Doll",
+      "option": "B",
+      "voice": "af_kore",
+      "label": "Kore · balanced",
+      "text": "I have cut the strings. Have you?",
+      "bytes": 9596,
+      "rawBytes": 216044,
+      "src": "../assets/audio/auditions-v1/living-doll-b.mp3"
+    },
+    {
+      "id": "narrator-a",
+      "character": "Narrator",
+      "option": "A",
+      "voice": "af_sarah",
+      "label": "Sarah · clear and neutral",
+      "text": "A second heartbeat prowls beneath the shrine. The red moon is rising.",
+      "bytes": 24860,
+      "rawBytes": 504044,
+      "src": "../assets/audio/auditions-v1/narrator-a.mp3"
+    },
+    {
+      "id": "narrator-b",
+      "character": "Narrator",
+      "option": "B",
+      "voice": "bf_lily",
+      "label": "Lily · bright British",
+      "text": "A second heartbeat prowls beneath the shrine. The red moon is rising.",
+      "bytes": 24716,
+      "rawBytes": 456044,
+      "src": "../assets/audio/auditions-v1/narrator-b.mp3"
+    }
+  ],
+  "encoding": "MP3 · mono · 24kHz · 48kbps",
+  "totalBytes": 155720,
+  "rawBytes": 3238040
+}

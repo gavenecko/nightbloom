@@ -82,3 +82,7 @@ This package is organized for GitHub Pages testing.
 - `docs/SPRITE_LAYER_PIPELINE.md`
 - `assets/fighters/benchmark/`
 - `assets/fx/benchmark/`
+
+## Voice auditions
+
+[Listen to five A/B voice pairs](docs/voice-auditions.html). All ten MP3s total 152 KB and load only when played; no neural model is needed. Choose voices and export the matching Gaven Echoes profiles. WAV masters remain outside the published game.
