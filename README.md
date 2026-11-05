@@ -1,4 +1,6 @@
-# NIGHTBLOOM Prototype 0.72
+# NIGHTBLOOM Prototype 0.73
+
+Story dialogue can be read aloud using device speech or the optional Gaven Echoes neural voice engine. Neural downloads start only when requested.
 
 Grounded grab-and-release throws, directional back throws and opponent-facing retreat. See [controls and audio preparation](docs/THROWS_FOOTWORK_AUDIO_072.md).
 

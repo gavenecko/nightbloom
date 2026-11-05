@@ -1,7 +1,7 @@
 
 const c=document.getElementById('game'),x=c.getContext('2d'); x.imageSmoothingEnabled=false;
 const W=c.width,H=c.height, ground=430;
-const BUILD_INFO={version:'0.72',channel:'THROWS & FOOTWORK',date:'2026-11-04',label:'THROWS & FOOTWORK'};
+const BUILD_INFO={version:'0.73',channel:'GAVEN ECHOES DIALOGUE',date:'2026-11-04',label:'GAVEN ECHOES DIALOGUE'};
 const keys={},kbKeys={},padKeys={},pressed={};
 const p2Keys={},p2KbKeys={},p2PadKeys={},p2Pressed={};
 const P2_KEYMAP={
@@ -109,7 +109,7 @@ function applyAudioLevels(immediate=false){
  if(!audioCtx||!audioMaster)return;
  let t=audioCtx.currentTime,master=AUDIO.mute?0:AUDIO.master;
  let set=(param,val)=>immediate?param.setValueAtTime(val,t):param.setTargetAtTime(val,t,.025);
- set(audioMaster.gain,master);set(audioMusic.gain,AUDIO.music*musicDuck);set(audioSfx.gain,AUDIO.sfx);
+ set(audioMaster.gain,master);set(audioMusic.gain,AUDIO.music*musicDuck*(typeof NightbloomVoices!=='undefined'&&NightbloomVoices.speaking ? .35 : 1));set(audioSfx.gain,AUDIO.sfx);
 }
 function hz(root,semi){return root*Math.pow(2,semi/12)}
 function tone(freq,dur=.08,wave='sine',vol=.18,delay=0,pan=0,bus='sfx'){
@@ -2360,7 +2360,7 @@ function drawTitleScreen(){
    x.font=(sel?'bold ':'')+'16px Georgia';x.fillStyle=sel?'#fff':'#c9b9d2';x.textAlign='center';x.fillText(item,W/2,y+19);
  });
  x.font='9px Consolas';x.fillStyle='#91849a';x.fillText('↑/↓ SELECT  ·  ENTER CONFIRM  ·  M MUTE',W/2,481);
- x.fillStyle='#72ffd7';x.fillText('0.72 · THROWS & FOOTWORK',W/2,499);
+ x.fillStyle='#72ffd7';x.fillText('0.73 · GAVEN ECHOES DIALOGUE',W/2,499);
  x.fillStyle='#675c70';x.fillText('ALL MONSTERS ARE BEAUTIFUL.',W/2,517);
 }
 function selectableFighters(){return ROSTER.filter(isFighterUnlocked)}
@@ -2984,7 +2984,16 @@ new ResizeObserver(entries=>{
 gameCommandButtons.forEach(button=>button.addEventListener('click',()=>{if(!button.disabled){pointerPress(button.dataset.gameCommand);c.focus()}}));
 let contextHelpKey='';
 trainingDetailsButton.addEventListener('click',()=>{trainingPanelExpanded=!trainingPanelExpanded;updateContextHelp();c.focus()});
+function storyVoiceLines(){
+ if(gameState!=='storyScene'||storyLost)return [];
+ if(storyAfterText)return [{speaker:'NARRATOR',text:storyAfterText}];
+ if(storyEnding)return [{speaker:'NARRATOR',text:ENDINGS[playerChoice]||''}];
+ const node=ladder[ladderIndex];if(!node)return [];
+ return [{speaker:'NARRATOR',text:node.before},{speaker:playerChoice,text:rivalLine(playerChoice,node.opponent)},{speaker:node.opponent,text:rivalLine(node.opponent,playerChoice)}].filter(line=>line.text);
+}
 function updateContextHelp(){
+ if(typeof NightbloomVoices!=='undefined'){const lines=storyVoiceLines();NightbloomVoices.update(lines.length?JSON.stringify([playerChoice,ladderIndex,storyEnding,storyAfterText,lines]):'',lines);}
+
  const key=[gameState,training,trainingPanelExpanded,SYSTEM.controls,gameMode,paused,trainingDummyMode,trainingSpeed,inspectorPlaying,inspectorLayerMode,SYSTEM.particles,SYSTEM.reducedMotion].join('|');if(key===contextHelpKey)return;contextHelpKey=key;
  const fight=gameState==='fight',arcade=SYSTEM.controls==='ARCADE'&&gameMode!=='local';
  contextHelp.textContent=gameState==='atlasInspector'?'←/→ fighter · ↑/↓ action · A/D frame · Space play/pause · Q/E speed · 1/2/3 layers · Esc title':fight?(arcade?'Arrows move · Z/X attacks · C special · V super · B throw · N guard · P pause':'WASD move · J/K attacks · L special · U super · I throw · Shift guard · P pause'):'Click or use arrows to select · Enter confirm · Backspace back · Esc title';
@@ -3148,4 +3157,5 @@ function loop(now){
  requestAnimationFrame(loop)
 }
 installSecretFighters();
+if(typeof NightbloomVoices!=='undefined')NightbloomVoices.configure({getVolume:()=>AUDIO.mute?0:AUDIO.master*AUDIO.sfx,onBusy:()=>applyAudioLevels()});
 requestAnimationFrame(loop);
