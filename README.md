@@ -92,3 +92,5 @@ This package is organized for GitHub Pages testing.
 [Second audition set: eight remaining fighters, three options each](docs/voice-auditions-v2.html). More varied pace, pitch and light echo; all 24 clips total 404 KB and load only when played. Exported profiles retain each option's settings.
 
 All 12 fighters and the narrator now have [approved voice profiles](docs/APPROVED_VOICE_PROFILES.json), including the exact pace, pitch and echo settings chosen in the second audition set. All approved roles now have prerecorded dialog. The original 266 clips are unchanged.
+
+[Combat voice auditions](docs/combat-voice-auditions.html): 48 compact attack/pain previews across all twelve fighters, 233 KB total, loaded only on play. Preview only; no combat playback is installed until approval.
