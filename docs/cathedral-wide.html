@@ -5,7 +5,7 @@
 <canvas id="preview" width="960" height="540" aria-label="Double-width Crimson Cathedral camera preview"></canvas><div class="map" aria-hidden="true"><div class="window" id="window"></div></div><p id="status" role="status">Loading wide-stage scenery…</p>
 <p><a href="../?v=079-cathedral-layer-fix">Play build 0.79 ↗</a> · <a href="cathedral-parallax.html?v=1">First parallax test</a> · <a href="../assets/stages/cathedral-wide-v1/background.webp">Full panorama</a></p>
 <footer>In Training, choose Crimson Cathedral and move toward either side. The camera follows both fighters, keeps them visible, and stops at the stage ends. “Parallax depth” switches the extra depth movement on or off. Pause freezes the camera. Reduced motion removes depth sliding while retaining the essential game camera.</footer>
-</main><script src="../js/stage-layers-wide.js?v=079-cathedral-layer-fix"></script><script>
+</main><script src="../js/stage-layers-wide.js?v=079-cathedral-layer-fix-r2"></script><script>
 const canvas=document.getElementById('preview'),ctx=canvas.getContext('2d'),motion=document.getElementById('motion'),slider=document.getElementById('camera'),view=document.getElementById('view'),depth=document.getElementById('depth'),reduced=document.getElementById('reduced'),status=document.getElementById('status'),windowMark=document.getElementById('window');
 const panorama=new Image();panorama.src='../assets/stages/cathedral-wide-v1/background.webp';let auto=true,phase=0,camera=480,last=0,loaded=false;
 reduced.checked=matchMedia('(prefers-reduced-motion: reduce)').matches;if(reduced.checked)auto=false;
