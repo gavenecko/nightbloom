@@ -1,0 +1,38 @@
+{
+  "stage": "CRIMSON CATHEDRAL",
+  "version": 1,
+  "tool": "Built-in image_gen",
+  "layers": [
+    {
+      "name": "background",
+      "file": "background.webp",
+      "bytes": 377946,
+      "width": 1280,
+      "height": 720,
+      "transparent": false
+    },
+    {
+      "name": "middle",
+      "file": "middle.webp",
+      "bytes": 150188,
+      "width": 1280,
+      "height": 720,
+      "transparent": true
+    },
+    {
+      "name": "foreground",
+      "file": "foreground.webp",
+      "bytes": 62258,
+      "width": 1280,
+      "height": 720,
+      "transparent": true
+    }
+  ],
+  "totalBytes": 590392,
+  "camera": {
+    "background": 7,
+    "middle": 15,
+    "foreground": 25
+  },
+  "fixedFloor": true
+}

@@ -1,7 +1,7 @@
 
 const c=document.getElementById('game'),x=c.getContext('2d'); x.imageSmoothingEnabled=false;
 const W=c.width,H=c.height, ground=430;
-const BUILD_INFO={version:'0.76',channel:'COMBAT VOICES',date:'2026-11-05',label:'COMBAT VOICES'};
+const BUILD_INFO={version:'0.77',channel:'CATHEDRAL PARALLAX',date:'2026-11-05',label:'CATHEDRAL PARALLAX'};
 const keys={},kbKeys={},padKeys={},pressed={};
 const p2Keys={},p2KbKeys={},p2PadKeys={},p2Pressed={};
 const P2_KEYMAP={
@@ -13,6 +13,7 @@ const SYSTEM_DEFAULT={
  shake:true,
  flashes:true,
  reducedMotion:false,
+ parallax:true,
  highContrast:false,
  particles:'NORMAL',
  deadzone:.45,
@@ -1890,6 +1891,7 @@ function drawKOEmphasis(){
 }
 function drawRoundBanner(){drawRoundIntroOverlay()}
 function drawStageForeground(){
+ if(typeof NightbloomStageLayers!=='undefined')NightbloomStageLayers.drawForeground(x,selectedStage,W,H,ground);
  let T=SYSTEM.reducedMotion?0:worldClock/60;x.save();
  if(selectedStage==='CRIMSON CATHEDRAL'){
    for(let i=0;i<14;i++){let px=((T*42)+i*83)%1080-60,py=320+Math.sin(T*.55+i)*68+i*7;x.globalAlpha=.54;x.fillStyle=i%3===0?'#f06a91':i%2?'#9d234f':'#cf3b70';x.save();x.translate(px,py);x.rotate(Math.sin(T*.5+i)*.45);x.fillRect(-4,-2,8,4);x.restore()}
@@ -1986,10 +1988,11 @@ const FINAL_STAGE_BACKDROP_URIS={
 const FINAL_STAGE_BACKDROPS={};
 Object.keys(FINAL_STAGE_BACKDROP_URIS).forEach(k=>{let im=new Image();im.src=FINAL_STAGE_BACKDROP_URIS[k];FINAL_STAGE_BACKDROPS[k]=im;});
 function drawStageBackdrop(stageName){
+ let layered=typeof NightbloomStageLayers!=='undefined'&&NightbloomStageLayers.drawBackground(x,stageName,W,H);
  let img=FINAL_STAGE_BACKDROPS[stageName];
- if(!(img&&img.complete&&img.naturalWidth))return false;
+ if(!layered&&!(img&&img.complete&&img.naturalWidth))return false;
  x.save();
- x.drawImage(img,0,0,W,H);
+ if(!layered)x.drawImage(img,0,0,W,H);
  let g=x.createLinearGradient(0,0,0,H);
  g.addColorStop(0,'rgba(0,0,0,0)');
  g.addColorStop(.58,'rgba(0,0,0,.04)');
@@ -2363,7 +2366,7 @@ function drawTitleScreen(){
    x.font=(sel?'bold ':'')+'16px Georgia';x.fillStyle=sel?'#fff':'#c9b9d2';x.textAlign='center';x.fillText(item,W/2,y+19);
  });
  x.font='9px Consolas';x.fillStyle='#91849a';x.fillText('↑/↓ SELECT  ·  ENTER CONFIRM  ·  M MUTE',W/2,481);
- x.fillStyle='#72ffd7';x.fillText('0.76 · COMBAT VOICES',W/2,499);
+ x.fillStyle='#72ffd7';x.fillText('0.77 · CATHEDRAL PARALLAX',W/2,499);
  x.fillStyle='#675c70';x.fillText('ALL MONSTERS ARE BEAUTIFUL.',W/2,517);
 }
 function selectableFighters(){return ROSTER.filter(isFighterUnlocked)}
@@ -2980,6 +2983,8 @@ effectsQuality.addEventListener('click',()=>{
  if(SYSTEM.particles==='OFF'){particles=[];fxInstances=[];}saveSystem();updateContextHelp();c.focus();
 });
 motionControl.addEventListener('click',()=>{SYSTEM.reducedMotion=!SYSTEM.reducedMotion;particles=[];saveSystem();updateContextHelp();c.focus();});
+const parallaxControl=document.getElementById('parallaxControl');
+parallaxControl.addEventListener('click',()=>{SYSTEM.parallax=SYSTEM.parallax===false;saveSystem();contextHelpKey='';updateContextHelp();c.focus();});
 const gameCommandButtons=document.querySelectorAll('[data-game-command]');
 new ResizeObserver(entries=>{
  document.documentElement.style.setProperty('--help-space',Math.max(100,Math.ceil(entries[0].contentRect.height)+34)+'px');
@@ -2997,13 +3002,14 @@ function storyVoiceLines(){
 function updateContextHelp(){
  if(typeof NightbloomVoices!=='undefined'){const lines=storyVoiceLines();NightbloomVoices.update(lines.length?JSON.stringify([playerChoice,ladderIndex,storyEnding,storyAfterText,lines]):'',lines);}
 
- const key=[gameState,training,trainingPanelExpanded,SYSTEM.controls,gameMode,paused,trainingDummyMode,trainingSpeed,inspectorPlaying,inspectorLayerMode,SYSTEM.particles,SYSTEM.reducedMotion].join('|');if(key===contextHelpKey)return;contextHelpKey=key;
+ const key=[gameState,training,trainingPanelExpanded,SYSTEM.controls,gameMode,paused,trainingDummyMode,trainingSpeed,inspectorPlaying,inspectorLayerMode,SYSTEM.particles,SYSTEM.reducedMotion,SYSTEM.parallax,selectedStage].join('|');if(key===contextHelpKey)return;contextHelpKey=key;
  const fight=gameState==='fight',arcade=SYSTEM.controls==='ARCADE'&&gameMode!=='local';
  contextHelp.textContent=gameState==='atlasInspector'?'←/→ fighter · ↑/↓ action · A/D frame · Space play/pause · Q/E speed · 1/2/3 layers · Esc title':fight?(arcade?'Arrows move · Z/X attacks · C special · V super · B throw · N guard · P pause':'WASD move · J/K attacks · L special · U super · I throw · Shift guard · P pause'):'Click or use arrows to select · Enter confirm · Backspace back · Esc title';
  trainingDetailsButton.hidden=!(fight&&training);trainingDetailsButton.textContent=trainingPanelExpanded?'Hide training details (H)':'Training details (H)';trainingDetailsButton.setAttribute('aria-expanded',String(trainingPanelExpanded));
  trainingTools.hidden=!(fight&&training);inspectorTools.hidden=gameState!=='atlasInspector';
  effectsTools.hidden=!(fight&&training)&&gameState!=='atlasInspector';
  effectsQuality.textContent='Effects: '+({NORMAL:'Full',LOW:'Low',OFF:'Minimal'}[SYSTEM.particles]||'Full');
+ parallaxControl.hidden=selectedStage!=='CRIMSON CATHEDRAL';parallaxControl.textContent='Stage layers: '+(SYSTEM.parallax===false?'Original':'Parallax');parallaxControl.setAttribute('aria-pressed',String(SYSTEM.parallax!==false));
  motionControl.textContent='Reduced motion: '+(SYSTEM.reducedMotion?'On':'Off');motionControl.setAttribute('aria-pressed',String(SYSTEM.reducedMotion));
  document.getElementById('dummyControl').textContent='Dummy: '+TRAINING_DUMMIES[trainingDummyMode];
  document.getElementById('speedControl').textContent='Speed: '+Math.round(trainingSpeed*100)+'%';
@@ -3021,6 +3027,7 @@ function loop(now){
  updateContextHelp();
  if(pressed.KeyM){AUDIO.mute=!AUDIO.mute;applyAudioLevels();saveAudio();announcement=AUDIO.mute?'MUTED':'AUDIO ON';announceT=30}
  if(typeof NightbloomCombatVoices!=='undefined')NightbloomCombatVoices.update({active:gameState==='fight'&&audioUnlocked,paused,fighters:[p1.name,p2.name]});
+ if(typeof NightbloomStageLayers!=='undefined')NightbloomStageLayers.update({stage:selectedStage,active:gameState==='fight',paused,reducedMotion:SYSTEM.reducedMotion,on:SYSTEM.parallax!==false,midpoint:(p1.x+p2.x)/2,width:W,dt});
  musicTick();
 
  if(gameState!=='fight'){

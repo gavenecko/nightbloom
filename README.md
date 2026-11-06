@@ -1,4 +1,6 @@
-# NIGHTBLOOM Prototype 0.76
+# NIGHTBLOOM Prototype 0.77
+
+Crimson Cathedral now has a three-layer parallax test: reconstructed background, gargoyles/railings, and a foreground border. The floor stays fixed. Reduced motion freezes layer movement; the training controls let you compare with the original. [Stage preview and layer controls](docs/cathedral-parallax.html). Other stages retain their existing artwork.
 
 Approved Chatterbox combat voices now play for all 12 fighters: exertions on normal attacks, attack calls on specials/throws/supers, pain on unblocked hits, and one character line during the winner’s five-second victory animation. Voices follow Master/SFX volume and mute; pauses and menus stop playback. Only the selected fighters’ clips preload. [Review the full cast](docs/combat-voice-roster.html).
 
