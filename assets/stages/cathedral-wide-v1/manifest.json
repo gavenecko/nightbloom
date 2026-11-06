@@ -1,0 +1,28 @@
+{
+  "stage": "CRIMSON CATHEDRAL",
+  "version": 1,
+  "tool": "Built-in image_gen",
+  "worldWidth": 1920,
+  "viewportWidth": 960,
+  "background": {
+    "file": "background.webp",
+    "width": 2560,
+    "height": 720,
+    "bytes": 612414
+  },
+  "reuse": [
+    "../cathedral-parallax-v1/middle.webp",
+    "../cathedral-parallax-v1/foreground.webp"
+  ],
+  "source": {
+    "width": 2172,
+    "height": 724,
+    "packaging": "Uniform resize to 2560px width, 12px top crop, 720px height. No horizontal stretching."
+  },
+  "depth": {
+    "floor": 1,
+    "background": 0.35,
+    "middle": 0.72,
+    "foreground": 1.1
+  }
+}

@@ -1,7 +1,20 @@
 
 const c=document.getElementById('game'),x=c.getContext('2d'); x.imageSmoothingEnabled=false;
 const W=c.width,H=c.height, ground=430;
-const BUILD_INFO={version:'0.77',channel:'CATHEDRAL PARALLAX',date:'2026-11-05',label:'CATHEDRAL PARALLAX'};
+const BUILD_INFO={version:'0.78',channel:'WIDE CATHEDRAL',date:'2026-11-05',label:'WIDE CATHEDRAL'};
+// World coordinates are independent from the fixed 960px viewport.
+let stageCameraX=0;
+function arenaWidth(){return selectedStage==='CRIMSON CATHEDRAL'?W*2:W}
+function arenaCenterOffset(){return (arenaWidth()-W)/2}
+function updateStageCamera(dt){
+ if(arenaWidth()===W){stageCameraX=0;return;}
+ if(paused||dt<=0)return;
+ const target=clamp((p1.x+p2.x)/2-W/2,0,arenaWidth()-W);
+ stageCameraX+=(target-stageCameraX)*(1-Math.pow(.9,Math.max(0,Math.min(3,dt))));
+ // Never let smoothing place either fighter outside the visible play area.
+ const lo=Math.max(0,Math.max(p1.x,p2.x)-W+70),hi=Math.min(arenaWidth()-W,Math.min(p1.x,p2.x)-70);
+ stageCameraX=lo<=hi?clamp(stageCameraX,lo,hi):target;
+}
 const keys={},kbKeys={},padKeys={},pressed={};
 const p2Keys={},p2KbKeys={},p2PadKeys={},p2Pressed={};
 const P2_KEYMAP={
@@ -144,7 +157,7 @@ function noiseBurst(dur=.06,vol=.14,pan=0){
 function fighterPan(name){
  if(typeof p1==='undefined'||!p1)return 0;
  let f=p1.name===name?p1:p2.name===name?p2:null;
- return f?clamp((f.x-W/2)/(W/2),-0.8,.8):0;
+ return f?clamp((f.x-stageCameraX-W/2)/(W/2),-0.8,.8):0;
 }
 function charCue(name,kind='special'){
  let c=CHAR_AUDIO[name]||CHAR_AUDIO.VAMPIRA,pan=fighterPan(name);
@@ -979,6 +992,8 @@ function saveTrainingSnapshot(){
 function loadTrainingSnapshot(){
  if(!training||!trainingSnapshot)return;
  applyTrainingFighter(p1,trainingSnapshot.p1);applyTrainingFighter(p2,trainingSnapshot.p2);
+ p1.x=clamp(p1.x,45,arenaWidth()-45);p2.x=clamp(p2.x,45,arenaWidth()-45);resolvePushboxes(p1,p2);
+ stageCameraX=clamp((p1.x+p2.x)/2-W/2,0,arenaWidth()-W);
  projectiles=[];particles=[];fxInstances=[];witchSigils=[];
  for(let s of trainingSnapshot.sigils||[])witchSigils.push({owner:s.ownerSlot===1?p1:p2,x:s.x,y:s.y,life:s.life,arm:s.arm,flash:s.flash});
  hitstop=0;superCine=0;koCine=0;roundOver=false;timer=99;
@@ -989,7 +1004,8 @@ function cycleTrainingSpeed(){
  announcement='TRAINING SPEED '+Math.round(trainingSpeed*100)+'%';announceT=32;
 }
 function resetRound(){
- p1=makeFighter(playerChoice,220,0,false);p2=makeFighter(enemyChoice,740,1,gameMode!=='local');
+ const offset=arenaCenterOffset();stageCameraX=offset;
+ p1=makeFighter(playerChoice,220+offset,0,false);p2=makeFighter(enemyChoice,740+offset,1,gameMode!=='local');
  p1.playerSlot=1;p2.playerSlot=2;
  timer=configuredTimer();timerAcc=0;roundOver=false;koTimer=0;roundIntro=72;roundBanner=72;superCine=0;superOwner=null;koCine=0;koLoser=null;roundEndReason='KO';
  projectiles=[];particles=[];fxInstances=[];witchSigils=[];hitstop=0;
@@ -1012,14 +1028,18 @@ function awayHeld(f){
  return f.flip ? heldFor(f,'KeyD') : heldFor(f,'KeyA');
 }
 function resolvePushboxes(a,b){
+ if(arenaWidth()>W&&Math.abs(a.x-b.x)>W-150){
+   const sign=Math.sign(b.x-a.x),mid=(a.x+b.x)/2,half=(W-150)/2;
+   a.x=clamp(mid-sign*half,45,arenaWidth()-45);b.x=clamp(mid+sign*half,45,arenaWidth()-45);
+ }
  if(a.air||b.air)return;
  let min=52,d=b.x-a.x,ad=Math.abs(d);
  if(ad<min&&ad>0){let push=(min-ad)/2,sg=Math.sign(d);
-   let aEdge=a.x<=47||a.x>=W-47,bEdge=b.x<=47||b.x>=W-47;
+   let aEdge=a.x<=47||a.x>=arenaWidth()-47,bEdge=b.x<=47||b.x>=arenaWidth()-47;
    if(aEdge&&!bEdge)b.x+=push*2*sg;else if(bEdge&&!aEdge)a.x-=push*2*sg;else{a.x-=push*sg;b.x+=push*sg}
-   a.x=clamp(a.x,45,W-45);b.x=clamp(b.x,45,W-45)
+   a.x=clamp(a.x,45,arenaWidth()-45);b.x=clamp(b.x,45,arenaWidth()-45)
  }
- a.cornered=a.x<=48||a.x>=W-48;b.cornered=b.x<=48||b.x>=W-48;
+ a.cornered=a.x<=48||a.x>=arenaWidth()-48;b.cornered=b.x<=48||b.x>=arenaWidth()-48;
 }
 function bufferInput(f,code){f.inputBuffer.push({code,t:10})}
 function consumeBuffer(f,code){let i=f.inputBuffer.findIndex(v=>v.code===code&&v.t>0);if(i>=0){f.inputBuffer.splice(i,1);return true}return false}
@@ -1173,7 +1193,7 @@ function updateThrowHold(f,dt){
  const target=f.throwTarget;if(!target)return false;
  f.throwHold=Math.max(0,f.throwHold-dt);f.vx=f.vy=0;f.y=ground;f.air=false;
  if(f.attack)f.attack.frame+=dt;
- if(f.throwHold>0){target.x=clamp(f.x+toward(f)*40,45,W-45);target.y=ground-22;target.vx=target.vy=0;target.air=true;target.state='hit';return true;}
+ if(f.throwHold>0){target.x=clamp(f.x+toward(f)*40,45,arenaWidth()-45);target.y=ground-22;target.vx=target.vy=0;target.air=true;target.state='hit';return true;}
  const dir=f.throwDirection;clearThrowPair(f);target.attack=null;target.y=ground-28;target.air=true;target.vx=dir*7;target.vy=-6;target.knockdown=45;target.hitstun=Math.max(target.hitstun,18);target.state='hit';target.throwTech=0;
  spawnFX('hit',target.x,target.y-50,false,.85);shake=Math.max(shake,8);emit('throw_release',{fighter:f.name,defender:target.name});return true;
 }
@@ -1192,7 +1212,7 @@ function techThrow(def,att){
 function groundTech(f,dir){
  f.techWindow=0;f.hitstun=0;f.blockstun=0;f.knockdown=0;f.wakeup=0;
  f.visualRecover=18;f.state='recover';f.invuln=Math.max(f.invuln,11);f.vx=dir*5.2;
- f.x=clamp(f.x+dir*42,45,W-45);f.lastTech=45;
+ f.x=clamp(f.x+dir*42,45,arenaWidth()-45);f.lastTech=45;
  spawnFX('guard',f.x,f.y-48,false,.55);
  announcement='TECH';announceT=24;emit('ground_tech',{fighter:f.name});
 }
@@ -1289,7 +1309,7 @@ function doAttack(f,type){
  if(f.name==='YUREI'&&type==='specialA'){f.invuln=Math.max(f.invuln,6);f.vx+=(f.flip?-1:1)*2.35;}
  if(f.name==='DULLAHAN'&&type==='specialA'){f.vx+=(f.flip?-1:1)*4.5;f.invuln=Math.max(f.invuln,3);}
  if(f.name==='WITCH'&&type==='specialA'){
-   let sx=clamp(f.x+(f.flip?-1:1)*115,65,W-65);
+   let sx=clamp(f.x+(f.flip?-1:1)*115,65,arenaWidth()-65);
    witchSigils=witchSigils.filter(s=>s.owner!==f||s.life>0);
    if(witchSigils.filter(s=>s.owner===f).length>=2){let idx=witchSigils.findIndex(s=>s.owner===f);if(idx>=0)witchSigils.splice(idx,1)}
    if(witchSigils.length>=PERF_CAPS.sigils)witchSigils.shift();witchSigils.push({owner:f,x:sx,y:ground-8,life:225,arm:38,flash:0});
@@ -1426,10 +1446,10 @@ function updateF(f,o,dt){
     if(ad<Math.max(62,ap.range*.52)&&ap.retreat<.65){left=right=false}
     if(ad>210&&Math.random()<.008*dc.aggression*ap.jump*mb.jump)jump=true;
     if(ad>ap.range*1.5&&Math.random()<.008*dc.aggression*ap.dash*mb.dash&&!f.air){f.dashT=10;f.vx=(d>0?8:-8)};
-    if(f.name==='NEKOMATA'&&ad>150&&Math.random()<.004&&!f.attack&&!f.air){f.x=clamp(o.x-(d>0?75:-75),45,W-45);spawnHit(f.x,f.y-55,'#bd6cff',8);spawnFX('shadow',f.x,f.y-55,false,1.0);f.invuln=6}
+    if(f.name==='NEKOMATA'&&ad>150&&Math.random()<.004&&!f.attack&&!f.air){f.x=clamp(o.x-(d>0?75:-75),45,arenaWidth()-45);spawnHit(f.x,f.y-55,'#bd6cff',8);spawnFX('shadow',f.x,f.y-55,false,1.0);f.invuln=6}
     if(f.name==='BANSHEE'&&ad>140&&Math.random()<.004&&!f.attack&&!f.air){f.vx=(d>0?6:-6);f.invuln=5;spawnFX('wail',f.x,f.y-70,false,.95)}
     if(f.name==='JIANGSHI'&&ad>120&&Math.random()<.006&&!f.attack&&!f.air){f.vy=-8.5;f.air=true;f.vx=(d>0?4.5:-4.5);f.invuln=4;spawnFX('guard',f.x,f.y-65,false,.7)}
-    if(f.name==='YUREI'&&ad>130&&Math.random()<.005&&!f.attack&&!f.air&&f.phaseCD<=0){spawnFX('shadow',f.x,f.y-60,false,.8);f.x=clamp(o.x-(d>0?88:-88),45,W-45);spawnFX('graveReach',f.x,f.y-60,false,.65);f.invuln=7;f.phaseCD=90}
+    if(f.name==='YUREI'&&ad>130&&Math.random()<.005&&!f.attack&&!f.air&&f.phaseCD<=0){spawnFX('shadow',f.x,f.y-60,false,.8);f.x=clamp(o.x-(d>0?88:-88),45,arenaWidth()-45);spawnFX('graveReach',f.x,f.y-60,false,.65);f.invuln=7;f.phaseCD=90}
     if(f.name==='DULLAHAN'&&ad>165&&Math.random()<.007&&!f.attack&&!f.air&&f.headless<=0){doAttack(f,'specialB');projectile(f)}
     if(f.name==='WEREWOLF'&&f.rage>=70&&ad<170&&!f.attack&&f.aiSpecialCD<=0&&Math.random()<.020){f.dashT=10;f.vx=(d>0?9:-9);if(Math.random()<.45)doAttack(f,'specialA');f.aiSpecialCD=38}
     if(f.name==='MUMMY'&&ad>145&&ad<360&&!f.attack&&f.aiSpecialCD<=0&&Math.random()<.010*dc.aggression){
@@ -1518,7 +1538,7 @@ function updateF(f,o,dt){
      announcement='AIR TECH';announceT=20;emit('air_tech',{fighter:f.name});
    }
  }
- if(f.y>=ground){f.y=ground;f.vy=0;if(f.air&&f.knockdown>0){f.state='down';f.hitstun=Math.max(f.hitstun,20);f.wakeup=28;f.techWindow=12;f.knockdown=0}f.air=false;f.juggle=0;f.airRecover=0;f.extraJump=0} f.x=clamp(f.x,45,W-45);
+ if(f.y>=ground){f.y=ground;f.vy=0;if(f.air&&f.knockdown>0){f.state='down';f.hitstun=Math.max(f.hitstun,20);f.wakeup=28;f.techWindow=12;f.knockdown=0}f.air=false;f.juggle=0;f.airRecover=0;f.extraJump=0} f.x=clamp(f.x,45,arenaWidth()-45);
 }
 function pxrect(X,Y,w,h,col){x.fillStyle=col;x.fillRect(Math.round(X),Math.round(Y),Math.round(w),Math.round(h))}
 function drawStageFallback(){
@@ -2366,7 +2386,7 @@ function drawTitleScreen(){
    x.font=(sel?'bold ':'')+'16px Georgia';x.fillStyle=sel?'#fff':'#c9b9d2';x.textAlign='center';x.fillText(item,W/2,y+19);
  });
  x.font='9px Consolas';x.fillStyle='#91849a';x.fillText('↑/↓ SELECT  ·  ENTER CONFIRM  ·  M MUTE',W/2,481);
- x.fillStyle='#72ffd7';x.fillText('0.77 · CATHEDRAL PARALLAX',W/2,499);
+ x.fillStyle='#72ffd7';x.fillText('0.78 · WIDE CATHEDRAL',W/2,499);
  x.fillStyle='#675c70';x.fillText('ALL MONSTERS ARE BEAUTIFUL.',W/2,517);
 }
 function selectableFighters(){return ROSTER.filter(isFighterUnlocked)}
@@ -2588,7 +2608,7 @@ function captureMatchResult(){
 }
 const RESULT_OPTIONS=['REMATCH','CHANGE STAGE','CHANGE FIGHTERS','TITLE'];
 function drawFightStats(){
- drawStage();drawF(p1);drawF(p2);x.fillStyle='rgba(4,3,9,.72)';x.fillRect(0,0,W,H);
+ drawStage();x.save();x.translate(-stageCameraX,0);drawF(p1);drawF(p2);x.restore();x.fillStyle='rgba(4,3,9,.72)';x.fillRect(0,0,W,H);
  const r=lastMatchResult;if(!r)return;
  const accent=CHAR_INFO[r.winner].accent;
  roundRect(155,65,650,410,14,'rgba(12,7,20,.97)',accent,2);
@@ -3009,7 +3029,7 @@ function updateContextHelp(){
  trainingTools.hidden=!(fight&&training);inspectorTools.hidden=gameState!=='atlasInspector';
  effectsTools.hidden=!(fight&&training)&&gameState!=='atlasInspector';
  effectsQuality.textContent='Effects: '+({NORMAL:'Full',LOW:'Low',OFF:'Minimal'}[SYSTEM.particles]||'Full');
- parallaxControl.hidden=selectedStage!=='CRIMSON CATHEDRAL';parallaxControl.textContent='Stage layers: '+(SYSTEM.parallax===false?'Original':'Parallax');parallaxControl.setAttribute('aria-pressed',String(SYSTEM.parallax!==false));
+ parallaxControl.hidden=selectedStage!=='CRIMSON CATHEDRAL';parallaxControl.textContent='Parallax depth: '+(SYSTEM.parallax===false?'Off':'On');parallaxControl.setAttribute('aria-pressed',String(SYSTEM.parallax!==false));
  motionControl.textContent='Reduced motion: '+(SYSTEM.reducedMotion?'On':'Off');motionControl.setAttribute('aria-pressed',String(SYSTEM.reducedMotion));
  document.getElementById('dummyControl').textContent='Dummy: '+TRAINING_DUMMIES[trainingDummyMode];
  document.getElementById('speedControl').textContent='Speed: '+Math.round(trainingSpeed*100)+'%';
@@ -3027,7 +3047,7 @@ function loop(now){
  updateContextHelp();
  if(pressed.KeyM){AUDIO.mute=!AUDIO.mute;applyAudioLevels();saveAudio();announcement=AUDIO.mute?'MUTED':'AUDIO ON';announceT=30}
  if(typeof NightbloomCombatVoices!=='undefined')NightbloomCombatVoices.update({active:gameState==='fight'&&audioUnlocked,paused,fighters:[p1.name,p2.name]});
- if(typeof NightbloomStageLayers!=='undefined')NightbloomStageLayers.update({stage:selectedStage,active:gameState==='fight',paused,reducedMotion:SYSTEM.reducedMotion,on:SYSTEM.parallax!==false,midpoint:(p1.x+p2.x)/2,width:W,dt});
+ if(gameState!=='fight'&&typeof NightbloomStageLayers!=='undefined')NightbloomStageLayers.update({stage:selectedStage,active:false,reducedMotion:SYSTEM.reducedMotion,on:SYSTEM.parallax!==false,width:W,worldWidth:arenaWidth()});
  musicTick();
 
  if(gameState!=='fight'){
@@ -3052,7 +3072,7 @@ function loop(now){
  if(pressed.F3){p1.hp=p1.maxhp;p2.hp=p2.maxhp;p1.meter=p2.meter=100;p1.rage=p2.rage=0;announcement='REFILL';announceT=28;}
  if(pressed.F4&&training){trainingDummyMode=(trainingDummyMode+1)%TRAINING_DUMMIES.length;announcement='DUMMY: '+TRAINING_DUMMIES[trainingDummyMode];announceT=40;}
  if(pressed.F5&&training){
-   p1.x=300;p2.x=660;p1.y=p2.y=ground;p1.vx=p2.vx=p1.vy=p2.vy=0;p1.air=p2.air=false;
+   p1.x=300+arenaCenterOffset();p2.x=660+arenaCenterOffset();stageCameraX=arenaCenterOffset();p1.y=p2.y=ground;p1.vx=p2.vx=p1.vy=p2.vy=0;p1.air=p2.air=false;
    p1.attack=p2.attack=null;p1.hitstun=p2.hitstun=p1.blockstun=p2.blockstun=0;p1.combo=p2.combo=0;p1.juggle=p2.juggle=0;
    projectiles=[];particles=[];fxInstances=[];witchSigils=[];trainingLastDamage=0;trainingLastEvent='—';
    fighterAnimationClocks.delete(p1);fighterAnimationClocks.delete(p2);
@@ -3139,12 +3159,14 @@ function loop(now){
      q.life=0;if(q.head&&q.owner)q.owner.headless=Math.min(q.owner.headless,20);shake=Math.max(shake,guarding?2:4);
    }
  });
-   projectiles=projectiles.filter(q=>q.life>0&&q.x>-40&&q.x<W+40);
+   projectiles=projectiles.filter(q=>q.life>0&&q.x>-40&&q.x<arenaWidth()+40);
  }
 
  x.save();
+ updateStageCamera(simAdvance?simDt:0);
+ if(typeof NightbloomStageLayers!=='undefined')NightbloomStageLayers.update({stage:selectedStage,active:true,paused,reducedMotion:SYSTEM.reducedMotion,on:SYSTEM.parallax!==false,cameraLeft:stageCameraX,width:W,worldWidth:arenaWidth()});
  let camZoom=1,camX=W/2,camY=ground-105;
- if(!SYSTEM.reducedMotion&&koCine>0&&koLoser){let kp=clamp(koCine/62,0,1);camZoom=1+(1-kp)*.12;camX=koLoser.x;camY=koLoser.y-55}
+ if(!SYSTEM.reducedMotion&&koCine>0&&koLoser){let kp=clamp(koCine/62,0,1);camZoom=1+(1-kp)*.12;camX=koLoser.x-stageCameraX;camY=koLoser.y-55}
 
  if(camZoom!==1){x.translate(W/2,H/2);x.scale(camZoom,camZoom);x.translate(-camX,-camY)}
  if(shake>0&&SYSTEM.shake&&!SYSTEM.reducedMotion&&simAdvance){x.translate(rnd(-shake,shake),rnd(-shake,shake));shake*=.82;if(shake<.3)shake=0}else if(!SYSTEM.shake||SYSTEM.reducedMotion)shake=0
@@ -3152,15 +3174,16 @@ function loop(now){
 
  worldClock+=animationDt;
  stepFighterAnimation(p1,animationDt);stepFighterAnimation(p2,animationDt);
+ x.save();x.translate(-stageCameraX,0);
  drawSigils();drawF(p1);drawF(p2);
  projectiles.forEach(q=>{
   NightbloomFX.projectile(x,q,worldClock,fxRenderOptions());
   if(q.head&&dullahanHead.complete&&dullahanHead.naturalWidth){x.save();x.translate(q.x,q.y);if(q.vx<0)x.scale(-1,1);x.drawImage(dullahanHead,-32,-32,64,64);x.restore();}
  });
- drawStageForeground();fxInstances.forEach(drawFXInstance);debugDraw();
+ x.restore();drawStageForeground();x.save();x.translate(-stageCameraX,0);fxInstances.forEach(drawFXInstance);debugDraw();
  particles.forEach(p=>{
   x.globalAlpha=Math.min(1,p.life/8);x.strokeStyle=p.col;x.lineWidth=p.s;x.lineCap='round';x.beginPath();x.moveTo(p.x,p.y);x.lineTo(p.x-p.vx*.9,p.y-p.vy*.9);x.stroke();
- });x.globalAlpha=1;x.restore();
+ });x.globalAlpha=1;x.restore();x.restore();
  hud();drawTrainingPanel();drawBalanceOverlay();drawRoundBanner();drawSuperCinematic();drawKOEmphasis();
  if(flash>0){if(SYSTEM.flashes&&!SYSTEM.reducedMotion){x.fillStyle='#fff';x.globalAlpha=Math.min(.22,.055*flash);x.fillRect(0,0,W,H);x.globalAlpha=1}if(simAdvance)flash=Math.max(0,flash-simDt)}
  drawPauseIndicator();
