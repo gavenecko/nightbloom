@@ -1,7 +1,7 @@
 
 const c=document.getElementById('game'),x=c.getContext('2d'); x.imageSmoothingEnabled=false;
 const W=c.width,H=c.height, ground=430;
-const BUILD_INFO={version:'0.78',channel:'WIDE CATHEDRAL',date:'2026-11-05',label:'WIDE CATHEDRAL'};
+const BUILD_INFO={version:'0.79',channel:'CATHEDRAL LAYER FIX',date:'2026-11-05',label:'CATHEDRAL LAYER FIX'};
 // World coordinates are independent from the fixed 960px viewport.
 let stageCameraX=0;
 function arenaWidth(){return selectedStage==='CRIMSON CATHEDRAL'?W*2:W}
@@ -2386,7 +2386,7 @@ function drawTitleScreen(){
    x.font=(sel?'bold ':'')+'16px Georgia';x.fillStyle=sel?'#fff':'#c9b9d2';x.textAlign='center';x.fillText(item,W/2,y+19);
  });
  x.font='9px Consolas';x.fillStyle='#91849a';x.fillText('↑/↓ SELECT  ·  ENTER CONFIRM  ·  M MUTE',W/2,481);
- x.fillStyle='#72ffd7';x.fillText('0.78 · WIDE CATHEDRAL',W/2,499);
+ x.fillStyle='#72ffd7';x.fillText('0.79 · CATHEDRAL LAYER FIX',W/2,499);
  x.fillStyle='#675c70';x.fillText('ALL MONSTERS ARE BEAUTIFUL.',W/2,517);
 }
 function selectableFighters(){return ROSTER.filter(isFighterUnlocked)}

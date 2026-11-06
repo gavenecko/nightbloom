@@ -22,7 +22,13 @@
   "depth": {
     "floor": 1,
     "background": 0.35,
-    "middle": 0.72,
+    "middle": 1,
     "foreground": 1.1
+  },
+  "renderRevision": 2,
+  "grounding": {
+    "middleOffsetY": 24,
+    "viewportHeight": 540,
+    "floorStartFraction": 0.75
   }
 }

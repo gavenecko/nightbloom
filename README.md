@@ -1,4 +1,4 @@
-# NIGHTBLOOM Prototype 0.78
+# NIGHTBLOOM Prototype 0.79
 
 Crimson Cathedral is now a true 1920px-wide arena with a 960px viewport, smoothly following both fighters. Extended scenery preserves the original art scale; the floor tracks world motion and other layers move at distinct depths. Both fighters stay visible. [Wide-stage preview](docs/cathedral-wide.html).
 
