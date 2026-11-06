@@ -1,4 +1,6 @@
-# NIGHTBLOOM Prototype 0.79
+# NIGHTBLOOM Prototype 0.80
+
+All six stages now have 1920px arenas, smooth camera follow and layered scenery. Moonlit Shrine, Forsaken Harbor, Cursed Library, Bonefield and The Next Dawn join the corrected Cathedral. [Preview every stage and inspect its layers](docs/stage-depth.html). Only the selected stage loads, and original artwork is preserved.
 
 Crimson Cathedral is now a true 1920px-wide arena with a 960px viewport, smoothly following both fighters. Extended scenery preserves the original art scale; the floor tracks world motion and other layers move at distinct depths. Both fighters stay visible. [Wide-stage preview](docs/cathedral-wide.html).
 

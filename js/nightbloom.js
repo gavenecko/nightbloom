@@ -1,10 +1,10 @@
 
 const c=document.getElementById('game'),x=c.getContext('2d'); x.imageSmoothingEnabled=false;
 const W=c.width,H=c.height, ground=430;
-const BUILD_INFO={version:'0.79',channel:'CATHEDRAL LAYER FIX',date:'2026-11-05',label:'CATHEDRAL LAYER FIX'};
+const BUILD_INFO={version:'0.80',channel:'ALL STAGE PARALLAX',date:'2026-11-06',label:'ALL STAGE PARALLAX'};
 // World coordinates are independent from the fixed 960px viewport.
 let stageCameraX=0;
-function arenaWidth(){return selectedStage==='CRIMSON CATHEDRAL'?W*2:W}
+function arenaWidth(){return STAGES.includes(selectedStage)?W*2:W}
 function arenaCenterOffset(){return (arenaWidth()-W)/2}
 function updateStageCamera(dt){
  if(arenaWidth()===W){stageCameraX=0;return;}
@@ -1988,8 +1988,8 @@ function hud(){
    x.textAlign='center';x.font='bold 18px Georgia';x.shadowColor='#000';x.shadowBlur=8;x.fillStyle='#fff';x.fillText(announcement,W/2,announcementY);x.shadowBlur=0;
  }
  // combo readouts
- if(p1.combo>1&&p1.comboT>0){x.textAlign='left';glowText(p1.combo+' HIT',70,152,24,p1.accent,p1.accent,'Georgia');x.font='10px Consolas';x.fillStyle='#fff';x.fillText(Math.round(p1.comboDamage)+' DAMAGE',72,169)}
- if(p2.combo>1&&p2.comboT>0){x.textAlign='right';glowText(p2.combo+' HIT',W-70,152,24,p2.accent,p2.accent,'Georgia');x.font='10px Consolas';x.fillStyle='#fff';x.fillText(Math.round(p2.comboDamage)+' DAMAGE',W-72,169)}
+ if(p1.combo>1&&p1.comboT>0){x.textAlign='left';glowText(p1.combo+' HIT',70,152,24,p1.accent,p1.accent,'left','Georgia');x.font='10px Consolas';x.fillStyle='#fff';x.fillText(Math.round(p1.comboDamage)+' DAMAGE',72,169)}
+ if(p2.combo>1&&p2.comboT>0){x.textAlign='right';glowText(p2.combo+' HIT',W-70,152,24,p2.accent,p2.accent,'right','Georgia');x.font='10px Consolas';x.fillStyle='#fff';x.fillText(Math.round(p2.comboDamage)+' DAMAGE',W-72,169)}
  if(danger1){x.textAlign='left';x.font='bold 8px Consolas';x.fillStyle='#ff6c79';x.fillText('DANGER',94,86)}
  if(danger2){x.textAlign='right';x.font='bold 8px Consolas';x.fillStyle='#ff6c79';x.fillText('DANGER',W-94,86)}
 }
@@ -2386,7 +2386,7 @@ function drawTitleScreen(){
    x.font=(sel?'bold ':'')+'16px Georgia';x.fillStyle=sel?'#fff':'#c9b9d2';x.textAlign='center';x.fillText(item,W/2,y+19);
  });
  x.font='9px Consolas';x.fillStyle='#91849a';x.fillText('↑/↓ SELECT  ·  ENTER CONFIRM  ·  M MUTE',W/2,481);
- x.fillStyle='#72ffd7';x.fillText('0.79 · CATHEDRAL LAYER FIX',W/2,499);
+ x.fillStyle='#72ffd7';x.fillText('0.80 · ALL STAGE PARALLAX',W/2,499);
  x.fillStyle='#675c70';x.fillText('ALL MONSTERS ARE BEAUTIFUL.',W/2,517);
 }
 function selectableFighters(){return ROSTER.filter(isFighterUnlocked)}
@@ -3029,7 +3029,7 @@ function updateContextHelp(){
  trainingTools.hidden=!(fight&&training);inspectorTools.hidden=gameState!=='atlasInspector';
  effectsTools.hidden=!(fight&&training)&&gameState!=='atlasInspector';
  effectsQuality.textContent='Effects: '+({NORMAL:'Full',LOW:'Low',OFF:'Minimal'}[SYSTEM.particles]||'Full');
- parallaxControl.hidden=selectedStage!=='CRIMSON CATHEDRAL';parallaxControl.textContent='Parallax depth: '+(SYSTEM.parallax===false?'Off':'On');parallaxControl.setAttribute('aria-pressed',String(SYSTEM.parallax!==false));
+ parallaxControl.hidden=!STAGES.includes(selectedStage);parallaxControl.textContent='Parallax depth: '+(SYSTEM.parallax===false?'Off':'On');parallaxControl.setAttribute('aria-pressed',String(SYSTEM.parallax!==false));
  motionControl.textContent='Reduced motion: '+(SYSTEM.reducedMotion?'On':'Off');motionControl.setAttribute('aria-pressed',String(SYSTEM.reducedMotion));
  document.getElementById('dummyControl').textContent='Dummy: '+TRAINING_DUMMIES[trainingDummyMode];
  document.getElementById('speedControl').textContent='Speed: '+Math.round(trainingSpeed*100)+'%';

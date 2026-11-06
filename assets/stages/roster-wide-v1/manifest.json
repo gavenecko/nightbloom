@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "tool": "Built-in image_gen",
+  "worldWidth": 1920,
+  "viewportWidth": 960,
+  "stages": [
+    {
+      "name": "MOONLIT SHRINE",
+      "id": "moonlit-shrine",
+      "background": "background.webp",
+      "props": "props.webp",
+      "sourceCropTop": 62,
+      "geometry": {
+        "offset": 6,
+        "clip": 0.7944444444444444,
+        "fgOffset": 0,
+        "floor": 0.75
+      },
+      "backgroundBytes": 641854,
+      "propsBytes": 149114
+    },
+    {
+      "name": "FORSAKEN HARBOR",
+      "id": "forsaken-harbor",
+      "background": "background.webp",
+      "props": "props.webp",
+      "sourceCropTop": 22,
+      "geometry": {
+        "offset": -18,
+        "clip": 0.8027777777777778,
+        "fgOffset": 0,
+        "floor": 0.75
+      },
+      "backgroundBytes": 536328,
+      "propsBytes": 85506
+    },
+    {
+      "name": "CURSED LIBRARY",
+      "id": "cursed-library",
+      "background": "background.webp",
+      "props": "props.webp",
+      "sourceCropTop": 35,
+      "geometry": {
+        "offset": -4.5,
+        "clip": 0.7583333333333333,
+        "fgOffset": 27.75,
+        "floor": 0.75
+      },
+      "backgroundBytes": 628612,
+      "propsBytes": 175756
+    },
+    {
+      "name": "BONEFIELD",
+      "id": "bonefield",
+      "background": "background.webp",
+      "props": "props.webp",
+      "sourceCropTop": 9,
+      "geometry": {
+        "offset": 0,
+        "clip": 0.7916666666666666,
+        "fgOffset": 0,
+        "floor": 0.75
+      },
+      "backgroundBytes": 469190,
+      "propsBytes": 155472
+    },
+    {
+      "name": "THE NEXT DAWN",
+      "id": "next-dawn",
+      "background": "background.webp",
+      "props": "props.webp",
+      "sourceCropTop": 73,
+      "geometry": {
+        "offset": 6.75,
+        "clip": 0.8013888888888889,
+        "fgOffset": 0,
+        "floor": 0.75
+      },
+      "backgroundBytes": 560976,
+      "propsBytes": 120886
+    }
+  ],
+  "totalLayerBytes": 3523694
+}
