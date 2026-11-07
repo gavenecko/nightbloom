@@ -1,4 +1,6 @@
-# NIGHTBLOOM Prototype 0.80
+# NIGHTBLOOM Prototype 0.81
+
+Four stages now have grounded props with contact shadows. Stage Select uses cropped artwork from the actual layered arenas, with full-width titles and descriptions. The battle HUD, character portraits and dialogue portraits use beveled brass trim and inset jewel tones.
 
 All six stages now have 1920px arenas, smooth camera follow and layered scenery. Moonlit Shrine, Forsaken Harbor, Cursed Library, Bonefield and The Next Dawn join the corrected Cathedral. [Preview every stage and inspect its layers](docs/stage-depth.html). Only the selected stage loads, and original artwork is preserved.
 

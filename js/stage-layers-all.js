@@ -33,8 +33,13 @@
   const travel=cameraX-(world-w)/2;ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
   ctx.drawImage(item.images.background,-(world-w)/2-travel*(depth?.35:1),0,world,h);
   ctx.drawImage(floorPlate(item),-cameraX,0,world,h);
-  ctx.save();if(item.config.split){ctx.beginPath();ctx.rect(0,0,w,h*(item.config.clip||.78));ctx.clip();}
-  ctx.drawImage(item.images.middle,-travel,h*(item.config.offset/540),w,h);ctx.restore();ctx.restore();return true;
+  const {groundDrop=0,footprints=[]}=item.config;
+  for(const [center,radius] of footprints){
+   ctx.save();ctx.translate(w*center-travel,h*((405+groundDrop)/540));ctx.scale(w*radius,h*(6/540));
+   const shade=ctx.createRadialGradient(0,0,0,0,0,1);shade.addColorStop(0,'rgba(9,5,16,.57)');shade.addColorStop(1,'rgba(9,5,16,0)');ctx.fillStyle=shade;ctx.fillRect(-1,-1,2,2);ctx.restore();
+  }
+  ctx.save();if(item.config.split){ctx.beginPath();ctx.rect(0,0,w,h*((item.config.clip||.78)+groundDrop/540));ctx.clip();}
+  ctx.drawImage(item.images.middle,-travel,h*((item.config.offset+groundDrop)/540),w,h);ctx.restore();ctx.restore();return true;
  }
  function foreground(ctx,stage,w,h,ground){
   const item=current;if(item?.name!==stage||!ready(item))return false;
