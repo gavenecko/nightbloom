@@ -13,7 +13,7 @@
  function stop(){token++;const finish=finishCurrent;finishCurrent=null;if(activeAudio){activeAudio.onended=activeAudio.onerror=null;activeAudio.pause();activeAudio.removeAttribute('src');activeAudio.load();activeAudio=null;}engine?.stop();global.speechSynthesis?.cancel();finish?.();setBusy(false);}
  async function recordedClip(line){
   if(!global.fetch||!global.Audio)return null;
-  if(!recordedLoading)recordedLoading=global.fetch('assets/audio/story-v1/manifest.json?v=2').then(response=>{if(!response.ok)throw Error('Recordings unavailable');return response.json()}).then(data=>{if(!data.complete||!Array.isArray(data.clips))throw Error('Recordings incomplete');recordedData=data;recordedIndex=new Map(data.clips.map(clip=>[JSON.stringify([clip.speaker,clip.text]),clip]));}).catch(()=>{});
+  if(!recordedLoading)recordedLoading=global.fetch('assets/audio/story-v1/manifest.json?v=3').then(response=>{if(!response.ok)throw Error('Recordings unavailable');return response.json()}).then(data=>{if(!data.complete||!Array.isArray(data.clips))throw Error('Recordings incomplete');recordedData=data;recordedIndex=new Map(data.clips.map(clip=>[JSON.stringify([clip.speaker,clip.text]),clip]));}).catch(()=>{});
   await recordedLoading;
   if(!recordedIndex)return null;
   const profile=recordedData.profiles?.[line.speaker];

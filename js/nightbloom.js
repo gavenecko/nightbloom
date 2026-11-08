@@ -260,7 +260,7 @@ function adjustAudioOption(dir){
 function resetProgressSafe(){
  if(performance.now()<resetConfirmUntil){
    try{localStorage.setItem('nightbloom_progress_backup',JSON.stringify(PROGRESS))}catch(e){}
-   PROGRESS={version:1,storyClears:{},arcadeBest:{}};saveProgress();resetConfirmUntil=0;
+   PROGRESS={version:1,storyClears:{},storyReplays:{},arcadeBest:{}};saveProgress();resetConfirmUntil=0;
    announcement='PROGRESS RESET · BACKUP SAVED';announceT=55;tone(220,.08,'triangle',.08);return true;
  }
  resetConfirmUntil=performance.now()+4000;announcement='CONFIRM RESET';announceT=45;return false;
@@ -269,7 +269,7 @@ function hasProgressBackup(){try{return !!localStorage.getItem('nightbloom_progr
 function restoreProgressBackup(){
  try{
    let raw=localStorage.getItem('nightbloom_progress_backup');if(!raw)return false;
-   let p=JSON.parse(raw);PROGRESS={version:1,storyClears:p.storyClears||{},arcadeBest:p.arcadeBest||{}};
+   let p=JSON.parse(raw);PROGRESS={version:1,storyClears:p.storyClears||{},storyReplays:p.storyReplays||{},arcadeBest:p.arcadeBest||{}};
    repairProgress();saveProgress();announcement='PROGRESS BACKUP RESTORED';announceT=55;return true;
  }catch(e){return false}
 }
@@ -378,14 +378,15 @@ const PRE_FIGHT_LINES={
  MUMMY:'Stand still, {opponent}. The wrappings work better that way.',
  WITCH:'Careful, {opponent}. You are standing inside the spell already.'
 };
-let PROGRESS={version:1,storyClears:{},arcadeBest:{}};
+let PROGRESS={version:1,storyClears:{},storyReplays:{},arcadeBest:{}};
 try{
  let p=JSON.parse(localStorage.getItem('nightbloom_progress')||'null');
- if(p)PROGRESS={version:1,storyClears:p.storyClears||{},arcadeBest:p.arcadeBest||{}}
+ if(p)PROGRESS={version:1,storyClears:p.storyClears||{},storyReplays:p.storyReplays||{},arcadeBest:p.arcadeBest||{}}
 }catch(e){}
 function repairProgress(){
  let known=new Set(ROSTER);
  for(let k of Object.keys(PROGRESS.storyClears||{}))if(!known.has(k))delete PROGRESS.storyClears[k];
+ PROGRESS.storyReplays=Object.fromEntries(Object.entries(PROGRESS.storyReplays||{}).filter(([name,replayed])=>known.has(name)&&PROGRESS.storyClears[name]===true&&replayed===true));
  for(let k of Object.keys(PROGRESS.arcadeBest||{})){
    let fighter=k.split('_')[0],v=Number(PROGRESS.arcadeBest[k]);
    if(!known.has(fighter)||!Number.isFinite(v)||v<0)delete PROGRESS.arcadeBest[k];
@@ -395,7 +396,41 @@ function repairProgress(){
 }
 function saveProgress(){repairProgress();try{localStorage.setItem('nightbloom_progress',JSON.stringify(PROGRESS))}catch(e){}}
 repairProgress();
-let newlyUnlocked=[];
+let newlyUnlocked=[],storyReward='',galleryArtwork='',groupRewardJustUnlocked=false;
+const CLEAR_QUOTES={
+ NARRATOR:'And so, another name is written beneath the moon.',
+ VAMPIRA:'The night is mine again. Let the roses bloom.',
+ NEKOMATA:'There. I told you I always land on my feet.',
+ BANSHEE:'For a moment, even the grave is quiet.',
+ MEDUSA:'Remember this moment. It will never turn to stone.',
+ JIANGSHI:'My duty is fulfilled. Let the lanterns rest.',
+ YUREI:'The dawn feels warmer than I remember.',
+ DULLAHAN:'My oath is kept. I can lay down the lance.',
+ WEREWOLF:'I have earned one night without a hunt.',
+ MUMMY:'Let the sands remember who stood here.',
+ WITCH:'A perfect ending. I barely had to cheat.',
+ ARACHNE:'One last thread, and the tapestry is complete.',
+ 'LIVING DOLL':'I think I would like to see what comes next.'
+};
+const rewardArt={
+ VAMPIRA:{ending:'assets/rewards/vampira-ending.webp',swimsuit:'assets/rewards/vampira-bikini.webp'},
+ NEKOMATA:{swimsuit:'assets/rewards/nekomata-bikini.webp'},
+ MUMMY:{swimsuit:'assets/rewards/mummy-bikini.webp'}
+};
+const rewardImages=new Map();
+function groupRewardRoutesRemaining(){
+ return Object.keys(STORY_ROUTES).filter(name=>PROGRESS.storyClears[name]!==true).length;
+}
+function storyArtwork(name,reward){
+ const url=reward==='group'?'assets/rewards/beach-party.webp':rewardArt[name]?.[reward];
+ if(!url)return null;
+ if(!rewardImages.has(url)){const image=new Image();image.src=url;rewardImages.set(url,image);}
+ return rewardImages.get(url);
+}
+function galleryRewardAvailable(name,reward){
+ return reward==='ending'?PROGRESS.storyClears[name]===true:
+  PROGRESS.storyReplays[name]===true&&!!rewardArt[name]?.swimsuit;
+}
 function isFighterUnlocked(name){
  if(name==='ARACHNE')return CORE_ROSTER.some(n=>PROGRESS.storyClears[n]===true)||PROGRESS.storyClears.ARACHNE===true;
  if(name==='LIVING DOLL')return PROGRESS.storyClears.ARACHNE===true;
@@ -404,7 +439,12 @@ function isFighterUnlocked(name){
 function unlockRequirement(name){return name==='LIVING DOLL'?'Complete Story Mode with Arachne':'Complete Story Mode with any core fighter';}
 function unlockStoryClear(name){
  if(!ROSTER.includes(name)||!isFighterUnlocked(name))return;
- const before=ROSTER.filter(isFighterUnlocked);PROGRESS.storyClears[name]=true;saveProgress();
+ const before=ROSTER.filter(isFighterUnlocked);
+ const routesRemaining=groupRewardRoutesRemaining();
+ storyReward=PROGRESS.storyClears[name]?(PROGRESS.storyReplays[name]?'':'swimsuit'):'ending';
+ if(storyReward==='swimsuit')PROGRESS.storyReplays[name]=true;
+ PROGRESS.storyClears[name]=true;saveProgress();
+ groupRewardJustUnlocked=routesRemaining>0&&groupRewardRoutesRemaining()===0;
  newlyUnlocked=ROSTER.filter(n=>isFighterUnlocked(n)&&!before.includes(n));refreshSecretInspector();
 }
 function refreshSecretInspector(){
@@ -560,7 +600,7 @@ function buildLadder(mode,name){
  return order;
 }
 function beginRoute(mode){
- newlyUnlocked=[];gameMode=mode;ladder=buildLadder(mode,playerChoice);ladderIndex=0;storyEnding=false;storyLost=false;storyAfterText='';routeHandled=false;
+ newlyUnlocked=[];storyReward='';groupRewardJustUnlocked=false;gameMode=mode;ladder=buildLadder(mode,playerChoice);ladderIndex=0;storyEnding=false;storyLost=false;storyAfterText='';routeHandled=false;
  continueCredits=DIFFICULTIES[difficulty]?.continues||3;routeScore=0;lastMatchScore=0;lastBonuses=null;
  if(mode==='story'){gameState='storyScene'}
  else startRouteFight();
@@ -1019,7 +1059,7 @@ function startFight(){
  resetMatchStats();resetRound();routeHandled=false;gameState='fight';musicKey='';
 }
 function reset(){startFight()} 
-reset();gameState='title';
+reset();gameState='opening';
 function rectHit(a,b){return a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y}
 function hurtbox(f){return{x:f.x-f.w/2,y:f.y-f.h,w:f.w,h:f.h}}
 function face(){p1.flip=p1.x>p2.x;p2.flip=p2.x>p1.x}
@@ -2372,6 +2412,93 @@ function drawAtlasInspector(){
  x.font='10px Consolas';x.fillText('Click a frame to pause and inspect it. Switch layers to compare body and effects.',278,534);
 }
 
+const titleLogo=new Image();
+titleLogo.src='assets/ui/nightbloom-logo.webp';
+const openingVideo=document.getElementById('openingVideo');
+const openingReducedMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+const openingLogoDuration=1600;
+const openingShots=[
+ ['MOONLIT SHRINE','NEKOMATA'],
+ ['FORSAKEN HARBOR','BANSHEE'],
+ ['CRIMSON CATHEDRAL','VAMPIRA']
+];
+const openingShotDuration=1100;
+let openingStartedAt=null,openingElapsed=0,openingPlayback=null,openingVideoTried=false;
+function stopOpeningVideo(){
+ if(!openingPlayback)return;
+ openingPlayback=null;
+ openingVideo.pause();
+ openingVideo.removeAttribute('src');
+ openingVideo.load();
+}
+function finishOpening(){
+ stopOpeningVideo();
+ gameState='title';
+}
+function updateOpening(now){
+ openingStartedAt??=now;
+ openingElapsed=now-openingStartedAt;
+ if(SYSTEM.reducedMotion||openingReducedMotion){
+   if(openingElapsed>=openingLogoDuration)finishOpening();
+   return;
+ }
+ if(openingElapsed<openingLogoDuration)return;
+ if(!openingVideoTried&&openingVideo?.dataset.src){
+   openingVideoTried=true;
+   const attempt={position:0,progressAt:now,failed:false};
+   openingPlayback=attempt;
+   openingVideo.muted=true;
+   openingVideo.src=openingVideo.dataset.src;
+   openingVideo.play().catch(()=>{attempt.failed=true});
+ }
+ if(openingPlayback){
+   if(openingVideo.ended){finishOpening();return}
+   if(openingVideo.currentTime>openingPlayback.position){
+     openingPlayback.position=openingVideo.currentTime;
+     openingPlayback.progressAt=now;
+   }
+   if(!openingPlayback.failed&&!openingVideo.error&&now-openingPlayback.progressAt<3000)return;
+   stopOpeningVideo();
+   openingStartedAt=now-openingLogoDuration;
+   openingElapsed=openingLogoDuration;
+ }
+ if(openingElapsed>=openingLogoDuration+openingShots.length*openingShotDuration)finishOpening();
+}
+function drawOpening(){
+ x.fillStyle='#08050d';x.fillRect(0,0,W,H);
+ const motion=!(SYSTEM.reducedMotion||openingReducedMotion);
+ if(openingPlayback&&openingVideo.readyState>=2&&openingVideo.videoWidth){
+   const scale=Math.min(W/openingVideo.videoWidth,H/openingVideo.videoHeight);
+   const w=openingVideo.videoWidth*scale,h=openingVideo.videoHeight*scale;
+   x.drawImage(openingVideo,(W-w)/2,(H-h)/2,w,h);
+ }else if(!motion||openingElapsed<openingLogoDuration||openingPlayback){
+   drawStageBackdrop('CRIMSON CATHEDRAL');
+   x.fillStyle='#080510ae';x.fillRect(0,0,W,H);
+   drawScreenVignette(.9);
+   x.save();
+   if(motion)x.globalAlpha=openingPlayback?1:clamp((openingElapsed+180)/600,0,1);
+   if(titleLogo.complete&&titleLogo.naturalWidth)drawImageContained(titleLogo,130,104,700,314);
+   else glowText('NIGHTBLOOM',W/2,268,72,'#fff0ff','#b52268');
+   x.restore();
+ }else{
+   const t=(openingElapsed-openingLogoDuration)/openingShotDuration;
+   const [stage,name]=openingShots[Math.min(Math.floor(t),openingShots.length-1)];
+   const phase=t%1,accent=CHAR_INFO[name].accent;
+   x.save();x.translate(-22*phase,-11*phase);x.scale(1+.05*phase,1+.05*phase);
+   drawStageBackdrop(stage);
+   x.restore();
+   x.fillStyle='#0a061476';x.fillRect(0,0,W,H);
+   drawScreenVignette(.85);
+   const px=559-24*phase;
+   drawImageContained(portraitFor(name),px,48,349,349);
+   x.strokeStyle=accent;x.lineWidth=1;x.strokeRect(px,48,349,349);
+   x.textAlign='left';x.fillStyle=accent;x.font='bold 44px Georgia';x.fillText(name,65,260);
+   x.fillStyle='#e0cfdb';x.font='bold 13px Consolas';x.fillText(stage,69,289);
+   x.fillStyle=rgba('#08050d',1-Math.min(1,phase*6,(1-phase)*6));x.fillRect(0,0,W,H);
+ }
+ x.textAlign='center';x.font='bold 11px Consolas';x.fillStyle='#f2d8db';
+ x.fillText('ENTER / ESC / TAP TO SKIP',W/2,H-23);
+}
 function drawTitleScreen(){
  let oldStage=selectedStage;selectedStage='CRIMSON CATHEDRAL';drawStage();selectedStage=oldStage;
  x.fillStyle='rgba(3,2,8,.56)';x.fillRect(0,0,W,H);
@@ -2386,8 +2513,11 @@ function drawTitleScreen(){
    x.strokeStyle=rgba(CHAR_INFO[name].accent,.42);x.lineWidth=1;x.beginPath();x.arc(cx,cy,23,0,7);x.stroke();
  });
  drawScreenVignette(.78);
- glowText('NIGHTBLOOM',W/2,89,58,'#fff0ff','#b52268');
- x.textAlign='center';x.font='italic 20px Georgia';x.fillStyle='#d9bce9';x.fillText('Queens of the Haunted',W/2,116);
+ if(titleLogo.complete&&titleLogo.naturalWidth)drawImageContained(titleLogo,280,3,400,124);
+ else{
+   glowText('NIGHTBLOOM',W/2,89,58,'#fff0ff','#b52268');
+   x.textAlign='center';x.font='italic 20px Georgia';x.fillStyle='#d9bce9';x.fillText('Queens of the Haunted',W/2,116);
+ }
  drawSectionLabel('TEN QUEENS · ONE RED MOON',139,'#ff91be');
 
  MAIN_MENU.forEach((item,i)=>{
@@ -2474,9 +2604,8 @@ function drawCharacterSelect(){
  x.fillText(storyEnding?'STORY ENDING':'STORY — CHAPTER '+Math.min(ladderIndex+1,ladder.length)+' / '+ladder.length,W/2,40);
 
  if(storyAfterText){
-   x.save();x.globalAlpha=.35;drawImageContained(oImg,46,126,235,235);x.restore();
-   drawImageContained(pImg,679,126,235,235,true);
-   x.strokeStyle=CHAR_INFO[playerChoice].accent;x.lineWidth=3;x.strokeRect(679,126,235,235);
+   x.save();x.globalAlpha=.48;drawPortraitFrame(oImg,46,126,235,235,CHAR_INFO[opp].accent);x.restore();
+   drawPortraitFrame(pImg,679,126,235,235,CHAR_INFO[playerChoice].accent,true,true);
    x.textAlign='left';x.font='bold 25px Georgia';x.fillStyle=CHAR_INFO[playerChoice].accent;x.fillText('AFTERMATH',330,108);
    let lines=wrapLines(storyAfterText,315,'15px Consolas');x.font='15px Consolas';x.fillStyle='#e9e0ef';
    lines.slice(0,8).forEach((ln,i)=>x.fillText(ln,330,148+i*25));
@@ -2485,13 +2614,13 @@ function drawCharacterSelect(){
  if(storyLost){gameState='continueScreen';return}
 
  if(storyEnding){
-   drawImageContained(pImg,70,120,275,275);x.strokeStyle=CHAR_INFO[playerChoice].accent;x.lineWidth=3;x.strokeRect(70,120,275,275);
+   drawPortraitFrame(pImg,70,120,275,275,CHAR_INFO[playerChoice].accent,true);
    x.textAlign='left';x.font='bold 29px Georgia';x.fillStyle=CHAR_INFO[playerChoice].accent;x.fillText(playerChoice,390,105);
    x.font='italic 15px Georgia';x.fillStyle='#d9c9e0';x.fillText(CHAR_INFO[playerChoice].quote,390,137);
    let lines=wrapLines(ENDINGS[playerChoice],500,'15px Consolas');x.font='15px Consolas';x.fillStyle='#f0e8f4';
    lines.slice(0,10).forEach((ln,i)=>x.fillText(ln,390,182+i*24));
-   x.fillStyle='#72ffd7';x.font='bold 15px Consolas';x.fillText(newlyUnlocked.length?'FIGHTER UNLOCKED: '+newlyUnlocked.join(', '):'GALLERY ENTRY UNLOCKED',390,407);
-   x.fillStyle='#fff';x.fillText('ENTER — RETURN TO TITLE',390,435);return;
+   x.fillStyle='#72ffd7';x.font='bold 15px Consolas';x.fillText(newlyUnlocked.length?'FIGHTER UNLOCKED: '+newlyUnlocked.join(', '):storyReward==='ending'?'GALLERY ENTRY UNLOCKED':'STORY CLEARED',390,407);
+   x.fillStyle='#fff';x.fillText('ENTER — CONTINUE',390,435);return;
  }
 
  // pre-fight faceoff
@@ -2555,8 +2684,19 @@ function drawContinueScreen(){
  x.fillText(continueCredits>0?'ENTER — CONTINUE':'ENTER — GAME OVER',620,346);
  x.fillStyle='#b9aabd';x.fillText('BACKSPACE — ABANDON ROUTE',620,378);
 }
+const GALLERY_ART_BUTTONS=[['ending','ENDING ART',566],['swimsuit','BIKINI ART',711]];
+const GALLERY_GROUP_BUTTON=[116,441,296,25];
 function drawGallery(){
  drawStage();x.fillStyle='#05040be4';x.fillRect(0,0,W,H);
+ const selected=ROSTER[galleryIndex];
+ if(galleryArtwork){
+   const img=storyArtwork(selected,galleryArtwork)||portraitFor(selected);
+   drawImageContained(img,34,56,892,421);
+   if(galleryArtwork==='group')drawSectionLabel('BEACH PARTY · ALL STORY ROUTES CLEARED',34,'#ffd68f');
+   else drawSectionLabel(selected+' · '+(galleryArtwork==='ending'?'ENDING ART':'BIKINI ART'),34,CHAR_INFO[selected].accent);
+   x.textAlign='center';x.font='bold 12px Consolas';x.fillStyle='#f0e4f0';
+   x.fillText('ENTER / BACKSPACE — RETURN TO GALLERY',W/2,508);return;
+ }
  x.textAlign='center';x.font='bold 34px Georgia';x.fillStyle='#fff';x.fillText('GALLERY',W/2,43);
  x.font='10px Consolas';x.fillStyle='#c7b7d0';x.fillText('Complete Story routes to unlock dossiers and endings',W/2,61);
  const slots=GALLERY_SLOTS;
@@ -2574,8 +2714,19 @@ function drawGallery(){
  x.fillStyle='#090711e8';x.fillRect(95,318,770,157);x.strokeStyle=unlocked?CHAR_INFO[name].accent:'#4c4052';x.strokeRect(95,318,770,157);
  x.textAlign='left';x.font='bold 18px Georgia';x.fillStyle=unlocked?CHAR_INFO[name].accent:'#75677d';x.fillText(unlocked?name+' — ENDING ARCHIVE':'LOCKED DOSSIER',116,347);
  x.font='11px Consolas';x.fillStyle='#d7cadf';let text=unlocked?ENDINGS[name]:'Complete this fighter’s Story route to reveal her ending and archive entry.';
- let lines=wrapLines(text,720,'11px Consolas');lines.slice(0,7).forEach((ln,i)=>x.fillText(ln,116,373+i*16));
- x.textAlign='center';x.fillStyle='#bfaec8';x.fillText('←/→/↑/↓ browse · Esc/Backspace title',W/2,507);
+ let lines=wrapLines(text,720,'11px Consolas');lines.slice(0,5).forEach((ln,i)=>x.fillText(ln,116,370+i*15));
+ for(const [reward,label,left] of GALLERY_ART_BUTTONS){
+   const available=galleryRewardAvailable(name,reward);
+   const pending=reward==='swimsuit'&&PROGRESS.storyReplays[name]&&!available;
+   roundRect(left,441,133,25,5,'#170e20',available?CHAR_INFO[name].accent:'#514258',1);
+   x.textAlign='center';x.font='bold 10px Consolas';x.fillStyle=available?'#f7e8f2':'#8e7d95';
+   x.fillText(available?label:pending?'ART PENDING':label+' · LOCKED',left+66,457);
+ }
+ const remaining=groupRewardRoutesRemaining();
+ roundRect(...GALLERY_GROUP_BUTTON,5,'#170e20',remaining?'#514258':'#ffd68f',1);
+ x.textAlign='center';x.font='bold 10px Consolas';x.fillStyle=remaining?'#8e7d95':'#ffe0a6';
+ x.fillText(remaining?'BEACH PARTY · '+remaining+' STORY CLEARS LEFT':'3 · VIEW BEACH PARTY',264,457);
+ x.fillStyle='#bfaec8';x.fillText('ARROWS BROWSE · ENTER ENDING ART · 2 BIKINI ART · 3 BEACH PARTY · ESC TITLE',W/2,507);
 }
 function matchRuleValue(i){
  if(i===0)return 'FIRST TO '+MATCH_RULES.roundsToWin;
@@ -2638,9 +2789,9 @@ function drawMatchResult(){
  let winInfo=CHAR_INFO[r.winner],accent=winInfo.accent,pImg=portraitFor(r.p1Name),oImg=portraitFor(r.p2Name);
  drawSectionLabel('MATCH RESULT',32,accent);glowText(r.winner+' WINS',W/2,68,38,'#fff',accent);
  x.textAlign='center';x.font='italic 13px Georgia';x.fillStyle='#dbcfe0';x.fillText(winInfo.quote,W/2,91);
- drawPortraitFrame(pImg,58,116,204,235,CHAR_INFO[r.p1Name].accent,r.winner===r.p1Name);
- drawPortraitFrame(oImg,698,116,204,235,CHAR_INFO[r.p2Name].accent,r.winner===r.p2Name);
- x.font='bold 18px Georgia';x.fillStyle=CHAR_INFO[r.p1Name].accent;x.fillText(r.p1Name,160,375);x.fillStyle=CHAR_INFO[r.p2Name].accent;x.fillText(r.p2Name,800,375);
+ drawPortraitFrame(pImg,58,132,204,204,CHAR_INFO[r.p1Name].accent,r.winner===r.p1Name);
+ drawPortraitFrame(oImg,698,132,204,204,CHAR_INFO[r.p2Name].accent,r.winner===r.p2Name);
+ x.font='bold 18px Georgia';x.fillStyle=CHAR_INFO[r.p1Name].accent;x.fillText(r.p1Name,160,360);x.fillStyle=CHAR_INFO[r.p2Name].accent;x.fillText(r.p2Name,800,360);
  roundRect(300,122,360,193,10,'rgba(7,5,13,.91)',rgba(accent,.5),1);
  x.font='bold 38px Consolas';x.fillStyle='#fff';x.fillText(r.p1Wins+'  —  '+r.p2Wins,W/2,170);
  x.font='9px Consolas';x.fillStyle=accent;x.fillText(r.stage,W/2,193);x.fillStyle='#9e90a8';x.fillText(r.format,W/2,211);
@@ -2654,7 +2805,36 @@ function drawMatchResult(){
  RESULT_OPTIONS.forEach((opt,i)=>{let y=398+i*29,sel=resultIndex===i;roundRect(330,y,300,23,5,sel?rgba(accent,.18):'rgba(10,8,15,.8)',sel?accent:'#44334d',sel?2:1);x.textAlign='center';x.font='bold 9px Consolas';x.fillStyle=sel?'#fff':'#b7a9bf';x.fillText(opt,W/2,y+15)});
  x.font='8px Consolas';x.fillStyle='#817487';x.fillText('R INSTANT REMATCH · PRESS ENTER TO CONTINUE · ESC TITLE',W/2,523);
 }
+function drawStoryCongratulations(){
+ const accent=CHAR_INFO[playerChoice].accent;
+ const reward=storyReward==='swimsuit'&&rewardArt[playerChoice]?.swimsuit?'swimsuit':'ending';
+ const art=storyArtwork(playerChoice,reward);
+ drawStage();
+ if(art?.complete&&art.naturalWidth){
+   const scale=Math.max(W/art.naturalWidth,H/art.naturalHeight);
+   const w=art.naturalWidth*scale,h=art.naturalHeight*scale;
+   x.drawImage(art,(W-w)/2,(H-h)/2,w,h);
+ }else drawImageContained(portraitFor(playerChoice),436,60,442,442);
+ const shade=x.createLinearGradient(0,0,W,0);
+ shade.addColorStop(0,'#0a0613f2');shade.addColorStop(.49,'#0a061398');shade.addColorStop(1,'#0a061314');
+ x.fillStyle=shade;x.fillRect(0,0,W,H);
+ x.textAlign='left';x.font='bold 35px Georgia';x.fillStyle='#fff2dd';x.fillText('CONGRATULATIONS',40,64);
+ x.font='bold 21px Georgia';x.fillStyle=accent;x.fillText(playerChoice+' · STORY CLEARED',42,99);
+ x.font='italic 14px Georgia';x.fillStyle='#f0dfe8';
+ wrapLines(CLEAR_QUOTES[playerChoice],420,'italic 14px Georgia').forEach((line,i)=>x.fillText(line,42,125+i*18));
+ if(p1?.name===playerChoice&&matchOver&&p1Wins>p2Wins){
+   x.save();x.translate(224,411);x.scale(1.55,1.55);x.translate(-p1.x,-p1.y);drawF(p1);x.restore();
+ }
+ x.font='bold 11px Consolas';x.fillStyle='#ffe0a6';
+ if(groupRewardJustUnlocked)x.fillText('BEACH PARTY UNLOCKED IN GALLERY',42,428);
+ if(storyReward==='ending')x.fillText('ENDING ART UNLOCKED IN GALLERY',42,446);
+ if(storyReward==='swimsuit')x.fillText(reward==='swimsuit'?'BIKINI ART UNLOCKED IN GALLERY':'REPEAT CLEAR RECORDED IN GALLERY',42,446);
+ if(newlyUnlocked.length)x.fillText('FIGHTER UNLOCKED · '+newlyUnlocked.join(', '),42,466);
+ roundRect(40,484,315,31,5,'#150f23d9',accent,1);
+ x.textAlign='center';x.font='bold 12px Consolas';x.fillStyle='#fff';x.fillText('ENTER — RETURN TO TITLE',197,504);
+}
 function drawRouteComplete(){
+ if(gameMode==='story'){drawStoryCongratulations();return;}
  drawStage();x.fillStyle='#05040bd5';x.fillRect(0,0,W,H);x.textAlign='center';
  x.font='bold 42px Georgia';x.fillStyle='#fff';x.fillText(gameMode==='arcade'?'ARCADE CLEARED':'ROUTE CLEARED',W/2,135);
  x.font='22px Georgia';x.fillStyle=CHAR_INFO[playerChoice].accent;x.fillText(playerChoice,W/2,180);
@@ -2669,6 +2849,16 @@ function drawRouteComplete(){
  x.fillStyle='#72ffd7';x.font='bold 18px Consolas';x.fillText('PRESS ENTER — TITLE',W/2,420);
 }
 function handleFrontend(){
+ if(gameState==='opening'){
+   if(pressed.Enter||pressed.Space||pressed.Escape||pressed.Backspace)finishOpening();
+   return;
+ }
+ if(gameState==='gallery'&&galleryArtwork){
+   if(pressed.Enter||pressed.Space||pressed.Escape||pressed.Backspace)galleryArtwork='';
+   else if(pressed.Digit2&&galleryRewardAvailable(ROSTER[galleryIndex],'swimsuit'))galleryArtwork='swimsuit';
+   else if(pressed.Digit3&&groupRewardRoutesRemaining()===0)galleryArtwork='group';
+   return;
+ }
  if(pressed.Escape){paused=false;focusPaused=false;musicDuck=1;applyAudioLevels();gameState='title';storyLost=false;storyEnding=false;return}
  if(gameState==='title'){
    if(pressed.ArrowUp||pressed.KeyW)mainMenuIndex=cycle(MAIN_MENU,-1,mainMenuIndex);
@@ -2719,6 +2909,10 @@ function handleFrontend(){
    if(pressed.ArrowRight||pressed.KeyD)galleryIndex=cycle(ROSTER,1,galleryIndex);
    if(pressed.ArrowUp||pressed.KeyW)galleryIndex=cycle(ROSTER,-6,galleryIndex);
    if(pressed.ArrowDown||pressed.KeyS)galleryIndex=cycle(ROSTER,6,galleryIndex);
+   const name=ROSTER[galleryIndex];
+   if((pressed.Enter||pressed.Space)&&galleryRewardAvailable(name,'ending'))galleryArtwork='ending';
+   if(pressed.Digit2&&galleryRewardAvailable(name,'swimsuit'))galleryArtwork='swimsuit';
+   if(pressed.Digit3&&groupRewardRoutesRemaining()===0)galleryArtwork='group';
    if(pressed.Backspace){gameState='title';return}
    return;
  }
@@ -2808,7 +3002,7 @@ function handleFrontend(){
  if(gameState==='storyScene'){
    if(pressed.Enter||pressed.Space){
      if(storyAfterText){storyAfterText='';return}
-     else if(storyEnding){gameState='title';storyEnding=false}
+     else if(storyEnding){gameState='routeComplete';storyEnding=false}
      else startRouteFight();
    }return;
  }
@@ -2822,7 +3016,8 @@ function drawClickableBackButton(){
  x.textAlign='center';x.font='bold 9px Consolas';x.fillStyle='#d9c9df';x.fillText(label,61,32);x.restore();
 }
 function drawFrontend(){
- if(gameState==='title')drawTitleScreen();
+ if(gameState==='opening')drawOpening();
+ else if(gameState==='title')drawTitleScreen();
  else if(gameState==='options')drawOptions();
  else if(gameState==='gallery')drawGallery();
  else if(gameState==='atlasInspector')drawAtlasInspector();
@@ -2871,6 +3066,7 @@ function pointerBack(){
  }
 }
 function pointerHoverTarget(px,py){
+ if(gameState==='opening')return true;
  // Returns true when the pointer is over an interactive frontend region.
  if(gameState!=='title'&&['options','gallery','difficultySelect','matchSetup','matchResult','diagnostics','credits','charSelect','stageSelect','continueScreen','atlasInspector'].includes(gameState)
     &&inRect(px,py,14,14,94,27))return true;
@@ -2893,8 +3089,11 @@ function pointerHoverTarget(px,py){
    for(let i=0;i<OPTIONS.length;i++)if(inRect(px,py,168,68+i*31,624,26)){optionsIndex=i;return true}
  }
  if(gameState==='gallery'){
+   if(galleryArtwork)return inRect(px,py,230,485,500,36);
+   if(groupRewardRoutesRemaining()===0&&inRect(px,py,...GALLERY_GROUP_BUTTON))return true;
+   if(GALLERY_ART_BUTTONS.some(([reward,,left])=>galleryRewardAvailable(ROSTER[galleryIndex],reward)&&inRect(px,py,left,441,133,25)))return true;
    const slots=GALLERY_SLOTS;
-   for(let i=0;i<slots.length;i++){let [sx,sy]=slots[i];if(inRect(px,py,sx,sy,148,101)){galleryIndex=i;return true}}
+   if(slots.some(([sx,sy])=>inRect(px,py,sx,sy,148,101)))return true;
  }
  if(gameState==='atlasInspector'){
    for(let i=0;i<INSPECTOR_FIGHTERS.length;i++)if(inRect(px,py,30,INSPECTOR_FIGHTER_TOP+i*INSPECTOR_FIGHTER_STEP,194,INSPECTOR_FIGHTER_H)){if(inspectorFighterIndex!==i){inspectorFighterIndex=i;atlasInspectorReset()}return true}
@@ -2912,13 +3111,14 @@ function pointerHoverTarget(px,py){
  if(gameState==='arcadeResult'&&inRect(px,py,280,452,400,55))return true;
  if(gameState==='continueScreen'&&(inRect(px,py,470,318,300,55)||inRect(px,py,470,362,300,40)))return true;
  if(gameState==='storyScene'&&inRect(px,py,245,365,475,125))return true;
- if(gameState==='routeComplete'&&inRect(px,py,330,392,300,55))return true;
+ if(gameState==='routeComplete'&&(gameMode==='story'?inRect(px,py,40,484,315,31):inRect(px,py,330,392,300,55)))return true;
  if(gameState==='diagnostics'){
    if(inRect(px,py,270,454,125,25)||inRect(px,py,418,454,125,25)||(hasProgressBackup()&&inRect(px,py,566,454,150,25)))return true;
  }
  return false;
 }
 function pointerActivate(px,py){
+ if(gameState==='opening'){finishOpening();return true}
  // Universal clickable Back/Abandon button.
  if(gameState!=='title'&&['options','gallery','difficultySelect','matchSetup','matchResult','diagnostics','credits','charSelect','stageSelect','continueScreen','atlasInspector'].includes(gameState)
     &&inRect(px,py,14,14,94,27)){pointerBack();return true}
@@ -2955,6 +3155,11 @@ function pointerActivate(px,py){
    }
  }
  if(gameState==='gallery'){
+   if(galleryArtwork){if(inRect(px,py,230,485,500,36)){galleryArtwork='';return true}return false}
+   if(groupRewardRoutesRemaining()===0&&inRect(px,py,...GALLERY_GROUP_BUTTON)){galleryArtwork='group';return true}
+   for(const [reward,,left] of GALLERY_ART_BUTTONS){
+      if(galleryRewardAvailable(ROSTER[galleryIndex],reward)&&inRect(px,py,left,441,133,25)){galleryArtwork=reward;return true}
+   }
    const slots=GALLERY_SLOTS;
    for(let i=0;i<slots.length;i++){let [sx,sy]=slots[i];if(inRect(px,py,sx,sy,148,101)){galleryIndex=i;return true}}
  }
@@ -2984,7 +3189,7 @@ function pointerActivate(px,py){
    if(inRect(px,py,470,362,300,40)){pointerPress('Backspace');return true}
  }
  if(gameState==='storyScene'&&inRect(px,py,245,365,475,125)){pointerPress('Enter');return true}
- if(gameState==='routeComplete'&&inRect(px,py,330,392,300,55)){pointerPress('Enter');return true}
+ if(gameState==='routeComplete'&&(gameMode==='story'?inRect(px,py,40,484,315,31):inRect(px,py,330,392,300,55))){pointerPress('Enter');return true}
  if(gameState==='diagnostics'){
    if(inRect(px,py,270,454,125,25)){runReleaseDiagnostics();return true}
    if(inRect(px,py,418,454,125,25)){copyDiagnostics();return true}
@@ -3025,6 +3230,9 @@ gameCommandButtons.forEach(button=>button.addEventListener('click',()=>{if(!butt
 let contextHelpKey='';
 trainingDetailsButton.addEventListener('click',()=>{trainingPanelExpanded=!trainingPanelExpanded;updateContextHelp();c.focus()});
 function storyVoiceLines(){
+ if(gameState==='routeComplete'&&gameMode==='story'){
+   return [{speaker:'NARRATOR',text:CLEAR_QUOTES.NARRATOR},{speaker:playerChoice,text:CLEAR_QUOTES[playerChoice]}];
+ }
  if(gameState!=='storyScene'||storyLost)return [];
  if(storyAfterText)return [{speaker:'NARRATOR',text:storyAfterText}];
  if(storyEnding)return [{speaker:'NARRATOR',text:ENDINGS[playerChoice]||''}];
@@ -3036,7 +3244,7 @@ function updateContextHelp(){
 
  const key=[gameState,training,trainingPanelExpanded,SYSTEM.controls,gameMode,paused,trainingDummyMode,trainingSpeed,inspectorPlaying,inspectorLayerMode,SYSTEM.particles,SYSTEM.reducedMotion,SYSTEM.parallax,selectedStage].join('|');if(key===contextHelpKey)return;contextHelpKey=key;
  const fight=gameState==='fight',arcade=SYSTEM.controls==='ARCADE'&&gameMode!=='local';
- contextHelp.textContent=gameState==='atlasInspector'?'←/→ fighter · ↑/↓ action · A/D frame · Space play/pause · Q/E speed · 1/2/3 layers · Esc title':fight?(arcade?'Arrows move · Z/X attacks · C special · V super · B throw · N guard · P pause':'WASD move · J/K attacks · L special · U super · I throw · Shift guard · P pause'):'Click or use arrows to select · Enter confirm · Backspace back · Esc title';
+ contextHelp.textContent=gameState==='opening'?'Enter, Esc, or tap to skip the opening':gameState==='atlasInspector'?'←/→ fighter · ↑/↓ action · A/D frame · Space play/pause · Q/E speed · 1/2/3 layers · Esc title':fight?(arcade?'Arrows move · Z/X attacks · C special · V super · B throw · N guard · P pause':'WASD move · J/K attacks · L special · U super · I throw · Shift guard · P pause'):'Click or use arrows to select · Enter confirm · Backspace back · Esc title';
  trainingDetailsButton.hidden=!(fight&&training);trainingDetailsButton.textContent=trainingPanelExpanded?'Hide training details (H)':'Training details (H)';trainingDetailsButton.setAttribute('aria-expanded',String(trainingPanelExpanded));
  trainingTools.hidden=!(fight&&training);inspectorTools.hidden=gameState!=='atlasInspector';
  effectsTools.hidden=!(fight&&training)&&gameState!=='atlasInspector';
@@ -3064,6 +3272,8 @@ function loop(now){
 
  if(gameState!=='fight'){
    handleFrontend();
+   if(gameState==='opening')updateOpening(now);
+   if(gameState==='routeComplete'&&gameMode==='story'&&p1&&!SYSTEM.reducedMotion)stepFighterAnimation(p1,dt);
    x.clearRect(0,0,W,H);
    drawFrontend();
    for(let k in pressed)delete pressed[k];for(let k in p2Pressed)delete p2Pressed[k];
@@ -3176,7 +3386,7 @@ function loop(now){
 
  x.save();
  updateStageCamera(simAdvance?simDt:0);
- if(typeof NightbloomStageLayers!=='undefined')NightbloomStageLayers.update({stage:selectedStage,active:true,paused,reducedMotion:SYSTEM.reducedMotion,on:SYSTEM.parallax!==false,cameraLeft:stageCameraX,width:W,worldWidth:arenaWidth()});
+ if(typeof NightbloomStageLayers!=='undefined')NightbloomStageLayers.update({stage:selectedStage,active:true,paused,reducedMotion:SYSTEM.reducedMotion,on:SYSTEM.parallax!==false,cameraLeft:stageCameraX,width:W,worldWidth:arenaWidth(),worldClock});
  let camZoom=1,camX=W/2,camY=ground-105;
  if(!SYSTEM.reducedMotion&&koCine>0&&koLoser){let kp=clamp(koCine/62,0,1);camZoom=1+(1-kp)*.12;camX=koLoser.x-stageCameraX;camY=koLoser.y-55}
 

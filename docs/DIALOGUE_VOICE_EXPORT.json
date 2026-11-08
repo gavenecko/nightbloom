@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "game": "NIGHTBLOOM",
   "build": "0.75",
   "language": "en",
@@ -3623,6 +3623,198 @@
       "speaker": "NARRATOR",
       "text": "At dawn, the Living Doll reaches for strings that are no longer there. Her maker is gone, her porcelain is cracked, and her next step belongs entirely to her. She leaves a silver needle on the library steps. Arachne will understand.",
       "file": "assets/audio/story-v1/narrator-71758d5d1cfa841a.mp3"
+    },
+    {
+      "id": "reward-clear-vampira-clear-narrator",
+      "speaker": "NARRATOR",
+      "text": "And so, another name is written beneath the moon.",
+      "file": "assets/audio/story-v1/narrator-b5794c9b3b57ec79.mp3",
+      "route": "VAMPIRA",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-vampira-clear-vampira",
+      "speaker": "VAMPIRA",
+      "text": "The night is mine again. Let the roses bloom.",
+      "file": "assets/audio/story-v1/vampira-426ed91c848f5ac8.mp3",
+      "route": "VAMPIRA",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-nekomata-clear-narrator",
+      "speaker": "NARRATOR",
+      "text": "And so, another name is written beneath the moon.",
+      "file": "assets/audio/story-v1/narrator-b5794c9b3b57ec79.mp3",
+      "route": "NEKOMATA",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-nekomata-clear-nekomata",
+      "speaker": "NEKOMATA",
+      "text": "There. I told you I always land on my feet.",
+      "file": "assets/audio/story-v1/nekomata-156c4718fca7b154.mp3",
+      "route": "NEKOMATA",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-banshee-clear-narrator",
+      "speaker": "NARRATOR",
+      "text": "And so, another name is written beneath the moon.",
+      "file": "assets/audio/story-v1/narrator-b5794c9b3b57ec79.mp3",
+      "route": "BANSHEE",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-banshee-clear-banshee",
+      "speaker": "BANSHEE",
+      "text": "For a moment, even the grave is quiet.",
+      "file": "assets/audio/story-v1/banshee-1346d63481e7c602.mp3",
+      "route": "BANSHEE",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-medusa-clear-narrator",
+      "speaker": "NARRATOR",
+      "text": "And so, another name is written beneath the moon.",
+      "file": "assets/audio/story-v1/narrator-b5794c9b3b57ec79.mp3",
+      "route": "MEDUSA",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-medusa-clear-medusa",
+      "speaker": "MEDUSA",
+      "text": "Remember this moment. It will never turn to stone.",
+      "file": "assets/audio/story-v1/medusa-408ccebc6c453140.mp3",
+      "route": "MEDUSA",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-jiangshi-clear-narrator",
+      "speaker": "NARRATOR",
+      "text": "And so, another name is written beneath the moon.",
+      "file": "assets/audio/story-v1/narrator-b5794c9b3b57ec79.mp3",
+      "route": "JIANGSHI",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-jiangshi-clear-jiangshi",
+      "speaker": "JIANGSHI",
+      "text": "My duty is fulfilled. Let the lanterns rest.",
+      "file": "assets/audio/story-v1/jiangshi-9a24d6dd0ddb7e20.mp3",
+      "route": "JIANGSHI",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-yurei-clear-narrator",
+      "speaker": "NARRATOR",
+      "text": "And so, another name is written beneath the moon.",
+      "file": "assets/audio/story-v1/narrator-b5794c9b3b57ec79.mp3",
+      "route": "YUREI",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-yurei-clear-yurei",
+      "speaker": "YUREI",
+      "text": "The dawn feels warmer than I remember.",
+      "file": "assets/audio/story-v1/yurei-b7218305934614fc.mp3",
+      "route": "YUREI",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-dullahan-clear-narrator",
+      "speaker": "NARRATOR",
+      "text": "And so, another name is written beneath the moon.",
+      "file": "assets/audio/story-v1/narrator-b5794c9b3b57ec79.mp3",
+      "route": "DULLAHAN",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-dullahan-clear-dullahan",
+      "speaker": "DULLAHAN",
+      "text": "My oath is kept. I can lay down the lance.",
+      "file": "assets/audio/story-v1/dullahan-fd53c724caff553b.mp3",
+      "route": "DULLAHAN",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-werewolf-clear-narrator",
+      "speaker": "NARRATOR",
+      "text": "And so, another name is written beneath the moon.",
+      "file": "assets/audio/story-v1/narrator-b5794c9b3b57ec79.mp3",
+      "route": "WEREWOLF",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-werewolf-clear-werewolf",
+      "speaker": "WEREWOLF",
+      "text": "I have earned one night without a hunt.",
+      "file": "assets/audio/story-v1/werewolf-450e31a0bf7aed91.mp3",
+      "route": "WEREWOLF",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-mummy-clear-narrator",
+      "speaker": "NARRATOR",
+      "text": "And so, another name is written beneath the moon.",
+      "file": "assets/audio/story-v1/narrator-b5794c9b3b57ec79.mp3",
+      "route": "MUMMY",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-mummy-clear-mummy",
+      "speaker": "MUMMY",
+      "text": "Let the sands remember who stood here.",
+      "file": "assets/audio/story-v1/mummy-9a4a2fc767a67821.mp3",
+      "route": "MUMMY",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-witch-clear-narrator",
+      "speaker": "NARRATOR",
+      "text": "And so, another name is written beneath the moon.",
+      "file": "assets/audio/story-v1/narrator-b5794c9b3b57ec79.mp3",
+      "route": "WITCH",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-witch-clear-witch",
+      "speaker": "WITCH",
+      "text": "A perfect ending. I barely had to cheat.",
+      "file": "assets/audio/story-v1/witch-5ce2d7c153c59587.mp3",
+      "route": "WITCH",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-arachne-clear-narrator",
+      "speaker": "NARRATOR",
+      "text": "And so, another name is written beneath the moon.",
+      "file": "assets/audio/story-v1/narrator-b5794c9b3b57ec79.mp3",
+      "route": "ARACHNE",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-arachne-clear-arachne",
+      "speaker": "ARACHNE",
+      "text": "One last thread, and the tapestry is complete.",
+      "file": "assets/audio/story-v1/arachne-b39c48a56e381e97.mp3",
+      "route": "ARACHNE",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-living-doll-clear-narrator",
+      "speaker": "NARRATOR",
+      "text": "And so, another name is written beneath the moon.",
+      "file": "assets/audio/story-v1/narrator-b5794c9b3b57ec79.mp3",
+      "route": "LIVING DOLL",
+      "kind": "congratulations"
+    },
+    {
+      "id": "reward-clear-living-doll-clear-living-doll",
+      "speaker": "LIVING DOLL",
+      "text": "I think I would like to see what comes next.",
+      "file": "assets/audio/story-v1/living-doll-ad29db3c65ba83b9.mp3",
+      "route": "LIVING DOLL",
+      "kind": "congratulations"
     }
   ]
 }
