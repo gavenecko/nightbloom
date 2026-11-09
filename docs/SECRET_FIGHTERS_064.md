@@ -4,7 +4,7 @@ Clear a Story course with any starting fighter to challenge **Arachne, the Silk 
 
 Browser saves retain existing Story clears and repeat clears. Secret fighter access now requires a saved challenger win. Locked fighters remain hidden in fighter selection. The Atlas Inspector shows every fighter for art review. Progress reset and restore include challenger wins.
 
-The first course clear earns ending art and the second earns bikini art. Collect all thirteen bikini rewards to see the Beach Party celebration and unlock the picture in the Gallery.
+The first course clear earns Ending Art and the second earns Bonus Ending art. Collect all thirteen Bonus Endings to see the beach celebration and unlock Bonus Group in the Gallery.
 
 Arachne has ten chapters, each against a core fighter, culminating in freeing the porcelain prisoner beneath the library. Living Doll has ten chapters about choosing her own path. The original ten routes retain their nine encounters and endings.
 
