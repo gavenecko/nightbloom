@@ -68,7 +68,10 @@
  function draw(c,kind,phase=0,options={}){
   const p=options.profile||byKind[kind]||profiles.WITCH,col=options.color||p.color,t=clamp(phase),low=options.quality==='LOW'||options.quality==='OFF'||!!options.reducedMotion,still=!!options.reducedMotion;
   const paintedKey=['hit','guard','counter'].includes(kind)?kind:kind==='super'?p.name?.toLowerCase().replaceAll(' ','-')+'-super':kind===p.a||kind==='light'||kind==='heavy'?p.name?.toLowerCase().replaceAll(' ','-')+'-a':kind===p.b?p.name?.toLowerCase().replaceAll(' ','-')+'-b':null;
-  if(paintedKey&&root.NightbloomPaintedFX?.draw(c,paintedKey,t,{...options,size:kind==='light'?84:kind==='heavy'?100:options.size}))return;
+  if(paintedKey){
+   if(root.NightbloomPaintedFX?.draw(c,paintedKey,t,{...options,size:kind==='light'?84:kind==='heavy'?100:options.size}))return;
+   if(paintedKey.startsWith('narrator-'))return;
+  }
   const impact=['hit','impact','guard','counter'].includes(kind),travel=!!options.projectile;
   const envelope=travel?1:Math.min(1,t*7)*Math.min(1,(1-t)*4);
   if(envelope<=0)return;c.save();c.globalAlpha*=envelope;
@@ -173,7 +176,13 @@
   if(f.curseStacks>0){for(let i=0;i<f.curseStacks;i++){c.save();c.translate((i-(f.curseStacks-1)/2)*14,-145);scarab(c,profiles.MUMMY,5);c.restore();}}
   if(f.stoneSlow>0){for(let i=0;i<4;i++)diamond(c,i%2?'#e4ffc4':'#a4d471',-24+i*16,-6-(i%2)*9,4);}
   if(f.name==='WEREWOLF'&&f.rage>=50){c.save();c.translate(0,-3);c.globalAlpha=f.rage>=90?.8:.45;ring(c,profiles.WEREWOLF.color,25+(still?0:Math.sin(time/12)*2),0,TAU,2,.23);c.restore();}
-  if(f.armor>0){c.save();c.translate(19,-80);ring(c,profiles.JIANGSHI.color,22,-1.4,1.4,2,.9);c.restore();}
+  if(f.armor>0){
+   c.save();c.translate(19,-80);
+   if(f.name==='NARRATOR'){
+    if(f.attack?.type!=='specialB'){c.globalAlpha*=.45;root.NightbloomPaintedFX?.draw(c,'narrator-b',.58,{...options,size:82});}
+   }else ring(c,profiles.JIANGSHI.color,22,-1.4,1.4,2,.9);
+   c.restore();
+  }
   c.restore();
  }
  root.NightbloomFX={profiles,draw,atlas,projectile,status,clearCache:()=>cache.clear()};

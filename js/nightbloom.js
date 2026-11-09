@@ -872,6 +872,7 @@ function fxSpriteFor(name){
 }
 function actionFxOffset(name,action,frame){
  if(typeof NightbloomFX!=='undefined'){
+  if(name==='NARRATOR'&&action==='specialB')return {x:31,y:-10};
   if(name==='WEREWOLF'&&action==='specialB')return {x:62,y:-32};
   const handY={VAMPIRA:-25,NEKOMATA:-25,BANSHEE:-34,MEDUSA:-30,JIANGSHI:-20,YUREI:-25,DULLAHAN:-20,WEREWOLF:14,MUMMY:-32,WITCH:-25}[name]??-26;
   if(['specialA','specialB'].includes(action))return {x:name==='DULLAHAN'?80:62,y:handY};

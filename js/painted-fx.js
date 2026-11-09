@@ -2,7 +2,7 @@
 (function(root){
  'use strict';
  const bank=new Map(),listeners=new Set(),api={revision:0};
- const names=['vampira','nekomata','banshee','medusa','jiangshi','yurei','dullahan','werewolf','mummy','witch','arachne','living-doll'];
+ const names=['vampira','nekomata','banshee','medusa','jiangshi','yurei','dullahan','werewolf','mummy','witch','arachne','living-doll','narrator'];
  const keys=new Set([...names.flatMap(name=>['a','b','super'].map(slot=>name+'-'+slot)),'hit','guard','counter']);
  // Resolve relative to this script so both the game and docs gallery use the same files.
  const base=typeof document!=='undefined'&&document.currentScript?.src?new URL('../assets/fx/painted-v1/',document.currentScript.src).href:'assets/fx/painted-v1/';
