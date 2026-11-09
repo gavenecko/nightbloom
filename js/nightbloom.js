@@ -90,7 +90,7 @@ const OPTION_TOP=68,OPTION_STEP=27,OPTION_HEIGHT=23;
 const VOLUME_OPTIONS={0:'master',1:'music',2:'sfx',12:'voice'};
 const DIALOGUE_OPTION=13,RESET_PROGRESS_OPTION=14;
 const MUSIC_FILES={
- MENU:'IntroScreen.mp3',SELECT:'FighterCall.mp3',
+ OPENING:'FighterCall.mp3',MENU:'IntroScreen.mp3',
  'CRIMSON CATHEDRAL':'CrimsonCathedral.mp3',
  'MOONLIT SHRINE':'MoonlitShrinePick.mp3',
  'FORSAKEN HARBOR':'HauntedHarbor.mp3',
@@ -124,7 +124,8 @@ const CHAR_AUDIO={
  WITCH:{root:277.18,wave:'triangle'}
 };
 function saveAudio(){try{localStorage.setItem('nightbloom_audio',JSON.stringify(AUDIO))}catch(e){}}
-function unlockAudio(){
+function unlockAudio(event){
+ if(gameState==='opening'&&openingStartedAt===null&&(event?.code==='Enter'||event?.code==='Space')&&!event.target?.closest?.('#help'))openingStartRequested=true;
  if(!audioCtx){
    const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
    audioCtx=new AC();
@@ -137,7 +138,10 @@ function unlockAudio(){
    }
  }
  if(audioCtx.state==='suspended')audioCtx.resume();
- if(audioUnlocked)return;
+ if(audioUnlocked){
+   if(gameState==='opening'&&openingStartRequested&&!musicKey)musicTick();
+   return;
+ }
  audioUnlocked=true;applyAudioLevels(true);
  if(!musicNext)musicNext=audioCtx.currentTime+.05;
  musicTick();
@@ -236,10 +240,10 @@ function duckMusic(level=.25,seconds=.22){
  audioMusic.gain.setTargetAtTime(musicLevel(),t+seconds,.07);
 }
 function musicTarget(){
+ if(gameState==='opening'&&!SYSTEM.reducedMotion&&!openingReducedMotion)return 'OPENING';
  if(gameState==='fight'||gameState==='fightStats'||gameState==='matchResult'||gameState==='continueScreen'){
    return SECRET_BATTLE_MUSIC.has(enemyChoice)?enemyChoice:selectedStage||'MENU';
  }
- if(gameState==='charSelect'||gameState==='stageSelect'||gameState==='matchSetup'||gameState==='difficultySelect')return 'SELECT';
  if(gameState==='storyScene'||gameState==='routeComplete')return 'CURSED LIBRARY';
  return 'MENU';
 }
@@ -255,12 +259,12 @@ function selectMusic(key){
    musicRecording=false;musicPlayer.pause();musicNext=audioCtx.currentTime+.04;
  };
  musicPlayer.onerror=fallback;
- musicPlayer.loop=true;
+ musicPlayer.loop=key!=='OPENING';
  musicPlayer.src='assets/audio/music/'+file;
  musicPlayer.play().catch(fallback);
 }
 function musicTick(){
- if(!audioUnlocked||!audioCtx||AUDIO.mute)return;
+ if(!audioUnlocked||!audioCtx||AUDIO.mute||(gameState==='opening'&&!openingStartRequested))return;
  const key=musicTarget();
  if(key!==musicKey)selectMusic(key);
  if(musicRecording)return;
@@ -2499,7 +2503,7 @@ const openingPoses=[
  {until:.83,action:'specialA',frame:3},
  {until:1,action:'idle',frame:1}
 ];
-let openingStartedAt=null,openingElapsed=0,openingPlayback=null,openingVideoTried=false,openingFxQueued=0;
+let openingStartedAt=null,openingStartRequested=false,openingElapsed=0,openingPlayback=null,openingVideoTried=false,openingFxQueued=0;
 function preloadOpeningEffects(){
  const index=Math.max(0,Math.floor((openingElapsed-openingLogoDuration)/openingShotDuration));
  while(openingFxQueued<Math.min(index+2,openingShots.length)){
@@ -2518,6 +2522,10 @@ function finishOpening(){
  gameState='title';
 }
 function updateOpening(now){
+ if(!openingStartRequested){
+   if(!SYSTEM.reducedMotion&&!openingReducedMotion)preloadOpeningEffects();
+   return;
+ }
  openingStartedAt??=now;
  openingElapsed=now-openingStartedAt;
  if(SYSTEM.reducedMotion||openingReducedMotion){
@@ -2559,7 +2567,7 @@ function drawOpening(){
    x.fillStyle='#080510ae';x.fillRect(0,0,W,H);
    drawScreenVignette(.9);
    x.save();
-   if(motion)x.globalAlpha=openingPlayback?1:clamp((openingElapsed+180)/600,0,1);
+   if(motion&&openingStartRequested)x.globalAlpha=openingPlayback?1:clamp((openingElapsed+180)/600,0,1);
    if(titleLogo.complete&&titleLogo.naturalWidth)drawImageContained(titleLogo,130,104,700,314);
    else glowText('NIGHTBLOOM',W/2,268,72,'#fff0ff','#b52268');
    x.restore();
@@ -2586,7 +2594,7 @@ function drawOpening(){
    x.fillStyle=rgba('#08050d',1-Math.min(1,phase*12,(1-phase)*12));x.fillRect(0,0,W,H);
  }
  x.textAlign='center';x.font='bold 11px Consolas';x.fillStyle='#f2d8db';
- x.fillText('ENTER / ESC / TAP TO SKIP',W/2,H-23);
+ x.fillText(openingStartedAt===null?'Press Enter To Continue':'ENTER / ESC / TAP TO SKIP',W/2,H-23);
 }
 function drawTitleScreen(){
  let oldStage=selectedStage;selectedStage='CRIMSON CATHEDRAL';drawStage();selectedStage=oldStage;
@@ -2939,7 +2947,11 @@ function drawRouteComplete(){
 }
 function handleFrontend(){
  if(gameState==='opening'){
-   if(pressed.Enter||pressed.Space||pressed.Escape||pressed.Backspace)finishOpening();
+   if(pressed.Escape||pressed.Backspace)finishOpening();
+   else if(pressed.Enter||pressed.Space){
+     if(openingStartedAt===null)openingStartRequested=true;
+     else finishOpening();
+   }
    return;
  }
  if(gameState==='gallery'&&galleryArtwork){
@@ -3207,7 +3219,11 @@ function pointerHoverTarget(px,py){
  return false;
 }
 function pointerActivate(px,py){
- if(gameState==='opening'){finishOpening();return true}
+ if(gameState==='opening'){
+   if(openingStartedAt===null)openingStartRequested=true;
+   else finishOpening();
+   return true;
+ }
  // Universal clickable Back/Abandon button.
  if(gameState!=='title'&&['options','gallery','difficultySelect','matchSetup','matchResult','diagnostics','credits','charSelect','stageSelect','continueScreen','atlasInspector'].includes(gameState)
     &&inRect(px,py,14,14,94,27)){pointerBack();return true}
@@ -3330,9 +3346,10 @@ function storyVoiceLines(){
 function updateContextHelp(){
  if(typeof NightbloomVoices!=='undefined'){const lines=storyVoiceLines();NightbloomVoices.update(lines.length?JSON.stringify([playerChoice,ladderIndex,storyEnding,storyAfterText,lines]):'',lines);}
 
- const key=[gameState,training,trainingPanelExpanded,SYSTEM.controls,gameMode,paused,trainingDummyMode,trainingSpeed,inspectorPlaying,inspectorLayerMode,SYSTEM.particles,SYSTEM.reducedMotion,SYSTEM.parallax,selectedStage].join('|');if(key===contextHelpKey)return;contextHelpKey=key;
+ const waitingForOpening=gameState==='opening'&&openingStartedAt===null;
+ const key=[gameState,waitingForOpening,training,trainingPanelExpanded,SYSTEM.controls,gameMode,paused,trainingDummyMode,trainingSpeed,inspectorPlaying,inspectorLayerMode,SYSTEM.particles,SYSTEM.reducedMotion,SYSTEM.parallax,selectedStage].join('|');if(key===contextHelpKey)return;contextHelpKey=key;
  const fight=gameState==='fight',arcade=SYSTEM.controls==='ARCADE'&&gameMode!=='local';
- contextHelp.textContent=gameState==='opening'?'Enter, Esc, or tap to skip the opening':gameState==='atlasInspector'?'←/→ fighter · ↑/↓ action · A/D frame · Space play/pause · Q/E speed · 1/2/3 layers · Esc title':fight?(arcade?'Arrows move · Z/X attacks · C special · V super · B throw · N guard · P pause':'WASD move · J/K attacks · L special · U super · I throw · Shift guard · P pause'):'Click or use arrows to select · Enter confirm · Backspace back · Esc title';
+ contextHelp.textContent=gameState==='opening'?(waitingForOpening?'Press Enter or tap to continue · Esc skip':'Enter, Esc, or tap to skip the opening'):gameState==='atlasInspector'?'←/→ fighter · ↑/↓ action · A/D frame · Space play/pause · Q/E speed · 1/2/3 layers · Esc title':fight?(arcade?'Arrows move · Z/X attacks · C special · V super · B throw · N guard · P pause':'WASD move · J/K attacks · L special · U super · I throw · Shift guard · P pause'):'Click or use arrows to select · Enter confirm · Backspace back · Esc title';
  trainingDetailsButton.hidden=!(fight&&training);trainingDetailsButton.textContent=trainingPanelExpanded?'Hide training details (H)':'Training details (H)';trainingDetailsButton.setAttribute('aria-expanded',String(trainingPanelExpanded));
  trainingTools.hidden=!(fight&&training);inspectorTools.hidden=gameState!=='atlasInspector';
  effectsTools.hidden=!(fight&&training)&&gameState!=='atlasInspector';
