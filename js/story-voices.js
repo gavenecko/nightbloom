@@ -6,10 +6,13 @@
  const overrides={};
  let engine=null,loading=null,ready=false,token=0,busy=false,auto=false,sceneKey='',lines=[],finishCurrent=null;
  let recordedLoading=null,recordedData=null,recordedIndex=null,activeAudio=null;
- let getVolume=()=>1,onBusy=()=>{};
+ let getVolume=()=>1,onBusy=()=>{},onAutoChange=setAuto;
  const el=id=>document.getElementById(id),supported=()=>!!(global.speechSynthesis&&global.SpeechSynthesisUtterance);
  function status(text){el('voiceStatus').textContent=text;}
  function setBusy(value){busy=value;el('voiceRead').disabled=value||!lines.length;el('voiceStop').disabled=!value;onBusy();}
+ function refreshVolume(){if(activeAudio)activeAudio.volume=Math.max(0,Math.min(1,getVolume()));}
+ function syncAutoButton(){el('voiceAuto').textContent='Auto-read: '+(auto?'On':'Off');el('voiceAuto').setAttribute('aria-pressed',String(auto));}
+ function setAuto(enabled){auto=enabled;syncAutoButton();if(auto&&lines.length)void read();else stop();}
  function stop(){token++;const finish=finishCurrent;finishCurrent=null;if(activeAudio){activeAudio.onended=activeAudio.onerror=null;activeAudio.pause();activeAudio.removeAttribute('src');activeAudio.load();activeAudio=null;}engine?.stop();global.speechSynthesis?.cancel();finish?.();setBusy(false);}
  async function recordedClip(line){
   if(!global.fetch||!global.Audio)return null;
@@ -64,13 +67,14 @@
  function update(key,nextLines){
   if(busy&&getVolume()<=0){stop();status('Voice stopped while muted.');}
   if(key===sceneKey)return;stop();sceneKey=key;lines=nextLines||[];el('voiceTools').hidden=!lines.length;setBusy(false);
-  status('Recorded voices play on demand. Neural model download is optional.');
+  status(auto?'Dialogue auto-play is on.':'Dialogue auto-play is off. Use Read dialog to listen.');
   if(auto&&lines.length)void read();
  }
  function configure(options={}){
   getVolume=options.getVolume||getVolume;onBusy=options.onBusy||onBusy;
+  auto=options.auto??auto;onAutoChange=options.onAutoChange||onAutoChange;syncAutoButton();
   el('voiceRead').addEventListener('click',()=>void read());el('voiceStop').addEventListener('click',()=>{stop();status('Stopped.');});el('voiceLoad').addEventListener('click',()=>void loadNeural());
-  el('voiceAuto').addEventListener('click',()=>{auto=!auto;el('voiceAuto').textContent='Auto-read: '+(auto?'On':'Off');el('voiceAuto').setAttribute('aria-pressed',String(auto));if(auto)void read();else stop();});
+  el('voiceAuto').addEventListener('click',()=>onAutoChange(!auto));
   el('voiceImport').addEventListener('click',()=>el('voiceProfileFile').click());
   el('voiceProfileFile').addEventListener('change',async event=>{try{const file=event.target.files?.[0];if(!file)return;if(file.size>1000000)throw Error('Profile file too large.');const count=importProfiles(JSON.parse(await file.text()));status('Imported '+count+' neural voice profiles. Load neural voices to use them.');}catch(error){status('Use a Gaven Echoes voice export with profiles named after the fighters.');}finally{event.target.value='';}});
   global.addEventListener('blur',stop);document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
@@ -83,5 +87,5 @@
    for(const [field,min,max]of [['speed',.5,2],['pitchSemitones',-12,12],['echo',0,.6],['volume',0,1],['filterHz',100,20000]])if(Number.isFinite(profile[field]))clean[field]=Math.max(min,Math.min(max,profile[field]));accepted.push([name,clean]);count++;
   }if(!count)throw Error('No matching fighter names.');stop();for(const [name,clean]of accepted){overrides[name]=clean;if(engine)engine.addProfile(name,{...engine.getProfile(name),...clean});}return count;
  }
- global.NightbloomVoices={configure,update,read,stop,loadNeural,importProfiles,get speaking(){return busy},get ready(){return ready}};
+ global.NightbloomVoices={configure,update,read,stop,setAuto,refreshVolume,loadNeural,importProfiles,get speaking(){return busy},get ready(){return ready}};
 })(window);

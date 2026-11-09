@@ -80,11 +80,28 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden)pauseForFoc
 
 // ---------- AUDIO ENGINE ----------
 let audioCtx=null,audioMaster=null,audioMusic=null,audioSfx=null,audioUnlocked=false;
-let musicNext=0,musicStep=0,musicKey='',lastMusicState='',musicDuck=1;
-const AUDIO_DEFAULT={master:.72,music:.34,sfx:.74,mute:false};
+let musicNext=0,musicStep=0,musicKey='',musicDuck=1;
+let musicPlayer=null,musicRecording=false,musicRequest=0;
+const AUDIO_DEFAULT={master:.72,music:.15,sfx:.74,voice:.74,dialogue:true,mute:false};
 let AUDIO={...AUDIO_DEFAULT};
 try{let saved=JSON.parse(localStorage.getItem('nightbloom_audio')||'null');if(saved)AUDIO={...AUDIO,...saved}}catch(e){}
-const OPTIONS=['MASTER VOLUME','MUSIC VOLUME','SFX VOLUME','MUTE','CONTROL PRESET','GAMEPAD DEADZONE','VIBRATION','SCREEN SHAKE','SCREEN FLASHES','REDUCED MOTION','HIGH CONTRAST HUD','PARTICLES','RESET PROGRESS'];
+const OPTIONS=['MASTER VOLUME','MUSIC VOLUME','SFX VOLUME','MUTE','CONTROL PRESET','GAMEPAD DEADZONE','VIBRATION','SCREEN SHAKE','SCREEN FLASHES','REDUCED MOTION','HIGH CONTRAST HUD','PARTICLES','CHARACTER VOICE VOLUME','AUTO-PLAY DIALOGUE','RESET PROGRESS'];
+const OPTION_TOP=68,OPTION_STEP=27,OPTION_HEIGHT=23;
+const VOLUME_OPTIONS={0:'master',1:'music',2:'sfx',12:'voice'};
+const DIALOGUE_OPTION=13,RESET_PROGRESS_OPTION=14;
+const MUSIC_FILES={
+ MENU:'IntroScreen.mp3',SELECT:'FighterCall.mp3',
+ 'CRIMSON CATHEDRAL':'CrimsonCathedral.mp3',
+ 'MOONLIT SHRINE':'MoonlitShrinePick.mp3',
+ 'FORSAKEN HARBOR':'HauntedHarbor.mp3',
+ 'CURSED LIBRARY':'CursedLibrary.mp3',
+ BONEFIELD:'BonefieldPick.mp3',
+ 'THE NEXT DAWN':'TheNextDawnPick.mp3',
+ ARACHNE:'ArachneBattle.mp3',
+ 'LIVING DOLL':'LivingDollBattle.mp3',
+ NARRATOR:'NarratorBattle.mp3'
+};
+const SECRET_BATTLE_MUSIC=new Set(['ARACHNE','LIVING DOLL','NARRATOR']);
 const STAGE_MUSIC={
  MENU:{root:110,bpm:72,wave:'triangle',pattern:[0,3,7,10,7,3,0,-2,0,5,8,7,3,0,-5,-2]},
  'CRIMSON CATHEDRAL':{root:110,bpm:126,wave:'sawtooth',pattern:[0,3,7,10,7,3,0,-2,0,3,8,10,8,3,0,-5]},
@@ -113,19 +130,35 @@ function unlockAudio(){
    audioCtx=new AC();
    audioMaster=audioCtx.createGain();audioMusic=audioCtx.createGain();audioSfx=audioCtx.createGain();
    audioMusic.connect(audioMaster);audioSfx.connect(audioMaster);audioMaster.connect(audioCtx.destination);
+   if(window.Audio&&audioCtx.createMediaElementSource){
+     musicPlayer=new window.Audio();
+     musicPlayer.preload='none';
+     audioCtx.createMediaElementSource(musicPlayer).connect(audioMusic);
+   }
  }
  if(audioCtx.state==='suspended')audioCtx.resume();
+ if(audioUnlocked)return;
  audioUnlocked=true;applyAudioLevels(true);
  if(!musicNext)musicNext=audioCtx.currentTime+.05;
+ musicTick();
 }
 addEventListener('keydown',unlockAudio,{passive:true});
 addEventListener('pointerdown',unlockAudio,{passive:true});
 function applyAudioLevels(immediate=false){
  if(typeof NightbloomCombatVoices!=='undefined')NightbloomCombatVoices.refreshVolume();
+ window.NightbloomVoices?.refreshVolume?.();
  if(!audioCtx||!audioMaster)return;
  let t=audioCtx.currentTime,master=AUDIO.mute?0:AUDIO.master;
  let set=(param,val)=>immediate?param.setValueAtTime(val,t):param.setTargetAtTime(val,t,.025);
- set(audioMaster.gain,master);set(audioMusic.gain,AUDIO.music*musicDuck*(typeof NightbloomVoices!=='undefined'&&NightbloomVoices.speaking ? .35 : 1));set(audioSfx.gain,AUDIO.sfx);
+ audioMusic.gain.cancelScheduledValues(t);
+ set(audioMaster.gain,master);set(audioMusic.gain,musicLevel());set(audioSfx.gain,AUDIO.sfx);
+}
+function musicLevel(){return AUDIO.music*musicDuck*(window.NightbloomVoices?.speaking ? .35 : 1);}
+function voiceLevel(){return AUDIO.mute?0:AUDIO.master*AUDIO.voice;}
+function setDialogueAutoplay(enabled){
+ AUDIO.dialogue=enabled;
+ saveAudio();
+ window.NightbloomVoices?.setAuto(enabled);
 }
 function hz(root,semi){return root*Math.pow(2,semi/12)}
 function tone(freq,dur=.08,wave='sine',vol=.18,delay=0,pan=0,bus='sfx'){
@@ -199,18 +232,39 @@ function duckMusic(level=.25,seconds=.22){
  if(!audioCtx||!audioMusic)return;
  let t=audioCtx.currentTime;
  audioMusic.gain.cancelScheduledValues(t);
- audioMusic.gain.setTargetAtTime(AUDIO.music*level,t,.018);
- audioMusic.gain.setTargetAtTime(AUDIO.music,t+seconds,.07);
+ audioMusic.gain.setTargetAtTime(musicLevel()*level,t,.018);
+ audioMusic.gain.setTargetAtTime(musicLevel(),t+seconds,.07);
 }
 function musicTarget(){
- if(gameState==='fight')return selectedStage||'MENU';
+ if(gameState==='fight'||gameState==='fightStats'||gameState==='matchResult'||gameState==='continueScreen'){
+   return SECRET_BATTLE_MUSIC.has(enemyChoice)?enemyChoice:selectedStage||'MENU';
+ }
+ if(gameState==='charSelect'||gameState==='stageSelect'||gameState==='matchSetup'||gameState==='difficultySelect')return 'SELECT';
  if(gameState==='storyScene'||gameState==='routeComplete')return 'CURSED LIBRARY';
  return 'MENU';
 }
+function selectMusic(key){
+ musicKey=key;musicStep=0;musicNext=audioCtx.currentTime+.04;
+ if(!musicPlayer)return;
+ const request=++musicRequest,file=MUSIC_FILES[key];
+ musicPlayer.pause();
+ musicRecording=!!file;
+ if(!file)return;
+ const fallback=()=>{
+   if(request!==musicRequest)return;
+   musicRecording=false;musicPlayer.pause();musicNext=audioCtx.currentTime+.04;
+ };
+ musicPlayer.onerror=fallback;
+ musicPlayer.loop=true;
+ musicPlayer.src='assets/audio/music/'+file;
+ musicPlayer.play().catch(fallback);
+}
 function musicTick(){
  if(!audioUnlocked||!audioCtx||AUDIO.mute)return;
- let key=musicTarget(),cfg=STAGE_MUSIC[key]||STAGE_MUSIC.MENU;
- if(key!==musicKey){musicKey=key;musicStep=0;musicNext=audioCtx.currentTime+.04}
+ const key=musicTarget();
+ if(key!==musicKey)selectMusic(key);
+ if(musicRecording)return;
+ const cfg=STAGE_MUSIC[key]||STAGE_MUSIC.MENU;
  let now=audioCtx.currentTime,stepDur=60/cfg.bpm/2;
  while(musicNext<now+.09){
    let s=cfg.pattern[musicStep%cfg.pattern.length];
@@ -222,9 +276,7 @@ function musicTick(){
 }
 let resetConfirmUntil=0;
 function optionValue(i){
- if(i===0)return Math.round(AUDIO.master*100)+'%';
- if(i===1)return Math.round(AUDIO.music*100)+'%';
- if(i===2)return Math.round(AUDIO.sfx*100)+'%';
+ if(VOLUME_OPTIONS[i])return Math.round(AUDIO[VOLUME_OPTIONS[i]]*100)+'%';
  if(i===3)return AUDIO.mute?'ON':'OFF';
  if(i===4)return SYSTEM.controls;
  if(i===5)return SYSTEM.deadzone.toFixed(2);
@@ -234,13 +286,13 @@ function optionValue(i){
  if(i===9)return SYSTEM.reducedMotion?'ON':'OFF';
  if(i===10)return SYSTEM.highContrast?'ON':'OFF';
  if(i===11)return SYSTEM.particles;
- if(i===12)return performance.now()<resetConfirmUntil?'PRESS ENTER AGAIN':'—';
+ if(i===DIALOGUE_OPTION)return AUDIO.dialogue?'ON':'OFF';
+ if(i===RESET_PROGRESS_OPTION)return performance.now()<resetConfirmUntil?'PRESS ENTER AGAIN':'—';
  return '';
 }
 function adjustAudioOption(dir){
- if(optionsIndex===0)AUDIO.master=clamp(AUDIO.master+dir*.05,0,1);
- else if(optionsIndex===1)AUDIO.music=clamp(AUDIO.music+dir*.05,0,1);
- else if(optionsIndex===2)AUDIO.sfx=clamp(AUDIO.sfx+dir*.05,0,1);
+ const volume=VOLUME_OPTIONS[optionsIndex];
+ if(volume)AUDIO[volume]=clamp(AUDIO[volume]+dir*.05,0,1);
  else if(optionsIndex===3)AUDIO.mute=!AUDIO.mute;
  else if(optionsIndex===4){
    SYSTEM.controls=SYSTEM.controls==='CLASSIC'?'ARCADE':'CLASSIC';
@@ -254,6 +306,7 @@ function adjustAudioOption(dir){
  else if(optionsIndex===9)SYSTEM.reducedMotion=!SYSTEM.reducedMotion;
  else if(optionsIndex===10)SYSTEM.highContrast=!SYSTEM.highContrast;
  else if(optionsIndex===11){let p=['NORMAL','LOW','OFF'],idx=p.indexOf(SYSTEM.particles);SYSTEM.particles=p[(idx+(dir>=0?1:p.length-1))%p.length]}
+ else if(optionsIndex===DIALOGUE_OPTION){setDialogueAutoplay(!AUDIO.dialogue);return}
  applyAudioLevels();saveAudio();saveSystem();
  if(optionsIndex===2&&!AUDIO.mute)tone(440,.06,'triangle',.12);
 }
@@ -2177,19 +2230,18 @@ function menuCard(px,py,w,h,name,selected,locked=false){
  drawStage();x.fillStyle='#05040be8';x.fillRect(0,0,W,H);
  x.textAlign='center';x.font='bold 35px Georgia';x.fillStyle='#fff';x.fillText('OPTIONS',W/2,43);
  x.font='10px Consolas';x.fillStyle='#cdbde7';x.fillText('AUDIO · CONTROLS · ACCESSIBILITY · SAVE DATA',W/2,61);
- let top=68,rowH=31;
  OPTIONS.forEach((name,i)=>{
-   let y=top+i*rowH,sel=optionsIndex===i;
-   x.fillStyle=sel?'#25152deb':'#0d0b16e5';x.fillRect(168,y,624,26);
-   x.strokeStyle=sel?'#72ffd7':'#46314f';x.lineWidth=sel?2:1;x.strokeRect(168,y,624,26);
-   x.textAlign='left';x.font='bold 11px Consolas';x.fillStyle=sel?'#fff':'#cabcd3';x.fillText(name,184,y+18);
-   x.textAlign='right';x.fillStyle=sel?'#72ffd7':'#ad9cb8';x.fillText(optionValue(i),775,y+18);
-   if(i<3){
-     let val=i===0?AUDIO.master:i===1?AUDIO.music:AUDIO.sfx;
-     x.fillStyle='#302239';x.fillRect(555,y+10,135,6);x.fillStyle=sel?'#72ffd7':'#9d5bac';x.fillRect(555,y+10,135*val,6);
+   let y=OPTION_TOP+i*OPTION_STEP,sel=optionsIndex===i;
+   x.fillStyle=sel?'#25152deb':'#0d0b16e5';x.fillRect(168,y,624,OPTION_HEIGHT);
+   x.strokeStyle=sel?'#72ffd7':'#46314f';x.lineWidth=sel?2:1;x.strokeRect(168,y,624,OPTION_HEIGHT);
+   x.textAlign='left';x.font='bold 11px Consolas';x.fillStyle=sel?'#fff':'#cabcd3';x.fillText(name,184,y+16);
+   x.textAlign='right';x.fillStyle=sel?'#72ffd7':'#ad9cb8';x.fillText(optionValue(i),775,y+16);
+   if(VOLUME_OPTIONS[i]){
+     let val=AUDIO[VOLUME_OPTIONS[i]];
+     x.fillStyle='#302239';x.fillRect(555,y+9,135,6);x.fillStyle=sel?'#72ffd7':'#9d5bac';x.fillRect(555,y+9,135*val,6);
    }
  });
- let py=474;
+ let py=486;
  x.textAlign='center';x.font='9px Consolas';x.fillStyle='#bdaec7';
  let preset=SYSTEM.controls==='CLASSIC'
    ?'CLASSIC: WASD · J light · K heavy · L special · U super · I throw · Shift block'
@@ -2297,7 +2349,7 @@ function drawCredits(){
   ['ROSTER','10 original fictional queens · 6 stages · 90 Story matchups'],
   ['COMBAT','Custom JavaScript fighting engine, AI, frame data and Training Lab'],
   ['STORY','Ten complete character routes with endings and Gallery unlocks'],
-  ['AUDIO','Procedurally synthesized browser music and combat sound effects'],
+  ['AUDIO','Recorded stage and challenger themes, voices, and synthesized combat effects'],
   ['ART','Embedded programmatic prototype sprite/portrait/FX atlases'],
   ['RUNTIME','Standalone HTML5 Canvas + WebAudio · no external runtime assets'],
   ['STATUS','Layered Sprite Pipeline · benchmark trio now supports separate body and FX atlases, and Atlas Inspector can preview body / FX / composite layers']
@@ -2932,11 +2984,11 @@ function handleFrontend(){
    if(pressed.ArrowUp||pressed.KeyW)optionsIndex=cycle(OPTIONS,-1,optionsIndex);
    if(pressed.ArrowDown||pressed.KeyS)optionsIndex=cycle(OPTIONS,1,optionsIndex);
    if(optionsIndex!==oldOpt)resetConfirmUntil=0;
-   if(pressed.ArrowLeft||pressed.KeyA){if(optionsIndex!==12)adjustAudioOption(-1)}
-   if(pressed.ArrowRight||pressed.KeyD){if(optionsIndex!==12)adjustAudioOption(1)}
+   if(pressed.ArrowLeft||pressed.KeyA){if(optionsIndex!==RESET_PROGRESS_OPTION)adjustAudioOption(-1)}
+   if(pressed.ArrowRight||pressed.KeyD){if(optionsIndex!==RESET_PROGRESS_OPTION)adjustAudioOption(1)}
    if(pressed.Enter||pressed.Space){
-     if(optionsIndex===12)resetProgressSafe();
-     else if(optionsIndex>=3)adjustAudioOption(1);
+     if(optionsIndex===RESET_PROGRESS_OPTION)resetProgressSafe();
+     else if(!VOLUME_OPTIONS[optionsIndex])adjustAudioOption(1);
    }
    if(pressed.Backspace){resetConfirmUntil=0;gameState='title';return}
    return;
@@ -3123,7 +3175,7 @@ function pointerHoverTarget(px,py){
    for(let i=0;i<DIFFICULTY_ORDER.length;i++)if(inRect(px,py,225,130+i*79,510,61)){difficultyIndex=i;return true}
  }
  if(gameState==='options'){
-   for(let i=0;i<OPTIONS.length;i++)if(inRect(px,py,168,68+i*31,624,26)){optionsIndex=i;return true}
+   for(let i=0;i<OPTIONS.length;i++)if(inRect(px,py,168,OPTION_TOP+i*OPTION_STEP,624,OPTION_HEIGHT)){optionsIndex=i;return true}
  }
  if(gameState==='gallery'){
    if(galleryArtwork)return inRect(px,py,230,485,500,36);
@@ -3176,17 +3228,16 @@ function pointerActivate(px,py){
  }
  if(gameState==='options'){
    for(let i=0;i<OPTIONS.length;i++){
-     let ry=68+i*31;
-     if(!inRect(px,py,168,ry,624,26))continue;
+     let ry=OPTION_TOP+i*OPTION_STEP;
+     if(!inRect(px,py,168,ry,624,OPTION_HEIGHT))continue;
      optionsIndex=i;
      // Audio sliders can be positioned directly by clicking their tracks.
-     if(i<3&&inRect(px,py,540,ry,165,26)){
+     if(VOLUME_OPTIONS[i]&&inRect(px,py,540,ry,165,OPTION_HEIGHT)){
        let val=clamp((px-555)/135,0,1);
-       if(i===0)AUDIO.master=val;if(i===1)AUDIO.music=val;if(i===2)AUDIO.sfx=val;
+       AUDIO[VOLUME_OPTIONS[i]]=val;
        applyAudioLevels();saveAudio();
-     }else if(i===12)resetProgressSafe();
-     else if(i===5)adjustAudioOption(px<W/2?-1:1);
-     else if(i<3)adjustAudioOption(px<W/2?-1:1);
+     }else if(i===RESET_PROGRESS_OPTION)resetProgressSafe();
+     else if(i===5||VOLUME_OPTIONS[i])adjustAudioOption(px<W/2?-1:1);
      else adjustAudioOption(1);
      return true;
    }
@@ -3450,6 +3501,6 @@ function loop(now){
  requestAnimationFrame(loop)
 }
 installSecretFighters();
-if(typeof NightbloomCombatVoices!=='undefined')NightbloomCombatVoices.configure({getVolume:()=>AUDIO.mute?0:AUDIO.master*AUDIO.sfx*.85});
-if(typeof NightbloomVoices!=='undefined')NightbloomVoices.configure({getVolume:()=>AUDIO.mute?0:AUDIO.master*AUDIO.sfx,onBusy:()=>applyAudioLevels()});
+if(typeof NightbloomCombatVoices!=='undefined')NightbloomCombatVoices.configure({getVolume:()=>voiceLevel()*.85});
+if(typeof NightbloomVoices!=='undefined')NightbloomVoices.configure({getVolume:voiceLevel,onBusy:()=>applyAudioLevels(),auto:AUDIO.dialogue,onAutoChange:setDialogueAutoplay});
 requestAnimationFrame(loop);
