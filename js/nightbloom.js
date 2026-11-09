@@ -1773,8 +1773,8 @@ function drawStage(){
 }
 function pxrect(x0,y0,w,h,c){x.fillStyle=c;x.fillRect(Math.round(x0),Math.round(y0),Math.round(w),Math.round(h))}
 
-function drawF(f){
- let raw=animName(f);
+function drawF(f,pose){
+ let raw=pose?.action||animName(f);
  let state=BODY_ACTIONS[raw]||raw;
  let remade=REMADE_SHEET_FIGHTERS.has(f.name);
  let img=(f.name==='DULLAHAN'&&f.headless>0)?spriteDH:spriteFor(f.name);
@@ -1786,7 +1786,9 @@ function drawF(f){
  if(remade){
    let info=REMADE_ANIMS[state]||REMADE_ANIMS.idle;
    let frames=info.frames||[0,1,2,3];
-   if(f.attack&&raw===f.attack.type){
+   if(pose){
+     fr=pose.frame;
+   }else if(f.attack&&raw===f.attack.type){
      fr=f.attack.type==='throw'&&f.throwHold>0?animFrame(f):attackPoseFrame(f.attack);
    }else{
      fr=animFrame(f)%frames.length;
@@ -1837,7 +1839,7 @@ function drawF(f){
 
  NightbloomFX.status(x,f,worldClock,fxRenderOptions());
 
- if(debug){x.fillStyle='#fff';x.font='9px Consolas';x.textAlign='center';x.fillText((remade?'layered ':'')+state+' #'+fr,Math.round(f.x),f.y-138)}
+ if(debug&&!pose){x.fillStyle='#fff';x.font='9px Consolas';x.textAlign='center';x.fillText((remade?'layered ':'')+state+' #'+fr,Math.round(f.x),f.y-138)}
 }
 
 function debugDraw(){
@@ -2417,12 +2419,28 @@ titleLogo.src='assets/ui/nightbloom-logo.webp';
 const openingVideo=document.getElementById('openingVideo');
 const openingReducedMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
 const openingLogoDuration=1600;
-const openingShots=[
- ['MOONLIT SHRINE','NEKOMATA'],
- ['FORSAKEN HARBOR','BANSHEE'],
- ['CRIMSON CATHEDRAL','VAMPIRA']
+const openingStages={
+ VAMPIRA:'CRIMSON CATHEDRAL',
+ NEKOMATA:'MOONLIT SHRINE',
+ BANSHEE:'FORSAKEN HARBOR',
+ MEDUSA:'THE NEXT DAWN',
+ JIANGSHI:'FORSAKEN HARBOR',
+ YUREI:'MOONLIT SHRINE',
+ DULLAHAN:'BONEFIELD',
+ WEREWOLF:'BONEFIELD',
+ MUMMY:'THE NEXT DAWN',
+ WITCH:'CURSED LIBRARY'
+};
+const openingShots=CORE_ROSTER.map(name=>({stage:openingStages[name],fighter:makeFighter(name,0,false)}));
+const openingShotDuration=1450;
+const openingPoses=[
+ {until:.18,action:'idle',frame:0},
+ {until:.34,action:'specialA',frame:0},
+ {until:.47,action:'specialA',frame:1},
+ {until:.65,action:'specialA',frame:2},
+ {until:.83,action:'specialA',frame:3},
+ {until:1,action:'idle',frame:1}
 ];
-const openingShotDuration=1100;
 let openingStartedAt=null,openingElapsed=0,openingPlayback=null,openingVideoTried=false;
 function stopOpeningVideo(){
  if(!openingPlayback)return;
@@ -2482,19 +2500,25 @@ function drawOpening(){
    x.restore();
  }else{
    const t=(openingElapsed-openingLogoDuration)/openingShotDuration;
-   const [stage,name]=openingShots[Math.min(Math.floor(t),openingShots.length-1)];
-   const phase=t%1,accent=CHAR_INFO[name].accent;
+   const index=Math.min(Math.floor(t),openingShots.length-1);
+   const {stage,fighter}=openingShots[index];
+   const name=fighter.name,phase=t%1,accent=fighter.accent;
    x.save();x.translate(-22*phase,-11*phase);x.scale(1+.05*phase,1+.05*phase);
    drawStageBackdrop(stage);
    x.restore();
    x.fillStyle='#0a061476';x.fillRect(0,0,W,H);
    drawScreenVignette(.85);
-   const px=559-24*phase;
-   drawImageContained(portraitFor(name),px,48,349,349);
-   x.strokeStyle=accent;x.lineWidth=1;x.strokeRect(px,48,349,349);
-   x.textAlign='left';x.fillStyle=accent;x.font='bold 44px Georgia';x.fillText(name,65,260);
-   x.fillStyle='#e0cfdb';x.font='bold 13px Consolas';x.fillText(stage,69,289);
-   x.fillStyle=rgba('#08050d',1-Math.min(1,phase*6,(1-phase)*6));x.fillRect(0,0,W,H);
+   drawPortraitFrame(portraitFor(name),548,64,368,368,accent,true);
+   x.textAlign='center';x.fillStyle=accent;x.font='bold 44px Georgia';x.fillText(name,270,96);
+   x.save();
+   x.translate(259,416);
+   x.scale(1.8,1.8);
+   x.translate(-fighter.x,-fighter.y);
+   drawF(fighter,openingPoses.find(pose=>phase<pose.until));
+   x.restore();
+   x.textAlign='center';x.fillStyle='#f1dae8';x.font='bold 16px Georgia';x.fillText(MOVE_NAMES[name].a,270,456);
+   x.fillStyle='#c5adca';x.font='11px Consolas';x.fillText(String(index+1).padStart(2,'0')+' / '+openingShots.length,732,456);
+   x.fillStyle=rgba('#08050d',1-Math.min(1,phase*12,(1-phase)*12));x.fillRect(0,0,W,H);
  }
  x.textAlign='center';x.font='bold 11px Consolas';x.fillStyle='#f2d8db';
  x.fillText('ENTER / ESC / TAP TO SKIP',W/2,H-23);
