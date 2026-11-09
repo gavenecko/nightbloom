@@ -23,7 +23,7 @@
   ctx.save();ctx.globalAlpha*=envelope;ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
   ctx.drawImage(img,frame*256,0,256,256,-size/2,-size/2,size,size);ctx.restore();return true;
  };
- api.preload=function(name){for(const slot of ['a','b','super'])image(name.toLowerCase().replaceAll(' ','-')+'-'+slot);for(const key of ['hit','guard','counter'])image(key);};
+ api.preload=function(name,slots=['a','b','super']){for(const slot of slots)image(name.toLowerCase().replaceAll(' ','-')+'-'+slot);for(const key of ['hit','guard','counter'])image(key);};
  api.subscribe=function(fn){listeners.add(fn);return()=>listeners.delete(fn);};
  root.NightbloomPaintedFX=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

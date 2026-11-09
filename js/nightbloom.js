@@ -780,21 +780,27 @@ function drawInspectorFrameLayers(body,fx,meta,fighter,action,index,col,sx,sy,px
  }
  x.restore();
 }
-function drawFighterFxLayer(name,action,frame,worldX,worldY,w,h,flip){
+function drawFighterFxLayer(name,action,frame,worldX,worldY,w,h,flip,paintedOnly=false){
  if(name==='DULLAHAN'&&action==='specialB')return; // The projectile carries the single head.
  let info=REMADE_ANIMS[action]||REMADE_ANIMS.idle;
  let frames=info.frames||[0,1,2,3];
  let col=frames[frame%frames.length], row=info.row;
- let img=fxSpriteFor(name);
- if(!img||!img.complete||!img.naturalWidth)return;
+ const img=paintedOnly?null:fxSpriteFor(name);
+ if(!paintedOnly&&(!img||!img.complete||!img.naturalWidth))return;
  let ofs=actionFxOffset(name,action,frame);
+ const left=-Math.round(w/2)+ofs.x,top=-154-Math.round((h-160))+ofs.y;
  x.save();
  x.imageSmoothingEnabled=false;
  x.translate(Math.round(worldX),Math.round(worldY));
  if(flip)x.scale(-1,1);
  x.globalAlpha=.95;
- drawIsolatedAtlasCell(x,img,col*REMADE_CELL.w,row*REMADE_CELL.h,REMADE_CELL.w,REMADE_CELL.h,
-             -Math.round(w/2)+ofs.x,-154-Math.round((h-160))+ofs.y,w,h);
+ if(paintedOnly){
+   x.translate(left+w/2,top+h*78/160);
+   x.globalAlpha*=[.18,.42,1,.55][frame];
+   window.NightbloomPaintedFX?.draw(x,name.toLowerCase()+'-a',[.06,.35,.64,.93][frame]);
+ }else{
+   drawIsolatedAtlasCell(x,img,col*REMADE_CELL.w,row*REMADE_CELL.h,REMADE_CELL.w,REMADE_CELL.h,left,top,w,h);
+ }
  x.globalAlpha=1;
  x.restore();
 }
@@ -1834,7 +1840,7 @@ function drawF(f,pose){
  x.restore();
 
  if(remade && ['walk','dash','jump','fall','light','heavy','specialA','specialB','super','throw'].includes(state)){
-   drawFighterFxLayer(f.name,state,fr,Math.round(f.x),Math.round(f.y),Math.round(128*tune.scale),Math.round(160*tune.scale),f.flip);
+   drawFighterFxLayer(f.name,state,fr,Math.round(f.x),Math.round(f.y),Math.round(128*tune.scale),Math.round(160*tune.scale),f.flip,pose?.action==='specialA');
  }
 
  NightbloomFX.status(x,f,worldClock,fxRenderOptions());
@@ -2441,7 +2447,13 @@ const openingPoses=[
  {until:.83,action:'specialA',frame:3},
  {until:1,action:'idle',frame:1}
 ];
-let openingStartedAt=null,openingElapsed=0,openingPlayback=null,openingVideoTried=false;
+let openingStartedAt=null,openingElapsed=0,openingPlayback=null,openingVideoTried=false,openingFxQueued=0;
+function preloadOpeningEffects(){
+ const index=Math.max(0,Math.floor((openingElapsed-openingLogoDuration)/openingShotDuration));
+ while(openingFxQueued<Math.min(index+2,openingShots.length)){
+   window.NightbloomPaintedFX?.preload(openingShots[openingFxQueued++].fighter.name,['a']);
+ }
+}
 function stopOpeningVideo(){
  if(!openingPlayback)return;
  openingPlayback=null;
@@ -2460,7 +2472,7 @@ function updateOpening(now){
    if(openingElapsed>=openingLogoDuration)finishOpening();
    return;
  }
- if(openingElapsed<openingLogoDuration)return;
+ if(openingElapsed<openingLogoDuration){preloadOpeningEffects();return}
  if(!openingVideoTried&&openingVideo?.dataset.src){
    openingVideoTried=true;
    const attempt={position:0,progressAt:now,failed:false};
@@ -2481,6 +2493,7 @@ function updateOpening(now){
    openingElapsed=openingLogoDuration;
  }
  if(openingElapsed>=openingLogoDuration+openingShots.length*openingShotDuration)finishOpening();
+ else preloadOpeningEffects();
 }
 function drawOpening(){
  x.fillStyle='#08050d';x.fillRect(0,0,W,H);
