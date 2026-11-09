@@ -1,7 +1,7 @@
 // Approved Chatterbox recordings. No speech engine or model runs in the browser.
 (()=>{
  const ROOT='assets/audio/combat-model-roster-v1/';
- const cast=new Set(['VAMPIRA','NEKOMATA','BANSHEE','MEDUSA','JIANGSHI','YUREI','DULLAHAN','WEREWOLF','MUMMY','WITCH','ARACHNE','LIVING DOLL']);
+ const cast=new Set(['VAMPIRA','NEKOMATA','BANSHEE','MEDUSA','JIANGSHI','YUREI','DULLAHAN','WEREWOLF','MUMMY','WITCH','ARACHNE','LIVING DOLL','NARRATOR']);
  const clips=new Map(),cooldowns=new Map();let current=null,enabled=false,pair='',victoryPlayed=false;
  let config={getVolume:()=>0};
  const volume=()=>Math.max(0,Math.min(1,Number(config.getVolume())||0));
@@ -11,7 +11,7 @@
   const chosen=[...new Set(names.filter(n=>cast.has(n)))].sort(),key=chosen.join('|');if(pair===key)return;
   stop();pair=key;cooldowns.clear();victoryPlayed=false;
   for(const a of clips.values()){a.pause();a.removeAttribute('src');a.load();}clips.clear();
-  for(const name of chosen)for(let i=1;i<=4;i++){
+  for(const name of chosen)for(let i=1;i<=(name==='NARRATOR'?2:4);i++){
    const a=new window.Audio();a.preload='auto';a.src=ROOT+name.toLowerCase().replaceAll(' ','-')+'-'+i+'.mp3';a.load();clips.set(name+':'+i,a);
   }
  }

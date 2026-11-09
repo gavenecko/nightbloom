@@ -317,7 +317,7 @@ function adjustAudioOption(dir){
 function resetProgressSafe(){
  if(performance.now()<resetConfirmUntil){
    try{localStorage.setItem('nightbloom_progress_backup',JSON.stringify(PROGRESS))}catch(e){}
-   PROGRESS={version:1,storyClears:{},storyReplays:{},arcadeBest:{}};saveProgress();resetConfirmUntil=0;
+   PROGRESS={version:1,storyClears:{},storyReplays:{},secretWins:{},arcadeBest:{}};saveProgress();resetConfirmUntil=0;
    announcement='PROGRESS RESET · BACKUP SAVED';announceT=55;tone(220,.08,'triangle',.08);return true;
  }
  resetConfirmUntil=performance.now()+4000;announcement='CONFIRM RESET';announceT=45;return false;
@@ -326,7 +326,7 @@ function hasProgressBackup(){try{return !!localStorage.getItem('nightbloom_progr
 function restoreProgressBackup(){
  try{
    let raw=localStorage.getItem('nightbloom_progress_backup');if(!raw)return false;
-   let p=JSON.parse(raw);PROGRESS={version:1,storyClears:p.storyClears||{},storyReplays:p.storyReplays||{},arcadeBest:p.arcadeBest||{}};
+   let p=JSON.parse(raw);PROGRESS={version:1,storyClears:p.storyClears||{},storyReplays:p.storyReplays||{},secretWins:p.secretWins||{},arcadeBest:p.arcadeBest||{}};
    repairProgress();saveProgress();announcement='PROGRESS BACKUP RESTORED';announceT=55;return true;
  }catch(e){return false}
 }
@@ -376,9 +376,10 @@ function matchFormatLabel(){let n=winsNeeded();return 'FT'+n+' · '+(timerInfini
 
 const MAIN_MENU=['STORY MODE','ARCADE MODE','VERSUS CPU','LOCAL VERSUS','TRAINING','GALLERY','ATLAS INSPECTOR','SYSTEM CHECK','CREDITS','OPTIONS'];
 const ROSTER=['VAMPIRA','NEKOMATA','BANSHEE','MEDUSA','JIANGSHI','YUREI','DULLAHAN','WEREWOLF','MUMMY','WITCH'];
-const CORE_ROSTER=ROSTER.slice();ROSTER.push('ARACHNE','LIVING DOLL');
-const CHARACTER_SLOTS=ROSTER.map((_,i)=>[10+(i%6)*157,66+Math.floor(i/6)*79]);
-const GALLERY_SLOTS=ROSTER.map((_,i)=>[10+(i%6)*157,78+Math.floor(i/6)*116]);
+const CORE_ROSTER=ROSTER.slice();ROSTER.push(...Object.keys(SECRET_CHALLENGES));
+const ROSTER_COLUMNS=7,ROSTER_CARD_WIDTH=129;
+const CHARACTER_SLOTS=ROSTER.map((_,i)=>[10+(i%ROSTER_COLUMNS)*135,66+Math.floor(i/ROSTER_COLUMNS)*79]);
+const GALLERY_SLOTS=ROSTER.map((_,i)=>[10+(i%ROSTER_COLUMNS)*135,78+Math.floor(i/ROSTER_COLUMNS)*116]);
 const STAGES=['CRIMSON CATHEDRAL','MOONLIT SHRINE','FORSAKEN HARBOR','CURSED LIBRARY','BONEFIELD','THE NEXT DAWN'];
 const CHAR_INFO={
  VAMPIRA:{color:'#d7c5ef',accent:'#e42654',team:'SCARLET COVEN',quote:'“Beauty never dies. It just gets hungrier.”',effect:'blood'},
@@ -435,15 +436,16 @@ const PRE_FIGHT_LINES={
  MUMMY:'Stand still, {opponent}. The wrappings work better that way.',
  WITCH:'Careful, {opponent}. You are standing inside the spell already.'
 };
-let PROGRESS={version:1,storyClears:{},storyReplays:{},arcadeBest:{}};
+let PROGRESS={version:1,storyClears:{},storyReplays:{},secretWins:{},arcadeBest:{}};
 try{
  let p=JSON.parse(localStorage.getItem('nightbloom_progress')||'null');
- if(p)PROGRESS={version:1,storyClears:p.storyClears||{},storyReplays:p.storyReplays||{},arcadeBest:p.arcadeBest||{}}
+ if(p)PROGRESS={version:1,storyClears:p.storyClears||{},storyReplays:p.storyReplays||{},secretWins:p.secretWins||{},arcadeBest:p.arcadeBest||{}}
 }catch(e){}
 function repairProgress(){
  let known=new Set(ROSTER);
  for(let k of Object.keys(PROGRESS.storyClears||{}))if(!known.has(k))delete PROGRESS.storyClears[k];
  PROGRESS.storyReplays=Object.fromEntries(Object.entries(PROGRESS.storyReplays||{}).filter(([name,replayed])=>known.has(name)&&PROGRESS.storyClears[name]===true&&replayed===true));
+ PROGRESS.secretWins=Object.fromEntries(Object.entries(PROGRESS.secretWins||{}).filter(([name,won])=>Object.hasOwn(SECRET_CHALLENGES,name)&&won===true));
  for(let k of Object.keys(PROGRESS.arcadeBest||{})){
    let fighter=k.split('_')[0],v=Number(PROGRESS.arcadeBest[k]);
    if(!known.has(fighter)||!Number.isFinite(v)||v<0)delete PROGRESS.arcadeBest[k];
@@ -469,14 +471,13 @@ const CLEAR_QUOTES={
  ARACHNE:'One last thread, and the tapestry is complete.',
  'LIVING DOLL':'I think I would like to see what comes next.'
 };
-const rewardArt={
- VAMPIRA:{ending:'assets/rewards/vampira-ending.webp',swimsuit:'assets/rewards/vampira-bikini.webp'},
- NEKOMATA:{swimsuit:'assets/rewards/nekomata-bikini.webp'},
- MUMMY:{swimsuit:'assets/rewards/mummy-bikini.webp'}
-};
+const rewardArt=Object.fromEntries(ROSTER.map(name=>{
+ const slug=name.toLowerCase().replaceAll(' ','-');
+ return [name,{ending:'assets/rewards/'+slug+'-ending.webp',swimsuit:'assets/rewards/'+slug+'-bikini.webp'}];
+}));
 const rewardImages=new Map();
-function groupRewardRoutesRemaining(){
- return Object.keys(STORY_ROUTES).filter(name=>PROGRESS.storyClears[name]!==true).length;
+function groupRewardBikinisRemaining(){
+ return ROSTER.filter(name=>!galleryRewardAvailable(name,'swimsuit')).length;
 }
 function storyArtwork(name,reward){
  const url=reward==='group'?'assets/rewards/beach-party.webp':rewardArt[name]?.[reward];
@@ -489,20 +490,23 @@ function galleryRewardAvailable(name,reward){
   PROGRESS.storyReplays[name]===true&&!!rewardArt[name]?.swimsuit;
 }
 function isFighterUnlocked(name){
- if(name==='ARACHNE')return CORE_ROSTER.some(n=>PROGRESS.storyClears[n]===true)||PROGRESS.storyClears.ARACHNE===true;
- if(name==='LIVING DOLL')return PROGRESS.storyClears.ARACHNE===true;
- return CORE_ROSTER.includes(name);
+ return CORE_ROSTER.includes(name)||PROGRESS.secretWins?.[name]===true;
 }
-function unlockRequirement(name){return name==='LIVING DOLL'?'Complete Story Mode with Arachne':'Complete Story Mode with any core fighter';}
+function unlockRequirement(name){
+ const route=name==='NARRATOR'?'Living Doll':name==='LIVING DOLL'?'Arachne':'any starting fighter';
+ return 'Defeat the challenger after clearing Story with '+route;
+}
+function storyChallenger(name){
+ const challenger=CORE_ROSTER.includes(name)?'ARACHNE':name==='ARACHNE'?'LIVING DOLL':name==='LIVING DOLL'?'NARRATOR':null;
+ return challenger&&!isFighterUnlocked(challenger)?SECRET_CHALLENGES[challenger]:null;
+}
 function unlockStoryClear(name){
  if(!ROSTER.includes(name)||!isFighterUnlocked(name))return;
- const before=ROSTER.filter(isFighterUnlocked);
- const routesRemaining=groupRewardRoutesRemaining();
+ const remaining=groupRewardBikinisRemaining();
  storyReward=PROGRESS.storyClears[name]?(PROGRESS.storyReplays[name]?'':'swimsuit'):'ending';
  if(storyReward==='swimsuit')PROGRESS.storyReplays[name]=true;
  PROGRESS.storyClears[name]=true;saveProgress();
- groupRewardJustUnlocked=routesRemaining>0&&groupRewardRoutesRemaining()===0;
- newlyUnlocked=ROSTER.filter(n=>isFighterUnlocked(n)&&!before.includes(n));refreshSecretInspector();
+ groupRewardJustUnlocked=remaining>0&&groupRewardBikinisRemaining()===0;
 }
 function refreshSecretInspector(){
  INSPECTOR_FIGHTERS.splice(0,INSPECTOR_FIGHTERS.length,...ROSTER);
@@ -670,9 +674,13 @@ function startRouteFight(){
 function advanceRoute(){
  if(!matchOver||routeHandled)return;
  routeHandled=true;
- let playerWon=p1Wins>p2Wins;
+ const node=ladder[ladderIndex],playerWon=p1Wins>p2Wins;
  if(!playerWon){gameState='continueScreen';sweep(180,62,.35,'sawtooth',.13);return}
- let node=ladder[ladderIndex];
+ if(gameMode==='story'&&node?.secret){
+   PROGRESS.secretWins[node.opponent]=true;saveProgress();
+   newlyUnlocked=[node.opponent];storyReward='';ladderIndex++;
+   gameState='routeComplete';return;
+ }
  if(gameMode==='arcade'){
    lastBonuses=calcMatchBonuses();lastMatchScore=lastBonuses.total;routeScore+=lastMatchScore;
    tone(440,.07,'triangle',.09);tone(660,.09,'triangle',.08,.06);
@@ -680,7 +688,11 @@ function advanceRoute(){
  if(gameMode==='story')storyAfterText=node?.after||'';
  ladderIndex++;
  if(gameMode==='story'){
-   if(ladderIndex>=ladder.length){storyEnding=true;unlockStoryClear(playerChoice)}
+   if(ladderIndex>=ladder.length){
+     storyEnding=true;unlockStoryClear(playerChoice);
+     const challenger=storyChallenger(playerChoice);
+     if(challenger)ladder.push({...challenger,secret:true});
+   }
    gameState='storyScene';
  }else{
    if(ladderIndex>=ladder.length){saveArcadeBest(playerChoice,routeScore);gameState='routeComplete'}
@@ -894,6 +906,7 @@ let fxInstances=[];
 function portraitFor(name){if(SECRET_ART[name])return SECRET_ART[name].portrait;return name==='VAMPIRA'?portraitV:name==='NEKOMATA'?portraitN:name==='BANSHEE'?portraitB:name==='MEDUSA'?portraitM:name==='JIANGSHI'?portraitJ:name==='YUREI'?portraitY:name==='DULLAHAN'?portraitD:name==='WEREWOLF'?portraitW:name==='MUMMY'?portraitMu:portraitWi}
 function spriteFor(name){if(SECRET_ART[name])return SECRET_ART[name].body;return name==='VAMPIRA'?spriteV:name==='NEKOMATA'?spriteN:name==='BANSHEE'?spriteB:name==='MEDUSA'?spriteM:name==='JIANGSHI'?spriteJ:name==='YUREI'?spriteY:name==='DULLAHAN'?spriteD:name==='WEREWOLF'?spriteW:name==='MUMMY'?spriteMu:spriteWi}
 function specialFX(name,type){
+ if(name==='NARRATOR')return type==='specialA'?'pageCast':'bookmarkWard';
  if(name==='ARACHNE')return type==='specialA'?'silkLash':'widowWeb';
  if(name==='LIVING DOLL')return type==='specialA'?'porcelainStrike':'needleThread';
  if(name==='VAMPIRA')return type==='specialA'?'bloodClaw':'crimsonShot';
@@ -1408,6 +1421,7 @@ function doAttack(f,type){
    if(opp&&Math.abs(opp.x-f.x)<96)opp.throwTech=13;
  }
  if(f.name==='LIVING DOLL'&&type==='specialA')f.armor=20;
+ if(f.name==='NARRATOR'&&type==='specialB')f.armor=18;
  if(f.name==='JIANGSHI'&&type==='specialA')f.armor=24;
  if(f.name==='YUREI'&&type==='specialA'){f.invuln=Math.max(f.invuln,6);f.vx+=(f.flip?-1:1)*2.35;}
  if(f.name==='DULLAHAN'&&type==='specialA'){f.vx+=(f.flip?-1:1)*4.5;f.invuln=Math.max(f.invuln,3);}
@@ -1896,7 +1910,10 @@ function drawF(f,pose){
 
  x.restore();
 
- if(remade && ['walk','dash','jump','fall','light','heavy','specialA','specialB','super','throw'].includes(state)){
+ if(f.name==='NARRATOR'&&state==='super'&&fr>=1&&narratorPageBurst.complete&&narratorPageBurst.naturalWidth){
+   x.save();x.translate(f.x,f.y-83);if(f.flip)x.scale(-1,1);
+   x.globalAlpha=[0,.44,.95,.55][fr];drawImageContained(narratorPageBurst,22,-45,200,90);x.restore();
+ }else if(remade && ['walk','dash','jump','fall','light','heavy','specialA','specialB','super','throw'].includes(state)){
    drawFighterFxLayer(f.name,state,fr,Math.round(f.x),Math.round(f.y),Math.round(128*tune.scale),Math.round(160*tune.scale),f.flip,pose?.action==='specialA');
  }
 
@@ -2224,9 +2241,9 @@ function menuCard(px,py,w,h,name,selected,locked=false){
  x.fillStyle=accent;x.globalAlpha=selected?1:.55;x.fillRect(px,py,4,h);x.globalAlpha=1;
  x.save();x.beginPath();x.rect(px+8,py+7,51,52);x.clip();if(!locked&&img.complete&&img.naturalWidth)x.drawImage(img,px+8,py+7,51,52);x.restore();
  x.strokeStyle=rgba(accent,.8);x.strokeRect(px+8.5,py+7.5,50,51);
- x.textAlign='left';x.fillStyle=locked?'#84798d':selected?'#fff':'#ddd3e3';x.font='bold 12px Georgia';x.fillText(name,px+67,py+21);
- x.font='7px Consolas';x.fillStyle=selected?accent:'#a99caf';x.fillText(ARCHETYPE_LABELS[name],px+67,py+34);
- x.fillStyle='#93879d';x.fillText(info.team,px+67,py+47);
+ x.textAlign='left';x.fillStyle=locked?'#84798d':selected?'#fff':'#ddd3e3';x.font='bold 12px Georgia';x.fillText(name,px+67,py+21,w-73);
+ x.font='7px Consolas';x.fillStyle=selected?accent:'#a99caf';x.fillText(ARCHETYPE_LABELS[name],px+67,py+34,w-73);
+ x.fillStyle='#93879d';x.fillText(info.team,px+67,py+47,w-73);
  if(selected){x.fillStyle=accent;x.globalAlpha=.65;x.fillRect(px+67,py+54,w-78,2);x.globalAlpha=1}
  if(locked){x.fillStyle='#05040bbc';x.fillRect(px,py,w,h);x.fillStyle='#ddd';x.textAlign='center';x.font='bold 9px Consolas';x.fillText('SECRET · LOCKED',px+w/2,py+h/2)}
  x.restore();
@@ -2267,9 +2284,9 @@ function runReleaseDiagnostics(){
    if(!ok)routeOK=false;
    if(!ok)routeDetail.push(name+':'+r.length+'/'+unique.size);
  }
- addDiagnostic('Core roster',ROSTER.length===12?'PASS':'FAIL',ROSTER.length+' fighters');
+ addDiagnostic('Core roster',ROSTER.length===CORE_ROSTER.length+Object.keys(SECRET_CHALLENGES).length?'PASS':'FAIL',ROSTER.length+' fighters');
  addDiagnostic('Stage roster',STAGES.length===6?'PASS':'FAIL',STAGES.length+' stages');
- addDiagnostic('Story route integrity',routeOK?'PASS':'FAIL',routeOK?'10 core routes + 2 secret routes complete':routeDetail.join(', '));
+ addDiagnostic('Story route integrity',routeOK?'PASS':'FAIL',routeOK?ROSTER.length+' routes complete':routeDetail.join(', '));
  let cfgOK=ROSTER.every(n=>CHAR_INFO[n]&&MOVESETS[n]&&MOVE_NAMES[n]&&AI_PROFILES[n]);
  addDiagnostic('Fighter config coverage',cfgOK?'PASS':'FAIL',cfgOK?'metadata / moves / AI complete':'missing fighter config');
  let artReady=ROSTER.every(n=>{let a=portraitFor(n),b=spriteFor(n);return a&&b&&a.complete&&b.complete&&a.naturalWidth>0&&b.naturalWidth>0});
@@ -2640,7 +2657,7 @@ function drawCharacterSelect(){
  let subtitle=(gameMode==='story'?'CHOOSE YOUR STORY QUEEN':gameMode==='arcade'?'CHOOSE YOUR ARCADE QUEEN':gameMode==='training'?(charSelectPhase==='p1'?'CHOOSE TRAINING FIGHTER':'CHOOSE DUMMY'):gameMode==='local'?(charSelectPhase==='p1'?'CHOOSE PLAYER 1':'CHOOSE PLAYER 2'):charSelectPhase==='p1'?'CHOOSE PLAYER FIGHTER':'CHOOSE CPU OPPONENT');
  drawSectionLabel(subtitle,53,accent);
  const slots=CHARACTER_SLOTS;
- ROSTER.forEach((name,i)=>{if(!isFighterUnlocked(name))return;let [px,py]=slots[i];menuCard(px,py,148,66,name,menuIndex===i,false);});
+ ROSTER.forEach((name,i)=>{if(!isFighterUnlocked(name))return;let [px,py]=slots[i];menuCard(px,py,ROSTER_CARD_WIDTH,66,name,menuIndex===i,false);});
 
  // lower dossier panel
  roundRect(62,226,836,245,10,'rgba(7,5,13,.91)',rgba(accent,.72),2);
@@ -2666,7 +2683,7 @@ function drawCharacterSelect(){
  x.fillStyle=accent;x.font='bold 9px Consolas';x.fillText('FIGHTER IDENTITY',654,267);
  let traitLines=wrapLines(MOVESETS[selected].trait,202,'11px Consolas');x.font='11px Consolas';x.fillStyle='#d8ccdf';traitLines.slice(0,3).forEach((ln,i)=>x.fillText(ln,654,291+i*17));
  x.fillStyle='#8f8198';x.font='9px Consolas';
- let mechanic=selected==='ARACHNE'?'WEB: projectile briefly slows movement':selected==='LIVING DOLL'?'PORCELAIN: special A absorbs one strike':selected==='MUMMY'?'CURSE STACKS: pressure rises over time':selected==='WITCH'?'MOON SIGILS: delayed floor control':selected==='WEREWOLF'?'FERAL RAGE: stronger when wounded':selected==='MEDUSA'?'PETRIFY: temporary movement suppression':selected==='JIANGSHI'?'ARMOR: absorbs one incoming strike':selected==='DULLAHAN'?'HEAD TOSS: detachable projectile state':selected==='YUREI'?'PHASE: invulnerable movement windows':selected==='NEKOMATA'?'TWO SOULS: additional aerial jump':selected==='BANSHEE'?'FLOAT: prolonged aerial control':'BLOOD DRAIN: special attacks restore health';
+ let mechanic=selected==='NARRATOR'?'BOOKMARK WARD: special B grants brief armor':selected==='ARACHNE'?'WEB: projectile briefly slows movement':selected==='LIVING DOLL'?'PORCELAIN: special A absorbs one strike':selected==='MUMMY'?'CURSE STACKS: pressure rises over time':selected==='WITCH'?'MOON SIGILS: delayed floor control':selected==='WEREWOLF'?'FERAL RAGE: stronger when wounded':selected==='MEDUSA'?'PETRIFY: temporary movement suppression':selected==='JIANGSHI'?'ARMOR: absorbs one incoming strike':selected==='DULLAHAN'?'HEAD TOSS: detachable projectile state':selected==='YUREI'?'PHASE: invulnerable movement windows':selected==='NEKOMATA'?'TWO SOULS: additional aerial jump':selected==='BANSHEE'?'FLOAT: prolonged aerial control':'BLOOD DRAIN: special attacks restore health';
  let mechLines=wrapLines(mechanic,202,'9px Consolas');mechLines.forEach((ln,i)=>x.fillText(ln,654,350+i*15));
  x.fillStyle='#c1b4c9';x.fillText('QCF+J / L  '+m.a,314,445);x.fillText('QCF+K      '+m.b,500,445);
  x.textAlign='center';x.fillStyle='#a89ab1';x.font='9px Consolas';
@@ -2698,7 +2715,8 @@ function drawCharacterSelect(){
  let opp=storyAfterText?(lastMatchResult?.p2Name||enemyChoice):(node?.opponent||enemyChoice);
  let pImg=portraitFor(playerChoice),oImg=portraitFor(opp);
  x.textAlign='center';x.font='bold 29px Georgia';x.fillStyle='#fff';
- x.fillText(storyEnding?'STORY ENDING':'STORY — CHAPTER '+Math.min(ladderIndex+1,ladder.length)+' / '+ladder.length,W/2,40);
+ const chapters=ladder.length-(ladder.at(-1)?.secret?1:0);
+ x.fillText(storyEnding?'STORY ENDING':node?.secret?'SECRET CHALLENGER':'STORY — CHAPTER '+Math.min(ladderIndex+1,chapters)+' / '+chapters,W/2,40);
 
  if(storyAfterText){
    x.save();x.globalAlpha=.48;drawPortraitFrame(oImg,46,126,235,235,CHAR_INFO[opp].accent);x.restore();
@@ -2775,11 +2793,12 @@ function drawContinueScreen(){
  x.textAlign='center';x.font='bold 46px Georgia';x.fillStyle='#fff';x.fillText('CONTINUE?',620,150);
  x.font='bold 65px Consolas';x.fillStyle=continueCredits>0?'#ff78ae':'#7b6d80';x.fillText(String(continueCredits),620,227);
  x.font='13px Consolas';x.fillStyle='#cfbfd8';
- x.fillText(continueCredits>0?'Continues remaining':'The Red Moon closes over this route.',620,260);
+ const bonus=gameMode==='story'&&ladder[ladderIndex]?.secret;
+ x.fillText(bonus?'Story cleared · challenger still locked':continueCredits>0?'Continues remaining':'The Red Moon closes over this route.',620,260);
  if(gameMode==='arcade'){x.fillStyle='#fff';x.fillText('SCORE  '+routeScore.toLocaleString(),620,292)}
  x.font='bold 15px Consolas';x.fillStyle=continueCredits>0?'#72ffd7':'#ff859f';
- x.fillText(continueCredits>0?'ENTER — CONTINUE':'ENTER — GAME OVER',620,346);
- x.fillStyle='#b9aabd';x.fillText('BACKSPACE — ABANDON ROUTE',620,378);
+ x.fillText(continueCredits>0?(bonus?'ENTER — RETRY CHALLENGER':'ENTER — CONTINUE'):(bonus?'ENTER — RETURN TO TITLE':'ENTER — GAME OVER'),620,346);
+ x.fillStyle='#b9aabd';x.fillText(bonus?'BACKSPACE — RETURN TO TITLE':'BACKSPACE — ABANDON ROUTE',620,378);
 }
 const GALLERY_ART_BUTTONS=[['ending','ENDING ART',566],['swimsuit','BIKINI ART',711]];
 const GALLERY_GROUP_BUTTON=[116,441,296,25];
@@ -2789,7 +2808,7 @@ function drawGallery(){
  if(galleryArtwork){
    const img=storyArtwork(selected,galleryArtwork)||portraitFor(selected);
    drawImageContained(img,34,56,892,421);
-   if(galleryArtwork==='group')drawSectionLabel('BEACH PARTY · ALL STORY ROUTES CLEARED',34,'#ffd68f');
+   if(galleryArtwork==='group')drawSectionLabel('BEACH PARTY · ALL BIKINI ART EARNED',34,'#ffd68f');
    else drawSectionLabel(selected+' · '+(galleryArtwork==='ending'?'ENDING ART':'BIKINI ART'),34,CHAR_INFO[selected].accent);
    x.textAlign='center';x.font='bold 12px Consolas';x.fillStyle='#f0e4f0';
    x.fillText('ENTER / BACKSPACE — RETURN TO GALLERY',W/2,508);return;
@@ -2799,13 +2818,13 @@ function drawGallery(){
  const slots=GALLERY_SLOTS;
  ROSTER.forEach((name,i)=>{
    let [px,py]=slots[i],sel=galleryIndex===i,unlocked=!!PROGRESS.storyClears[name],img=portraitFor(name);
-   x.fillStyle=sel?'#21142ceb':'#0c0a13e8';x.fillRect(px,py,148,101);x.strokeStyle=sel?'#72ffd7':'#4b3655';x.lineWidth=sel?2:1;x.strokeRect(px,py,148,101);
-   if(unlocked){x.save();x.beginPath();x.rect(px+7,py+7,68,68);x.clip();x.drawImage(img,px+7,py+7,68,68);x.restore()}
-   else{x.fillStyle='#17131d';x.fillRect(px+7,py+7,68,68);x.font='bold 28px Georgia';x.fillStyle='#54485c';x.textAlign='center';x.fillText('?',px+41,py+51)}
-   x.textAlign='left';x.font='bold 11px Georgia';x.fillStyle=unlocked?CHAR_INFO[name].accent:'#75677d';x.fillText(unlocked?name:'LOCKED',px+83,py+24);
+   x.fillStyle=sel?'#21142ceb':'#0c0a13e8';x.fillRect(px,py,ROSTER_CARD_WIDTH,101);x.strokeStyle=sel?'#72ffd7':'#4b3655';x.lineWidth=sel?2:1;x.strokeRect(px,py,ROSTER_CARD_WIDTH,101);
+   if(unlocked){x.save();x.beginPath();x.rect(px+7,py+7,50,50);x.clip();x.drawImage(img,px+7,py+7,50,50);x.restore()}
+   else{x.fillStyle='#17131d';x.fillRect(px+7,py+7,50,50);x.font='bold 24px Georgia';x.fillStyle='#54485c';x.textAlign='center';x.fillText('?',px+32,py+41)}
+   x.textAlign='left';x.font='bold 10px Georgia';x.fillStyle=unlocked?CHAR_INFO[name].accent:'#75677d';x.fillText(unlocked?name:'LOCKED',px+63,py+24,60);
    x.font='8px Consolas';x.fillStyle='#ae9fb7';
-   if(unlocked){x.fillText(CHAR_INFO[name].team,px+83,py+39);let best=Math.max(...DIFFICULTY_ORDER.map(d=>PROGRESS.arcadeBest[name+'_'+d]||0));x.fillText('BEST '+best.toLocaleString(),px+83,py+55);x.fillText('STORY CLEARED',px+83,py+70)}
-   else{x.fillText('Clear Story',px+83,py+46)}
+   if(unlocked){x.fillText(CHAR_INFO[name].team,px+63,py+39,60);let best=Math.max(...DIFFICULTY_ORDER.map(d=>PROGRESS.arcadeBest[name+'_'+d]||0));x.fillText('BEST '+best.toLocaleString(),px+63,py+55,60);x.fillText(galleryRewardAvailable(name,'swimsuit')?'BIKINI EARNED':'STORY CLEARED',px+7,py+79)}
+   else{x.fillText('Clear Story',px+63,py+46)}
  });
  let name=ROSTER[galleryIndex],unlocked=!!PROGRESS.storyClears[name];
  x.fillStyle='#090711e8';x.fillRect(95,318,770,157);x.strokeStyle=unlocked?CHAR_INFO[name].accent:'#4c4052';x.strokeRect(95,318,770,157);
@@ -2819,10 +2838,10 @@ function drawGallery(){
    x.textAlign='center';x.font='bold 10px Consolas';x.fillStyle=available?'#f7e8f2':'#8e7d95';
    x.fillText(available?label:pending?'ART PENDING':label+' · LOCKED',left+66,457);
  }
- const remaining=groupRewardRoutesRemaining();
+ const remaining=groupRewardBikinisRemaining();
  roundRect(...GALLERY_GROUP_BUTTON,5,'#170e20',remaining?'#514258':'#ffd68f',1);
  x.textAlign='center';x.font='bold 10px Consolas';x.fillStyle=remaining?'#8e7d95':'#ffe0a6';
- x.fillText(remaining?'BEACH PARTY · '+remaining+' STORY CLEARS LEFT':'3 · VIEW BEACH PARTY',264,457);
+ x.fillText(remaining?'BEACH PARTY · '+remaining+' BIKINI REWARDS LEFT':'3 · VIEW BEACH PARTY',264,457);
  x.fillStyle='#bfaec8';x.fillText('ARROWS BROWSE · ENTER ENDING ART · 2 BIKINI ART · 3 BEACH PARTY · ESC TITLE',W/2,507);
 }
 function matchRuleValue(i){
@@ -2928,7 +2947,18 @@ function drawStoryCongratulations(){
  if(storyReward==='swimsuit')x.fillText(reward==='swimsuit'?'BIKINI ART UNLOCKED IN GALLERY':'REPEAT CLEAR RECORDED IN GALLERY',42,446);
  if(newlyUnlocked.length)x.fillText('FIGHTER UNLOCKED · '+newlyUnlocked.join(', '),42,466);
  roundRect(40,484,315,31,5,'#150f23d9',accent,1);
- x.textAlign='center';x.font='bold 12px Consolas';x.fillStyle='#fff';x.fillText('ENTER — RETURN TO TITLE',197,504);
+ x.textAlign='center';x.font='bold 12px Consolas';x.fillStyle='#fff';
+ x.fillText(groupRewardJustUnlocked?'ENTER — VIEW BEACH PARTY':ladder[ladderIndex]?.secret?'ENTER — FACE '+ladder[ladderIndex].opponent:'ENTER — RETURN TO TITLE',197,504);
+}
+function continueStoryClear(){
+ gameState=ladder[ladderIndex]?.secret?'storyScene':'title';
+}
+function drawBeachCelebration(){
+ x.fillStyle='#080510';x.fillRect(0,0,W,H);
+ drawImageContained(storyArtwork(null,'group'),0,0,W,H-48);
+ drawSectionLabel('ALL BIKINI ART EARNED · BEACH PARTY UNLOCKED',H-30,'#ffd68f');
+ x.textAlign='center';x.font='bold 11px Consolas';x.fillStyle='#fff';
+ x.fillText('ENTER / TAP — CONTINUE',W/2,H-10);
 }
 function drawRouteComplete(){
  if(gameMode==='story'){drawStoryCongratulations();return;}
@@ -2957,7 +2987,7 @@ function handleFrontend(){
  if(gameState==='gallery'&&galleryArtwork){
    if(pressed.Enter||pressed.Space||pressed.Escape||pressed.Backspace)galleryArtwork='';
    else if(pressed.Digit2&&galleryRewardAvailable(ROSTER[galleryIndex],'swimsuit'))galleryArtwork='swimsuit';
-   else if(pressed.Digit3&&groupRewardRoutesRemaining()===0)galleryArtwork='group';
+   else if(pressed.Digit3&&groupRewardBikinisRemaining()===0)galleryArtwork='group';
    return;
  }
  if(pressed.Escape){paused=false;focusPaused=false;musicDuck=1;applyAudioLevels();gameState='title';storyLost=false;storyEnding=false;return}
@@ -3008,12 +3038,12 @@ function handleFrontend(){
  if(gameState==='gallery'){
    if(pressed.ArrowLeft||pressed.KeyA)galleryIndex=cycle(ROSTER,-1,galleryIndex);
    if(pressed.ArrowRight||pressed.KeyD)galleryIndex=cycle(ROSTER,1,galleryIndex);
-   if(pressed.ArrowUp||pressed.KeyW)galleryIndex=cycle(ROSTER,-6,galleryIndex);
-   if(pressed.ArrowDown||pressed.KeyS)galleryIndex=cycle(ROSTER,6,galleryIndex);
+   if(pressed.ArrowUp||pressed.KeyW)galleryIndex=cycle(ROSTER,-ROSTER_COLUMNS,galleryIndex);
+   if(pressed.ArrowDown||pressed.KeyS)galleryIndex=cycle(ROSTER,ROSTER_COLUMNS,galleryIndex);
    const name=ROSTER[galleryIndex];
    if((pressed.Enter||pressed.Space)&&galleryRewardAvailable(name,'ending'))galleryArtwork='ending';
    if(pressed.Digit2&&galleryRewardAvailable(name,'swimsuit'))galleryArtwork='swimsuit';
-   if(pressed.Digit3&&groupRewardRoutesRemaining()===0)galleryArtwork='group';
+   if(pressed.Digit3&&groupRewardBikinisRemaining()===0)galleryArtwork='group';
    if(pressed.Backspace){gameState='title';return}
    return;
  }
@@ -3107,7 +3137,13 @@ function handleFrontend(){
      else startRouteFight();
    }return;
  }
- if(gameState==='routeComplete'){if(pressed.Enter||pressed.Space)gameState='title'}
+ if(gameState==='routeComplete'&&(pressed.Enter||pressed.Space)){
+   if(gameMode==='story'&&groupRewardJustUnlocked){groupRewardJustUnlocked=false;gameState='beachCelebration'}
+   else if(gameMode==='story')continueStoryClear();
+   else gameState='title';
+   return;
+ }
+ if(gameState==='beachCelebration'&&(pressed.Enter||pressed.Space))continueStoryClear();
 }
 function drawClickableBackButton(){
  const backStates=['options','gallery','atlasInspector','difficultySelect','matchSetup','matchResult','diagnostics','credits','charSelect','stageSelect','continueScreen'];
@@ -3134,6 +3170,7 @@ function drawFrontend(){
  else if(gameState==='stageSelect')drawStageSelect();
  else if(gameState==='storyScene')drawStoryScene();
  else if(gameState==='routeComplete')drawRouteComplete();
+ else if(gameState==='beachCelebration')drawBeachCelebration();
  drawClickableBackButton();
 }
 
@@ -3177,7 +3214,7 @@ function pointerHoverTarget(px,py){
  }
  if(gameState==='charSelect'){
    const slots=CHARACTER_SLOTS;
-   for(let i=0;i<slots.length;i++){let [sx,sy]=slots[i];if(isFighterUnlocked(ROSTER[i])&&inRect(px,py,sx,sy,148,66)){menuIndex=i;return true}}
+   for(let i=0;i<slots.length;i++){let [sx,sy]=slots[i];if(isFighterUnlocked(ROSTER[i])&&inRect(px,py,sx,sy,ROSTER_CARD_WIDTH,66)){menuIndex=i;return true}}
  }
  if(gameState==='stageSelect'){
    const slots=[[24,76],[338,76],[652,76],[24,263],[338,263],[652,263]];
@@ -3191,10 +3228,10 @@ function pointerHoverTarget(px,py){
  }
  if(gameState==='gallery'){
    if(galleryArtwork)return inRect(px,py,230,485,500,36);
-   if(groupRewardRoutesRemaining()===0&&inRect(px,py,...GALLERY_GROUP_BUTTON))return true;
+   if(groupRewardBikinisRemaining()===0&&inRect(px,py,...GALLERY_GROUP_BUTTON))return true;
    if(GALLERY_ART_BUTTONS.some(([reward,,left])=>galleryRewardAvailable(ROSTER[galleryIndex],reward)&&inRect(px,py,left,441,133,25)))return true;
    const slots=GALLERY_SLOTS;
-   if(slots.some(([sx,sy])=>inRect(px,py,sx,sy,148,101)))return true;
+   if(slots.some(([sx,sy])=>inRect(px,py,sx,sy,ROSTER_CARD_WIDTH,101)))return true;
  }
  if(gameState==='atlasInspector'){
    for(let i=0;i<INSPECTOR_FIGHTERS.length;i++)if(inRect(px,py,30,INSPECTOR_FIGHTER_TOP+i*INSPECTOR_FIGHTER_STEP,194,INSPECTOR_FIGHTER_H)){if(inspectorFighterIndex!==i){inspectorFighterIndex=i;atlasInspectorReset()}return true}
@@ -3209,6 +3246,7 @@ function pointerHoverTarget(px,py){
    for(let i=0;i<RESULT_OPTIONS.length;i++)if(inRect(px,py,330,398+i*29,300,23)){resultIndex=i;return true}
  }
  if(gameState==='fightStats'&&inRect(px,py,300,412,360,38))return true;
+ if(gameState==='beachCelebration')return true;
  if(gameState==='arcadeResult'&&inRect(px,py,280,452,400,55))return true;
  if(gameState==='continueScreen'&&(inRect(px,py,470,318,300,55)||inRect(px,py,470,362,300,40)))return true;
  if(gameState==='storyScene'&&inRect(px,py,245,365,475,125))return true;
@@ -3233,7 +3271,7 @@ function pointerActivate(px,py){
  }
  if(gameState==='charSelect'){
    const slots=CHARACTER_SLOTS;
-   for(let i=0;i<slots.length;i++){let [sx,sy]=slots[i];if(isFighterUnlocked(ROSTER[i])&&inRect(px,py,sx,sy,148,66)){menuIndex=i;pointerPress('Enter');return true}}
+   for(let i=0;i<slots.length;i++){let [sx,sy]=slots[i];if(isFighterUnlocked(ROSTER[i])&&inRect(px,py,sx,sy,ROSTER_CARD_WIDTH,66)){menuIndex=i;pointerPress('Enter');return true}}
  }
  if(gameState==='stageSelect'){
    const slots=[[24,76],[338,76],[652,76],[24,263],[338,263],[652,263]];
@@ -3260,12 +3298,12 @@ function pointerActivate(px,py){
  }
  if(gameState==='gallery'){
    if(galleryArtwork){if(inRect(px,py,230,485,500,36)){galleryArtwork='';return true}return false}
-   if(groupRewardRoutesRemaining()===0&&inRect(px,py,...GALLERY_GROUP_BUTTON)){galleryArtwork='group';return true}
+   if(groupRewardBikinisRemaining()===0&&inRect(px,py,...GALLERY_GROUP_BUTTON)){galleryArtwork='group';return true}
    for(const [reward,,left] of GALLERY_ART_BUTTONS){
       if(galleryRewardAvailable(ROSTER[galleryIndex],reward)&&inRect(px,py,left,441,133,25)){galleryArtwork=reward;return true}
    }
    const slots=GALLERY_SLOTS;
-   for(let i=0;i<slots.length;i++){let [sx,sy]=slots[i];if(inRect(px,py,sx,sy,148,101)){galleryIndex=i;return true}}
+   for(let i=0;i<slots.length;i++){let [sx,sy]=slots[i];if(inRect(px,py,sx,sy,ROSTER_CARD_WIDTH,101)){galleryIndex=i;return true}}
  }
  if(gameState==='atlasInspector'){
    for(let i=0;i<INSPECTOR_FIGHTERS.length;i++)if(inRect(px,py,30,INSPECTOR_FIGHTER_TOP+i*INSPECTOR_FIGHTER_STEP,194,INSPECTOR_FIGHTER_H)){if(inspectorFighterIndex!==i){inspectorFighterIndex=i;atlasInspectorReset()}return true}
@@ -3287,6 +3325,7 @@ function pointerActivate(px,py){
    for(let i=0;i<RESULT_OPTIONS.length;i++)if(inRect(px,py,330,398+i*29,300,23)){resultIndex=i;pointerPress('Enter');return true}
  }
  if(gameState==='fightStats'&&inRect(px,py,300,412,360,38)){pointerPress('Enter');return true}
+ if(gameState==='beachCelebration'){pointerPress('Enter');return true}
  if(gameState==='arcadeResult'&&inRect(px,py,280,452,400,55)){pointerPress('Enter');return true}
  if(gameState==='continueScreen'){
    if(inRect(px,py,470,318,300,55)){pointerPress('Enter');return true}

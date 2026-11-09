@@ -1,8 +1,10 @@
 # 0.64 — Secret fighters
 
-Complete any of the original ten Story routes to unlock **Arachne, the Silk Widow**. Complete Arachne’s Story route to unlock **the Living Doll**. Both become available in all fighter-selection modes once earned. As of0.65, locked selection cards are fully hidden and skipped by navigation. Atlas Inspector includes both secret fighters immediately for art review; inspection does not unlock them for play. Endings remain separate Gallery rewards for completing each character’s own route.
+Clear a Story course with any starting fighter to challenge **Arachne, the Silk Widow**. Clear Arachne’s course to challenge **Living Doll**, then clear Living Doll’s course to challenge **Narrator**. Win the bonus match to unlock that fighter. A loss leaves the course clear and its reward intact.
 
-Existing saved Story clears count automatically. Progress uses the existing `nightbloom_progress` browser save: no second unlock flag to lose or desynchronize. It is local to the browser and site origin; it does not sync across devices. Progress reset/restore also resets/restores the derived unlocks. Arcade clears, losses, and partial routes do not unlock fighters.
+Browser saves retain existing Story clears and repeat clears. Secret fighter access now requires a saved challenger win. Locked fighters remain hidden in fighter selection. The Atlas Inspector shows every fighter for art review. Progress reset and restore include challenger wins.
+
+The first course clear earns ending art and the second earns bikini art. Collect all thirteen bikini rewards to see the Beach Party celebration and unlock the picture in the Gallery.
 
 Arachne has ten chapters, each against a core fighter, culminating in freeing the porcelain prisoner beneath the library. Living Doll has ten chapters about choosing her own path. The original ten routes retain their nine encounters and endings.
 

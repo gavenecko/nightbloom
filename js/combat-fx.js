@@ -14,7 +14,8 @@
   MUMMY:{color:'#55e5c6',light:'#ffe6a3',a:'bandageLash',b:'scarabCurse',motif:'scarab'},
   WITCH:{color:'#cd88ff',light:'#ffe2ff',a:'moonSigil',b:'hexBolt',motif:'star'},
   ARACHNE:{color:'#d697ea',light:'#fff1ff',a:'silkLash',b:'widowWeb',motif:'web'},
-  'LIVING DOLL':{color:'#e7a2ad',light:'#fff4e8',a:'porcelainStrike',b:'needleThread',motif:'thread'}
+  'LIVING DOLL':{color:'#e7a2ad',light:'#fff4e8',a:'porcelainStrike',b:'needleThread',motif:'thread'},
+  NARRATOR:{color:'#eabf75',light:'#ffecc5',a:'pageCast',b:'bookmarkWard',motif:'seal'}
  };
  const byKind={};Object.entries(profiles).forEach(([name,p])=>{p.name=name;byKind[p.a]=p;byKind[p.b]=p;});
  function line(c,color,width,build,glow=false){
