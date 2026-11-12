@@ -476,6 +476,7 @@ const rewardArt=Object.fromEntries(ROSTER.map(name=>{
  return [name,{ending:'assets/rewards/'+slug+'-ending.webp',swimsuit:'assets/rewards/'+slug+'-bikini.webp'}];
 }));
 rewardArt.MEDUSA.swimsuit='assets/rewards/medusa-bonus-ending.webp';
+rewardArt.MUMMY.ending='assets/rewards/mummy-ending-corrected.webp';
 const rewardImages=new Map();
 function groupRewardBikinisRemaining(){
  return ROSTER.filter(name=>!galleryRewardAvailable(name,'swimsuit')).length;
