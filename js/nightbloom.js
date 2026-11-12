@@ -3513,6 +3513,7 @@ function updateContextHelp(){
  gameCommandButtons.forEach(button=>{if(button.dataset.layer!==undefined)button.setAttribute('aria-pressed',String(Number(button.dataset.layer)===inspectorLayerMode))});
 }
 function loop(now){
+ if(window.nightbloomDebugOpen){last=now;requestAnimationFrame(loop);return;}
  let rawMs=Math.max(.1,now-last),rawFrames=rawMs/16.667,dt=Math.min(2.1,rawFrames);last=now;
  let instantFPS=1000/rawMs;perfFPS=perfFPS*.94+instantFPS*.06;
  if(perfFPS<42)perfLowFrames++;else perfLowFrames=Math.max(0,perfLowFrames-2);
