@@ -1,7 +1,7 @@
 
 const c=document.getElementById('game'),x=c.getContext('2d'); x.imageSmoothingEnabled=false;
 const W=c.width,H=c.height, ground=430;
-const BUILD_INFO={version:'0.81',channel:'GOTHIC PRESENTATION',date:'2026-11-06',label:'GOTHIC PRESENTATION'};
+const BUILD_INFO={version:'0.81',channel:'GOTHIC PRESENTATION',date:'2026-11-15',label:'RELEASE AUDIT 1'};
 // World coordinates are independent from the fixed 960px viewport.
 let stageCameraX=0;
 function arenaWidth(){return STAGES.includes(selectedStage)?W*2:W}
@@ -314,18 +314,20 @@ function adjustAudioOption(dir){
  applyAudioLevels();saveAudio();saveSystem();
  if(optionsIndex===2&&!AUDIO.mute)tone(440,.06,'triangle',.12);
 }
+function progressStorageKey(){return window.nightbloomTestProfile?'nightbloom_test_progress':'nightbloom_progress'}
+function progressBackupKey(){return progressStorageKey()+'_backup'}
 function resetProgressSafe(){
  if(performance.now()<resetConfirmUntil){
-   try{localStorage.setItem('nightbloom_progress_backup',JSON.stringify(PROGRESS))}catch(e){}
+   try{localStorage.setItem(progressBackupKey(),JSON.stringify(PROGRESS))}catch(e){}
    PROGRESS={version:1,storyClears:{},storyReplays:{},secretWins:{},arcadeBest:{}};saveProgress();resetConfirmUntil=0;
    announcement='PROGRESS RESET · BACKUP SAVED';announceT=55;tone(220,.08,'triangle',.08);return true;
  }
  resetConfirmUntil=performance.now()+4000;announcement='CONFIRM RESET';announceT=45;return false;
 }
-function hasProgressBackup(){try{return !!localStorage.getItem('nightbloom_progress_backup')}catch(e){return false}}
+function hasProgressBackup(){try{return !!localStorage.getItem(progressBackupKey())}catch(e){return false}}
 function restoreProgressBackup(){
  try{
-   let raw=localStorage.getItem('nightbloom_progress_backup');if(!raw)return false;
+   let raw=localStorage.getItem(progressBackupKey());if(!raw)return false;
    let p=JSON.parse(raw);PROGRESS={version:1,storyClears:p.storyClears||{},storyReplays:p.storyReplays||{},secretWins:p.secretWins||{},arcadeBest:p.arcadeBest||{}};
    repairProgress();saveProgress();announcement='PROGRESS BACKUP RESTORED';announceT=55;return true;
  }catch(e){return false}
@@ -442,18 +444,17 @@ try{
  if(p)PROGRESS={version:1,storyClears:p.storyClears||{},storyReplays:p.storyReplays||{},secretWins:p.secretWins||{},arcadeBest:p.arcadeBest||{}}
 }catch(e){}
 function repairProgress(){
- let known=new Set(ROSTER);
- for(let k of Object.keys(PROGRESS.storyClears||{}))if(!known.has(k))delete PROGRESS.storyClears[k];
- PROGRESS.storyReplays=Object.fromEntries(Object.entries(PROGRESS.storyReplays||{}).filter(([name,replayed])=>known.has(name)&&PROGRESS.storyClears[name]===true&&replayed===true));
- PROGRESS.secretWins=Object.fromEntries(Object.entries(PROGRESS.secretWins||{}).filter(([name,won])=>Object.hasOwn(SECRET_CHALLENGES,name)&&won===true));
- for(let k of Object.keys(PROGRESS.arcadeBest||{})){
-   let fighter=k.split('_')[0],v=Number(PROGRESS.arcadeBest[k]);
-   if(!known.has(fighter)||!Number.isFinite(v)||v<0)delete PROGRESS.arcadeBest[k];
-   else PROGRESS.arcadeBest[k]=Math.floor(v);
- }
+ const record=v=>v&&typeof v==='object'&&!Array.isArray(v)?v:{};
+ PROGRESS=record(PROGRESS);
+ const flags=(value,allowed)=>Object.fromEntries(Object.entries(record(value)).filter(([name,flag])=>allowed.includes(name)&&flag===true));
+ PROGRESS.storyClears=flags(PROGRESS.storyClears,ROSTER);
+ PROGRESS.storyReplays=flags(PROGRESS.storyReplays,ROSTER.filter(name=>PROGRESS.storyClears[name]===true));
+ PROGRESS.secretWins=flags(PROGRESS.secretWins,Object.keys(SECRET_CHALLENGES));
+ PROGRESS.arcadeBest=Object.fromEntries(Object.entries(record(PROGRESS.arcadeBest)).filter(([key,value])=>ROSTER.some(name=>DIFFICULTY_ORDER.some(d=>key===name+'_'+d))&&typeof value==='number'&&Number.isFinite(value)&&value>=0).map(([key,value])=>[key,Math.floor(value)]));
  PROGRESS.version=1;
 }
-function saveProgress(){repairProgress();try{localStorage.setItem('nightbloom_progress',JSON.stringify(PROGRESS))}catch(e){}}
+function saveProgress(){repairProgress();try{localStorage.setItem(progressStorageKey(),JSON.stringify(PROGRESS));return true}catch(e){announcement='SAVE UNAVAILABLE - CHECK BROWSER STORAGE';announceT=120;return false}}
+
 repairProgress();
 let newlyUnlocked=[],storyReward='',galleryArtwork='',groupRewardJustUnlocked=false;
 const CLEAR_QUOTES={
@@ -2412,7 +2413,7 @@ function runReleaseDiagnostics(){
  addDiagnostic('Local input isolation',inputOK?'PASS':'FAIL',inputOK?'P1/P2 buffers isolated':'input mapping incomplete');
  let capsOK=particles.length<=PERF_CAPS.particles&&fxInstances.length<=PERF_CAPS.fx&&projectiles.length<=PERF_CAPS.projectiles&&witchSigils.length<=PERF_CAPS.sigils;
  addDiagnostic('Runtime effect caps',capsOK?'PASS':'FAIL','P '+particles.length+'/'+PERF_CAPS.particles+' · FX '+fxInstances.length+'/'+PERF_CAPS.fx+' · Q '+projectiles.length+'/'+PERF_CAPS.projectiles+' · S '+witchSigils.length+'/'+PERF_CAPS.sigils);
- let stateOK=['title','options','gallery','difficultySelect','arcadeResult','continueScreen','matchSetup','matchResult','charSelect','stageSelect','storyScene','routeComplete','fight','diagnostics','credits'].includes(gameState);
+ let stateOK=['title','options','gallery','difficultySelect','arcadeResult','continueScreen','matchSetup','matchResult','charSelect','stageSelect','storyScene','routeComplete','fight','diagnostics','credits','opening','relicBonus','beachCelebration','fightStats','atlasInspector'].includes(gameState);
  addDiagnostic('Frontend state',stateOK?'PASS':'FAIL',gameState);
  let perfStatus=perfLowFrames>120?'WARN':'PASS';
  addDiagnostic('Performance monitor',perfStatus,'~'+perfFPS.toFixed(0)+' FPS · low-frame count '+perfLowFrames);
@@ -2424,7 +2425,7 @@ function diagnosticSummary(){
  return {fail,warn,pass};
 }
 function diagnosticText(){
- let h='NIGHTBLOOM '+BUILD_INFO.version+' '+BUILD_INFO.channel+' SYSTEM CHECK\n';
+ let h='NIGHTBLOOM '+BUILD_INFO.version+' '+BUILD_INFO.label+' '+BUILD_INFO.date+' SYSTEM CHECK\n';
  return h+diagnosticResults.map(r=>'['+r.status+'] '+r.name+' — '+r.detail).join('\n');
 }
 function copyDiagnostics(){
