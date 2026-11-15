@@ -1164,7 +1164,7 @@ function animFrame(f){
 
 function fighter(name,px,flip,color,accent,ai=false){
  return {name,x:px,y:ground,vx:0,vy:0,w:54,h:110,flip,color,accent,ai,hp:1000,maxhp:1000,meter:0,state:'idle',t:0,hitstun:0,blockstun:0,attack:null,combo:0,comboT:0,comboDamage:0,peakCombo:0,air:false,
- dashT:0,dashCD:0,lastTapL:-999,lastTapR:-999,throwCD:0,knockdown:0,invuln:0,guard:0,wakeup:0,cancelT:0,throwTech:0,
+ dashT:0,dashCD:0,lastTapL:-999,lastTapR:-999,throwCD:0,throwFlight:false,knockdown:0,invuln:0,guard:0,wakeup:0,cancelT:0,throwTech:0,
  chain:0,scale:1,counter:false,lastDir:'N',juggle:0,airRecover:0,cornered:false,extraJump:0,stoneSlow:0,armor:0,phaseCD:0,headless:0,rage:0,rageDelay:0,rageCue:false,curseStacks:0,curseTimer:0,aiSpecialCD:0,aiProjectileCD:0,techWindow:0,lastTech:0,lastHitBy:'',lastMoveHit:'',frameAdv:0,inputBuffer:[],motionHistory:[],playerSlot:0};
 }
 let p1,p2;
@@ -1191,7 +1191,7 @@ function captureTrainingFighter(f){
 function applyTrainingFighter(f,s){
  if(!s)return;
  for(let k of Object.keys(s))f[k]=s[k];
- clearThrowPair(f);f.thrownBy=null;f.attack=null;f.hitstun=0;f.blockstun=0;f.knockdown=0;f.wakeup=0;f.techWindow=0;f.throwTech=0;
+ clearThrowPair(f);f.thrownBy=null;f.throwFlight=false;f.attack=null;f.hitstun=0;f.blockstun=0;f.knockdown=0;f.wakeup=0;f.techWindow=0;f.throwTech=0;
  f.combo=0;f.comboT=0;f.comboDamage=0;f.juggle=0;f.invuln=0;f.inputBuffer=[];f.motionHistory=[];
  f.visualRecover=0;fighterAnimationClocks.delete(f);
 }
@@ -1408,7 +1408,7 @@ function updateThrowHold(f,dt){
  f.throwHold=Math.max(0,f.throwHold-dt);f.vx=f.vy=0;f.y=ground;f.air=false;
  if(f.attack)f.attack.frame+=dt;
  if(f.throwHold>0){target.x=clamp(f.x+toward(f)*40,45,arenaWidth()-45);target.y=ground-22;target.vx=target.vy=0;target.air=true;target.state='hit';return true;}
- const dir=f.throwDirection;clearThrowPair(f);target.attack=null;target.y=ground-28;target.air=true;target.vx=dir*7;target.vy=-6;target.knockdown=45;target.hitstun=Math.max(target.hitstun,18);target.state='hit';target.throwTech=0;
+ const dir=f.throwDirection;clearThrowPair(f);target.attack=null;target.y=ground-28;target.air=true;target.vx=dir*13;target.vy=-9;target.throwFlight=true;target.knockdown=45;target.hitstun=Math.max(target.hitstun,18);target.state='hit';target.throwTech=0;
  spawnFX('hit',target.x,target.y-50,false,.85);shake=Math.max(shake,8);emit('throw_release',{fighter:f.name,defender:target.name});return true;
 }
 function techThrow(def,att){
@@ -1609,7 +1609,9 @@ function updateF(f,o,dt){
    if(!f.ai&&(pressedFor(f,'KeyA')||pressedFor(f,'KeyD'))){groundTech(f,pressedFor(f,'KeyA')?-1:1)}
    else if(f.ai&&Math.random()<.025*(AI_PROFILES[f.name]?.guard||1)){groundTech(f,f.x<o.x?-1:1)}
  }
- if(f.hitstun>0){f.hitstun-=dt;if(f.attack)f.attack=null;f.vx*=.88;f.state='hit'}
+ // A released throw owns movement until landing; normal hit friction must not kill its launch.
+ if(f.throwFlight&&f.air)f.hitstun=Math.max(f.hitstun,2);
+ if(f.hitstun>0){f.hitstun-=dt;if(f.attack)f.attack=null;f.vx*=f.throwFlight?.992:.88;f.state='hit'}
  else if(f.blockstun>0){f.blockstun-=dt;if(f.attack)f.attack=null;f.vx*=.8;f.state='block'}
  else{
   let left,right,jump,crouch,block;
@@ -1724,7 +1726,7 @@ function updateF(f,o,dt){
       emit('block',{attacker:f.name,defender:o.name,move:a.type,damage:dmg,counter:false});
       if(f===p1||o===p1)rumble(.08,.10,40);
     }
-    else{o.hitstun=a.stun*.25*(counter?a.counterStun:1);o.frameAdv=a.hitAdv;o.vx=dir*(a.type==='super'?9:a.type==='throw'?7:5);
+    else{o.throwFlight=false;o.hitstun=a.stun*.25*(counter?a.counterStun:1);o.frameAdv=a.hitAdv;o.vx=dir*(a.type==='super'?9:a.type==='throw'?7:5);
     if(a.type==='throw'){f.throwTarget=o;o.thrownBy=f;o.throwTech=0;f.throwHold=18;f.throwDirection=awayHeld(f)?-dir:dir;o.attack=null;f.vx=0;announcement=f.throwDirection===dir?'THROW':'BACK THROW';announceT=30;shake=Math.max(shake,5);}
     if(a.type==='heavy'||a.type==='specialA'||a.type==='super'||a.type==='throw'){
       if(o.air)o.juggle++;
@@ -1755,7 +1757,7 @@ function updateF(f,o,dt){
      announcement='AIR TECH';announceT=20;emit('air_tech',{fighter:f.name});
    }
  }
- if(f.y>=ground){f.y=ground;f.vy=0;if(f.air&&f.knockdown>0){f.state='down';f.hitstun=Math.max(f.hitstun,20);f.wakeup=28;f.techWindow=12;f.knockdown=0}f.air=false;f.juggle=0;f.airRecover=0;f.extraJump=0} f.x=clamp(f.x,45,arenaWidth()-45);
+ if(f.y>=ground){f.y=ground;f.vy=0;if(f.air&&f.knockdown>0){f.state='down';f.hitstun=Math.max(f.hitstun,20);f.wakeup=28;f.techWindow=12;f.knockdown=0}f.air=false;f.throwFlight=false;f.juggle=0;f.airRecover=0;f.extraJump=0} f.x=clamp(f.x,45,arenaWidth()-45);
 }
 function pxrect(X,Y,w,h,col){x.fillStyle=col;x.fillRect(Math.round(X),Math.round(Y),Math.round(w),Math.round(h))}
 function drawStageFallback(){
@@ -1950,6 +1952,19 @@ function drawStage(){
 }
 function pxrect(x0,y0,w,h,c){x.fillStyle=c;x.fillRect(Math.round(x0),Math.round(y0),Math.round(w),Math.round(h))}
 
+function drawLargePaintedSuper(f,poseFrame=null){
+ if(typeof NightbloomPaintedFX==='undefined')return;
+ const attack=f.attack;
+ const total=attack?attack.start+attack.active+attack.end:1;
+ const charging=superCine>0&&superOwner===f;
+ const phase=poseFrame!==null?[.12,.38,.64,.88][Math.min(3,poseFrame)]:charging?.12+(1-superCine/30)*.26:clamp(.08+(attack?.frame||0)/total*.92,0,1);
+ const size=SYSTEM.reducedMotion?350:charging?310+(1-superCine/30)*110:420;
+ x.save();x.translate(f.x+(f.flip?-54:54),f.y-102);if(f.flip)x.scale(-1,1);
+ // Core move art remains visible with particles off; accessibility freezes its texture frame.
+ NightbloomPaintedFX.draw(x,f.name.toLowerCase().replaceAll(' ','-')+'-super',phase,{...fxRenderOptions(),size});
+ x.restore();
+}
+
 function drawF(f,pose){
  let raw=pose?.action||animName(f);
  let state=BODY_ACTIONS[raw]||raw;
@@ -1991,6 +2006,7 @@ function drawF(f,pose){
    sy=Math.floor(idx/SPRITE_CELL.cols)*SPRITE_CELL.h;
  }
 
+ if(state==='super')drawLargePaintedSuper(f,pose?fr:null);
  x.save();
  x.imageSmoothingEnabled=false;
  x.translate(Math.round(f.x),Math.round(f.y));
@@ -2010,10 +2026,7 @@ function drawF(f,pose){
 
  x.restore();
 
- if(f.name==='NARRATOR'&&state==='super'&&fr>=1&&narratorPageBurst.complete&&narratorPageBurst.naturalWidth){
-   x.save();x.translate(f.x,f.y-83);if(f.flip)x.scale(-1,1);
-   x.globalAlpha=[0,.44,.95,.55][fr];drawImageContained(narratorPageBurst,22,-45,200,90);x.restore();
- }else if(remade && ['walk','dash','jump','fall','light','heavy','specialA','specialB','super','throw'].includes(state)){
+ if(state!=='super'&&remade&&['walk','dash','jump','fall','light','heavy','specialA','specialB','throw'].includes(state)){
    drawFighterFxLayer(f.name,state,fr,Math.round(f.x),Math.round(f.y),Math.round(128*tune.scale),Math.round(160*tune.scale),f.flip,pose?.action==='specialA');
  }
 
