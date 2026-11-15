@@ -2108,11 +2108,50 @@ function drawSuperCinematic(){
  x.font='bold 19px Georgia';x.fillStyle=col;x.fillText(superName(superOwner.name),W/2,147,392);
  x.restore();
 }
+// Display the actual bindings used by updateFighter/applyPadToPlayer.
+function pauseMoveRows(name,slot=1){
+ const arcade=SYSTEM.controls==='ARCADE'&&gameMode!=='local';
+ const localP2=gameMode==='local'&&slot===2;
+ const key=localP2?{light:'Num 1',heavy:'Num 2',special:'Num 3',super:'Num 4',throw:'Num 5',guard:'Num 0'}:
+  arcade?{light:'Z',heavy:'X',special:'C',super:'V',throw:'B',guard:'N'}:
+  {light:'J',heavy:'K',special:'L',super:'U',throw:'I',guard:'Shift'};
+ const pad=arcade?{light:'X',heavy:'Y',special:'A',super:'RB',throw:'B',guard:'LB'}:
+  {light:'A',heavy:'B',special:'X',super:'Y',throw:'LB',guard:'RB'};
+ const moves=MOVE_NAMES[name];
+ return [
+  ['Light attack',key.light+' / Pad '+pad.light],
+  ['Heavy attack',key.heavy+' / Pad '+pad.heavy],
+  [moves.a,key.special+' or QCF + '+key.light+' / Pad '+pad.special+' or QCF + '+pad.light],
+  [moves.b,'QCF + '+key.heavy+' / Pad QCF + '+pad.heavy],
+  [moves.super,key.super+' / Pad '+pad.super+' - requires 100 meter'],
+  ['Throw / throw escape',key.throw+' / Pad '+pad.throw+' - close range'],
+  ['Guard', 'Hold '+key.guard+' / Pad '+pad.guard+'; add Down for low guard'],
+  ['Low / jumping attacks','Hold Down / jump, then light or heavy']
+ ];
+}
 function drawPauseIndicator(){
  if(!paused)return;
- x.save();roundRect(330,208,300,86,10,'rgba(8,5,15,.92)','#bda0d3',1);
- x.textAlign='center';x.font='bold 25px Georgia';x.fillStyle='#fff';x.fillText(focusPaused?'AUTO PAUSED':'PAUSED',W/2,242);
- x.font='11px Consolas';x.fillStyle='#d5c5e0';x.fillText('P — RESUME · ESC — TITLE',W/2,271);x.restore();
+ x.save();x.fillStyle='rgba(5,3,12,.89)';x.fillRect(0,0,W,H);
+ roundRect(24,18,W-48,H-36,10,'rgba(16,9,27,.97)','#bda0d3',1);
+ x.textAlign='center';x.font='bold 25px Georgia';x.fillStyle='#fff';x.fillText(focusPaused?'AUTO PAUSED - MOVE LIST':'PAUSED - MOVE LIST',W/2,54);
+ x.font='12px Consolas';x.fillStyle='#dfcce9';x.fillText('P / Controller Start: resume    Esc: title',W/2,77);
+ [p1,p2].forEach((fighter,index)=>{
+  const left=48+index*452;
+  x.textAlign='left';x.font='bold 18px Georgia';x.fillStyle=fighter.accent;
+  x.fillText((index===0?'P1':gameMode==='local'?'P2':'CPU')+' - '+fighter.name,left,111,410);
+  pauseMoveRows(fighter.name,index+1).forEach(([name,input],i)=>{
+   const y=139+i*32;
+   x.font='bold 13px Georgia';x.fillStyle='#fff2db';x.fillText(name,left,y,412);
+   x.font='11px Consolas';x.fillStyle='#d9cce3';x.fillText(input,left,y+14,412);
+  });
+  x.font='11px Consolas';x.fillStyle=fighter.accent;
+  wrapLines(MOVESETS[fighter.name].trait,408,'11px Consolas').slice(0,2).forEach((line,i)=>x.fillText(line,left,414+i*15));
+ });
+ x.textAlign='center';x.font='11px Consolas';x.fillStyle='#e8ddec';
+ x.fillText('QCF = Down, Down-forward, Forward. Forward always points toward your opponent.',W/2,466);
+ x.fillText(gameMode==='local'?'P1: WASD move / W jump. P2: arrows move / Up jump. Double-tap left/right to dash.':SYSTEM.controls==='ARCADE'?'Arrows: move / Up: jump. Double-tap left/right to dash.':'WASD / arrows: move; W / Up: jump. Double-tap left/right to dash.',W/2,487);
+ x.fillStyle='#b7a4c4';x.fillText('Pad labels use Xbox notation (A / B / X / Y / LB / RB). CPU inputs are reference only.',W/2,506);
+ x.restore();
 }
 function drawKOEmphasis(){
  if(koCine<=0)return;
