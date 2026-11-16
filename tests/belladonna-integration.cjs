@@ -35,3 +35,4 @@ vm.runInContext(`
  `,context);
 assert.deepEqual(missing,[],'Missing initial game art');assert.ok(draws.length>80);
 console.log('PASS full game initialization, 11 core/3 secrets, all 14 voiced routes, Belladonna 80 pose draws and air cells, tiny poses, painted keys, opening, title/story render calls and all-14 bonus gate.');
+module.exports=context;

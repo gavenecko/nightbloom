@@ -704,17 +704,22 @@ function advanceRoute(){
    if(ladderIndex>=ladder.length){saveArcadeBest(playerChoice,routeScore);gameState='routeComplete'}
    else gameState='arcadeResult';
  }
+ // Schedule the intermission when the win is recorded, before dialogue or results
+ // input can move on to another match. The next-fight check remains a safeguard.
+ if(shouldStartRelicBonus())startRelicBonus();
 }
 
 const reliquarySprite=new Image();
 reliquarySprite.src='assets/ui/cursed-reliquary.webp';
 const RELIC_MAX_HP=420,RELIC_BONUS_POINTS=1500;
-let relicBonusPlayed=false,relicBonus=null;
+let relicBonusPlayed=false,relicBonus=null,relicBonusReturn=null;
 function shouldStartRelicBonus(){
+ const courseLength=ladder.filter(node=>!node.secret).length;
  return !relicBonusPlayed&&(gameMode==='story'||gameMode==='arcade')&&ladderIndex>0&&
-   ladderIndex<ladder.length&&ladderIndex===Math.ceil(ladder.length/2)&&!ladder[ladderIndex].secret;
+   ladderIndex<courseLength&&ladderIndex>=Math.ceil(courseLength/2)&&!ladder[ladderIndex]?.secret;
 }
 function startRelicBonus(){
+ relicBonusReturn=gameMode==='arcade'&&gameState==='arcadeResult'?'arcadeResult':null;
  relicBonusPlayed=true;
  selectedStage='CURSED LIBRARY';
  startFight();
@@ -728,9 +733,12 @@ function startRelicBonus(){
 }
 function leaveRelicBonus(){
  relicBonus=null;
+ const resume=relicBonusReturn;relicBonusReturn=null;
  if(gameMode==='story'){
    selectedStage=ladder[ladderIndex].stage;
    gameState='storyScene';
+ }else if(resume==='arcadeResult'){
+   selectedStage=ladder[ladderIndex].stage;gameState='arcadeResult';
  }else startRouteFight();
 }
 function relicBounds(){

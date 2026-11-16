@@ -12,6 +12,7 @@ A gothic arcade fighting game with eleven starting queens, three secret challeng
 - Bonus Group includes Belladonna and unlocks after earning all fourteen Bonus Endings. Gallery character selection stays fixed until the player chooses another character.
 - The opening starts after the first Enter. Music defaults to 15%; music, character voices and effects have separate volume controls. Dialogue plays automatically by default and can be disabled.
 - The pause screen lists each fighter's moves and inputs. Training includes a dummy, reset controls, frame stepping, effects settings and reduced motion.
+- Story and Arcade insert the Cursed Reliquary bonus immediately after the halfway match victory: match five for starting queens, match six for secret fighters. Press Enter to start the 15-second challenge; destroying the relic adds 1,500 points in Arcade.
 
 ## Controls
 

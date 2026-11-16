@@ -24,6 +24,7 @@ node tests/supers-and-throws.cjs
 node tests/super-voice-calls.cjs
 node tests/story-voice-expansion.cjs
 node tests/pause-moves.cjs
+node tests/relic-course-flow.cjs
 ```
 
 - All 14 Story routes have the expected unique starting-roster opponents and valid stages.
@@ -38,6 +39,8 @@ node tests/pause-moves.cjs
 - Local in-app browser smoke test: game renders, password login succeeds, unlock-all Gallery renders, congratulations renders with fighter sprite and artwork, return to earned progress restores the original Gallery locks. No browser error logs appeared during this smoke test.
 
 These checks execute real progression functions but do not simulate human combat or a complete course playthrough.
+
+The relic bonus is now scheduled directly when the halfway match victory is recorded, with the next-fight check retained as a fallback. All 28 Story/Arcade course flows verify one bonus, the ready/start/destroy/resume sequence, correct Arcade points, and no skipped opponent. Additional checks cover a loss and retry before the midpoint, timeout, and resetting for a new course.
 
 ## Current presentation status
 
