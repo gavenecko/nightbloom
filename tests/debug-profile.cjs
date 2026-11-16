@@ -8,12 +8,15 @@ vm.runInContext(source.slice(source.indexOf('function progressStorageKey(){'),so
 vm.runInContext('saveProgress()',context);const original=store.get('nightbloom_progress');
 vm.runInContext(fs.readFileSync(path.join(root,'js/debug-menu.js'),'utf8'),context);
 const action=name=>dialog.listeners.click({target:{closest:()=>({dataset:{action:name}})}});
+assert.equal(context.window.nightbloomCanInspect(),false);
 action('all');assert.equal(store.get('nightbloom_test_progress'),undefined);
 dialog.querySelector('#nbDebugPassword').value='wrong';elements.get('#nbDebugLogin').onsubmit({preventDefault(){}});action('all');assert.equal(store.get('nightbloom_test_progress'),undefined);
 dialog.querySelector('#nbDebugPassword').value='Nightbloom!081';elements.get('#nbDebugLogin').onsubmit({preventDefault(){}});
 action('all');assert.equal(context.window.nightbloomTestProfile,true);assert.equal(Object.keys(context.PROGRESS.storyReplays).length,4);assert.equal(store.get('nightbloom_progress'),original);
+assert.equal(context.window.nightbloomCanInspect(),true);
 context.PROGRESS.arcadeBest.VAMPIRA_NORMAL=900;vm.runInContext('saveProgress()',context);assert.equal(store.get('nightbloom_progress'),original);
 action('restore');assert.equal(context.window.nightbloomTestProfile,false);assert.equal(JSON.stringify(context.PROGRESS),original);assert.equal(context.gameState,'title');
+assert.equal(context.window.nightbloomCanInspect(),false);
 action('all');assert.equal(context.PROGRESS.arcadeBest.VAMPIRA_NORMAL,900);action('restore');assert.equal(store.get('nightbloom_progress'),original);
 store.set('nightbloom_debug_progress_backup',original);context.PROGRESS.storyReplays.VAMPIRA=true;action('restore');assert.equal(store.has('nightbloom_debug_progress_backup'),false);assert.equal(store.get('nightbloom_progress'),original);
 console.log('PASS debug password gate, isolated unlocks and scores, return/resume test save, legacy backup recovery');

@@ -379,7 +379,7 @@ function configuredTimer(){return versusRulesActive()?MATCH_RULES.timer:99}
 function isFinalRound(){let n=winsNeeded();return p1Wins===n-1&&p2Wins===n-1}
 function matchFormatLabel(){let n=winsNeeded();return 'FT'+n+' · '+(timerInfinite()?'∞':MATCH_RULES.timer)+' SEC'}
 
-const MAIN_MENU=['STORY MODE','ARCADE MODE','VERSUS CPU','LOCAL VERSUS','TRAINING','GALLERY','ATLAS INSPECTOR','SYSTEM CHECK','CREDITS','OPTIONS'];
+const MAIN_MENU=['STORY MODE','ARCADE MODE','VERSUS CPU','LOCAL VERSUS','TRAINING','GALLERY','SYSTEM CHECK','CREDITS','OPTIONS'];
 const ROSTER=['VAMPIRA','NEKOMATA','BANSHEE','MEDUSA','JIANGSHI','YUREI','DULLAHAN','WEREWOLF','MUMMY','WITCH','BELLADONNA'];
 const CORE_ROSTER=ROSTER.slice();ROSTER.push(...Object.keys(SECRET_CHALLENGES));
 const ROSTER_COLUMNS=7,ROSTER_CARD_WIDTH=129;
@@ -1002,6 +1002,7 @@ function inspectorSpriteInfo(name,action){
  for(let i=0;i<Math.min(4,info.count);i++)frames.push(i);
  return {img:spriteFor(name), start:info.start, frames:frames, cols:SPRITE_CELL.cols, cellW:SPRITE_CELL.w, cellH:SPRITE_CELL.h, remade:false};
 }
+function atlasInspectorAvailable(){return typeof window.nightbloomCanInspect==='function'&&window.nightbloomCanInspect();}
 function atlasInspectorReset(){inspectorFrameIndex=0;inspectorTick=0;inspectorPlaying=true;}
 
 
@@ -2569,6 +2570,7 @@ function drawCredits(){
 
 
 function drawAtlasInspector(){
+ if(!atlasInspectorAvailable()){gameState='title';return;}
  refreshSecretInspector();
  let fighter=INSPECTOR_FIGHTERS[inspectorFighterIndex];
  let action=INSPECTOR_ACTIONS[inspectorActionIndex];
@@ -3191,7 +3193,6 @@ function handleFrontend(){
      let pick=MAIN_MENU[mainMenuIndex];
      if(pick==='OPTIONS'){gameState='options';optionsIndex=0;return}
      if(pick==='GALLERY'){gameState='gallery';galleryIndex=Math.max(0,ROSTER.indexOf(playerChoice));return}
-     if(pick==='ATLAS INSPECTOR'){atlasInspectorReset();gameState='atlasInspector';return}
      if(pick==='SYSTEM CHECK'){gameState='diagnostics';runReleaseDiagnostics();return}
      if(pick==='CREDITS'){gameState='credits';return}
      gameMode=pick==='STORY MODE'?'story':pick==='ARCADE MODE'?'arcade':pick==='TRAINING'?'training':pick==='LOCAL VERSUS'?'local':'versus';
@@ -3199,6 +3200,7 @@ function handleFrontend(){
    }return;
  }
  if(gameState==='atlasInspector'){
+   if(!atlasInspectorAvailable()){gameState='title';return;}
    if(pressed.ArrowLeft){inspectorFighterIndex=cycle(INSPECTOR_FIGHTERS,-1,inspectorFighterIndex);atlasInspectorReset();}
    if(pressed.ArrowRight){inspectorFighterIndex=cycle(INSPECTOR_FIGHTERS,1,inspectorFighterIndex);atlasInspectorReset();}
    if(pressed.ArrowUp){inspectorActionIndex=cycle(INSPECTOR_ACTIONS,-1,inspectorActionIndex);atlasInspectorReset();}

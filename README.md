@@ -27,6 +27,8 @@ Controller buttons can be reassigned in Options → Controller Mapping or the Co
 
 Progress is stored in the current browser and site origin. Debug actions use a separate test save; Return to earned progress restores normal play. F10 or the footer button opens the developer menu. Its client-side password is a convenience gate.
 
+Atlas Inspector is available only through the authenticated debug menu in a test profile. It is absent from the player menu, so normal play cannot use it to preview locked fighters.
+
 ## Project notes
 
 - [Belladonna and the fourteen-fighter roster](docs/BELLADONNA.md)

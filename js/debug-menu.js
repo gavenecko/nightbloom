@@ -2,6 +2,7 @@
 (()=>{
  const PASSWORD='Nightbloom!081',BACKUP='nightbloom_debug_progress_backup';
  let authenticated=false,returnFocus=null,earnedProgress=null;
+ window.nightbloomCanInspect=()=>authenticated&&window.nightbloomTestProfile===true;
  const style=document.createElement('style');
  style.textContent=`#nbDebug{width:min(640px,94vw);max-height:90dvh;overflow:auto;background:#130e20;color:#f4e9fa;border:2px solid #bc88df;border-radius:12px;padding:24px;font:14px Georgia}#nbDebug::backdrop{background:#000b}#nbDebug h2{margin-top:0;color:#edc67e}#nbDebug p{line-height:1.5}#nbDebug label{display:block;margin:12px 0}#nbDebug input,#nbDebug select,#nbDebug button{font:14px Consolas;padding:9px;background:#271b36;color:#fff;border:1px solid #9575a6;border-radius:5px;max-width:100%}#nbDebug button{cursor:pointer;margin:4px}#nbDebug button:focus-visible{outline:2px solid #6fffe3}#nbDebug .row{display:flex;flex-wrap:wrap;gap:8px}#nbDebug [hidden]{display:none!important}#nbDebugStatus{min-height:2em;color:#80efda}`;
  document.head.append(style);
