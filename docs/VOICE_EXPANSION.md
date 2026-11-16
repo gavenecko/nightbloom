@@ -1,6 +1,6 @@
 # Belladonna dialogue and super callouts
 
-Preserves all 385 existing approved story recordings and adds 110 recorded lines with the approved character profiles. Belladonna uses the selected audition B: bf_isabella, speed 0.98, clean delivery. The new library includes her rival exchanges, course narration, ending, and responses from the cast. Her playable roster integration is separate; the dialogue plan is staged in BELLADONNA_DIALOGUE_PLAN.json.
+Preserves all 385 existing approved story recordings and adds 110 recorded lines with the approved character profiles. Belladonna uses the selected audition B: bf_isabella, speed 0.98, clean delivery. The new library includes her rival exchanges, course narration, ending, and responses from the cast. Belladonna is now the eleventh core fighter. Her dialogue and route definitions are recorded in BELLADONNA_DIALOGUE_PLAN.json.
 
 Fourteen character introductions use Narrator's approved bf_lily profile. The first story chapter displays exactly the combined introduction and chapter narration that is spoken. Later chapters and secret challenger announcements retain their existing wording and voice. Dialogue remains enabled by default and obeys the voice volume and dialogue setting.
 
@@ -10,4 +10,4 @@ Super callouts take priority over ordinary attacks and pain reactions. A super e
 
 Production: Kokoro JS 1.2.1 q4 CPU for story dialogue, Chatterbox Turbo CPU for combat callouts, approved voice references and seed 42 (Belladonna combat seeds 42–45). Local resumable production scripts and originals are retained in the development workspace.
 
-The title derives its queen count from the core roster. It will display ELEVEN QUEENS when Belladonna's fighter integration is complete. Existing secret unlock rules remain unchanged.
+The title derives its queen count from the core roster and displays ELEVEN QUEENS. Existing secret unlock rules remain unchanged.

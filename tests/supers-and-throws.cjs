@@ -15,7 +15,7 @@ vm.runInContext(`
  }
  const wallAttacker=fighter('VAMPIRA',1800,false,'',''),wallVictim=fighter('VAMPIRA',1840,false,'','');wallAttacker.throwTarget=wallVictim;wallAttacker.throwDirection=1;wallAttacker.throwHold=0;updateThrowHold(wallAttacker,1);let n=0;while(wallVictim.air&&n++<120)updateF(wallVictim,wallAttacker,1);assert.equal(wallVictim.x,1875);assert.equal(wallVictim.air,false);
 `,ctx);
-const names=['vampira','nekomata','banshee','medusa','jiangshi','yurei','dullahan','werewolf','mummy','witch','arachne','living-doll','narrator'];
+const names=['vampira','nekomata','banshee','medusa','jiangshi','yurei','dullahan','werewolf','mummy','witch','belladonna','arachne','living-doll','narrator'];
 for(const slug of names){assert.ok(fs.statSync(path.join(root,'assets/fx/painted-v1',slug+'-super.png')).size>0);ctx.f={name:slug.toUpperCase().replaceAll('-',' '),x:400,y:430,flip:false,attack:{frame:30,start:18,active:12,end:32}};vm.runInContext('drawLargePaintedSuper(f)',ctx);assert.equal(draws.at(-1).key,slug+'-super');assert.equal(draws.at(-1).options.size,420);}
 ctx.SYSTEM.reducedMotion=true;ctx.SYSTEM.particles='OFF';vm.runInContext('drawLargePaintedSuper(f,2)',ctx);assert.equal(draws.at(-1).options.size,350);
-console.log('PASS all 13 painted super keys, unclipped sizing, reduced-motion/particles-off rendering and wall-bounded throw landings');
+console.log('PASS all 14 painted super keys, unclipped sizing, reduced-motion/particles-off rendering and wall-bounded throw landings');

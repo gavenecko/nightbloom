@@ -1,7 +1,7 @@
 
 const c=document.getElementById('game'),x=c.getContext('2d'); x.imageSmoothingEnabled=false;
 const W=c.width,H=c.height, ground=430;
-const BUILD_INFO={version:'0.81',channel:'GOTHIC PRESENTATION',date:'2026-11-15',label:'RELEASE AUDIT 1'};
+const BUILD_INFO={version:'0.81',channel:'ELEVEN QUEENS',date:'2026-11-15',label:'BELLADONNA'};
 // World coordinates are independent from the fixed 960px viewport.
 let stageCameraX=0;
 function arenaWidth(){return STAGES.includes(selectedStage)?W*2:W}
@@ -377,13 +377,14 @@ function isFinalRound(){let n=winsNeeded();return p1Wins===n-1&&p2Wins===n-1}
 function matchFormatLabel(){let n=winsNeeded();return 'FT'+n+' · '+(timerInfinite()?'∞':MATCH_RULES.timer)+' SEC'}
 
 const MAIN_MENU=['STORY MODE','ARCADE MODE','VERSUS CPU','LOCAL VERSUS','TRAINING','GALLERY','ATLAS INSPECTOR','SYSTEM CHECK','CREDITS','OPTIONS'];
-const ROSTER=['VAMPIRA','NEKOMATA','BANSHEE','MEDUSA','JIANGSHI','YUREI','DULLAHAN','WEREWOLF','MUMMY','WITCH'];
+const ROSTER=['VAMPIRA','NEKOMATA','BANSHEE','MEDUSA','JIANGSHI','YUREI','DULLAHAN','WEREWOLF','MUMMY','WITCH','BELLADONNA'];
 const CORE_ROSTER=ROSTER.slice();ROSTER.push(...Object.keys(SECRET_CHALLENGES));
 const ROSTER_COLUMNS=7,ROSTER_CARD_WIDTH=129;
 const CHARACTER_SLOTS=ROSTER.map((_,i)=>[10+(i%ROSTER_COLUMNS)*135,66+Math.floor(i/ROSTER_COLUMNS)*79]);
 const GALLERY_SLOTS=ROSTER.map((_,i)=>[10+(i%ROSTER_COLUMNS)*135,78+Math.floor(i/ROSTER_COLUMNS)*116]);
 const STAGES=['CRIMSON CATHEDRAL','MOONLIT SHRINE','FORSAKEN HARBOR','CURSED LIBRARY','BONEFIELD','THE NEXT DAWN'];
 const CHAR_INFO={
+ BELLADONNA:BELLADONNA_INFO,
  VAMPIRA:{color:'#d7c5ef',accent:'#e42654',team:'SCARLET COVEN',quote:'“Beauty never dies. It just gets hungrier.”',effect:'blood'},
  NEKOMATA:{color:'#25202d',accent:'#b55cff',team:'TWO SOULS',quote:'“Two lives, twice the fun.”',effect:'spirit'},
  BANSHEE:{color:'#d6eef2',accent:'#51ffe8',team:'SILENT REQUIEM',quote:'“My song survives the grave.”',effect:'wail'},
@@ -483,7 +484,7 @@ function groupRewardBikinisRemaining(){
  return ROSTER.filter(name=>!galleryRewardAvailable(name,'swimsuit')).length;
 }
 function storyArtwork(name,reward){
- const url=reward==='group'?'assets/rewards/beach-party.webp':rewardArt[name]?.[reward];
+ const url=reward==='group'?'assets/rewards/beach-party-belladonna.webp':rewardArt[name]?.[reward];
  if(!url)return null;
  if(!rewardImages.has(url)){const image=new Image();image.src=url;rewardImages.set(url,image);}
  return rewardImages.get(url);
@@ -832,7 +833,7 @@ const SPRITE_CELL={w:128,h:160,cols:12};
 const REMADE_SHEET_FIGHTERS=new Set(['VAMPIRA','NEKOMATA','BANSHEE','MEDUSA','JIANGSHI','YUREI','DULLAHAN','WITCH','WEREWOLF','MUMMY']);
 const REMADE_CELL={w:128,h:160,cols:8};
 const PADDED_BODY_CELL={w:192,h:192,cols:8,baseline:184};
-function bodyCellFor(name){return REMADE_SHEET_FIGHTERS.has(name)?PADDED_BODY_CELL:REMADE_CELL;}
+function bodyCellFor(name){if(name==='BELLADONNA')return {w:256,h:256,cols:8,baseline:240};return REMADE_SHEET_FIGHTERS.has(name)?PADDED_BODY_CELL:REMADE_CELL;}
 const REMADE_ANIMS={
  idle:{row:0,frames:[0,1,2,3]},
  walk:{row:0,frames:[4,5,6,7]},
@@ -854,9 +855,9 @@ const REMADE_ANIMS={
  victory:{row:8,frames:[4,5,6,7]}
 };
 const INSPECTOR_FIGHTERS=['VAMPIRA','NEKOMATA','BANSHEE','MEDUSA','JIANGSHI','YUREI','DULLAHAN','WITCH','WEREWOLF','MUMMY'];
-const INSPECTOR_FIGHTER_STEP=10,INSPECTOR_FIGHTER_TOP=98,INSPECTOR_FIGHTER_H=9;
+const INSPECTOR_FIGHTER_STEP=9,INSPECTOR_FIGHTER_TOP=98,INSPECTOR_FIGHTER_H=8;
 function inspectorFrameRect(i){return {x:272+i*106,y:364,w:92,h:122};}
-const INSPECTOR_ACTIONS=['idle','walk','dash','crouch','jump','fall','light','heavy','specialA','specialB','super','throw','hit','block','down','recover','intro','victory'];
+const INSPECTOR_ACTIONS=['idle','walk','dash','crouch','jump','fall','light','heavy','specialA','specialB','super','throw','hit','block','down','recover','intro','victory','airlight','airheavy'];
 let inspectorFighterIndex=0,inspectorActionIndex=0,inspectorFrameIndex=0,inspectorPlaying=true,inspectorTick=0,inspectorSpeed=14;
 let inspectorLayerMode=2; // 0 body, 1 fx, 2 composite
 
@@ -948,8 +949,14 @@ function drawInspectorFrameLayers(body,fx,meta,fighter,action,index,col,sx,sy,px
  x.restore();
 }
 function drawFighterFxLayer(name,action,frame,worldX,worldY,w,h,flip,paintedOnly=false){
+ if(name==='BELLADONNA'){
+   if(!['light','heavy','airlight','airheavy','specialA','specialB'].includes(action))return;
+   const slot=action==='specialB'?'b':'a',size=action==='specialA'?148:action==='specialB'?160:84;
+   x.save();x.translate(worldX+(flip?-62:62),worldY-98);if(flip)x.scale(-1,1);
+   NightbloomPaintedFX.draw(x,'belladonna-'+slot,[.06,.35,.64,.93][frame],{...fxRenderOptions(),size});x.restore();return;
+ }
  if(name==='DULLAHAN'&&action==='specialB')return; // The projectile carries the single head.
- let info=REMADE_ANIMS[action]||REMADE_ANIMS.idle;
+ let info=bodyAnimationFor(name,action);
  let frames=info.frames||[0,1,2,3];
  let col=frames[frame%frames.length], row=info.row;
  const img=paintedOnly?null:fxSpriteFor(name);
@@ -974,7 +981,7 @@ function drawFighterFxLayer(name,action,frame,worldX,worldY,w,h,flip,paintedOnly
 
 function inspectorSpriteInfo(name,action){
  if(REMADE_SHEET_FIGHTERS.has(name)){
-   let info=REMADE_ANIMS[action]||REMADE_ANIMS.idle;
+   let info=bodyAnimationFor(name,action);
    const cell=bodyCellFor(name);
    return {img:spriteFor(name), row:info.row, frames:info.frames||[0,1,2,3], cols:cell.cols, cellW:cell.w, cellH:cell.h, remade:true};
  }
@@ -1001,9 +1008,10 @@ const FIGHTER_RENDER_TUNE={
 const SPRITE_OFFSETS={"idle": {"start": 0, "count": 6}, "walk": {"start": 6, "count": 8}, "dash": {"start": 14, "count": 6}, "crouch": {"start": 20, "count": 3}, "jump": {"start": 23, "count": 5}, "fall": {"start": 28, "count": 4}, "light": {"start": 32, "count": 5}, "heavy": {"start": 37, "count": 7}, "specialA": {"start": 44, "count": 9}, "specialB": {"start": 53, "count": 9}, "super": {"start": 62, "count": 14}, "throw": {"start": 76, "count": 8}, "hit": {"start": 84, "count": 4}, "block": {"start": 88, "count": 3}, "down": {"start": 91, "count": 5}, "recover": {"start": 96, "count": 5}, "intro": {"start": 101, "count": 8}, "victory": {"start": 109, "count": 8}};
 const FX={bloodClaw:0,crimsonShot:1,tailSlash:2,spiritPaw:3,wail:4,soulDrift:5,serpent:6,petrify:7,guard:8,hit:9,super:10,shadow:11,frames:8,cell:112,graveReach:12,lanternCurse:13,blackRide:14,headToss:15,moonClaw:16,howlWave:17,bandageLash:18,scarabCurse:19,moonSigil:20,hexBolt:21};
 let fxInstances=[];
-function portraitFor(name){if(SECRET_ART[name])return SECRET_ART[name].portrait;return name==='VAMPIRA'?portraitV:name==='NEKOMATA'?portraitN:name==='BANSHEE'?portraitB:name==='MEDUSA'?portraitM:name==='JIANGSHI'?portraitJ:name==='YUREI'?portraitY:name==='DULLAHAN'?portraitD:name==='WEREWOLF'?portraitW:name==='MUMMY'?portraitMu:portraitWi}
-function spriteFor(name){if(SECRET_ART[name])return SECRET_ART[name].body;return name==='VAMPIRA'?spriteV:name==='NEKOMATA'?spriteN:name==='BANSHEE'?spriteB:name==='MEDUSA'?spriteM:name==='JIANGSHI'?spriteJ:name==='YUREI'?spriteY:name==='DULLAHAN'?spriteD:name==='WEREWOLF'?spriteW:name==='MUMMY'?spriteMu:spriteWi}
+function portraitFor(name){if(name==='BELLADONNA')return BELLADONNA_ART.portrait;if(SECRET_ART[name])return SECRET_ART[name].portrait;return name==='VAMPIRA'?portraitV:name==='NEKOMATA'?portraitN:name==='BANSHEE'?portraitB:name==='MEDUSA'?portraitM:name==='JIANGSHI'?portraitJ:name==='YUREI'?portraitY:name==='DULLAHAN'?portraitD:name==='WEREWOLF'?portraitW:name==='MUMMY'?portraitMu:portraitWi}
+function spriteFor(name){if(name==='BELLADONNA')return BELLADONNA_ART.body;if(SECRET_ART[name])return SECRET_ART[name].body;return name==='VAMPIRA'?spriteV:name==='NEKOMATA'?spriteN:name==='BANSHEE'?spriteB:name==='MEDUSA'?spriteM:name==='JIANGSHI'?spriteJ:name==='YUREI'?spriteY:name==='DULLAHAN'?spriteD:name==='WEREWOLF'?spriteW:name==='MUMMY'?spriteMu:spriteWi}
 function specialFX(name,type){
+ if(name==='BELLADONNA')return type==='specialA'?'fairyDust':'nightshadeGale';
  if(name==='NARRATOR')return type==='specialA'?'pageCast':'bookmarkWard';
  if(name==='ARACHNE')return type==='specialA'?'silkLash':'widowWeb';
  if(name==='LIVING DOLL')return type==='specialA'?'porcelainStrike':'needleThread';
@@ -1158,6 +1166,7 @@ function animFrame(f){
  if(!matchOver&&!roundOver&&!f.air&&f.wakeup>0&&REMADE_SHEET_FIGHTERS.has(f.name))return Math.min(3,Math.floor((name==='down'?28-f.wakeup:14-f.wakeup)/14*4));
  if(f.attack&&name===f.attack.type&&REMADE_SHEET_FIGHTERS.has(f.name))return attackPoseFrame(f.attack);
  let a=(REMADE_SHEET_FIGHTERS.has(f.name)?PADDED_VISUAL_ANIMS[body]:null)||ANIMS[name]||ANIMS.idle;
+ if(f.name==='BELLADONNA'&&body==='victory')a={...a,loop:false};
  let clock=fighterAnimationClocks.get(f)?.clock||0,fr=Math.floor(clock/(60/a.fps));
  return a.loop?fr%a.frames:Math.min(a.frames-1,fr);
 }
@@ -1967,7 +1976,7 @@ function drawLargePaintedSuper(f,poseFrame=null){
 
 function drawF(f,pose){
  let raw=pose?.action||animName(f);
- let state=BODY_ACTIONS[raw]||raw;
+ let state=f.name==='BELLADONNA'&&BELLADONNA_ANIMS[raw]?raw:BODY_ACTIONS[raw]||raw;
  let remade=REMADE_SHEET_FIGHTERS.has(f.name);
  let img=(f.name==='DULLAHAN'&&f.headless>0)?spriteDH:spriteFor(f.name);
  let tune=FIGHTER_RENDER_TUNE[f.name]||{y:0,scale:1};
@@ -1976,7 +1985,7 @@ function drawF(f,pose){
  let sx=0,sy=0,sw=128,sh=160,fr=0;
 
  if(remade){
-   let info=REMADE_ANIMS[state]||REMADE_ANIMS.idle;
+   let info=bodyAnimationFor(f.name,state);
    let frames=info.frames||[0,1,2,3];
    if(pose){
      fr=pose.frame;
@@ -2017,7 +2026,12 @@ function drawF(f,pose){
  x.beginPath();x.ellipse(0,-2,shadW,shadH*.35,0,0,Math.PI*2);x.fill();x.globalAlpha=1;
 
  if(f.name==='DULLAHAN'){x.save();x.translate(0,tune.y);x.scale(tune.scale,tune.scale);drawDullahanPropPart(x,state,fr,true,'lance');x.restore();}
- if(img.complete&&img.naturalWidth)drawIsolatedAtlasCell(x,img,sx,sy,sw,sh,dx,dy,dw,dh);
+ if(f.name==='BELLADONNA'){
+   const size=belladonnaPoseScale(state,fr);x.save();
+   if(size<1)x.translate(0,-(1-size)*85);
+   x.scale(size,size);
+   if(img.complete&&img.naturalWidth)drawIsolatedAtlasCell(x,img,sx,sy,sw,sh,dx,dy,dw,dh);x.restore();
+ }else if(img.complete&&img.naturalWidth)drawIsolatedAtlasCell(x,img,sx,sy,sw,sh,dx,dy,dw,dh);
  else pxrect(-20,-100,40,100,f.color);
  if(f.name==='DULLAHAN'){x.save();x.translate(0,tune.y);x.scale(tune.scale,tune.scale);drawDullahanPropPart(x,state,fr,f.headless<=0,'head');x.restore();}
 
@@ -2026,7 +2040,7 @@ function drawF(f,pose){
 
  x.restore();
 
- if(state!=='super'&&remade&&['walk','dash','jump','fall','light','heavy','specialA','specialB','throw'].includes(state)){
+ if(state!=='super'&&remade&&['walk','dash','jump','fall','light','heavy','airlight','airheavy','specialA','specialB','throw'].includes(state)){
    drawFighterFxLayer(f.name,state,fr,Math.round(f.x),Math.round(f.y),Math.round(128*tune.scale),Math.round(160*tune.scale),f.flip,pose?.action==='specialA');
  }
 
@@ -2519,9 +2533,9 @@ function drawCredits(){
  x.font='bold 11px Consolas';x.fillStyle='#72ffd7';x.fillText('BUILD '+BUILD_INFO.version+' · '+BUILD_INFO.channel+' · '+BUILD_INFO.date,W/2,103);
  let rows=[
   ['PROJECT','Original browser fighting-game prototype'],
-  ['ROSTER','10 original fictional queens · 6 stages · 90 Story matchups'],
+  ['ROSTER','11 starting queens · 3 secret challengers · 6 haunted stages'],
   ['COMBAT','Custom JavaScript fighting engine, AI, frame data and Training Lab'],
-  ['STORY','Ten complete character routes with endings and Gallery unlocks'],
+  ['STORY','Fourteen character routes with endings and Gallery unlocks'],
   ['AUDIO','Recorded stage and challenger themes, voices, and synthesized combat effects'],
   ['ART','Embedded programmatic prototype sprite/portrait/FX atlases'],
   ['RUNTIME','Standalone HTML5 Canvas + WebAudio · no external runtime assets'],
@@ -2570,7 +2584,7 @@ function drawAtlasInspector(){
 
  x.fillStyle='#72ffd7';x.font='bold 13px Consolas';x.fillText('ACTIONS',32,232);
  INSPECTOR_ACTIONS.forEach((name,i)=>{
-   let col=i<9?0:1, row=i%9, xx=30+col*97, yy=248+row*24, active=i===inspectorActionIndex;
+   let col=i<10?0:1, row=i%10, xx=30+col*97, yy=248+row*22, active=i===inspectorActionIndex;
    roundRect(xx,yy-12,90,19,4,active?'rgba(82,33,106,.95)':'rgba(22,19,32,.96)',active?'#c88dff':'#413551',1);
    x.fillStyle=active?'#fff4ff':'#d1c5dd';x.font='10px Consolas';x.fillText(name,xx+8,yy+2);
  });
@@ -2660,7 +2674,7 @@ const openingStages={
  DULLAHAN:'BONEFIELD',
  WEREWOLF:'BONEFIELD',
  MUMMY:'THE NEXT DAWN',
- WITCH:'CURSED LIBRARY'
+ WITCH:'CURSED LIBRARY',BELLADONNA:'MOONLIT SHRINE'
 };
 const openingShots=CORE_ROSTER.map(name=>({stage:openingStages[name],fighter:makeFighter(name,0,false)}));
 const openingShotDuration=1450;
@@ -2835,7 +2849,7 @@ function drawCharacterSelect(){
  x.fillStyle=accent;x.font='bold 9px Consolas';x.fillText('FIGHTER IDENTITY',654,267);
  let traitLines=wrapLines(MOVESETS[selected].trait,202,'11px Consolas');x.font='11px Consolas';x.fillStyle='#d8ccdf';traitLines.slice(0,3).forEach((ln,i)=>x.fillText(ln,654,291+i*17));
  x.fillStyle='#8f8198';x.font='9px Consolas';
- let mechanic=selected==='NARRATOR'?'BOOKMARK WARD: special B grants brief armor':selected==='ARACHNE'?'WEB: projectile briefly slows movement':selected==='LIVING DOLL'?'PORCELAIN: special A absorbs one strike':selected==='MUMMY'?'CURSE STACKS: pressure rises over time':selected==='WITCH'?'MOON SIGILS: delayed floor control':selected==='WEREWOLF'?'FERAL RAGE: stronger when wounded':selected==='MEDUSA'?'PETRIFY: temporary movement suppression':selected==='JIANGSHI'?'ARMOR: absorbs one incoming strike':selected==='DULLAHAN'?'HEAD TOSS: detachable projectile state':selected==='YUREI'?'PHASE: invulnerable movement windows':selected==='NEKOMATA'?'TWO SOULS: additional aerial jump':selected==='BANSHEE'?'FLOAT: prolonged aerial control':'BLOOD DRAIN: special attacks restore health';
+ let mechanic=selected==='BELLADONNA'?'FAIRY DUST: midrange magic · NIGHTSHADE GALE: petal projectile':selected==='NARRATOR'?'BOOKMARK WARD: special B grants brief armor':selected==='ARACHNE'?'WEB: projectile briefly slows movement':selected==='LIVING DOLL'?'PORCELAIN: special A absorbs one strike':selected==='MUMMY'?'CURSE STACKS: pressure rises over time':selected==='WITCH'?'MOON SIGILS: delayed floor control':selected==='WEREWOLF'?'FERAL RAGE: stronger when wounded':selected==='MEDUSA'?'PETRIFY: temporary movement suppression':selected==='JIANGSHI'?'ARMOR: absorbs one incoming strike':selected==='DULLAHAN'?'HEAD TOSS: detachable projectile state':selected==='YUREI'?'PHASE: invulnerable movement windows':selected==='NEKOMATA'?'TWO SOULS: additional aerial jump':selected==='BANSHEE'?'FLOAT: prolonged aerial control':'BLOOD DRAIN: special attacks restore health';
  let mechLines=wrapLines(mechanic,202,'9px Consolas');mechLines.forEach((ln,i)=>x.fillText(ln,654,350+i*15));
  x.fillStyle='#c1b4c9';x.fillText('QCF+J / L  '+m.a,314,445);x.fillText('QCF+K      '+m.b,500,445);
  x.textAlign='center';x.fillStyle='#a89ab1';x.font='9px Consolas';
@@ -3399,7 +3413,7 @@ function pointerHoverTarget(px,py){
  }
  if(gameState==='atlasInspector'){
    for(let i=0;i<INSPECTOR_FIGHTERS.length;i++)if(inRect(px,py,30,INSPECTOR_FIGHTER_TOP+i*INSPECTOR_FIGHTER_STEP,194,INSPECTOR_FIGHTER_H)){if(inspectorFighterIndex!==i){inspectorFighterIndex=i;atlasInspectorReset()}return true}
-   for(let i=0;i<INSPECTOR_ACTIONS.length;i++){let col=i<9?0:1,row=i%9,xx=30+col*97,yy=248+row*24;if(inRect(px,py,xx,yy-12,90,19)){if(inspectorActionIndex!==i){inspectorActionIndex=i;atlasInspectorReset()}return true}}
+   for(let i=0;i<INSPECTOR_ACTIONS.length;i++){let col=i<10?0:1,row=i%10,xx=30+col*97,yy=248+row*22;if(inRect(px,py,xx,yy-12,90,19)){if(inspectorActionIndex!==i){inspectorActionIndex=i;atlasInspectorReset()}return true}}
    for(let i=0;i<4;i++){const r=inspectorFrameRect(i);if(inRect(px,py,r.x,r.y,r.w,r.h))return true;}
    for(let i=0;i<3;i++)if(inRect(px,py,86+i*50,458,46,18))return true;
  }
@@ -3472,7 +3486,7 @@ function pointerActivate(px,py){
  }
  if(gameState==='atlasInspector'){
    for(let i=0;i<INSPECTOR_FIGHTERS.length;i++)if(inRect(px,py,30,INSPECTOR_FIGHTER_TOP+i*INSPECTOR_FIGHTER_STEP,194,INSPECTOR_FIGHTER_H)){if(inspectorFighterIndex!==i){inspectorFighterIndex=i;atlasInspectorReset()}return true}
-   for(let i=0;i<INSPECTOR_ACTIONS.length;i++){let col=i<9?0:1,row=i%9,xx=30+col*97,yy=248+row*24;if(inRect(px,py,xx,yy-12,90,19)){if(inspectorActionIndex!==i){inspectorActionIndex=i;atlasInspectorReset()}return true}}
+   for(let i=0;i<INSPECTOR_ACTIONS.length;i++){let col=i<10?0:1,row=i%10,xx=30+col*97,yy=248+row*22;if(inRect(px,py,xx,yy-12,90,19)){if(inspectorActionIndex!==i){inspectorActionIndex=i;atlasInspectorReset()}return true}}
    for(let i=0;i<4;i++){const r=inspectorFrameRect(i);if(inRect(px,py,r.x,r.y,r.w,r.h)){inspectorFrameIndex=i;inspectorTick=0;inspectorPlaying=false;return true}}
    for(let i=0;i<3;i++)if(inRect(px,py,86+i*50,458,46,18)){inspectorLayerMode=i;return true}
  }
@@ -3728,6 +3742,7 @@ function loop(now){
  requestAnimationFrame(loop)
 }
 installSecretFighters();
+installBelladonna();
 if(typeof NightbloomCombatVoices!=='undefined')NightbloomCombatVoices.configure({getVolume:()=>voiceLevel()*.85});
 if(typeof NightbloomVoices!=='undefined')NightbloomVoices.configure({getVolume:voiceLevel,onBusy:()=>applyAudioLevels(),auto:AUDIO.dialogue,onAutoChange:setDialogueAutoplay});
 requestAnimationFrame(loop);

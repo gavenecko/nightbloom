@@ -15,6 +15,7 @@
   WITCH:{color:'#cd88ff',light:'#ffe2ff',a:'moonSigil',b:'hexBolt',motif:'star'},
   ARACHNE:{color:'#d697ea',light:'#fff1ff',a:'silkLash',b:'widowWeb',motif:'web'},
   'LIVING DOLL':{color:'#e7a2ad',light:'#fff4e8',a:'porcelainStrike',b:'needleThread',motif:'thread'},
+  BELLADONNA:{color:'#b17ee8',light:'#e4ffc0',a:'fairyDust',b:'nightshadeGale',motif:'petal'},
   NARRATOR:{color:'#eabf75',light:'#ffecc5',a:'pageCast',b:'bookmarkWard',motif:'seal'}
  };
  const byKind={};Object.entries(profiles).forEach(([name,p])=>{p.name=name;byKind[p.a]=p;byKind[p.b]=p;});

@@ -1,0 +1,1150 @@
+{
+  "cell": 256,
+  "baseline": 240,
+  "cols": 8,
+  "rows": 10,
+  "actions": [
+    "idle",
+    "walk",
+    "dash",
+    "crouch",
+    "jump",
+    "fall",
+    "light",
+    "heavy",
+    "specialA",
+    "specialB",
+    "super",
+    "throw",
+    "hit",
+    "block",
+    "down",
+    "recover",
+    "intro",
+    "victory",
+    "airlight",
+    "airheavy"
+  ],
+  "frames": [
+    {
+      "action": "idle",
+      "frame": 0,
+      "source": "first-idle-design.png",
+      "sha256": "6dec29d9d28ba201ce479d36f883e1e5ca92b7fe3913688dab02f020cfb4b07b",
+      "row": 0,
+      "col": 0,
+      "bounds": [
+        43,
+        18,
+        212,
+        240
+      ]
+    },
+    {
+      "action": "idle",
+      "frame": 1,
+      "source": "idle-02.png",
+      "sha256": "1b1b864660f0e91e468435a87ef99247f55ebb1e5ffa969f5dafabf2c8f4e3c0",
+      "row": 0,
+      "col": 1,
+      "bounds": [
+        48,
+        18,
+        207,
+        240
+      ]
+    },
+    {
+      "action": "idle",
+      "frame": 2,
+      "source": "idle-03.png",
+      "sha256": "563b219f2ede394d3bc6c05bf6f3eeada9d30cd07b4291659c064a2ac9aa53eb",
+      "row": 0,
+      "col": 2,
+      "bounds": [
+        33,
+        18,
+        223,
+        240
+      ]
+    },
+    {
+      "action": "idle",
+      "frame": 3,
+      "source": "idle-04.png",
+      "sha256": "c6ba88f2e8ffa6a0a606929222807856f8ebece3267ad1d4bfba8d80f51d5532",
+      "row": 0,
+      "col": 3,
+      "bounds": [
+        41,
+        18,
+        215,
+        240
+      ]
+    },
+    {
+      "action": "walk",
+      "frame": 0,
+      "source": "walk-01.png",
+      "sha256": "63146af04cfc7913d056cac16812c46c2a3518eeb64ffa2efdce26096ec740b1",
+      "row": 0,
+      "col": 4,
+      "bounds": [
+        49,
+        18,
+        207,
+        240
+      ]
+    },
+    {
+      "action": "walk",
+      "frame": 1,
+      "source": "walk-02.png",
+      "sha256": "a3b91bb697b31226ce0157ebaf6959b951670d2ab1a063c41a4526ea75c247ad",
+      "row": 0,
+      "col": 5,
+      "bounds": [
+        54,
+        18,
+        201,
+        240
+      ]
+    },
+    {
+      "action": "walk",
+      "frame": 2,
+      "source": "walk-03.png",
+      "sha256": "681109dab7e54f566fa89739722b76c5d058be0911b4ba5173603033ddec23b9",
+      "row": 0,
+      "col": 6,
+      "bounds": [
+        39,
+        18,
+        217,
+        240
+      ]
+    },
+    {
+      "action": "walk",
+      "frame": 3,
+      "source": "walk-04.png",
+      "sha256": "705c727bb3c83197bf896ac7241153e432494f1606eb4f0d3d25529c233f8cd3",
+      "row": 0,
+      "col": 7,
+      "bounds": [
+        45,
+        18,
+        210,
+        240
+      ]
+    },
+    {
+      "action": "dash",
+      "frame": 0,
+      "source": "dash-01.png",
+      "sha256": "a0e4e5c4bca66a9ad9aad6c20eb7a77721b80df2cf829b04513519d160df4ac9",
+      "row": 1,
+      "col": 0,
+      "bounds": [
+        12,
+        18,
+        243,
+        240
+      ]
+    },
+    {
+      "action": "dash",
+      "frame": 1,
+      "source": "dash-02.png",
+      "sha256": "43c85db3ffb9754bff31facf90d92d14eb19a68873b8539d63205da89aa19fe0",
+      "row": 1,
+      "col": 1,
+      "bounds": [
+        9,
+        18,
+        246,
+        240
+      ]
+    },
+    {
+      "action": "dash",
+      "frame": 2,
+      "source": "dash-03.png",
+      "sha256": "e0964e0ea1503f4e5ffc68054224ba8e5145bcfde1d562401c8403c2b4bdf539",
+      "row": 1,
+      "col": 2,
+      "bounds": [
+        20,
+        18,
+        235,
+        240
+      ]
+    },
+    {
+      "action": "dash",
+      "frame": 3,
+      "source": "dash-04.png",
+      "sha256": "2d3cb7d561d3be0b1a74ebd5acdfd01a2a224af4e318367d56f7c7c3793ea3f6",
+      "row": 1,
+      "col": 3,
+      "bounds": [
+        44,
+        18,
+        212,
+        240
+      ]
+    },
+    {
+      "action": "crouch",
+      "frame": 0,
+      "source": "crouch-01.png",
+      "sha256": "1ab0e7082bad9a992b94475e23365d645128eac6616c14e5e27b0c5dc5d65958",
+      "row": 1,
+      "col": 4,
+      "bounds": [
+        49,
+        50,
+        206,
+        240
+      ]
+    },
+    {
+      "action": "crouch",
+      "frame": 1,
+      "source": "crouch-02.png",
+      "sha256": "7f4309483e2a29ce9a83def63964d57f2826b61ae0ee0a5e3b75c535c191e6bc",
+      "row": 1,
+      "col": 5,
+      "bounds": [
+        52,
+        76,
+        203,
+        240
+      ]
+    },
+    {
+      "action": "crouch",
+      "frame": 2,
+      "source": "crouch-03.png",
+      "sha256": "6c3bd236642ac66fba1e38fca638d09eb2a20c3907989bf002b24b267b3d757c",
+      "row": 1,
+      "col": 6,
+      "bounds": [
+        65,
+        76,
+        190,
+        240
+      ]
+    },
+    {
+      "action": "crouch",
+      "frame": 3,
+      "source": "crouch-04.png",
+      "sha256": "88dc12b6640eb21d94238d1b094c078b0506f101f20a83462dd3649e2bcf6710",
+      "row": 1,
+      "col": 7,
+      "bounds": [
+        35,
+        18,
+        220,
+        240
+      ]
+    },
+    {
+      "action": "jump",
+      "frame": 0,
+      "source": "jump-01.png",
+      "sha256": "97bd3013d95d02b6c26b157f82357815b55920779cbd76326a8c4b1b34cd7607",
+      "row": 2,
+      "col": 0,
+      "bounds": [
+        35,
+        18,
+        221,
+        240
+      ]
+    },
+    {
+      "action": "jump",
+      "frame": 1,
+      "source": "jump-02.png",
+      "sha256": "dbfabc7b9b2a046f0f99c1dbed6c25ce877e5e23b832842975b9d9f4357c9e70",
+      "row": 2,
+      "col": 1,
+      "bounds": [
+        55,
+        36,
+        201,
+        240
+      ]
+    },
+    {
+      "action": "jump",
+      "frame": 2,
+      "source": "jump-03.png",
+      "sha256": "d5ef2d941a3301c36596db896d7e559c4c3814f73bcc65e2a3c67e245943146a",
+      "row": 2,
+      "col": 2,
+      "bounds": [
+        44,
+        45,
+        211,
+        240
+      ]
+    },
+    {
+      "action": "jump",
+      "frame": 3,
+      "source": "jump-04.png",
+      "sha256": "766c8866dd5e921224da9c8d33dda5764f722f5728ca8ac260bbd027aab02c75",
+      "row": 2,
+      "col": 3,
+      "bounds": [
+        62,
+        18,
+        193,
+        240
+      ]
+    },
+    {
+      "action": "fall",
+      "frame": 0,
+      "source": "fall-01.png",
+      "sha256": "7587b3cd574f077953ab4e6589b35332cee22c24a0e0ccc831d42d4703a23af9",
+      "row": 2,
+      "col": 4,
+      "bounds": [
+        57,
+        18,
+        199,
+        240
+      ]
+    },
+    {
+      "action": "fall",
+      "frame": 1,
+      "source": "fall-02.png",
+      "sha256": "75fbab42fd4edd3de6f173d2ee158d1a2058844c4ce18a4dfb88efb093bbc9dc",
+      "row": 2,
+      "col": 5,
+      "bounds": [
+        47,
+        36,
+        208,
+        240
+      ]
+    },
+    {
+      "action": "fall",
+      "frame": 2,
+      "source": "fall-03.png",
+      "sha256": "21a085c73ebd8c3a0161e46e7bbe95c5edc4492337007c7a58cb8edc9f7bde1d",
+      "row": 2,
+      "col": 6,
+      "bounds": [
+        40,
+        36,
+        215,
+        240
+      ]
+    },
+    {
+      "action": "fall",
+      "frame": 3,
+      "source": "fall-04.png",
+      "sha256": "1d40c6d0957c3f6bcab53d513cbc70f449ebfff2cf976426ebdb247e357c19ed",
+      "row": 2,
+      "col": 7,
+      "bounds": [
+        71,
+        60,
+        185,
+        240
+      ]
+    },
+    {
+      "action": "light",
+      "frame": 0,
+      "source": "light-01.png",
+      "sha256": "f93aaa4184d2bf0d227fa401f505693e36f50e95fdc1bdb6627b34c8e11cdc46",
+      "row": 3,
+      "col": 0,
+      "bounds": [
+        41,
+        18,
+        215,
+        240
+      ]
+    },
+    {
+      "action": "light",
+      "frame": 1,
+      "source": "light-02.png",
+      "sha256": "f1d9c2a044b4852f36013a673137cd9cdebe5a110ac40155ca6b481556c67109",
+      "row": 3,
+      "col": 1,
+      "bounds": [
+        35,
+        18,
+        221,
+        240
+      ]
+    },
+    {
+      "action": "light",
+      "frame": 2,
+      "source": "light-03.png",
+      "sha256": "d31a51ad5933e885f792e94b6c58aed891e5ef7b34492b0497fd79396fa5658f",
+      "row": 3,
+      "col": 2,
+      "bounds": [
+        40,
+        18,
+        215,
+        240
+      ]
+    },
+    {
+      "action": "light",
+      "frame": 3,
+      "source": "light-04.png",
+      "sha256": "897cbe4315207f732c559f92214cbb21a9349e18b8fe432c231f1e9c562e74c1",
+      "row": 3,
+      "col": 3,
+      "bounds": [
+        43,
+        18,
+        212,
+        240
+      ]
+    },
+    {
+      "action": "heavy",
+      "frame": 0,
+      "source": "heavy-01.png",
+      "sha256": "8eb9349a571271a055234baf9cf551d8c497e46ea19d3b37961b7cd843788eaa",
+      "row": 3,
+      "col": 4,
+      "bounds": [
+        37,
+        18,
+        219,
+        240
+      ]
+    },
+    {
+      "action": "heavy",
+      "frame": 1,
+      "source": "heavy-02.png",
+      "sha256": "c9ac54ede1329ef6ada5ab1b011854f3ee1e1947808fc23c8b3b94fdcf7376bd",
+      "row": 3,
+      "col": 5,
+      "bounds": [
+        34,
+        18,
+        221,
+        240
+      ]
+    },
+    {
+      "action": "heavy",
+      "frame": 2,
+      "source": "heavy-03.png",
+      "sha256": "772e094c80f17eddabc35aa2b2e02055b683ff30dfc560c1d9fd9e2a115a46fd",
+      "row": 3,
+      "col": 6,
+      "bounds": [
+        25,
+        18,
+        230,
+        240
+      ]
+    },
+    {
+      "action": "heavy",
+      "frame": 3,
+      "source": "heavy-04.png",
+      "sha256": "af5bf35e003e15d4781104a567ed6c6ef78c5b1f7918d5a2fe5f219d9c73d487",
+      "row": 3,
+      "col": 7,
+      "bounds": [
+        47,
+        18,
+        209,
+        240
+      ]
+    },
+    {
+      "action": "specialA",
+      "frame": 0,
+      "source": "dust-01.png",
+      "sha256": "d9c7a56e39d94d08cad05c8d7305a5f8cbbaf3b6c71c54900e26256a24839d32",
+      "row": 4,
+      "col": 0,
+      "bounds": [
+        41,
+        18,
+        215,
+        240
+      ]
+    },
+    {
+      "action": "specialA",
+      "frame": 1,
+      "source": "dust-02.png",
+      "sha256": "c8b30ed6d0956045f026e6464b82d2d745e8a668598d36b4a49688407a6192b6",
+      "row": 4,
+      "col": 1,
+      "bounds": [
+        36,
+        18,
+        219,
+        240
+      ]
+    },
+    {
+      "action": "specialA",
+      "frame": 2,
+      "source": "dust-03.png",
+      "sha256": "48002b934f26b3379b4d97ff54c9cea412581d32dc8fc3cabd1ae714cb0f0d23",
+      "row": 4,
+      "col": 2,
+      "bounds": [
+        33,
+        18,
+        223,
+        240
+      ]
+    },
+    {
+      "action": "specialA",
+      "frame": 3,
+      "source": "dust-04.png",
+      "sha256": "a8f5ed55f70a8c695f009f05776ebbb7b1d0b5608567f6a019057ef33a0d8a71",
+      "row": 4,
+      "col": 3,
+      "bounds": [
+        45,
+        18,
+        211,
+        240
+      ]
+    },
+    {
+      "action": "specialB",
+      "frame": 0,
+      "source": "petal-01.png",
+      "sha256": "54e3d7851a14a84455571775e16e749358e64681ee3ae2fc71f7a858d4360ead",
+      "row": 4,
+      "col": 4,
+      "bounds": [
+        59,
+        18,
+        197,
+        240
+      ]
+    },
+    {
+      "action": "specialB",
+      "frame": 1,
+      "source": "petal-02.png",
+      "sha256": "7d65c4f8c62cf676d6d82a8bfa29000aba5b7b260f782af0e0f6d5aae7fce4cb",
+      "row": 4,
+      "col": 5,
+      "bounds": [
+        33,
+        18,
+        222,
+        240
+      ]
+    },
+    {
+      "action": "specialB",
+      "frame": 2,
+      "source": "petal-03.png",
+      "sha256": "8c6062c8124091a83844c27c16cbafd716fc27826bf13e6f30124746f114660e",
+      "row": 4,
+      "col": 6,
+      "bounds": [
+        29,
+        18,
+        227,
+        240
+      ]
+    },
+    {
+      "action": "specialB",
+      "frame": 3,
+      "source": "petal-04.png",
+      "sha256": "27d7e060bdc5988259359249aa250e431a467751b56abc97a126d43eccdd7fa3",
+      "row": 4,
+      "col": 7,
+      "bounds": [
+        49,
+        18,
+        207,
+        240
+      ]
+    },
+    {
+      "action": "super",
+      "frame": 0,
+      "source": "super-01.png",
+      "sha256": "d4398e1a2866232bf0676170bf8c19b5fb9f34991998d99a4f08bac84b2a8da3",
+      "row": 5,
+      "col": 0,
+      "bounds": [
+        63,
+        18,
+        193,
+        240
+      ]
+    },
+    {
+      "action": "super",
+      "frame": 1,
+      "source": "super-02.png",
+      "sha256": "bf3ef93bab452239f8f32515bb0132fbd8c91425e4151a5aef90b92a6e7b666c",
+      "row": 5,
+      "col": 1,
+      "bounds": [
+        36,
+        18,
+        220,
+        240
+      ]
+    },
+    {
+      "action": "super",
+      "frame": 2,
+      "source": "super-03.png",
+      "sha256": "ff39658d348ca1996cdf1be6387db1cb4e0262f0445f4abb401aac7e53d49a59",
+      "row": 5,
+      "col": 2,
+      "bounds": [
+        21,
+        18,
+        234,
+        240
+      ]
+    },
+    {
+      "action": "super",
+      "frame": 3,
+      "source": "super-04.png",
+      "sha256": "61a7590f4e6949484ef9ab709075c9970b1c1618aac6ba9fdcba62c6d5d635ca",
+      "row": 5,
+      "col": 3,
+      "bounds": [
+        41,
+        18,
+        215,
+        240
+      ]
+    },
+    {
+      "action": "throw",
+      "frame": 0,
+      "source": "throw-01.png",
+      "sha256": "1f41068af4c752c561029b55920491a0ee503622116182ac4f355cdb1b7c4e15",
+      "row": 5,
+      "col": 4,
+      "bounds": [
+        38,
+        18,
+        217,
+        240
+      ]
+    },
+    {
+      "action": "throw",
+      "frame": 1,
+      "source": "throw-02.png",
+      "sha256": "1ca4e895b8596afa72d6024a59a0c25ed24dc68a289eec71e9ff9bf64a216398",
+      "row": 5,
+      "col": 5,
+      "bounds": [
+        40,
+        18,
+        215,
+        240
+      ]
+    },
+    {
+      "action": "throw",
+      "frame": 2,
+      "source": "throw-03.png",
+      "sha256": "a9faf188af4ed98fc73a3e6a33b502ce1a5fb13049c578fb39e3555fed84ce93",
+      "row": 5,
+      "col": 6,
+      "bounds": [
+        30,
+        18,
+        226,
+        240
+      ]
+    },
+    {
+      "action": "throw",
+      "frame": 3,
+      "source": "throw-04.png",
+      "sha256": "c80ebd7cfc55fb3767caf058b6192e91a5eab20b9cc22575d59adad5417cd133",
+      "row": 5,
+      "col": 7,
+      "bounds": [
+        44,
+        18,
+        211,
+        240
+      ]
+    },
+    {
+      "action": "hit",
+      "frame": 0,
+      "source": "hit-01.png",
+      "sha256": "b802549c77f016b2304b8e4dc0f4016ed9b814d830802d6e9e9b1a09018ec78e",
+      "row": 6,
+      "col": 0,
+      "bounds": [
+        46,
+        18,
+        210,
+        240
+      ]
+    },
+    {
+      "action": "hit",
+      "frame": 1,
+      "source": "hit-02.png",
+      "sha256": "d1b1154645567d3ce0a3bde055b2f315d55907533b46290df7daaf075c83f13e",
+      "row": 6,
+      "col": 1,
+      "bounds": [
+        50,
+        18,
+        206,
+        240
+      ]
+    },
+    {
+      "action": "hit",
+      "frame": 2,
+      "source": "hit-03.png",
+      "sha256": "16178ac87d524d9cdc01adade325c5700b2e9e4aa0111f0b9dd31f0cfe9dfc51",
+      "row": 6,
+      "col": 2,
+      "bounds": [
+        43,
+        18,
+        213,
+        240
+      ]
+    },
+    {
+      "action": "hit",
+      "frame": 3,
+      "source": "hit-04.png",
+      "sha256": "358320330266772caf921c77894607bb44419015755945f65dbc072cd87501de",
+      "row": 6,
+      "col": 3,
+      "bounds": [
+        42,
+        18,
+        214,
+        240
+      ]
+    },
+    {
+      "action": "block",
+      "frame": 0,
+      "source": "block-01.png",
+      "sha256": "e39f2d9c94046d3c6c9ce4ab815115253f26890f36ff8cc0d0b89d074d8bfeda",
+      "row": 6,
+      "col": 4,
+      "bounds": [
+        56,
+        18,
+        200,
+        240
+      ]
+    },
+    {
+      "action": "block",
+      "frame": 1,
+      "source": "block-02.png",
+      "sha256": "e17917c99a94865ce25511324a36c101f6a38b91dc8f4bd2a4c35f6626c77dda",
+      "row": 6,
+      "col": 5,
+      "bounds": [
+        48,
+        18,
+        207,
+        240
+      ]
+    },
+    {
+      "action": "block",
+      "frame": 2,
+      "source": "block-03.png",
+      "sha256": "9944c47c221b3920aa1e6ca15da6866983e23d7c82d8f31a8cdb4c75b9cb26c6",
+      "row": 6,
+      "col": 6,
+      "bounds": [
+        54,
+        18,
+        202,
+        240
+      ]
+    },
+    {
+      "action": "block",
+      "frame": 3,
+      "source": "block-04.png",
+      "sha256": "36d542815a1614b29b43b982c79e7be0be12e34f083aa4eb6f7f42fb89e1f018",
+      "row": 6,
+      "col": 7,
+      "bounds": [
+        45,
+        18,
+        211,
+        240
+      ]
+    },
+    {
+      "action": "down",
+      "frame": 0,
+      "source": "down-01.png",
+      "sha256": "02354696daa874bf547d3b0e6aa2292f9f9da7a943fd031e72ab1f4b81485737",
+      "row": 7,
+      "col": 0,
+      "bounds": [
+        26,
+        26,
+        229,
+        240
+      ]
+    },
+    {
+      "action": "down",
+      "frame": 1,
+      "source": "down-02.png",
+      "sha256": "71cef88e8bbbaba0b72801c364f7f3f31d47fa1032bd65e04ba95124523bf906",
+      "row": 7,
+      "col": 1,
+      "bounds": [
+        26,
+        48,
+        229,
+        240
+      ]
+    },
+    {
+      "action": "down",
+      "frame": 2,
+      "source": "down-03.png",
+      "sha256": "8de93fdfd19cfbf10afb9b362b3a6864c3f8058304e0e32ad3da1e0e2d402509",
+      "row": 7,
+      "col": 2,
+      "bounds": [
+        25,
+        60,
+        230,
+        240
+      ]
+    },
+    {
+      "action": "down",
+      "frame": 3,
+      "source": "down-04.png",
+      "sha256": "d3f1d9cf7f620cd61e5ec4b857cf85ffab6633f5f837691094826ebf46223f36",
+      "row": 7,
+      "col": 3,
+      "bounds": [
+        10,
+        80,
+        245,
+        240
+      ]
+    },
+    {
+      "action": "recover",
+      "frame": 0,
+      "source": "recover-01.png",
+      "sha256": "0f8b7754b451c5b1dea7672f7a2e95bdc98b4d4020ca45dbee5b4bf5bfa67485",
+      "row": 7,
+      "col": 4,
+      "bounds": [
+        45,
+        80,
+        211,
+        240
+      ]
+    },
+    {
+      "action": "recover",
+      "frame": 1,
+      "source": "recover-02.png",
+      "sha256": "eba0bf52d2b9d786b465125681bfcf9be827bfead03202207d5c14ff62ec68cc",
+      "row": 7,
+      "col": 5,
+      "bounds": [
+        28,
+        45,
+        228,
+        240
+      ]
+    },
+    {
+      "action": "recover",
+      "frame": 2,
+      "source": "recover-03.png",
+      "sha256": "920135e3aecb2b1655f4fde39446b4cbe1c1927a1006b186b2b5c100084a5279",
+      "row": 7,
+      "col": 6,
+      "bounds": [
+        15,
+        18,
+        241,
+        240
+      ]
+    },
+    {
+      "action": "recover",
+      "frame": 3,
+      "source": "recover-04.png",
+      "sha256": "9167cbb96a2e30f925b5540b9946d2cec90adf3188384d4194e083592fc20ae4",
+      "row": 7,
+      "col": 7,
+      "bounds": [
+        45,
+        18,
+        210,
+        240
+      ]
+    },
+    {
+      "action": "intro",
+      "frame": 0,
+      "source": "intro-01.png",
+      "sha256": "a6c84dd088a2b99a6d36955f4cba317583739b667b24457cd4c47a8f12c0738a",
+      "row": 8,
+      "col": 0,
+      "bounds": [
+        48,
+        18,
+        208,
+        240
+      ]
+    },
+    {
+      "action": "intro",
+      "frame": 1,
+      "source": "intro-02.png",
+      "sha256": "0c6421183ca7a355c713407d0ed0dbce3e2292afdebf78932b2086c067203f6b",
+      "row": 8,
+      "col": 1,
+      "bounds": [
+        29,
+        18,
+        226,
+        240
+      ]
+    },
+    {
+      "action": "intro",
+      "frame": 2,
+      "source": "intro-03.png",
+      "sha256": "42a61cf7e21b4c3c76f1aa69d3ebe1dca16dc295a985af12df07024919849c1c",
+      "row": 8,
+      "col": 2,
+      "bounds": [
+        57,
+        18,
+        198,
+        240
+      ]
+    },
+    {
+      "action": "intro",
+      "frame": 3,
+      "source": "intro-04.png",
+      "sha256": "cc017e97b8353119749f401237937f0de2d03c2bd3fb0d72be7269d4d48cef99",
+      "row": 8,
+      "col": 3,
+      "bounds": [
+        44,
+        18,
+        212,
+        240
+      ]
+    },
+    {
+      "action": "victory",
+      "frame": 0,
+      "source": "victory-01.png",
+      "sha256": "646c9b16db410959fb2936c897560f7dce49256bfeb5e7a1f15743a5babc1691",
+      "row": 8,
+      "col": 4,
+      "bounds": [
+        43,
+        18,
+        212,
+        240
+      ]
+    },
+    {
+      "action": "victory",
+      "frame": 1,
+      "source": "victory-02.png",
+      "sha256": "7cd0f35dbf4d53e78ad58095a38403538cb9cae33496ff5f0f891cfdda57e4d1",
+      "row": 8,
+      "col": 5,
+      "bounds": [
+        42,
+        18,
+        214,
+        240
+      ]
+    },
+    {
+      "action": "victory",
+      "frame": 2,
+      "source": "victory-03.png",
+      "sha256": "03f68dcfcba3276853d52c5b135f93dc5c18b711ad82d6c0a5ab6c234cc56cbc",
+      "row": 8,
+      "col": 6,
+      "bounds": [
+        50,
+        18,
+        205,
+        240
+      ]
+    },
+    {
+      "action": "victory",
+      "frame": 3,
+      "source": "victory-04.png",
+      "sha256": "c22f2c078054ee80f53e95e6a7bb9f9ae8a495cc3e387cefe8bd08d2956430ba",
+      "row": 8,
+      "col": 7,
+      "bounds": [
+        37,
+        18,
+        218,
+        240
+      ]
+    },
+    {
+      "action": "airlight",
+      "frame": 0,
+      "source": "airlight-01.png",
+      "sha256": "53a641640e16bbd98c6a056d8180741f9e68036fc118f3298dad4f68fdf8c8b1",
+      "row": 9,
+      "col": 0,
+      "bounds": [
+        43,
+        18,
+        213,
+        240
+      ]
+    },
+    {
+      "action": "airlight",
+      "frame": 1,
+      "source": "airlight-02.png",
+      "sha256": "dae14529a168f0a0b57c2a6a36ac5c6c97da9e00eb0980898c0507bc41ee79c3",
+      "row": 9,
+      "col": 1,
+      "bounds": [
+        36,
+        18,
+        220,
+        240
+      ]
+    },
+    {
+      "action": "airlight",
+      "frame": 2,
+      "source": "airlight-03.png",
+      "sha256": "ff016f5dcbb518f65dc09fa0aa8221521c15c70bae36cdba76ca4c7658913661",
+      "row": 9,
+      "col": 2,
+      "bounds": [
+        31,
+        18,
+        225,
+        240
+      ]
+    },
+    {
+      "action": "airlight",
+      "frame": 3,
+      "source": "airlight-04.png",
+      "sha256": "9485b2133653b9ac2e1265f6eef4742e83bd76cfb52fe30c88ecf7716205d787",
+      "row": 9,
+      "col": 3,
+      "bounds": [
+        48,
+        18,
+        207,
+        240
+      ]
+    },
+    {
+      "action": "airheavy",
+      "frame": 0,
+      "source": "airheavy-01.png",
+      "sha256": "d44a15ddc763d507243a855fcc03f7d33ff503425f574e81465a78c73e38604e",
+      "row": 9,
+      "col": 4,
+      "bounds": [
+        38,
+        18,
+        217,
+        240
+      ]
+    },
+    {
+      "action": "airheavy",
+      "frame": 1,
+      "source": "airheavy-02.png",
+      "sha256": "de297b31d7c3e095a04e568d01d31eca58d55da4f624766cc658081f66919465",
+      "row": 9,
+      "col": 5,
+      "bounds": [
+        32,
+        18,
+        224,
+        240
+      ]
+    },
+    {
+      "action": "airheavy",
+      "frame": 2,
+      "source": "airheavy-03.png",
+      "sha256": "a32262cc91816226a021baf81569d19db4f118cb5065e1d2f3f7eea423005899",
+      "row": 9,
+      "col": 6,
+      "bounds": [
+        46,
+        18,
+        210,
+        240
+      ]
+    },
+    {
+      "action": "airheavy",
+      "frame": 3,
+      "source": "airheavy-04.png",
+      "sha256": "f27b9400e5e8cc09eddad56ade0eeaebd1f455a212f09471811a2db666f8192b",
+      "row": 9,
+      "col": 7,
+      "bounds": [
+        52,
+        18,
+        203,
+        240
+      ]
+    }
+  ]
+}
