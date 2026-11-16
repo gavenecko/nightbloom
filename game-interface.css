@@ -1,0 +1,22 @@
+#wrap{width:min(calc(100vw - 24px),1180px,calc((100dvh - var(--help-space,70px) - var(--touch-space,0px))*16/9))}
+#gameTools{border:1px solid #493253;border-radius:7px;background:#100b18}
+#gameTools>summary{padding:9px 18px;cursor:pointer;font:12px Consolas;color:#e5c7f1}
+#gameToolsContent{padding:10px}
+#gameToolsContent>label{display:inline-block;margin:8px}
+#gameToolsContent select{background:#21162c;color:#fff;border:1px solid #876296;padding:6px;font:inherit}
+.game-modal{width:min(620px,92vw);max-height:90dvh;overflow:auto;background:#130d20;color:#f6eaf8;border:2px solid #af7acd;border-radius:12px;padding:24px;font:15px Georgia}
+.game-modal::backdrop{background:#000c}.game-modal h2{color:#f1ce89;margin-top:0}
+.game-modal p{line-height:1.5;color:#dfcfe8}.game-modal .actions{display:flex;gap:12px;justify-content:flex-end}
+.game-modal button{padding:12px 18px;border:1px solid #b68ac9;background:#362044;color:#fff;border-radius:6px;font:14px Consolas;cursor:pointer}
+.game-modal button:focus-visible{outline:3px solid #75ffe0;outline-offset:3px}
+#quitAccept{background:#67283f}#courseSummaryRows{display:grid;grid-template-columns:1fr auto;gap:10px 22px;font:14px Consolas}
+#courseSummaryRows dt{color:#ccbbd6}#courseSummaryRows dd{margin:0;color:#ffe0a3;text-align:right}
+#touchControls{width:min(780px,100%);display:flex;gap:12px;justify-content:space-between;align-items:center;user-select:none;-webkit-user-select:none;padding-bottom:env(safe-area-inset-bottom)}
+#touchControls[hidden],#touchAttacks[hidden]{display:none}
+#touchStick{width:110px;height:110px;border-radius:50%;border:2px solid #8e65a2;background:radial-gradient(circle,#493052,#150f20);position:relative;touch-action:none;flex-shrink:0}
+#touchStick::before{content:'MOVE';position:absolute;top:8px;width:100%;text-align:center;font:10px Consolas;color:#dcc9e5}
+#touchKnob{position:absolute;left:50%;top:50%;width:40px;height:40px;border-radius:50%;transform:translate(-50%,-50%);background:#ad80be;border:2px solid #ecc7ef;pointer-events:none}
+#touchAttacks{display:grid;grid-template-columns:repeat(3,minmax(52px,1fr));gap:6px}
+#touchControls button{min-height:38px;min-width:48px;padding:7px 10px;background:#2c193c;color:#f7eaff;border:1px solid #9770ab;border-radius:9px;font:12px Consolas;touch-action:none}
+#touchControls button:active{background:#86508b}#touchNav{display:flex;flex-direction:column;gap:7px}
+@media(max-width:600px){body{padding:6px;gap:6px}#wrap{width:min(calc(100vw - 12px),calc((100dvh - var(--help-space,60px) - var(--touch-space,0px))*16/9))}#touchStick{width:96px;height:96px}#touchControls{gap:6px}#touchControls button{padding:6px;font-size:10px;min-width:40px}#touchAttacks{gap:4px;grid-template-columns:repeat(3,1fr)}.game-modal{padding:16px}}

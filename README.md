@@ -13,6 +13,8 @@ A gothic arcade fighting game with eleven starting queens, three secret challeng
 - The opening starts after the first Enter. Music defaults to 15%; music, character voices and effects have separate volume controls. Dialogue plays automatically by default and can be disabled.
 - The pause screen lists each fighter's moves and inputs. Training includes a dummy, reset controls, frame stepping, effects settings and reduced motion.
 - Story and Arcade insert the Cursed Reliquary bonus immediately after the halfway match victory: match five for starting queens, match six for secret fighters. Press Enter to start the 15-second challenge; destroying the relic adds 1,500 points in Arcade.
+- A match-winning super becomes a 36-hit Haunted Finale, continuing after zero health. Course completion now shows cumulative stats, including retries and overkill hits.
+- Escape asks before returning to the menu. Tools below the game live in a collapsed Controls & settings dropdown, which also offers Automatic / On / Off touch controls.
 
 ## Controls
 
@@ -29,5 +31,6 @@ Progress is stored in the current browser and site origin. Debug actions use a s
 - [Release checks and remaining playtests](docs/RELEASE_READINESS.md)
 - [Stage and layer previews](docs/stage-depth.html)
 - [Historical development notes](docs/DEVELOPMENT_HISTORY_081.md)
+- [Haunted Finale, course stats and touch controls](docs/FINALE_COURSE_INTERFACE.md)
 
 This is a development build. Full controller/course playthroughs, cold-cache performance checks, final audio listening, accessibility review and distribution credits remain release work.
