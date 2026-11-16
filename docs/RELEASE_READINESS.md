@@ -1,6 +1,6 @@
 # NIGHTBLOOM release-readiness audit
 
-Date: 2026-11-15. Baseline: 3630d7c. Scope: first save/progression audit, not a shipping certification.
+Updated: 2026-11-16. Reviewed baseline: 3a5e409. Scope: save/progression, Belladonna integration and presentation cleanup. Remaining release gates are listed below.
 
 ## Confirmed problems fixed
 
@@ -18,20 +18,33 @@ Run from the repository root:
 ```
 node tests/release-audit.cjs
 node tests/debug-profile.cjs
+node tests/belladonna-integration.cjs
+node tests/challenger-voices-and-fx.cjs
+node tests/supers-and-throws.cjs
+node tests/super-voice-calls.cjs
+node tests/story-voice-expansion.cjs
+node tests/pause-moves.cjs
 ```
 
-- All 13 Story routes have the expected unique starting-roster opponents and valid stages.
-- All ten starting fighters queue Arachne after the course clear without automatically unlocking her.
+- All 14 Story routes have the expected unique starting-roster opponents and valid stages.
+- All eleven starting fighters queue Arachne after the course clear without automatically unlocking her.
 - Secret challenger losses do not unlock fighters; wins unlock only that challenger.
 - Arachne leads to Living Doll; Living Doll leads to Narrator.
-- First clears grant ending art; repeat clears grant Bonus Endings; Bonus Group requires all 13 Bonus Endings and triggers only on the transition to completion.
+- First clears grant ending art; repeat clears grant Bonus Endings; Bonus Group requires all 14 Bonus Endings and triggers only on the transition to completion.
 - Malformed save fields are repaired, and test/earned progress, scores and backup keys are isolated.
 - Debug authentication, returning to earned progress, resuming saved tests and legacy backup restoration pass regression checks.
-- All 27 ending/bonus/group image files exist. All 39 complete literal asset paths found in the main page and runtime scripts exist. This does not validate every dynamically constructed resource URL.
+- All 29 current ending/bonus/group images exist. Full initialization checks find no missing initial fighter/stage art, and recorded dialogue checks validate all 495 recording files.
 - All runtime JavaScript files pass syntax checks.
 - Local in-app browser smoke test: game renders, password login succeeds, unlock-all Gallery renders, congratulations renders with fighter sprite and artwork, return to earned progress restores the original Gallery locks. No browser error logs appeared during this smoke test.
 
 These checks execute real progression functions but do not simulate human combat or a complete course playthrough.
+
+## Current presentation status
+
+- Belladonna’s full-size scale and alignment are approved by the user. Her tiny intro/victory transformations remain intact.
+- The live build was checked for the eleven-queen title, Belladonna’s story scene, combat super, pause move list, congratulations, Bonus Ending and Bonus Group.
+- Browser title, title-screen build label and credits now describe the current game. The README documents current progression and audio behavior; earlier checkpoint notes are archived separately.
+- Credits describe the actual art, voice and music categories. Final contributor names and distribution/licensing review are still required before release.
 
 ## Remaining release gates
 

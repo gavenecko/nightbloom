@@ -1,7 +1,7 @@
 
 const c=document.getElementById('game'),x=c.getContext('2d'); x.imageSmoothingEnabled=false;
 const W=c.width,H=c.height, ground=430;
-const BUILD_INFO={version:'0.81',channel:'ELEVEN QUEENS',date:'2026-11-15',label:'BELLADONNA'};
+const BUILD_INFO={version:'0.81',channel:'ELEVEN QUEENS',date:'2026-11-16',label:'PRESENTATION CLEANUP'};
 // World coordinates are independent from the fixed 960px viewport.
 let stageCameraX=0;
 function arenaWidth(){return STAGES.includes(selectedStage)?W*2:W}
@@ -2532,21 +2532,21 @@ function drawCredits(){
  x.font='italic 19px Georgia';x.fillStyle='#d7b9e8';x.fillText('Queens of the Haunted',W/2,79);
  x.font='bold 11px Consolas';x.fillStyle='#72ffd7';x.fillText('BUILD '+BUILD_INFO.version+' · '+BUILD_INFO.channel+' · '+BUILD_INFO.date,W/2,103);
  let rows=[
-  ['PROJECT','Original browser fighting-game prototype'],
-  ['ROSTER','11 starting queens · 3 secret challengers · 6 haunted stages'],
-  ['COMBAT','Custom JavaScript fighting engine, AI, frame data and Training Lab'],
-  ['STORY','Fourteen character routes with endings and Gallery unlocks'],
-  ['AUDIO','Recorded stage and challenger themes, voices, and synthesized combat effects'],
-  ['ART','Embedded programmatic prototype sprite/portrait/FX atlases'],
-  ['RUNTIME','Standalone HTML5 Canvas + WebAudio · no external runtime assets'],
-  ['STATUS','Layered Sprite Pipeline · benchmark trio now supports separate body and FX atlases, and Atlas Inspector can preview body / FX / composite layers']
+  ['PROJECT','A gothic arcade fighting game'],
+  ['ROSTER','Eleven starting queens · three secret challengers'],
+  ['WORLDS','Six haunted arenas · fourteen character stories'],
+  ['ART','Approved fighter designs, painted magic and ending illustrations'],
+  ['VOICES','Recorded character voices · Kokoro and Chatterbox Turbo'],
+  ['MUSIC','Opening, stage and secret-challenger themes'],
+  ['GALLERY','Story endings · Bonus Endings · Bonus Group'],
+  ['PLAYTEST','Thank you for helping shape NIGHTBLOOM.']
  ];
  rows.forEach((r,i)=>{
    let y=140+i*38;x.textAlign='right';x.font='bold 10px Consolas';x.fillStyle='#a886bb';x.fillText(r[0],285,y);
    x.textAlign='left';x.font='11px Consolas';x.fillStyle='#e8dfed';x.fillText(r[1],305,y);
  });
  x.textAlign='center';x.font='italic 14px Georgia';x.fillStyle='#f19ac4';x.fillText('“All Monsters Are Beautiful.”',W/2,457);
- x.font='9px Consolas';x.fillStyle='#82748a';x.fillText('Prototype credits remain generic until final production names/roles are supplied for 1.0.',W/2,482);
+ x.font='9px Consolas';x.fillStyle='#82748a';x.fillText('Character designs and voices follow the approved cast.',W/2,482);
  x.fillStyle='#b9a9c2';x.fillText('Esc / Backspace — title',W/2,505);
 }
 
@@ -2786,7 +2786,7 @@ function drawTitleScreen(){
  // giant blood moon / eclipse composition
  x.save();x.globalAlpha=.32;x.fillStyle='#d92962';x.beginPath();x.arc(W/2,94,112+Math.sin(T*.35)*3,0,7);x.fill();
  x.fillStyle='#120713';x.beginPath();x.arc(W/2+34,75,96,0,7);x.fill();x.restore();
- // ten queens as a quiet roster crown
+ // Starting queens form a quiet roster crown.
  ROSTER.filter(isFighterUnlocked).forEach((name,i)=>{
    let a=(i/(ROSTER.length-1)-.5)*1.25,cx=W/2+Math.sin(a)*360,cy=143+Math.abs(a)*46,img=portraitFor(name);
    x.save();x.globalAlpha=.34+(mainMenuIndex%2)*.03;x.beginPath();x.arc(cx,cy,22,0,7);x.clip();if(img.complete&&img.naturalWidth)x.drawImage(img,cx-22,cy-22,44,44);x.restore();
@@ -2809,7 +2809,7 @@ function drawTitleScreen(){
    x.font=(sel?'bold ':'')+'16px Georgia';x.fillStyle=sel?'#fff':'#c9b9d2';x.textAlign='center';x.fillText(item,W/2,y+19);
  });
  x.font='9px Consolas';x.fillStyle='#91849a';x.fillText('↑/↓ SELECT  ·  ENTER CONFIRM  ·  M MUTE',W/2,481);
- x.fillStyle='#72ffd7';x.fillText('0.81 · GOTHIC PRESENTATION',W/2,499);
+ x.fillStyle='#72ffd7';x.fillText('BUILD '+BUILD_INFO.version+' · '+BUILD_INFO.channel,W/2,499);
  x.fillStyle='#675c70';x.fillText('ALL MONSTERS ARE BEAUTIFUL.',W/2,517);
 }
 function selectableFighters(){return ROSTER.filter(isFighterUnlocked)}
