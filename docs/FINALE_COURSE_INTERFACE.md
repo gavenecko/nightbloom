@@ -27,3 +27,5 @@ The tools below the play screen are inside one collapsed Controls & settings dro
 Touch controls offer Automatic, On, and Off. Automatic uses a coarse pointer or touch-capable device signal. The first mobile layout has an eight-direction joystick, light/heavy attacks, direct Special A/B buttons, super, throw, held guard, jump, pause, Confirm and Menu. It supports simultaneous joystick/button touches and releases input on pointer cancellation, capture loss, focus loss and hidden pages.
 
 This is the initial mobile control layout. Physical-phone sizing, browser audio activation and sustained touch play still need a device playtest; keyboard/controller play remains supported.
+
+On short landscape screens, touch controls overlay the lower corners and the dropdown sits in a compact bottom strip. The arena uses the available height instead of subtracting the stacked portrait controls. Joystick, buttons and menu respect device safe-area insets. Portrait retains the controls below the arena.

@@ -73,6 +73,7 @@ touchModeSelect.addEventListener('change',()=>{
 });
 function updateTouchPresentation(){
  const enabled=touchMode==='ON'||touchMode==='AUTO'&&(window.matchMedia?.('(pointer: coarse)').matches||navigator.maxTouchPoints>0);
+ document.body.classList.toggle('touch-layout',!!enabled);
  const combat=gameState==='fight'||gameState==='relicBonus',view=[enabled,combat,!!gameModal].join('|');
  if(view===touchView)return;touchView=view;
  const root=document.getElementById('touchControls');root.hidden=!enabled||!!gameModal;
