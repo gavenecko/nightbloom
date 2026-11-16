@@ -2784,7 +2784,7 @@ function drawTitleScreen(){
    glowText('NIGHTBLOOM',W/2,89,58,'#fff0ff','#b52268');
    x.textAlign='center';x.font='italic 20px Georgia';x.fillStyle='#d9bce9';x.fillText('Queens of the Haunted',W/2,116);
  }
- drawSectionLabel('TEN QUEENS · ONE RED MOON',139,'#ff91be');
+ drawSectionLabel((CORE_ROSTER.length===11?'ELEVEN':CORE_ROSTER.length===10?'TEN':String(CORE_ROSTER.length))+' QUEENS · ONE RED MOON',139,'#ff91be');
 
  MAIN_MENU.forEach((item,i)=>{
    let y=151+i*32,sel=mainMenuIndex===i,accent=sel?'#ff65a6':'#574063';
@@ -2897,8 +2897,10 @@ function drawCharacterSelect(){
  x.font='bold 24px Georgia';x.fillStyle='#fff';x.fillText(node?.title||'Nightbloom',W/2,92);
  x.font='12px Consolas';x.fillStyle='#bdaec8';x.fillText(node?.stage||selectedStage,W/2,115);
 
- let lines=wrapLines(node?.before||'',360,'14px Consolas');x.textAlign='left';x.font='14px Consolas';x.fillStyle='#e9dfef';
- lines.slice(0,6).forEach((ln,i)=>x.fillText(ln,300,150+i*22));
+ const before=storyBeforeText(node);let beforeSize=14,lines=wrapLines(before,360,beforeSize+'px Consolas');
+ while(lines.length>8&&beforeSize>11){beforeSize--;lines=wrapLines(before,360,beforeSize+'px Consolas');}
+ x.textAlign='left';x.font=beforeSize+'px Consolas';x.fillStyle='#e9dfef';
+ lines.slice(0,8).forEach((ln,i)=>x.fillText(ln,300,145+i*18));
 
  x.fillStyle='#130d1bdd';x.fillRect(280,292,400,58);x.strokeStyle=CHAR_INFO[playerChoice].accent;x.strokeRect(280,292,400,58);
  x.font='12px Consolas';x.fillStyle='#fff';x.textAlign='left';
@@ -3535,6 +3537,10 @@ new ResizeObserver(entries=>{
 gameCommandButtons.forEach(button=>button.addEventListener('click',()=>{if(!button.disabled){pointerPress(button.dataset.gameCommand);c.focus()}}));
 let contextHelpKey='';
 trainingDetailsButton.addEventListener('click',()=>{trainingPanelExpanded=!trainingPanelExpanded;updateContextHelp();c.focus()});
+function storyBeforeText(node){
+ const introduction=ladderIndex===0&&!node?.secret?window.NightbloomIntroductions?.[playerChoice]:'';
+ return [introduction,node?.before].filter(Boolean).join(' ');
+}
 function storyVoiceLines(){
  if(gameState==='routeComplete'&&gameMode==='story'){
    return [{speaker:'NARRATOR',text:CLEAR_QUOTES.NARRATOR},{speaker:playerChoice,text:CLEAR_QUOTES[playerChoice]}];
@@ -3543,7 +3549,7 @@ function storyVoiceLines(){
  if(storyAfterText)return [{speaker:'NARRATOR',text:storyAfterText}];
  if(storyEnding)return [{speaker:'NARRATOR',text:ENDINGS[playerChoice]||''}];
  const node=ladder[ladderIndex];if(!node)return [];
- return [{speaker:'NARRATOR',text:node.before},{speaker:playerChoice,text:rivalLine(playerChoice,node.opponent)},{speaker:node.opponent,text:rivalLine(node.opponent,playerChoice)}].filter(line=>line.text);
+ return [{speaker:'NARRATOR',text:storyBeforeText(node)},{speaker:playerChoice,text:rivalLine(playerChoice,node.opponent)},{speaker:node.opponent,text:rivalLine(node.opponent,playerChoice)}].filter(line=>line.text);
 }
 function updateContextHelp(){
  if(typeof NightbloomVoices!=='undefined'){const lines=storyVoiceLines();NightbloomVoices.update(lines.length?JSON.stringify([playerChoice,ladderIndex,storyEnding,storyAfterText,lines]):'',lines);}

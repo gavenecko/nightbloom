@@ -1,7 +1,7 @@
 // Approved Chatterbox recordings. No speech engine or model runs in the browser.
 (()=>{
- const ROOT='assets/audio/combat-model-roster-v1/';
- const cast=new Set(['VAMPIRA','NEKOMATA','BANSHEE','MEDUSA','JIANGSHI','YUREI','DULLAHAN','WEREWOLF','MUMMY','WITCH','ARACHNE','LIVING DOLL','NARRATOR']);
+ const ROOT='assets/audio/combat-model-roster-v1/',SUPER_ROOT='assets/audio/super-calls-v1/';
+ const cast=new Set(['VAMPIRA','NEKOMATA','BANSHEE','MEDUSA','JIANGSHI','YUREI','DULLAHAN','WEREWOLF','MUMMY','WITCH','BELLADONNA','ARACHNE','LIVING DOLL','NARRATOR']);
  const clips=new Map(),cooldowns=new Map();let current=null,enabled=false,pair='',victoryPlayed=false;
  let config={getVolume:()=>0};
  const volume=()=>Math.max(0,Math.min(1,Number(config.getVolume())||0));
@@ -12,15 +12,16 @@
   stop();pair=key;cooldowns.clear();victoryPlayed=false;
   for(const a of clips.values()){a.pause();a.removeAttribute('src');a.load();}clips.clear();
   for(const name of chosen)for(let i=1;i<=(name==='NARRATOR'?2:4);i++){
-   const a=new window.Audio();a.preload='auto';a.src=ROOT+name.toLowerCase().replaceAll(' ','-')+'-'+i+'.mp3';a.load();clips.set(name+':'+i,a);
+   const a=new window.Audio();a.preload='auto';a.src=(name==='BELLADONNA'?SUPER_ROOT:ROOT)+name.toLowerCase().replaceAll(' ','-')+'-'+i+'.mp3';a.load();clips.set(name+':'+i,a);
   }
+  for(const name of chosen){const a=new window.Audio();a.preload='auto';a.src=SUPER_ROOT+name.toLowerCase().replaceAll(' ','-')+'-super.mp3';a.load();clips.set(name+':super',a);}
  }
  function play(name,index,priority,side,cooldown){
   if(!enabled||!volume())return false;
   const a=clips.get(name+':'+index),now=performance.now(),key=(side||name)+':'+(priority===2?'pain':'attack');
   // Drop unloaded cues rather than letting a network delay play stale attacks.
   if(!a||a.readyState<2||a.error)return false;
-  if(priority<3&&(now<(cooldowns.get(key)||0)||(current&&current.priority>=priority)))return false;
+  if(priority<4&&((priority<3&&now<(cooldowns.get(key)||0))||(current&&current.priority>=priority)))return false;
   stop();const entry={audio:a,priority};current=entry;a.volume=volume();a.currentTime=0;
   a.onended=a.onerror=()=>{if(current===entry)current=null;};
   cooldowns.set(key,now+cooldown);
@@ -31,14 +32,14 @@
   if(type==='round_start'){stop();cooldowns.clear();victoryPlayed=false;return;}
   if(!enabled)return;
   if(type==='match_end'){
-   if(victoryPlayed)return;victoryPlayed=true;stop();play(data.winner,2,3,data.winnerSide,0);return;
+   if(victoryPlayed)return;victoryPlayed=true;stop();play(data.winner,2,4,data.winnerSide,0);return;
   }
   if(victoryPlayed)return;
   if(type==='attack'){
    if(data.move==='super')return; // super_start already supplies this call.
    const special=['specialA','specialB','throw'].includes(data.move);
    play(data.fighter,special?1:3,special?1:0,data.fighterSide,special?2400:1600);
-  }else if(type==='super_start')play(data.fighter,1,1,data.fighterSide,2400);
+  }else if(type==='super_start')play(data.fighter,'super',3,data.fighterSide,0);
   else if(type==='hit')play(data.defender,4,2,data.defenderSide,1800);
  }
  function update({active,paused=false,fighters=[]}){

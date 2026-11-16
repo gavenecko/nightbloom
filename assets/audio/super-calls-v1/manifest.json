@@ -1,0 +1,207 @@
+{
+  "version": 1,
+  "complete": true,
+  "model": "ResembleAI/chatterbox-turbo",
+  "format": "MP3 mono 24kHz 48kbps",
+  "totalBytes": 162648,
+  "samples": [
+    {
+      "id": "vampira-super",
+      "character": "VAMPIRA",
+      "text": "Scarlet Coven!",
+      "src": "assets/audio/super-calls-v1/vampira-super.mp3",
+      "duration": 1.36,
+      "rmsDb": -19.79,
+      "peak": 0.7818,
+      "bytes": 8732,
+      "sha256": "e58c4845d1904689d23a0dcfb6463e8bd53def6b99fd578f27ebd2603936bcc5"
+    },
+    {
+      "id": "nekomata-super",
+      "character": "NEKOMATA",
+      "text": "Two Souls!",
+      "src": "assets/audio/super-calls-v1/nekomata-super.mp3",
+      "duration": 1.14,
+      "rmsDb": -19.75,
+      "peak": 0.5538,
+      "bytes": 7436,
+      "sha256": "59a15fb8fc729a6e77f69359672dbbcbf6edcc4911bd58c217d089c32ba7ef99"
+    },
+    {
+      "id": "banshee-super",
+      "character": "BANSHEE",
+      "text": "Requiem!",
+      "src": "assets/audio/super-calls-v1/banshee-super.mp3",
+      "duration": 1.16,
+      "rmsDb": -20.99,
+      "peak": 0.7721,
+      "bytes": 7580,
+      "sha256": "8df12b646f4fdc3b159e3386e10b2810fafc864e5bc9706c921431cbdeceead1"
+    },
+    {
+      "id": "medusa-super",
+      "character": "MEDUSA",
+      "text": "Stone Garden!",
+      "src": "assets/audio/super-calls-v1/medusa-super.mp3",
+      "duration": 1.24,
+      "rmsDb": -19.78,
+      "peak": 0.618,
+      "bytes": 8012,
+      "sha256": "01c97c56623069a9928529937d2f0a301252b9a96a1ddd2d4dcf91014d76d9e5"
+    },
+    {
+      "id": "jiangshi-super",
+      "character": "JIANGSHI",
+      "text": "Eight Seals Broken!",
+      "src": "assets/audio/super-calls-v1/jiangshi-super.mp3",
+      "duration": 1.84,
+      "rmsDb": -18.37,
+      "peak": 0.7423,
+      "bytes": 11612,
+      "sha256": "9a2d25ac5c7d160f1d1a3dad37e509e17021405c1d38f1c9ed7eef8418ce22dd"
+    },
+    {
+      "id": "yurei-super",
+      "character": "YUREI",
+      "text": "Hundred Haunts!",
+      "src": "assets/audio/super-calls-v1/yurei-super.mp3",
+      "duration": 1.2,
+      "rmsDb": -19.73,
+      "peak": 0.6082,
+      "bytes": 7724,
+      "sha256": "96bc07e51f00a4adb908153015983170006e40e87810f30434ee3a5404927ede"
+    },
+    {
+      "id": "dullahan-super",
+      "character": "DULLAHAN",
+      "text": "Midnight Procession!",
+      "src": "assets/audio/super-calls-v1/dullahan-super.mp3",
+      "duration": 1.68,
+      "rmsDb": -18.91,
+      "peak": 0.7889,
+      "bytes": 10604,
+      "sha256": "57993408f766aec062a3d473d957dad3ec7d5bbbcf5fc389a0ca06773e8af813"
+    },
+    {
+      "id": "werewolf-super",
+      "character": "WEREWOLF",
+      "text": "Blood Moon Frenzy!",
+      "src": "assets/audio/super-calls-v1/werewolf-super.mp3",
+      "duration": 1.46,
+      "rmsDb": -18.66,
+      "peak": 0.6232,
+      "bytes": 9308,
+      "sha256": "de75c6c9906b0cff6232c4d94e1e73e98ff212cb060ce00de26ecfb38771fc72"
+    },
+    {
+      "id": "witch-super",
+      "character": "WITCH",
+      "text": "Grand Hex!",
+      "src": "assets/audio/super-calls-v1/witch-super.mp3",
+      "duration": 1.24,
+      "rmsDb": -20.32,
+      "peak": 0.6887,
+      "bytes": 8012,
+      "sha256": "632f5b2b489e96698f6793429741cfcdf5849144d7e98bef69ac2fa09506fe63"
+    },
+    {
+      "id": "belladonna-super",
+      "character": "BELLADONNA",
+      "text": "Midnight Bloom!",
+      "src": "assets/audio/super-calls-v1/belladonna-super.mp3",
+      "duration": 1.76,
+      "rmsDb": -19.24,
+      "peak": 0.6239,
+      "bytes": 11180,
+      "sha256": "e00a591f5193cf94d265be1f38fd53e1ed68f25e603c603afb47d781decded09"
+    },
+    {
+      "id": "belladonna-1",
+      "character": "BELLADONNA",
+      "text": "A little fairy dust!",
+      "src": "assets/audio/super-calls-v1/belladonna-1.mp3",
+      "duration": 1.64,
+      "rmsDb": -21.43,
+      "peak": 0.7871,
+      "bytes": 10460,
+      "sha256": "63d1b972e5609d3e134157f6cab1776876b3441db9abf8c74a1bf7f5608cb84e"
+    },
+    {
+      "id": "belladonna-2",
+      "character": "BELLADONNA",
+      "text": "Small wings. Big trouble.",
+      "src": "assets/audio/super-calls-v1/belladonna-2.mp3",
+      "duration": 2.36,
+      "rmsDb": -21.14,
+      "peak": 0.7891,
+      "bytes": 14780,
+      "sha256": "5c064862d110e3edc0310201f54c6cb5b67745ed47daa5c382296afd6ebfc2c3"
+    },
+    {
+      "id": "belladonna-3",
+      "character": "BELLADONNA",
+      "text": "Hah!",
+      "src": "assets/audio/super-calls-v1/belladonna-3.mp3",
+      "duration": 0.96,
+      "rmsDb": -21.3,
+      "peak": 0.5179,
+      "bytes": 6284,
+      "sha256": "813c102a125a2ee06eae99eea1c5efc437fdd2ffe294366bc5de48fb58930aba"
+    },
+    {
+      "id": "belladonna-4",
+      "character": "BELLADONNA",
+      "text": "[gasp]",
+      "src": "assets/audio/super-calls-v1/belladonna-4.mp3",
+      "duration": 0.64,
+      "rmsDb": -20.49,
+      "peak": 0.6457,
+      "bytes": 4412,
+      "sha256": "e3db2a2280ea2badcb3bcc21ee1f58a1fa2f8b6f1ff982bc022888deefd3f6bd"
+    },
+    {
+      "id": "arachne-super",
+      "character": "ARACHNE",
+      "text": "Velvet Entombment!",
+      "src": "assets/audio/super-calls-v1/arachne-super.mp3",
+      "duration": 1.36,
+      "rmsDb": -19.25,
+      "peak": 0.7045,
+      "bytes": 8732,
+      "sha256": "dd80a7fc6a524abe0cdd1832e9962529b6e1ca934cc802612b11377630ae1403"
+    },
+    {
+      "id": "living-doll-super",
+      "character": "LIVING DOLL",
+      "text": "Cut the Strings!",
+      "src": "assets/audio/super-calls-v1/living-doll-super.mp3",
+      "duration": 1.48,
+      "rmsDb": -19.69,
+      "peak": 0.5996,
+      "bytes": 9452,
+      "sha256": "dc98ce5971cd8982608973ab46ef4289d1b16b8b9f8ccd0d1922f72144a57152"
+    },
+    {
+      "id": "narrator-super",
+      "character": "NARRATOR",
+      "text": "The Final Chapter!",
+      "src": "assets/audio/super-calls-v1/narrator-super.mp3",
+      "duration": 1.38,
+      "rmsDb": -21.19,
+      "peak": 0.797,
+      "bytes": 8876,
+      "sha256": "1cb75fca694e625aefef85d758844b8a787899986ff9ffa6b36e3b1f20701b97"
+    },
+    {
+      "id": "mummy-super",
+      "character": "MUMMY",
+      "text": "Pharaoh’s Binding!",
+      "src": "assets/audio/super-calls-v1/mummy-super.mp3",
+      "duration": 1.48,
+      "rmsDb": -18.89,
+      "peak": 0.5972,
+      "bytes": 9452,
+      "sha256": "98f83daa7010e9e7b357dec4e02ac326481549a536518b777d697d72a7a67cd7"
+    }
+  ]
+}

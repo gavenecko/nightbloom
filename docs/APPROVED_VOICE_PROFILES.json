@@ -152,6 +152,17 @@
       "echo": 0,
       "filterHz": 9000,
       "volume": 1
+    },
+    {
+      "id": "belladonna",
+      "name": "BELLADONNA",
+      "voice": "bf_isabella",
+      "delivery": "natural",
+      "effect": "clean",
+      "speed": 0.98,
+      "pitchSemitones": 0,
+      "echo": 0,
+      "volume": 1
     }
   ]
 }
