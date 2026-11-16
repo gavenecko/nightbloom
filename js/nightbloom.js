@@ -19,7 +19,7 @@ const keys={},kbKeys={},padKeys={},pressed={};
 const p2Keys={},p2KbKeys={},p2PadKeys={},p2Pressed={};
 const P2_KEYMAP={
  ArrowLeft:'KeyA',ArrowRight:'KeyD',ArrowUp:'KeyW',ArrowDown:'KeyS',
- Numpad1:'KeyJ',Numpad2:'KeyK',Numpad3:'KeyL',Numpad4:'KeyU',Numpad5:'KeyI',Numpad0:'ShiftLeft'
+ Numpad1:'KeyJ',Numpad2:'KeyK',Numpad3:'KeyL',Numpad4:'KeyU',Numpad5:'KeyI',Numpad6:'TouchSpecialB',Numpad0:'ShiftLeft'
 };
 const SYSTEM_DEFAULT={
  controls:'CLASSIC',
@@ -37,12 +37,12 @@ try{let s=JSON.parse(localStorage.getItem('nightbloom_system')||'null');if(s)SYS
 const CONTROL_PRESETS={
  CLASSIC:{
   ArrowLeft:'ArrowLeft',ArrowRight:'ArrowRight',ArrowUp:'ArrowUp',ArrowDown:'ArrowDown',
-  KeyA:'KeyA',KeyD:'KeyD',KeyW:'KeyW',KeyS:'KeyS',KeyJ:'KeyJ',KeyK:'KeyK',KeyL:'KeyL',KeyU:'KeyU',KeyI:'KeyI',
+  KeyA:'KeyA',KeyD:'KeyD',KeyW:'KeyW',KeyS:'KeyS',KeyJ:'KeyJ',KeyK:'KeyK',KeyL:'KeyL',KeyO:'TouchSpecialB',KeyU:'KeyU',KeyI:'KeyI',
   ShiftLeft:'ShiftLeft',ShiftRight:'ShiftRight'
  },
  ARCADE:{
   ArrowLeft:'KeyA',ArrowRight:'KeyD',ArrowUp:'KeyW',ArrowDown:'KeyS',
-  KeyZ:'KeyJ',KeyX:'KeyK',KeyC:'KeyL',KeyV:'KeyU',KeyB:'KeyI',KeyN:'ShiftLeft'
+  KeyZ:'KeyJ',KeyX:'KeyK',KeyC:'KeyL',KeyH:'TouchSpecialB',KeyV:'KeyU',KeyB:'KeyI',KeyN:'ShiftLeft'
  }
 };
 function saveSystem(){try{localStorage.setItem('nightbloom_system',JSON.stringify(SYSTEM))}catch(e){}}
@@ -2108,7 +2108,7 @@ function drawMoveList(name,px,py,align='left'){
  x.fillText('J  Light Attack',px,py+25);
  x.fillText('K  Heavy Attack',px,py+44);
  x.fillText('↓↘→ + J / L  '+m.a,px,py+63);
- x.fillText('↓↘→ + K      '+m.b,px,py+82);
+ x.fillText('O / ↓↘→ + K  '+m.b,px,py+82);
  x.fillText('U (100 meter) '+m.super,px,py+101);
  x.fillText('I  Throw / Throw Tech',px,py+120);
 }
@@ -2156,9 +2156,9 @@ function drawSuperCinematic(){
 function pauseMoveRows(name,slot=1){
  const arcade=SYSTEM.controls==='ARCADE'&&gameMode!=='local';
  const localP2=gameMode==='local'&&slot===2;
- const key=localP2?{light:'Num 1',heavy:'Num 2',special:'Num 3',super:'Num 4',throw:'Num 5',guard:'Num 0'}:
-  arcade?{light:'Z',heavy:'X',special:'C',super:'V',throw:'B',guard:'N'}:
-  {light:'J',heavy:'K',special:'L',super:'U',throw:'I',guard:'Shift'};
+ const key=localP2?{light:'Num 1',heavy:'Num 2',special:'Num 3',specialB:'Num 6',super:'Num 4',throw:'Num 5',guard:'Num 0'}:
+  arcade?{light:'Z',heavy:'X',special:'C',specialB:'H',super:'V',throw:'B',guard:'N'}:
+  {light:'J',heavy:'K',special:'L',specialB:'O',super:'U',throw:'I',guard:'Shift'};
  let pad=arcade?{light:'X',heavy:'Y',special:'A',super:'RB',throw:'B',guard:'LB'}:
   {light:'A',heavy:'B',special:'X',super:'Y',throw:'LB',guard:'RB'};
  if(typeof controllerBindingLabel==='function')pad=Object.fromEntries(['light','heavy','special','specialB','super','throw','guard'].map(action=>[action,controllerBindingLabel(slot,action)]));
@@ -2167,10 +2167,10 @@ function pauseMoveRows(name,slot=1){
   ['Light attack',key.light+' / Pad '+pad.light],
   ['Heavy attack',key.heavy+' / Pad '+pad.heavy],
   [moves.a,key.special+' or QCF + '+key.light+' / Pad '+pad.special+' or QCF + '+pad.light],
-  [moves.b,'QCF + '+key.heavy+' / Pad '+(pad.specialB?pad.specialB+' or ':'')+'QCF + '+pad.heavy],
+  [moves.b,key.specialB+' or QCF + '+key.heavy+' / Pad '+(pad.specialB?pad.specialB+' or ':'')+'QCF + '+pad.heavy],
   [moves.super,key.super+' / Pad '+pad.super+' - requires 100 meter'],
   ['Throw / throw escape',key.throw+' / Pad '+pad.throw+' - close range'],
-  ['Guard', 'Hold '+key.guard+' / Pad '+pad.guard+'; add Down for low guard'],
+  ['Guard (backward movement does not block)', 'Hold '+key.guard+' / Pad '+pad.guard+'; add Down for low guard'],
   ['Low / jumping attacks','Hold Down / jump, then light or heavy']
  ];
 }
@@ -2870,7 +2870,7 @@ function drawCharacterSelect(){
  x.fillStyle='#8f8198';x.font='9px Consolas';
  let mechanic=selected==='BELLADONNA'?'FAIRY DUST: midrange magic · NIGHTSHADE GALE: petal projectile':selected==='NARRATOR'?'BOOKMARK WARD: special B grants brief armor':selected==='ARACHNE'?'WEB: projectile briefly slows movement':selected==='LIVING DOLL'?'PORCELAIN: special A absorbs one strike':selected==='MUMMY'?'CURSE STACKS: pressure rises over time':selected==='WITCH'?'MOON SIGILS: delayed floor control':selected==='WEREWOLF'?'FERAL RAGE: stronger when wounded':selected==='MEDUSA'?'PETRIFY: temporary movement suppression':selected==='JIANGSHI'?'ARMOR: absorbs one incoming strike':selected==='DULLAHAN'?'HEAD TOSS: detachable projectile state':selected==='YUREI'?'PHASE: invulnerable movement windows':selected==='NEKOMATA'?'TWO SOULS: additional aerial jump':selected==='BANSHEE'?'FLOAT: prolonged aerial control':'BLOOD DRAIN: special attacks restore health';
  let mechLines=wrapLines(mechanic,202,'9px Consolas');mechLines.forEach((ln,i)=>x.fillText(ln,654,350+i*15));
- x.fillStyle='#c1b4c9';x.fillText('QCF+J / L  '+m.a,314,445);x.fillText('QCF+K      '+m.b,500,445);
+ x.fillStyle='#c1b4c9';x.fillText('QCF+J / L  '+m.a,314,445);x.fillText('O / QCF+K  '+m.b,500,445);
  x.textAlign='center';x.fillStyle='#a89ab1';x.font='9px Consolas';
  x.fillText(gameMode==='local'?'MENU: P1 controls · FIGHT: P2 Arrows + Numpad or Controller 2':'WASD / ARROWS SELECT · ENTER CONFIRM · BACKSPACE BACK',W/2,499);
  x.fillStyle=accent;x.fillText(selectableFighters().length+' FIGHTERS AVAILABLE',W/2,517);
