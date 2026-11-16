@@ -235,6 +235,6 @@ function installBelladonna(){
   const route=STORY_ROUTES[name];
   if(route&&!route.some(n=>n.opponent==='BELLADONNA'))route.splice(Math.min(2,route.length),0,{...node});
  }
- REMADE_SHEET_FIGHTERS.add('BELLADONNA');FIGHTER_RENDER_TUNE.BELLADONNA={y:0,scale:.702};
+ REMADE_SHEET_FIGHTERS.add('BELLADONNA');FIGHTER_RENDER_TUNE.BELLADONNA={y:0,scale:.6};
  refreshSecretInspector();
 }
