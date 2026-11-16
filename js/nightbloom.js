@@ -380,6 +380,7 @@ function isFinalRound(){let n=winsNeeded();return p1Wins===n-1&&p2Wins===n-1}
 function matchFormatLabel(){let n=winsNeeded();return 'FT'+n+' · '+(timerInfinite()?'∞':MATCH_RULES.timer)+' SEC'}
 
 const MAIN_MENU=['STORY MODE','ARCADE MODE','VERSUS CPU','LOCAL VERSUS','TRAINING','GALLERY','SYSTEM CHECK','CREDITS','OPTIONS'];
+const TITLE_MENU_LAYOUT={top:207,step:29,height:28};
 const ROSTER=['VAMPIRA','NEKOMATA','BANSHEE','MEDUSA','JIANGSHI','YUREI','DULLAHAN','WEREWOLF','MUMMY','WITCH','BELLADONNA'];
 const CORE_ROSTER=ROSTER.slice();ROSTER.push(...Object.keys(SECRET_CHALLENGES));
 const ROSTER_COLUMNS=7,ROSTER_CARD_WIDTH=129;
@@ -2819,7 +2820,7 @@ function drawTitleScreen(){
  drawSectionLabel((CORE_ROSTER.length===11?'ELEVEN':CORE_ROSTER.length===10?'TEN':String(CORE_ROSTER.length))+' QUEENS · ONE RED MOON',139,'#ff91be');
 
  MAIN_MENU.forEach((item,i)=>{
-   let y=151+i*32,sel=mainMenuIndex===i,accent=sel?'#ff65a6':'#574063';
+   let y=TITLE_MENU_LAYOUT.top+i*TITLE_MENU_LAYOUT.step,sel=mainMenuIndex===i,accent=sel?'#ff65a6':'#574063';
    if(sel){
      x.save();x.shadowColor='#ff3b8c';x.shadowBlur=15;roundRect(304,y,352,28,6,'rgba(73,18,57,.78)','#ff65a6',2);x.restore();
      x.strokeStyle='rgba(255,101,166,.45)';x.beginPath();x.moveTo(246,y+14);x.lineTo(292,y+14);x.moveTo(668,y+14);x.lineTo(714,y+14);x.stroke();
@@ -3407,7 +3408,7 @@ function pointerHoverTarget(px,py){
     &&inRect(px,py,14,14,94,27))return true;
 
  if(gameState==='title'){
-   for(let i=0;i<MAIN_MENU.length;i++)if(inRect(px,py,304,151+i*32,352,28)){mainMenuIndex=i;return true}
+   for(let i=0;i<MAIN_MENU.length;i++)if(inRect(px,py,304,TITLE_MENU_LAYOUT.top+i*TITLE_MENU_LAYOUT.step,352,TITLE_MENU_LAYOUT.height)){mainMenuIndex=i;return true}
  }
  if(gameState==='charSelect'){
    const slots=CHARACTER_SLOTS;
@@ -3465,7 +3466,7 @@ function pointerActivate(px,py){
     &&inRect(px,py,14,14,94,27)){pointerBack();return true}
 
  if(gameState==='title'){
-   for(let i=0;i<MAIN_MENU.length;i++)if(inRect(px,py,304,151+i*32,352,28)){mainMenuIndex=i;pointerPress('Enter');return true}
+   for(let i=0;i<MAIN_MENU.length;i++)if(inRect(px,py,304,TITLE_MENU_LAYOUT.top+i*TITLE_MENU_LAYOUT.step,352,TITLE_MENU_LAYOUT.height)){mainMenuIndex=i;pointerPress('Enter');return true}
  }
  if(gameState==='charSelect'){
    const slots=CHARACTER_SLOTS;
