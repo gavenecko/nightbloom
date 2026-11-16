@@ -3564,7 +3564,7 @@ const parallaxControl=document.getElementById('parallaxControl');
 parallaxControl.addEventListener('click',()=>{SYSTEM.parallax=SYSTEM.parallax===false;saveSystem();contextHelpKey='';updateContextHelp();c.focus();});
 const gameCommandButtons=document.querySelectorAll('[data-game-command]');
 new ResizeObserver(entries=>{
- document.documentElement.style.setProperty('--help-space',Math.max(48,Math.ceil(entries[0].contentRect.height)+20)+'px');
+ document.documentElement.style.setProperty('--help-space',Math.max(64,Math.ceil(entries[0].contentRect.height)+40)+'px');
 }).observe(document.getElementById('help'));
 gameCommandButtons.forEach(button=>button.addEventListener('click',()=>{if(!button.disabled){pointerPress(button.dataset.gameCommand);c.focus()}}));
 let contextHelpKey='';

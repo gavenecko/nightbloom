@@ -12,7 +12,7 @@
  <div class="row"><button data-action="all">Unlock everything</button><button data-action="fighters">Unlock secret fighters</button><button data-action="restore">Return to earned progress</button></div>
  <label>Your fighter <select id="nbDebugFighter"></select></label><label>Opponent <select id="nbDebugOpponent"></select></label><label>Stage <select id="nbDebugStage"></select></label>
  <div class="row"><button data-action="fight">Test fight</button><button data-action="training">Training</button><button data-action="challenger">Test secret challenger</button><button data-action="bonus">Destroy-the-relic bonus</button></div>
- <div class="row"><button data-action="ending">Congratulations / ending</button><button data-action="swimsuit">Bonus Ending</button><button data-action="group">Bonus Group</button><button data-action="gallery">Gallery</button><button data-action="inspector">Sprite inspector</button></div>
+ <div class="row"><button data-action="ending">Congratulations / ending</button><button data-action="swimsuit">Bonus Ending</button><button data-action="group">Bonus Group</button><button data-action="gallery">Gallery</button><button data-action="inspector">Sprite inspector</button><button data-action="finale">Test Haunted Finale</button><button data-action="courseStats">Course stats preview</button></div>
  <p>Ending previews do not earn rewards. Unlock everything grants all fighters, endings, Bonus Endings and Bonus Group.</p></section>
  <p id="nbDebugStatus" role="status" aria-live="polite"></p><button id="nbDebugClose">Close</button><button id="nbDebugLock" hidden>Lock menu</button>`;
  document.body.append(dialog);
@@ -47,7 +47,14 @@
    if(action==='gallery'){gameState='gallery';return;}
    if(action==='inspector'){refreshSecretInspector();gameState='atlasInspector';return;}
    if(action==='swimsuit'||action==='group'){galleryArtwork=action;gameState='gallery';return;}
+   if(action==='courseStats'){
+    showCourseSummary({fighter,mode:'story',matches:11,wins:10,losses:1,hits:428,peakCombo:36,damage:18240,damageTaken:6200,attacks:320,supers:12,throws:18,counters:24,blocks:32,finales:3,overkillHits:105,seconds:640});
+    document.getElementById('courseSummaryTitle').textContent=fighter+' · COURSE STATS PREVIEW';return;
+   }
    gameMode='versus';startFight();
+   if(action==='finale'){
+    roundIntro=0;p1Wins=winsNeeded()-1;p1.meter=100;p2.hp=1;p2.ai=false;p2.x=p1.x+90;doAttack(p1,'super');return;
+   }
    if(action==='training'){training=true;trainingDummyMode=0;trainingSpeed=1;p1.meter=p2.meter=100;return;}
    if(action==='bonus'){ladder=[{opponent,stage}];ladderIndex=0;startRelicBonus();return;}
    if(action==='challenger'){gameMode='story';ladder=[{...SECRET_CHALLENGES[opponent],secret:true}];ladderIndex=0;relicBonusPlayed=true;startRouteFight();return;}
