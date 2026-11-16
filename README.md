@@ -21,6 +21,8 @@ A gothic arcade fighting game with eleven starting queens, three secret challeng
 
 Keyboard: WASD move, J/K attacks, L special, U super, I throw, Shift guard, P pause. The pause move list includes motion commands and controller bindings. Options offers Classic and Arcade layouts. Local player two uses the arrow keys and number pad.
 
+Controller buttons can be reassigned in Options → Controller Mapping or the Controls & settings dropdown. Choose a player and action, then press the new button. Bindings save per player in this browser; the pause move list shows the current assignments. [Controller mapping and PS5 defaults](docs/CONTROLLER_MAPPING.md).
+
 ## Saves and testing
 
 Progress is stored in the current browser and site origin. Debug actions use a separate test save; Return to earned progress restores normal play. F10 or the footer button opens the developer menu. Its client-side password is a convenience gate.

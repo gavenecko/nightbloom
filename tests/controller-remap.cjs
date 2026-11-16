@@ -1,0 +1,25 @@
+const vm=require('node:vm'),context=require('./belladonna-integration.cjs');
+vm.runInContext(`
+ const fakePad=slot=>({index:slot-1,id:'DualSense Wireless Controller (054c)',axes:[0,0],buttons:Array.from({length:18},()=>({pressed:false,value:0}))});
+ const gp=fakePad(1),gp2=fakePad(2);navigator.getGamepads=()=>[gp,gp2];SYSTEM.controls='CLASSIC';gameMode='versus';CONTROLLER_MAPS={};controllerInputGates={};
+ SYSTEM.controls='ARCADE';assert.equal(controllerActionMap(1).light,2);gameMode='local';assert.equal(controllerActionMap(1).light,0);gameMode='versus';SYSTEM.controls='CLASSIC';
+ let held={},edge={},previous={};
+ gp.buttons[0].pressed=true;applyPadToBags(gp,held,edge,previous,true,1);assert.equal(edge.KeyJ,1);assert.equal(held.KeyK,false);
+ assert.equal(controllerBindingLabel(1,'special'),'Square');assert.equal(controllerBindingLabel(1,'specialB'),'R2');
+ const result=assignControllerButton(1,'light',1);assert.equal(result.ok,true);assert.equal(result.conflict,'heavy');assert.equal(controllerActionMap(1).light,1);assert.equal(controllerActionMap(1).heavy,0);assert.equal(controllerActionMap(2).light,0);
+ held={};edge={};previous={};gp.buttons[0].pressed=false;gp.buttons[1].pressed=true;applyPadToBags(gp,held,edge,previous,true,1);assert.equal(edge.KeyJ,1);assert.equal(edge.KeyK,undefined);
+ gp.buttons[1].pressed=false;gp.buttons[7].pressed=true;held={};edge={};applyPadToBags(gp,held,edge,{},true,1);assert.equal(edge.TouchSpecialB,1);assert.equal(held.KeyJ,false);
+ const row=pauseMoveRows('BELLADONNA');assert.match(row[0][1],/Circle/);assert.match(row[3][1],/R2/);
+ assert.equal(assignControllerButton(1,'super',12).ok,false,'D-pad is fixed movement');
+ assert.equal(assignControllerButton(1,'super',32).ok,false);
+ assert.equal(assignControllerButton(1,'jump',6).ok,true);gp.buttons[7].pressed=false;gp.buttons[6].pressed=true;held={};edge={};applyPadToBags(gp,held,edge,{},true,1);assert.equal(edge.KeyW,1);
+ gp.buttons[6].pressed=false;gp.buttons[12].pressed=true;held={};edge={};applyPadToBags(gp,held,edge,{},true,1);assert.equal(edge.KeyW,1);gp.buttons[12].pressed=false;
+ gp.buttons[1].pressed=true;gateControllerInputs();assert.equal(controllerButtonDown(gp,1),false);gp.buttons[1].pressed=false;assert.equal(controllerButtonDown(gp,1),false);gp.buttons[1].pressed=true;assert.equal(controllerButtonDown(gp,1),true);
+ assert.ok(JSON.parse(localStorage.getItem('nightbloom_controller_maps'))[1]);assert.equal(controllerButtonName(0,{id:'Xbox Wireless Controller'}),'A');
+ controllerMapSlot=2;renderControllerMapping();beginControllerCapture('super');assert.ok(controllerCapture);
+ gp2.buttons[6].pressed=true;assert.equal(pollControllerMapping(),true);assert.equal(controllerCapture,null);assert.equal(controllerActionMap(2).super,6);assert.equal(controllerActionMap(1).super,3);
+ gameMode='local';clearInputs();CONTROLLER_MAPS[2]={...defaultControllerMap(),pause:10};gp.buttons[1].pressed=false;gp2.buttons[6].pressed=false;gp2.buttons[10].pressed=true;gameState='fight';gamepad();assert.equal(pressed.KeyP,1,'P2 custom pause must pause the game');
+ CONTROLLER_MAPS[1]={light:999};assert.equal(controllerActionMap(1).light,0);
+ CONTROLLER_MAPS={};controllerInputGates={};clearInputs();gameMode='story';gameState='relicBonus';relicBonus={phase:'active'};gp.buttons.forEach(b=>b.pressed=false);gp.buttons[7].pressed=true;gamepad();assert.equal(pressed.TouchSpecialB,1,'Controller attacks must work in the relic bonus');
+ `,context);
+console.log('PASS controller defaults, PS5 labels, saved swaps, player isolation, remapped attacks and direct B, jump and D-pad, held-input gate, press-to-bind capture and P2 pause.');

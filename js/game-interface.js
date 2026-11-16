@@ -11,7 +11,7 @@ function openGameModal(dialog,onClose){
 function closeGameModal(confirmed=false){
  if(!gameModal)return;
  const dialog=gameModal,callback=gameModalClose;gameModal=null;gameModalClose=null;
- dialog.close();window.nightbloomModalOpen=false;clearInputs();musicDuck=modalMusicDuck;applyAudioLevels();
+ dialog.close();window.nightbloomModalOpen=false;clearInputs();if(typeof gateControllerInputs==='function')gateControllerInputs();musicDuck=modalMusicDuck;applyAudioLevels();
  callback?.(confirmed);contextHelpKey='';c.focus();
 }
 function requestTitleExit(){
@@ -22,17 +22,18 @@ function requestTitleExit(){
  });
 }
 function pollGameModal(){
+ if(gameModal?.id==='controllerMapping'&&pollControllerMapping())return;
  const gp=navigator.getGamepads?.()[0];if(!gp)return;
- const next={confirm:!!gp.buttons[0]?.pressed,cancel:!!gp.buttons[1]?.pressed,left:gp.axes[0]<-.5,right:gp.axes[0]>.5};
+ const next={confirm:!!gp.buttons[0]?.pressed,cancel:!!gp.buttons[1]?.pressed,left:gp.axes[0]<-.5||!!gp.buttons[14]?.pressed,right:gp.axes[0]>.5||!!gp.buttons[15]?.pressed,up:gp.axes[1]<-.5||!!gp.buttons[12]?.pressed,down:gp.axes[1]>.5||!!gp.buttons[13]?.pressed};
  if(next.cancel&&!modalPad.cancel){closeGameModal(false);return;}
  if(next.confirm&&!modalPad.confirm){document.activeElement?.click();modalPad=next;return;}
- if((next.left&&!modalPad.left)||(next.right&&!modalPad.right)){
+ if((next.left&&!modalPad.left)||(next.right&&!modalPad.right)||(next.up&&!modalPad.up)||(next.down&&!modalPad.down)){
   const buttons=[...gameModal.querySelectorAll('button')],i=buttons.indexOf(document.activeElement);
-  buttons[(i+(next.right?1:-1)+buttons.length)%buttons.length]?.focus();
+  buttons[(i+(next.right||next.down?1:-1)+buttons.length)%buttons.length]?.focus();
  }
  modalPad=next;
 }
-for(const id of ['quitConfirm','courseSummary']){
+for(const id of ['quitConfirm','courseSummary','controllerMapping']){
  const dialog=document.getElementById(id);
  dialog.addEventListener('cancel',event=>{event.preventDefault();closeGameModal(false);});
  dialog.addEventListener('keydown',event=>{

@@ -86,10 +86,10 @@ let musicPlayer=null,musicRecording=false,musicRequest=0;
 const AUDIO_DEFAULT={master:.72,music:.15,sfx:.74,voice:.74,dialogue:true,mute:false};
 let AUDIO={...AUDIO_DEFAULT};
 try{let saved=JSON.parse(localStorage.getItem('nightbloom_audio')||'null');if(saved)AUDIO={...AUDIO,...saved}}catch(e){}
-const OPTIONS=['MASTER VOLUME','MUSIC VOLUME','SFX VOLUME','MUTE','CONTROL PRESET','GAMEPAD DEADZONE','VIBRATION','SCREEN SHAKE','SCREEN FLASHES','REDUCED MOTION','HIGH CONTRAST HUD','PARTICLES','CHARACTER VOICE VOLUME','AUTO-PLAY DIALOGUE','RESET PROGRESS'];
+const OPTIONS=['MASTER VOLUME','MUSIC VOLUME','SFX VOLUME','MUTE','CONTROL PRESET','GAMEPAD DEADZONE','VIBRATION','SCREEN SHAKE','SCREEN FLASHES','REDUCED MOTION','HIGH CONTRAST HUD','PARTICLES','CHARACTER VOICE VOLUME','AUTO-PLAY DIALOGUE','RESET PROGRESS','CONTROLLER MAPPING'];
 const OPTION_TOP=68,OPTION_STEP=27,OPTION_HEIGHT=23;
 const VOLUME_OPTIONS={0:'master',1:'music',2:'sfx',12:'voice'};
-const DIALOGUE_OPTION=13,RESET_PROGRESS_OPTION=14;
+const DIALOGUE_OPTION=13,RESET_PROGRESS_OPTION=14,CONTROLLER_MAPPING_OPTION=15;
 const MUSIC_FILES={
  OPENING:'FighterCall.mp3',MENU:'IntroScreen.mp3',
  'CRIMSON CATHEDRAL':'CrimsonCathedral.mp3',
@@ -281,6 +281,7 @@ function musicTick(){
 }
 let resetConfirmUntil=0;
 function optionValue(i){
+ if(i===CONTROLLER_MAPPING_OPTION)return 'OPEN';
  if(VOLUME_OPTIONS[i])return Math.round(AUDIO[VOLUME_OPTIONS[i]]*100)+'%';
  if(i===3)return AUDIO.mute?'ON':'OFF';
  if(i===4)return SYSTEM.controls;
@@ -296,6 +297,7 @@ function optionValue(i){
  return '';
 }
 function adjustAudioOption(dir){
+ if(optionsIndex===CONTROLLER_MAPPING_OPTION){openControllerMapping();return;}
  const volume=VOLUME_OPTIONS[optionsIndex];
  if(volume)AUDIO[volume]=clamp(AUDIO[volume]+dir*.05,0,1);
  else if(optionsIndex===3)AUDIO.mute=!AUDIO.mute;
@@ -1318,28 +1320,22 @@ function applyPadToBags(gp,heldBag,pressBag,prevBag,inFight,slot){
      r=gp.axes[0]>dz||gp.buttons[15]?.pressed,
      u=gp.axes[1]<-dz||gp.buttons[12]?.pressed,
      dn=gp.axes[1]>dz||gp.buttons[13]?.pressed,
-     controlled=['KeyA','KeyD','KeyS','KeyW','KeyJ','KeyK','KeyL','KeyU','KeyI','ShiftLeft'];
- let map={
-  KeyA:l,KeyD:r,KeyS:dn,KeyW:u,
-  KeyJ:inFight&&(arcade?gp.buttons[2]?.pressed:gp.buttons[0]?.pressed),
-  KeyK:inFight&&(arcade?gp.buttons[3]?.pressed:gp.buttons[1]?.pressed),
-  KeyL:inFight&&(arcade?gp.buttons[0]?.pressed:gp.buttons[2]?.pressed),
-  KeyU:inFight&&(arcade?gp.buttons[5]?.pressed:gp.buttons[3]?.pressed),
-  KeyI:inFight&&(arcade?gp.buttons[1]?.pressed:gp.buttons[4]?.pressed),
-  ShiftLeft:inFight&&(arcade?gp.buttons[4]?.pressed:gp.buttons[5]?.pressed)
- };
+     controlled=['KeyA','KeyD','KeyS','KeyW','KeyJ','KeyK','KeyL','KeyU','KeyI','ShiftLeft','TouchSpecialB'];
+ const bindings=controllerActionMap(slot),down=action=>inFight&&controllerButtonDown(gp,bindings[action]);
+ let map={KeyA:l,KeyD:r,KeyS:dn,KeyW:u||down('jump'),KeyJ:down('light'),KeyK:down('heavy'),KeyL:down('special'),TouchSpecialB:down('specialB'),KeyU:down('super'),KeyI:down('throw'),ShiftLeft:down('guard')};
+
  for(let k of controlled){
    let v=!!map[k],old=!!heldBag[k];
    if(v&&!old)pressBag[k]=1;heldBag[k]=v;prevBag[k]=v;
  }
 }
 function gamepad(){
- let pads=navigator.getGamepads?Array.from(navigator.getGamepads()):[],gp0=pads[0],gp1=pads[1],inFight=gameState==='fight';
+ let pads=navigator.getGamepads?Array.from(navigator.getGamepads()):[],gp0=pads[0],gp1=pads[1],inFight=gameState==='fight'||gameState==='relicBonus'&&relicBonus?.phase==='active';
  gamepadConnected=!!gp0;gamepad2Connected=!!gp1;
  activeGamepadName=gp0?(gp0.id||'GAMEPAD 1').replace(/\s+/g,' ').slice(0,24):'';
  activeGamepadName2=gp1?(gp1.id||'GAMEPAD 2').replace(/\s+/g,' ').slice(0,24):'';
 
- let p1Controlled=['KeyA','KeyD','KeyS','KeyW','KeyJ','KeyK','KeyL','KeyU','KeyI','ShiftLeft'];
+ let p1Controlled=['KeyA','KeyD','KeyS','KeyW','KeyJ','KeyK','KeyL','KeyU','KeyI','ShiftLeft','TouchSpecialB'];
  if(gp0){
    applyPadToBags(gp0,padKeys,pressed,prevPadButtons,inFight,1);
    for(let k of p1Controlled)keys[k]=!!kbKeys[k]||!!padKeys[k];
@@ -1349,16 +1345,17 @@ function gamepad(){
               Enter:gp0.buttons[0]?.pressed,Backspace:gp0.buttons[1]?.pressed||gp0.buttons[8]?.pressed};
      for(let k in nav){let tag='menu_'+k,v=!!nav[k],old=!!prevPadButtons[tag];if(v&&!old)pressed[k]=1;prevPadButtons[tag]=v}
    }else{
-     let pause=!!gp0.buttons[9]?.pressed,old=!!prevPadButtons.pause;if(pause&&!old)pressed.KeyP=1;prevPadButtons.pause=pause;
+     let pause=controllerButtonDown(gp0,controllerActionMap(1).pause),old=!!prevPadButtons.pause;if(pause&&!old)pressed.KeyP=1;prevPadButtons.pause=pause;
    }
  }else{
    for(let k of p1Controlled){padKeys[k]=0;keys[k]=!!kbKeys[k]}
  }
 
- let p2Controlled=['KeyA','KeyD','KeyS','KeyW','KeyJ','KeyK','KeyL','KeyU','KeyI','ShiftLeft'];
+ let p2Controlled=['KeyA','KeyD','KeyS','KeyW','KeyJ','KeyK','KeyL','KeyU','KeyI','ShiftLeft','TouchSpecialB'];
  if(gameMode==='local'&&inFight&&gp1){
    applyPadToBags(gp1,p2PadKeys,p2Pressed,prevPadButtons2,true,2);
    for(let k of p2Controlled)p2Keys[k]=!!p2KbKeys[k]||!!p2PadKeys[k];
+   const pause=controllerButtonDown(gp1,controllerActionMap(2).pause);if(pause&&!prevPadButtons2.pause)pressed.KeyP=1;prevPadButtons2.pause=pause;
  }else{
    for(let k of p2Controlled){p2PadKeys[k]=0;p2Keys[k]=!!p2KbKeys[k]}
  }
@@ -2160,14 +2157,15 @@ function pauseMoveRows(name,slot=1){
  const key=localP2?{light:'Num 1',heavy:'Num 2',special:'Num 3',super:'Num 4',throw:'Num 5',guard:'Num 0'}:
   arcade?{light:'Z',heavy:'X',special:'C',super:'V',throw:'B',guard:'N'}:
   {light:'J',heavy:'K',special:'L',super:'U',throw:'I',guard:'Shift'};
- const pad=arcade?{light:'X',heavy:'Y',special:'A',super:'RB',throw:'B',guard:'LB'}:
+ let pad=arcade?{light:'X',heavy:'Y',special:'A',super:'RB',throw:'B',guard:'LB'}:
   {light:'A',heavy:'B',special:'X',super:'Y',throw:'LB',guard:'RB'};
+ if(typeof controllerBindingLabel==='function')pad=Object.fromEntries(['light','heavy','special','specialB','super','throw','guard'].map(action=>[action,controllerBindingLabel(slot,action)]));
  const moves=MOVE_NAMES[name];
  return [
   ['Light attack',key.light+' / Pad '+pad.light],
   ['Heavy attack',key.heavy+' / Pad '+pad.heavy],
   [moves.a,key.special+' or QCF + '+key.light+' / Pad '+pad.special+' or QCF + '+pad.light],
-  [moves.b,'QCF + '+key.heavy+' / Pad QCF + '+pad.heavy],
+  [moves.b,'QCF + '+key.heavy+' / Pad '+(pad.specialB?pad.specialB+' or ':'')+'QCF + '+pad.heavy],
   [moves.super,key.super+' / Pad '+pad.super+' - requires 100 meter'],
   ['Throw / throw escape',key.throw+' / Pad '+pad.throw+' - close range'],
   ['Guard', 'Hold '+key.guard+' / Pad '+pad.guard+'; add Down for low guard'],
@@ -2179,7 +2177,7 @@ function drawPauseIndicator(){
  x.save();x.fillStyle='rgba(5,3,12,.89)';x.fillRect(0,0,W,H);
  roundRect(24,18,W-48,H-36,10,'rgba(16,9,27,.97)','#bda0d3',1);
  x.textAlign='center';x.font='bold 25px Georgia';x.fillStyle='#fff';x.fillText(focusPaused?'AUTO PAUSED - MOVE LIST':'PAUSED - MOVE LIST',W/2,54);
- x.font='12px Consolas';x.fillStyle='#dfcce9';x.fillText('P / Controller Start: resume    Esc: title',W/2,77);
+ x.font='12px Consolas';x.fillStyle='#dfcce9';x.fillText('P / mapped Pause: resume    Esc: menu',W/2,77);
  [p1,p2].forEach((fighter,index)=>{
   const left=48+index*452;
   x.textAlign='left';x.font='bold 18px Georgia';x.fillStyle=fighter.accent;
@@ -2195,7 +2193,7 @@ function drawPauseIndicator(){
  x.textAlign='center';x.font='11px Consolas';x.fillStyle='#e8ddec';
  x.fillText('QCF = Down, Down-forward, Forward. Forward always points toward your opponent.',W/2,466);
  x.fillText(gameMode==='local'?'P1: WASD move / W jump. P2: arrows move / Up jump. Double-tap left/right to dash.':SYSTEM.controls==='ARCADE'?'Arrows: move / Up: jump. Double-tap left/right to dash.':'WASD / arrows: move; W / Up: jump. Double-tap left/right to dash.',W/2,487);
- x.fillStyle='#b7a4c4';x.fillText('Pad labels use Xbox notation (A / B / X / Y / LB / RB). CPU inputs are reference only.',W/2,506);
+ x.fillStyle='#b7a4c4';x.fillText('Controller labels follow your mappings. CPU inputs are reference only.',W/2,506);
  x.restore();
 }
 function drawKOEmphasis(){

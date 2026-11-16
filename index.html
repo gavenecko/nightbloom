@@ -14,7 +14,7 @@ canvas{width:100%;height:100%;display:block;image-rendering:pixelated;background
 #help .tools{display:flex;justify-content:center;flex-wrap:wrap;gap:2px}#help [hidden]{display:none!important}#help button:disabled{opacity:.4;cursor:default}#help button[aria-pressed="true"]{border-color:#c88dff;background:#52216a;color:#fff4ff}#help button:focus-visible{outline:2px solid #72ffd7;outline-offset:2px}
 #help a{display:inline-block;color:#b7f0df;font:inherit;padding:3px 8px;margin:3px;text-underline-offset:3px}#help a:focus-visible{outline:2px solid #72ffd7;outline-offset:2px}
 </style>
-<link rel="stylesheet" href="game-interface.css?v=081-fullscreen">
+<link rel="stylesheet" href="game-interface.css?v=081-controller-remap">
 </head>
 <body>
 <div id="wrap">
@@ -33,6 +33,11 @@ canvas{width:100%;height:100%;display:block;image-rendering:pixelated;background
 </div>
 <dialog id="quitConfirm" class="game-modal" aria-labelledby="quitConfirmTitle"><h2 id="quitConfirmTitle">Return to the title menu?</h2><p>Your current match or course will end. Earned unlocks and saved scores will stay saved.</p><div class="actions"><button id="quitCancel" autofocus>Keep playing</button><button id="quitAccept">Return to title</button></div></dialog>
 <dialog id="courseSummary" class="game-modal" aria-labelledby="courseSummaryTitle"><h2 id="courseSummaryTitle">Course stats</h2><p>Totals include retries and any secret challenger matches. Overkill hits add to hits and combo totals without adding damage.</p><dl id="courseSummaryRows"></dl><div class="actions"><button id="courseSummaryContinue" autofocus>Continue</button></div></dialog>
+<dialog id="controllerMapping" class="game-modal" aria-labelledby="controllerMapTitle">
+<h2 id="controllerMapTitle">Controller mapping</h2><button id="controllerMapPlayer" type="button">Editing Player 1 · switch player</button>
+<p id="controllerMapDevice"></p><p>Choose an action, then press its new button. Assignments swap when a button is already used. Stick and D-pad movement stay fixed; menu navigation keeps Cross/A to confirm and Circle/B to go back.</p>
+<div id="controllerMapRows"></div><p id="controllerMapStatus" role="status" aria-live="polite"></p>
+<div class="actions"><button id="controllerMapReset" type="button">Reset player defaults</button><button id="controllerMapDone" type="button">Done</button></div></dialog>
 <footer id="help">
 <details id="gameTools"><summary>Controls &amp; settings</summary><div id="gameToolsContent">
 <p id="contextHelp">Click or use arrows to select · Enter confirm · Backspace back · Esc title</p>
@@ -74,6 +79,7 @@ canvas{width:100%;height:100%;display:block;image-rendering:pixelated;background
 <a href="https://gavenecko.com/neural-voice" target="_blank" rel="noopener">Gaven Echoes ↗</a>
 <span id="voiceStatus" role="status" aria-live="polite"></span>
 </div>
+<button id="controllerMapOpen" type="button">Controller mapping</button>
 <button id="debugMenuButton" type="button">Debug menu (F10)</button>
 <details><summary>More controls <span class="build">BUILD 0.81</span></summary>
 <p>Training: F1 on/off · F4 dummy · F3 refill · F5 positions · F2 hitboxes · H details<br>F8 save state · F9 load state · [ speed · P pause · ] step while paused<br>Local P2: arrows + Numpad 1–5 · Numpad 0 guard · Controllers supported</p></details>
@@ -92,8 +98,9 @@ canvas{width:100%;height:100%;display:block;image-rendering:pixelated;background
 <script src="js/character-introductions.js?v=081-eleven-queens"></script>
 <script src="js/haunted-finale.js?v=081-finale-stats-2"></script>
 <script src="js/course-stats.js?v=081-finale-stats-2"></script>
-<script src="js/game-interface.js?v=081-touch-landscape"></script>
+<script src="js/game-interface.js?v=081-controller-remap"></script>
+<script src="js/controller-remap.js?v=081-controller-remap"></script>
 <script src="js/fullscreen.js?v=081-fullscreen"></script>
-<script src="js/nightbloom.js?v=081-fullscreen"></script>
+<script src="js/nightbloom.js?v=081-controller-remap"></script>
 <script src="js/debug-menu.js?v=081-finale-stats-2"></script>
 </body></html>

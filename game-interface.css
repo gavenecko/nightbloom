@@ -24,6 +24,11 @@
 #fullscreenButton:focus-visible{outline:3px solid #75ffe0;outline-offset:2px}
 #fullscreenStatus{position:fixed;bottom:44px;right:8px;z-index:30;max-width:min(320px,85vw);padding:10px;background:#170e26f0;color:#f1d9fd;border-radius:6px;font:12px Consolas}
 #fullscreenStatus:empty{display:none}
+.controller-map-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:6px 0;border-bottom:1px solid #403049}
+.controller-map-row>span{font:14px Consolas}.controller-map-row>button{min-width:120px;padding:8px 12px}
+#controllerMapDevice{font:12px Consolas;overflow-wrap:anywhere;color:#bfa5cf}
+#controllerMapStatus{min-height:2.4em;color:#8bf0d3;font:13px Consolas}
+#controllerMapping .actions{margin-top:16px;flex-wrap:wrap}
 html:is(:fullscreen,:-webkit-full-screen){background:#05040b}
 html:is(:fullscreen,:-webkit-full-screen) #wrap,body.expanded-game #wrap{width:min(calc(100vw - 24px),calc((100dvh - var(--help-space,70px) - var(--touch-space,0px))*16/9))}
 /* Short landscape screens use overlaid thumb controls, not stacked rows. */
