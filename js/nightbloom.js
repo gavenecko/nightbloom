@@ -2817,7 +2817,7 @@ function drawTitleScreen(){
    glowText('NIGHTBLOOM',W/2,89,58,'#fff0ff','#b52268');
    x.textAlign='center';x.font='italic 20px Georgia';x.fillStyle='#d9bce9';x.fillText('Queens of the Haunted',W/2,116);
  }
- drawSectionLabel((CORE_ROSTER.length===11?'ELEVEN':CORE_ROSTER.length===10?'TEN':String(CORE_ROSTER.length))+' QUEENS · ONE RED MOON',139,'#ff91be');
+ drawSectionLabel((CORE_ROSTER.length===11?'ELEVEN':CORE_ROSTER.length===10?'TEN':String(CORE_ROSTER.length))+' QUEENS · ONE RED MOON',195,'#ff91be');
 
  MAIN_MENU.forEach((item,i)=>{
    let y=TITLE_MENU_LAYOUT.top+i*TITLE_MENU_LAYOUT.step,sel=mainMenuIndex===i,accent=sel?'#ff65a6':'#574063';
