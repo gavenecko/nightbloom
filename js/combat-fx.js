@@ -70,7 +70,7 @@
   const paintedKey=['hit','guard','counter'].includes(kind)?kind:kind==='super'?p.name?.toLowerCase().replaceAll(' ','-')+'-super':kind===p.a||kind==='light'||kind==='heavy'?p.name?.toLowerCase().replaceAll(' ','-')+'-a':kind===p.b?p.name?.toLowerCase().replaceAll(' ','-')+'-b':null;
   if(paintedKey){
    if(root.NightbloomPaintedFX?.draw(c,paintedKey,t,{...options,size:kind==='light'?84:kind==='heavy'?100:options.size}))return;
-   if(paintedKey.startsWith('narrator-'))return;
+   if(paintedKey.includes('-'))return;
   }
   const impact=['hit','impact','guard','counter'].includes(kind),travel=!!options.projectile;
   const envelope=travel?1:Math.min(1,t*7)*Math.min(1,(1-t)*4);
@@ -180,7 +180,9 @@
    c.save();c.translate(19,-80);
    if(f.name==='NARRATOR'){
     if(f.attack?.type!=='specialB'){c.globalAlpha*=.45;root.NightbloomPaintedFX?.draw(c,'narrator-b',.58,{...options,size:82});}
-   }else ring(c,profiles.JIANGSHI.color,22,-1.4,1.4,2,.9);
+   }else if(f.name==='JIANGSHI'){
+    c.globalAlpha*=.65;root.NightbloomPaintedFX?.draw(c,'jiangshi-a',.58,{...options,size:106});
+   }
    c.restore();
   }
   c.restore();

@@ -7,7 +7,7 @@
  let engine=null,loading=null,ready=false,token=0,busy=false,auto=false,sceneKey='',lines=[],finishCurrent=null;
  let recordedLoading=null,recordedData=null,recordedIndex=null,activeAudio=null;
  let getVolume=()=>1,onBusy=()=>{},onAutoChange=setAuto;
- const el=id=>document.getElementById(id),supported=()=>!!(global.speechSynthesis&&global.SpeechSynthesisUtterance);
+ const el=id=>document.getElementById(id);
  function status(text){el('voiceStatus').textContent=text;}
  function setBusy(value){busy=value;el('voiceRead').disabled=value||!lines.length;el('voiceStop').disabled=!value;onBusy();}
  function refreshVolume(){if(activeAudio)activeAudio.volume=Math.max(0,Math.min(1,getVolume()));}
@@ -16,7 +16,7 @@
  function stop(){token++;const finish=finishCurrent;finishCurrent=null;if(activeAudio){activeAudio.onended=activeAudio.onerror=null;activeAudio.pause();activeAudio.removeAttribute('src');activeAudio.load();activeAudio=null;}engine?.stop();global.speechSynthesis?.cancel();finish?.();setBusy(false);}
  async function recordedClip(line){
   if(!global.fetch||!global.Audio)return null;
-  if(!recordedLoading)recordedLoading=global.fetch('assets/audio/story-v1/manifest.json?v=4').then(response=>{if(!response.ok)throw Error('Recordings unavailable');return response.json()}).then(data=>{if(!data.complete||!Array.isArray(data.clips))throw Error('Recordings incomplete');recordedData=data;recordedIndex=new Map(data.clips.map(clip=>[JSON.stringify([clip.speaker,clip.text]),clip]));}).catch(()=>{});
+  if(!recordedLoading)recordedLoading=global.fetch('assets/audio/story-v1/manifest.json?v=5').then(response=>{if(!response.ok)throw Error('Recordings unavailable');return response.json()}).then(data=>{if(!data.complete||!Array.isArray(data.clips))throw Error('Recordings incomplete');recordedData=data;recordedIndex=new Map(data.clips.map(clip=>[JSON.stringify([clip.speaker,clip.text]),clip]));}).catch(()=>{});
   await recordedLoading;
   if(!recordedIndex)return null;
   const profile=recordedData.profiles?.[line.speaker];
@@ -39,16 +39,9 @@
    for(const [name,voice]of Object.entries(assignments))engine.addProfile(name,{name,voice,delivery:'natural',effect:'clean',pitchSemitones:0,speed:1,echo:0,volume:1,...castProfiles[name],...overrides[name]});
    await engine.loadModel('memory',progress=>{if(progress?.progress!=null)status('Downloading neural voices… '+Math.round(progress.progress)+'%');});
    ready=true;button.textContent='Neural voices ready';status('Gaven Echoes neural voices ready.');
-  })().catch(()=>{status('Neural download unavailable. Device reading is still available.');button.disabled=false;button.textContent='Retry neural download';}).finally(()=>{loading=null;});
+  })().catch(()=>{status('Neural download unavailable. Approved recordings and on-screen dialogue remain available.');button.disabled=false;button.textContent='Retry neural download';}).finally(()=>{loading=null;});
   return loading;
  }
- function deviceLine(line,current){return new Promise((resolve,reject)=>{
-  if(!supported())return reject(Error('Device speech is unavailable.'));
-  if(current!==token)return resolve();
-  const utterance=new global.SpeechSynthesisUtterance(line.text);utterance.lang='en-US';utterance.rate=.98;utterance.volume=Math.max(0,Math.min(1,getVolume()));
-  const voices=global.speechSynthesis.getVoices().filter(v=>/^en/i.test(v.lang));const index=Object.keys(assignments).indexOf(line.speaker);if(voices.length)utterance.voice=voices[Math.max(0,index)%voices.length];
-  finishCurrent=resolve;utterance.onend=()=>{if(current===token)finishCurrent=null;resolve()};utterance.onerror=()=>{if(current===token)finishCurrent=null;current!==token?resolve():reject(Error('Speech stopped.'))};global.speechSynthesis.speak(utterance);
- });}
  async function neuralLine(line,current){
   const result=await engine.generate(line.speaker in assignments?line.speaker:'NARRATOR',line.text);
   if(current!==token||!getVolume())return;
@@ -56,12 +49,18 @@
  }
  async function read(){
   stop();if(!lines.length)return;if(getVolume()<=0){status('Unmute audio to hear the dialog.');return;}
-  const current=token,sequence=lines.map(line=>({...line}));setBusy(true);
+  const current=token,sequence=lines.map(line=>({...line}));let unavailable=0;setBusy(true);
   try{for(const line of sequence){if(current!==token)break;const clip=await recordedClip(line);if(current!==token)break;
    let played=false;if(clip){status('Recorded voice · '+line.speaker);try{await recordedLine(clip,current);played=true}catch(error){/* Retain reading when a recording is unavailable. */}}
-   if(current!==token)break;if(!played){status((ready?'Neural voice · ':'Device voice · ')+line.speaker);if(ready){try{await neuralLine(line,current)}catch(error){if(current===token)await deviceLine(line,current)}}else await deviceLine(line,current);}}
-   if(current===token)status('Finished. Continue whenever you are ready.');
-  }catch(error){if(current===token)status('Voice playback unavailable. You can still read the dialog.');}
+   if(current!==token)break;
+    if(!played){
+     // Never replace an approved character voice with a device/browser voice.
+     if(ready){status('Approved neural voice - '+line.speaker);try{await neuralLine(line,current)}catch(error){if(current===token)unavailable++;}}
+     else unavailable++;
+    }
+   }
+   if(current===token)status(unavailable?'Some approved voice lines are unavailable. Read the dialogue or load neural voices.':'Finished. Continue whenever you are ready.');
+   }catch(error){if(current===token)status('Voice playback unavailable. You can still read the dialog.');}
   finally{if(current===token){finishCurrent=null;setBusy(false);}}
  }
  function update(key,nextLines){
