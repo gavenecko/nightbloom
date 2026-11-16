@@ -48,6 +48,7 @@ const CONTROL_PRESETS={
 function saveSystem(){try{localStorage.setItem('nightbloom_system',JSON.stringify(SYSTEM))}catch(e){}}
 function mapInputCode(code){return CONTROL_PRESETS[SYSTEM.controls]?.[code]||code}
 addEventListener('keydown',e=>{
+ if(e.code==='Escape'&&consumeFullscreenEscape()){e.preventDefault();return;}
  if(window.nightbloomModalOpen||e.target.closest?.('#help')||e.target.closest?.('#touchControls'))return;
  if(gameMode==='local'&&gameState==='fight'&&P2_KEYMAP[e.code]){
    let code=P2_KEYMAP[e.code];

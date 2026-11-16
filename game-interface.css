@@ -20,6 +20,12 @@
 #touchControls button{min-height:38px;min-width:48px;padding:7px 10px;background:#2c193c;color:#f7eaff;border:1px solid #9770ab;border-radius:9px;font:12px Consolas;touch-action:none}
 #touchControls button:active{background:#86508b}#touchNav{display:flex;flex-direction:column;gap:7px}
 @media(max-width:600px){body{padding:6px;gap:6px}#wrap{width:min(calc(100vw - 12px),calc((100dvh - var(--help-space,60px) - var(--touch-space,0px))*16/9))}#touchStick{width:96px;height:96px}#touchControls{gap:6px}#touchControls button{padding:6px;font-size:10px;min-width:40px}#touchAttacks{gap:4px;grid-template-columns:repeat(3,1fr)}.game-modal{padding:16px}}
+#fullscreenButton{position:fixed;right:max(8px,env(safe-area-inset-right));bottom:max(5px,env(safe-area-inset-bottom));z-index:30;padding:8px 12px;min-height:34px;border:1px solid #aa80bd;border-radius:6px;background:#21132eea;color:#f4e5fb;font:11px Consolas;cursor:pointer;touch-action:manipulation}
+#fullscreenButton:focus-visible{outline:3px solid #75ffe0;outline-offset:2px}
+#fullscreenStatus{position:fixed;bottom:44px;right:8px;z-index:30;max-width:min(320px,85vw);padding:10px;background:#170e26f0;color:#f1d9fd;border-radius:6px;font:12px Consolas}
+#fullscreenStatus:empty{display:none}
+html:is(:fullscreen,:-webkit-full-screen){background:#05040b}
+html:is(:fullscreen,:-webkit-full-screen) #wrap,body.expanded-game #wrap{width:min(calc(100vw - 24px),calc((100dvh - var(--help-space,70px) - var(--touch-space,0px))*16/9))}
 /* Short landscape screens use overlaid thumb controls, not stacked rows. */
 @media(orientation:landscape) and (max-height:600px){
  body.touch-layout{padding:4px;gap:0;overflow:hidden}
@@ -35,4 +41,5 @@
  body.touch-layout #help{position:fixed;bottom:env(safe-area-inset-bottom);left:50%;transform:translateX(-50%);width:min(320px,52vw);z-index:20}
  body.touch-layout #gameTools>summary{padding:7px 10px;font-size:10px}
  body.touch-layout #gameToolsContent{max-height:calc(100dvh - 68px);overflow-y:auto;background:#100b18f5}
+ html:is(:fullscreen,:-webkit-full-screen) body.touch-layout #wrap,body.expanded-game.touch-layout #wrap{width:min(calc(100vw - 8px),calc((100dvh - 40px - env(safe-area-inset-bottom))*16/9))}
 }

@@ -15,6 +15,7 @@ A gothic arcade fighting game with eleven starting queens, three secret challeng
 - Story and Arcade insert the Cursed Reliquary bonus immediately after the halfway match victory: match five for starting queens, match six for secret fighters. Press Enter to start the 15-second challenge; destroying the relic adds 1,500 points in Arcade.
 - A match-winning super becomes a 36-hit Haunted Finale, continuing after zero health. Course completion now shows cumulative stats, including retries and overkill hits.
 - Escape asks before returning to the menu. Tools below the game live in a collapsed Controls & settings dropdown, which also offers Automatic / On / Off touch controls.
+- Use the lower-right Fullscreen button or F to expand the game. Escape exits fullscreen first. Touch controls and dialogs stay available in fullscreen.
 
 ## Controls
 

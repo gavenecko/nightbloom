@@ -29,3 +29,11 @@ Touch controls offer Automatic, On, and Off. Automatic uses a coarse pointer or 
 This is the initial mobile control layout. Physical-phone sizing, browser audio activation and sustained touch play still need a device playtest; keyboard/controller play remains supported.
 
 On short landscape screens, touch controls overlay the lower corners and the dropdown sits in a compact bottom strip. The arena uses the available height instead of subtracting the stacked portrait controls. Joystick, buttons and menu respect device safe-area insets. Portrait retains the controls below the arena.
+
+## Fullscreen
+
+The persistent lower-right Fullscreen button or F enters fullscreen for the entire game document, including touch controls and dialogs. The button changes to Exit fullscreen. Escape exits fullscreen first; a brief exit guard prevents that same keypress from also abandoning the match.
+
+The fullscreen arena scales beyond the normal desktop width cap. Landscape touch overlays remain in place. If native fullscreen is unavailable or an embed denies it, the game offers an explicitly labeled expanded view within the available browser window. The host's browser chrome may remain visible in that fallback.
+
+For itch.io, the creator settings support Click to launch in fullscreen, an optional host Fullscreen Button for embedded games, and Mobile Friendly. See the [official HTML5 upload/embed guide](https://itch.io/docs/creators/html5). The game keeps asset paths relative and responds to viewport changes. Actual itch.io embedding still needs an upload/preview test before shipping.
